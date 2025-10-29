@@ -850,18 +850,348 @@ won_outcome_options = {
             "Competitive analysis favored us; closed with preferred partner designation."
         ]
     },
-    # ... (Following the same pattern, expand for software, services, entertainment, telecommunications, finance, employment, marketing, technolgy, other)
-    # For brevity in this response, note that the full expansion follows the example above: 5-7 items per series per sector, incorporating {product} and series-specific language (e.g., for 'software' gtx: focus on GPU builds, mg: workflow, gtk: clusters).
-    # In a production script, all would be fully defined as shown for medical and retail. Since the code is executable with defaults, it works as-is, but to complete, assume replicated.
-    'software': {'gtx': ["Closed on {product}'s ML training ROI."], 'mg': ["Won after {product} sprint planning gains."], 'gtk': ["Sealed with {product} cluster scale."], 'default': []},
-    'services': {'gtx': ["Closed on {product}'s collaboration ROI."], 'mg': ["Won after {product} SLA management."], 'gtk': ["Sealed with {product} ticketing capacity."], 'default': []},
-    'entertainment': {'gtx': ["Closed on {product}'s CGI speed ROI."], 'mg': ["Won after {product} production scheduling."], 'gtk': ["Sealed with {product} streaming scale."], 'default': []},
-    'telecommunications': {'gtx': ["Closed on {product}'s topology viz ROI."], 'mg': ["Won after {product} outage response."], 'gtk': ["Sealed with {product} traffic processing."], 'default': []},
-    'finance': {'gtx': ["Closed on {product}'s trading heatmap ROI."], 'mg': ["Won after {product} ledger balancing."], 'gtk': ["Sealed with {product} HFT streams."], 'default': []},
-    'employment': {'gtx': ["Closed on {product}'s talent map ROI."], 'mg': ["Won after {product} recruitment pipeline."], 'gtk': ["Sealed with {product} HR data scale."], 'default': []},
-    'marketing': {'gtx': ["Closed on {product}'s heatmap ROI."], 'mg': ["Won after {product} channel orchestration."], 'gtk': ["Sealed with {product} insights scale."], 'default': []},
-    'technolgy': {'gtx': ["Closed on {product}'s CAD acceleration ROI."], 'mg': ["Won after {product} R&D pipelines."], 'gtk': ["Sealed with {product} cluster power."], 'default': []},
-    'other': {'gtx': ["Closed on {product}'s dashboard ROI."], 'mg': ["Won after {product} project management."], 'gtk': ["Sealed with {product} dataset processing."], 'default': []}
+    'software': {
+        'gtx': [
+            "Final negotiation successful; closed on {product}'s GPU build acceleration ROI.",
+            "Budget approved; won after GTX ML pipelines scaled training times.",
+            "Overcame rendering objections; {product} VR dev sealed with immersive demo.",
+            "Multi-year deal; expanded to include {product} game engine optimizations.",
+            "Stakeholder buy-in; {product} benchmarks convinced on parallel gains.",
+            "Custom shaders delivered; won on GTX-exclusive dev tools.",
+            "Competitive edge in simulations; closed with SDK bundle."
+        ],
+        'mg': [
+            "Final negotiation successful; closed on {product}'s workflow orchestration ROI.",
+            "Budget approved; won after MG sprint tools boosted velocity.",
+            "Overcame review objections; {product} automation sealed with efficiency demo.",
+            "Multi-year deal; expanded to include {product} backlog integrations.",
+            "Stakeholder buy-in; {product} dashboards convinced on vuln tracking.",
+            "Custom CI/CD pipelines; won on MG agile fit.",
+            "Competitive edge in collaboration; closed with training modules."
+        ],
+        'gtk': [
+            "Final negotiation successful; closed on {product}'s cluster simulation ROI.",
+            "Budget approved; won after GTK deployments handled petabyte repos.",
+            "Overcame load objections; {product} AI coding sealed with scale demo.",
+            "Multi-year deal; expanded to include {product} distributed clusters.",
+            "Stakeholder buy-in; {product} audits convinced on throughput.",
+            "Custom viz tools; won on GTK enterprise dev capacity.",
+            "Competitive edge in high-fidelity; closed with migration support."
+        ],
+        'default': [
+            "Final negotiation successful; contract signed due to seamless CI/CD fit and scalability.",
+            "Budget approved; closed won after code review and dev team endorsement.",
+            "Overcame integration concerns; accelerated API rollout sealed the deal.",
+            "Multi-year commitment secured; partnership expanded to cloud migrations.",
+            "Key stakeholder buy-in achieved; benchmark demo convinced on performance gains.",
+            "Custom dev tools provided; won on open-source compatibility commitment.",
+            "Competitive PoC won; closed with agile methodology alignment."
+        ]
+    },
+    'services': {
+        'gtx': [
+            "Final negotiation successful; closed on {product}'s immersive review ROI.",
+            "Budget approved; won after GTX Gantt charts enhanced collaboration.",
+            "Overcame latency objections; {product} VR training sealed with engagement demo.",
+            "Multi-year deal; expanded to include {product} blueprint visuals.",
+            "Stakeholder buy-in; {product} benchmarks convinced on resource gains.",
+            "Custom session tools; won on GTX service optimizations.",
+            "Competitive edge in interactivity; closed with deployment package."
+        ],
+        'mg': [
+            "Final negotiation successful; closed on {product}'s engagement management ROI.",
+            "Budget approved; won after MG SLAs streamlined renewals.",
+            "Overcame feedback objections; {product} loops sealed with NPS demo.",
+            "Multi-year deal; expanded to include {product} knowledge bases.",
+            "Stakeholder buy-in; {product} dashboards convinced on billing accuracy.",
+            "Custom invoice tools; won on MG contract fit.",
+            "Competitive edge in coordination; closed with support modules."
+        ],
+        'gtk': [
+            "Final negotiation successful; closed on {product}'s ticketing scale ROI.",
+            "Budget approved; won after GTK fleets predicted maintenance.",
+            "Overcame queue objections; {product} desks sealed with volume demo.",
+            "Multi-year deal; expanded to include {product} global compliance.",
+            "Stakeholder buy-in; {product} audits convinced on metrics.",
+            "Custom dashboards; won on GTK enterprise capacity.",
+            "Competitive edge in high-volume; closed with integration support."
+        ],
+        'default': [
+            "Final negotiation successful; contract signed due to SLA guarantees and onboarding ease.",
+            "Budget approved; closed won after process audit and delivery team sign-off.",
+            "Overcame billing objections; accelerated support tiers sealed the deal.",
+            "Multi-year commitment secured; partnership expanded to consulting add-ons.",
+            "Key stakeholder buy-in achieved; dashboard demo convinced on efficiency metrics.",
+            "Custom service blueprints accepted; won on client success milestones.",
+            "Competitive RFP response excelled; closed with framework agreement."
+        ]
+    },
+    'entertainment': {
+        'gtx': [
+            "Final negotiation successful; closed on {product}'s CGI rendering ROI.",
+            "Budget approved; won after GTX VFX previews accelerated production.",
+            "Overcame bitrate objections; {product} adaptation sealed with stream demo.",
+            "Multi-year deal; expanded to include {product} motion capture.",
+            "Stakeholder buy-in; {product} benchmarks convinced on fidelity.",
+            "Custom previews; won on GTX media optimizations.",
+            "Competitive edge in real-time; closed with SDK bundle."
+        ],
+        'mg': [
+            "Final negotiation successful; closed on {product}'s scheduling ROI.",
+            "Budget approved; won after MG assets boosted content flow.",
+            "Overcame clearance objections; {product} rights sealed with localization demo.",
+            "Multi-year deal; expanded to include {product} talent bookings.",
+            "Stakeholder buy-in; {product} dashboards convinced on engagement.",
+            "Custom libraries; won on MG distribution fit.",
+            "Competitive edge in orchestration; closed with analytics modules."
+        ],
+        'gtk': [
+            "Final negotiation successful; closed on {product}'s CDN scale ROI.",
+            "Budget approved; won after GTK streams handled live events.",
+            "Overcame pipeline objections; {product} HD sealed with format demo.",
+            "Multi-year deal; expanded to include {product} global archives.",
+            "Stakeholder buy-in; {product} audits convinced on storage.",
+            "Custom networks; won on GTK enterprise capacity.",
+            "Competitive edge in ultra-HD; closed with migration support."
+        ],
+        'default': [
+            "Final negotiation successful; contract signed due to engagement metrics and content fit.",
+            "Budget approved; closed won after screening pilot and creative endorsement.",
+            "Overcame rights management issues; accelerated metadata tools sealed the deal.",
+            "Multi-year commitment secured; partnership expanded to ad revenue shares.",
+            "Key stakeholder buy-in achieved; algo demo convinced on audience growth.",
+            "Custom fan interaction features; won on exclusive content integrations.",
+            "Competitive pitch won; closed with co-production opportunities."
+        ]
+    },
+    'telecommunications': {
+        'gtx': [
+            "Final negotiation successful; closed on {product}'s topology viz ROI.",
+            "Budget approved; won after GTX flows improved troubleshooting.",
+            "Overcame handoff objections; {product} beamforming sealed with sim demo.",
+            "Multi-year deal; expanded to include {product} fault maps.",
+            "Stakeholder buy-in; {product} benchmarks convinced on diagnostics.",
+            "Custom training; won on GTX telco optimizations.",
+            "Competitive edge in visuals; closed with VR bundle."
+        ],
+        'mg': [
+            "Final negotiation successful; closed on {product}'s provisioning ROI.",
+            "Budget approved; won after MG responses reduced outages.",
+            "Overcame utilization objections; {product} tracking sealed with trend demo.",
+            "Multi-year deal; expanded to include {product} care queues.",
+            "Stakeholder buy-in; {product} dashboards convinced on churn.",
+            "Custom workflows; won on MG ops fit.",
+            "Competitive edge in management; closed with retention modules."
+        ],
+        'gtk': [
+            "Final negotiation successful; closed on {product}'s traffic ROI.",
+            "Budget approved; won after GTK planning predicted capacity.",
+            "Overcame anomaly objections; {product} monitoring sealed with scale demo.",
+            "Multi-year deal; expanded to include {product} edge orchestration.",
+            "Stakeholder buy-in; {product} audits convinced on predictions.",
+            "Custom routers; won on GTK core capacity.",
+            "Competitive edge in terabit; closed with integration support."
+        ],
+        'default': [
+            "Final negotiation successful; contract signed due to reliability SLAs and 5G readiness.",
+            "Budget approved; closed won after network sim and ops team approval.",
+            "Overcame bandwidth concerns; accelerated IoT pilots sealed the deal.",
+            "Multi-year commitment secured; partnership expanded to spectrum auctions.",
+            "Key stakeholder buy-in achieved; churn model demo convinced on retention.",
+            "Custom monitoring dashboards; won on proactive outage predictions.",
+            "Competitive tender favored; closed with infrastructure consortium role."
+        ]
+    },
+    'finance': {
+        'gtx': [
+            "Final negotiation successful; closed on {product}'s heatmap ROI.",
+            "Budget approved; won after GTX dashboards enhanced trading.",
+            "Overcame scenario objections; {product} graphs sealed with perf demo.",
+            "Multi-year deal; expanded to include {product} compliance training.",
+            "Stakeholder buy-in; {product} benchmarks convinced on speed.",
+            "Custom algos; won on GTX finance optimizations.",
+            "Competitive edge in real-time; closed with SDK bundle."
+        ],
+        'mg': [
+            "Final negotiation successful; closed on {product}'s reconciliation ROI.",
+            "Budget approved; won after MG audits streamlined reporting.",
+            "Overcame alert objections; {product} fraud sealed with pattern demo.",
+            "Multi-year deal; expanded to include {product} account management.",
+            "Stakeholder buy-in; {product} dashboards convinced on performance.",
+            "Custom ledgers; won on MG compliance fit.",
+            "Competitive edge in orchestration; closed with filing modules."
+        ],
+        'gtk': [
+            "Final negotiation successful; closed on {product}'s HFT ROI.",
+            "Budget approved; won after GTK surveillance scaled markets.",
+            "Overcame validation objections; {product} modeling sealed with quant demo.",
+            "Multi-year deal; expanded to include {product} stress testing.",
+            "Stakeholder buy-in; {product} audits convinced on computations.",
+            "Custom streams; won on GTK enterprise capacity.",
+            "Competitive edge in high-frequency; closed with migration support."
+        ],
+        'default': [
+            "Final negotiation successful; contract signed due to compliance audits and fraud reduction.",
+            "Budget approved; closed won after risk assessment and board endorsement.",
+            "Overcame KYC hurdles; accelerated transaction processing sealed the deal.",
+            "Multi-year commitment secured; partnership expanded to fintech APIs.",
+            "Key stakeholder buy-in achieved; algo demo convinced on risk-adjusted returns.",
+            "Custom reporting suites; won on regulatory filing automations.",
+            "Competitive due diligence passed; closed with custodial services add-on."
+        ]
+    },
+    'employment': {
+        'gtx': [
+            "Final negotiation successful; closed on {product}'s talent map ROI.",
+            "Budget approved; won after GTX charts boosted planning.",
+            "Overcame path objections; {product} diversity sealed with metric demo.",
+            "Multi-year deal; expanded to include {product} onboarding VR.",
+            "Stakeholder buy-in; {product} benchmarks convinced on engagement.",
+            "Custom surveys; won on GTX HR optimizations.",
+            "Competitive edge in visuals; closed with deployment package."
+        ],
+        'mg': [
+            "Final negotiation successful; closed on {product}'s pipeline ROI.",
+            "Budget approved; won after MG reviews enhanced performance.",
+            "Overcame enrollment objections; {product} benefits sealed with workflow demo.",
+            "Multi-year deal; expanded to include {product} learning tracking.",
+            "Stakeholder buy-in; {product} dashboards convinced on turnover.",
+            "Custom hiring; won on MG recruitment fit.",
+            "Competitive edge in management; closed with prediction modules."
+        ],
+        'gtk': [
+            "Final negotiation successful; closed on {product}'s HR scale ROI.",
+            "Budget approved; won after GTK analytics predicted hiring.",
+            "Overcame compliance objections; {product} reporting sealed with global demo.",
+            "Multi-year deal; expanded to include {product} skills inventory.",
+            "Stakeholder buy-in; {product} audits convinced on queries.",
+            "Custom warehouses; won on GTK enterprise capacity.",
+            "Competitive edge in data; closed with integration support."
+        ],
+        'default': [
+            "Final negotiation successful; contract signed due to ATS integrations and hiring speed.",
+            "Budget approved; closed won after DEI audit and HR team sign-off.",
+            "Overcame skills gap concerns; accelerated onboarding sealed the deal.",
+            "Multi-year commitment secured; partnership expanded to L&D platforms.",
+            "Key stakeholder buy-in achieved; pipeline demo convinced on talent ROI.",
+            "Custom retention tools; won on predictive analytics commitments.",
+            "Competitive vendor review won; closed with enterprise license."
+        ]
+    },
+    'marketing': {
+        'gtx': [
+            "Final negotiation successful; closed on {product}'s heatmap ROI.",
+            "Budget approved; won after GTX mockups accelerated creatives.",
+            "Overcame journey objections; {product} A/B sealed with conversion demo.",
+            "Multi-year deal; expanded to include {product} brand experiences.",
+            "Stakeholder buy-in; {product} benchmarks convinced on attribution.",
+            "Custom funnels; won on GTX campaign optimizations.",
+            "Competitive edge in interactivity; closed with SDK bundle."
+        ],
+        'mg': [
+            "Final negotiation successful; closed on {product}'s orchestration ROI.",
+            "Budget approved; won after MG sequences boosted nurturing.",
+            "Overcame rule objections; {product} personalization sealed with segment demo.",
+            "Multi-year deal; expanded to include {product} asset libraries.",
+            "Stakeholder buy-in; {product} dashboards convinced on sentiment.",
+            "Custom channels; won on MG multi-channel fit.",
+            "Competitive edge in coordination; closed with analysis modules."
+        ],
+        'gtk': [
+            "Final negotiation successful; closed on {product}'s insights ROI.",
+            "Budget approved; won after GTK engines personalized real-time.",
+            "Overcame modeling objections; {product} attribution sealed with platform demo.",
+            "Multi-year deal; expanded to include {product} predictive behavior.",
+            "Stakeholder buy-in; {product} audits convinced on consumers.",
+            "Custom big data; won on GTK enterprise capacity.",
+            "Competitive edge in scale; closed with migration support."
+        ],
+        'default': [
+            "Final negotiation successful; contract signed due to ROI tracking and campaign lift.",
+            "Budget approved; closed won after A/B test results and creative approval.",
+            "Overcame privacy objections; accelerated segmentation sealed the deal.",
+            "Multi-year commitment secured; partnership expanded to influencer tools.",
+            "Key stakeholder buy-in achieved; funnel demo convinced on conversions.",
+            "Custom attribution models; won on multi-channel support.",
+            "Competitive media pitch excelled; closed with retainer agreement."
+        ]
+    },
+    'technolgy': {
+        'gtx': [
+            "Final negotiation successful; closed on {product}'s CAD acceleration ROI.",
+            "Budget approved; won after GTX prototypes enhanced IoT sims.",
+            "Overcame AR objections; {product} testing sealed with R&D demo.",
+            "Multi-year deal; expanded to include {product} board debugging.",
+            "Stakeholder buy-in; {product} benchmarks convinced on compatibility.",
+            "Custom interfaces; won on GTX innovation optimizations.",
+            "Competitive edge in rendering; closed with SDK bundle."
+        ],
+        'mg': [
+            "Final negotiation successful; closed on {product}'s pipeline ROI.",
+            "Budget approved; won after MG patents streamlined IP.",
+            "Overcame suite objections; {product} testing sealed with deployment demo.",
+            "Multi-year deal; expanded to include {product} backlog innovation.",
+            "Stakeholder buy-in; {product} dashboards convinced on stack.",
+            "Custom R&D; won on MG project fit.",
+            "Competitive edge in orchestration; closed with vuln modules."
+        ],
+        'gtk': [
+            "Final negotiation successful; closed on {product}'s cluster ROI.",
+            "Budget approved; won after GTK frameworks simulated quantum.",
+            "Overcame deployment objections; {product} AI sealed with edge demo.",
+            "Multi-year deal; expanded to include {product} exascale modeling.",
+            "Stakeholder buy-in; {product} audits convinced on handling.",
+            "Custom labs; won on GTK enterprise capacity.",
+            "Competitive edge in supercomputing; closed with migration support."
+        ],
+        'default': [
+            "Final negotiation successful; contract signed due to edge computing fit and latency cuts.",
+            "Budget approved; closed won after PoC validation and tech lead endorsement.",
+            "Overcame cyber concerns; accelerated deployment sealed the deal.",
+            "Multi-year commitment secured; partnership expanded to AI accelerators.",
+            "Key stakeholder buy-in achieved; benchmark demo convinced on throughput.",
+            "Custom hardware provisioning; won on R&D collaboration pledges.",
+            "Competitive innovation challenge won; closed with joint lab setup."
+        ]
+    },
+    'other': {
+        'gtx': [
+            "Final negotiation successful; closed on {product}'s dashboard ROI.",
+            "Budget approved; won after GTX flows optimized processes.",
+            "Overcame sim objections; {product} visuals sealed with exec demo.",
+            "Multi-year deal; expanded to include {product} workflow diagrams.",
+            "Stakeholder buy-in; {product} benchmarks convinced on KPIs.",
+            "Custom presentations; won on GTX ops optimizations.",
+            "Competitive edge in interactivity; closed with deployment package."
+        ],
+        'mg': [
+            "Final negotiation successful; closed on {product}'s management ROI.",
+            "Budget approved; won after MG collaborations boosted vendors.",
+            "Overcame approval objections; {product} routines sealed with dept demo.",
+            "Multi-year deal; expanded to include {product} document repos.",
+            "Stakeholder buy-in; {product} dashboards convinced on progress.",
+            "Custom projects; won on MG cross-function fit.",
+            "Competitive edge in coordination; closed with KPI modules."
+        ],
+        'gtk': [
+            "Final negotiation successful; closed on {product}'s dataset ROI.",
+            "Budget approved; won after GTK models forecasted strategy.",
+            "Overcame migration objections; {product} legacy sealed with C-suite demo.",
+            "Multi-year deal; expanded to include {product} decision support.",
+            "Stakeholder buy-in; {product} audits convinced on queries.",
+            "Custom planning; won on GTK enterprise capacity.",
+            "Competitive edge in big data; closed with integration support."
+        ],
+        'default': [
+            "Final negotiation successful; contract signed due to efficiency gains and quick ROI.",
+            "Budget approved; closed won after gap analysis and ops endorsement.",
+            "Overcame implementation hurdles; accelerated pilot sealed the deal.",
+            "Multi-year commitment secured; partnership expanded to vendor ecosystem.",
+            "Key stakeholder buy-in achieved; benefit demo convinced on KPIs.",
+            "Custom workflows accepted; won on scalability assurances.",
+            "Competitive evaluation favored; closed with framework contract."
+        ]
+    }
 }
 
 # Product-series specific lost_outcome_options, nested under sector
@@ -904,18 +1234,386 @@ lost_outcome_options = {
             "Executive veto on vendor lock-in; deal abandoned post-audit."
         ]
     },
-    # Expand similarly for all other sectors, following the pattern: 5-7 items per series, with {product} placeholders and series-specific reasons (e.g., for gtx: graphics/latency issues, mg: management/sync problems, gtk: scale/volume challenges).
-    # For completeness, the code uses defaults if not expanded, but in full, replicate as above.
-    'retail': {'gtx': ["Lost to cheaper displays for {product}."], 'mg': ["Stalled on {product} sync delays."], 'gtk': ["Cold on {product} query costs."], 'default': []},
-    'software': {'gtx': ["Lost to CPU for {product} builds."], 'mg': ["Stalled on {product} dependency issues."], 'gtk': ["Cold on {product} cluster price."], 'default': []},
-    'services': {'gtx': ["Lost to basic viz for {product}."], 'mg': ["Stalled on {product} SLA delays."], 'gtk': ["Cold on {product} ticketing scale."], 'default': []},
-    'entertainment': {'gtx': ["Lost to software render for {product}."], 'mg': ["Stalled on {product} rights clearance."], 'gtk': ["Cold on {product} CDN costs."], 'default': []},
-    'telecommunications': {'gtx': ["Lost to 2D maps for {product}."], 'mg': ["Stalled on {product} outage workflows."], 'gtk': ["Cold on {product} traffic volume."], 'default': []},
-    'finance': {'gtx': ["Lost to static charts for {product}."], 'mg': ["Stalled on {product} audit cycles."], 'gtk': ["Cold on {product} HFT speed."], 'default': []},
-    'employment': {'gtx': ["Lost to flat charts for {product}."], 'mg': ["Stalled on {product} hiring delays."], 'gtk': ["Cold on {product} HR scale."], 'default': []},
-    'marketing': {'gtx': ["Lost to simple graphs for {product}."], 'mg': ["Stalled on {product} channel sync."], 'gtk': ["Cold on {product} insights volume."], 'default': []},
-    'technolgy': {'gtx': ["Lost to basic CAD for {product}."], 'mg': ["Stalled on {product} IP tracking."], 'gtk': ["Cold on {product} cluster costs."], 'default': []},
-    'other': {'gtx': ["Lost to standard tools for {product}."], 'mg': ["Stalled on {product} project delays."], 'gtk': ["Cold on {product} dataset price."], 'default': []}
+    'retail': {
+        'gtx': [
+            "Pricing too high for GTX displays; lost to basic LCD alternatives.",
+            "Delays in AR certs; deal cold due to {product} UX validation.",
+            "Priorities shifted to non-digital; budget cut {product} kiosk spend.",
+            "New CEO favored in-store only; mismatched {product}'s e-com features.",
+            "Pilot conversion low; opted for static signage competitors.",
+            "{product} latency vetoed; lost on shopper flow concerns.",
+            "Competitor undercut on visuals; abandoned post-GTX demo."
+        ],
+        'mg': [
+            "Pricing unresolvable for MG inventory; lost to manual tracking.",
+            "Delays in sync certs; deal stalled on {product} supplier rollout.",
+            "Priorities to core stock; budget reallocated from {product}.",
+            "New analyst favored spreadsheets; mismatched {product}'s forecasting.",
+            "Pilot stockout high; opted for simpler tools.",
+            "{product} trend integration vetoed; lost on data needs.",
+            "Competitor free app; abandoned post-MG forecast."
+        ],
+        'gtk': [
+            "Pricing too high for GTK data; lost to mid-tier analytics.",
+            "Delays in lake setup; deal cold on {product} logistics deployment.",
+            "Priorities to local ops; budget cut {product} global capacity.",
+            "New ops head favored batch; mismatched {product}'s real-time.",
+            "Pilot query slow; opted for lightweight competitors.",
+            "{product} CRM scale concerns; lost on volume.",
+            "Competitor bundled CRM; abandoned post-GTK sim."
+        ],
+        'default': [
+            "Pricing objection unresolvable; lost to open-source with no licensing fees.",
+            "Internal delays from seasonal peaks; deal stalled and went cold.",
+            "Shift in priorities to e-com focus; budget reallocated to POS upgrades.",
+            "Key buyer changed; new demands mismatched our analytics depth.",
+            "Omnichannel pilot failed sync test; customer opted for simpler tools.",
+            "Merchandising veto on customization costs; deal abandoned post-demo.",
+            "Competitor underbid on volume; lost on margin pressures."
+        ]
+    },
+    'software': {
+        'gtx': [
+            "Pricing too high for GTX builds; lost to CPU-only alternatives.",
+            "Delays in GPU certs; deal cold due to {product} ML validation.",
+            "Priorities shifted to CPU tasks; budget cut {product} parallel spend.",
+            "New CTO favored standard libs; mismatched {product}'s VR features.",
+            "Pilot training slow; opted for cloud GPU competitors.",
+            "{product} shading vetoed; lost on dev curve concerns.",
+            "Competitor undercut on SDK; abandoned post-GTX PoC."
+        ],
+        'mg': [
+            "Pricing unresolvable for MG workflows; lost to Jira basics.",
+            "Delays in review certs; deal stalled on {product} automation rollout.",
+            "Priorities to solo tools; budget reallocated from {product}.",
+            "New PM favored Trello; mismatched {product}'s sprint features.",
+            "Pilot velocity low; opted for lightweight alternatives.",
+            "{product} backlog integration vetoed; lost on custom needs.",
+            "Competitor free tier; abandoned post-MG demo."
+        ],
+        'gtk': [
+            "Pricing too high for GTK clusters; lost to single-node options.",
+            "Delays in sim setup; deal cold on {product} deployment.",
+            "Priorities to local dev; budget cut {product} petabyte capacity.",
+            "New arch favored mono; mismatched {product}'s distributed power.",
+            "Pilot repo overloaded; opted for git-only competitors.",
+            "{product} viz concerns; lost on fidelity.",
+            "Competitor open cluster; abandoned post-GTK audit."
+        ],
+        'default': [
+            "Pricing objection unresolvable; lost to free tier competitors.",
+            "Internal delays in sprint cycles; deal stalled and went cold.",
+            "Shift in priorities to microservices; budget reallocated to AWS natives.",
+            "Key dev lead changed; new stack mismatched our APIs.",
+            "Code review flagged security gaps; customer opted for audited alternatives.",
+            "Scalability PoC underperformed; lost on benchmark failures.",
+            "Engineering veto on learning curve; deal abandoned post-hackathon."
+        ]
+    },
+    'services': {
+        'gtx': [
+            "Pricing too high for GTX reviews; lost to 2D chart alternatives.",
+            "Delays in VR certs; deal cold due to {product} collaboration validation.",
+            "Priorities shifted to email; budget cut {product} immersive spend.",
+            "New exec favored slides; mismatched {product}'s Gantt features.",
+            "Pilot engagement low; opted for basic tools competitors.",
+            "{product} latency vetoed; lost on team flow concerns.",
+            "Competitor undercut on visuals; abandoned post-GTX demo."
+        ],
+        'mg': [
+            "Pricing unresolvable for MG engagements; lost to calendar apps.",
+            "Delays in SLA certs; deal stalled on {product} renewal rollout.",
+            "Priorities to manual billing; budget reallocated from {product}.",
+            "New manager favored Excel; mismatched {product}'s feedback features.",
+            "Pilot NPS low; opted for survey-only alternatives.",
+            "{product} loop integration vetoed; lost on custom needs.",
+            "Competitor free CRM; abandoned post-MG demo."
+        ],
+        'gtk': [
+            "Pricing too high for GTK desks; lost to small-ticket options.",
+            "Delays in fleet setup; deal cold on {product} maintenance deployment.",
+            "Priorities to local support; budget cut {product} global capacity.",
+            "New director favored phone; mismatched {product}'s predictive power.",
+            "Pilot queue overflow; opted for call-center competitors.",
+            "{product} compliance concerns; lost on scale.",
+            "Competitor bundled desk; abandoned post-GTK audit."
+        ],
+        'default': [
+            "Pricing objection unresolvable; lost to offshore providers with lower rates.",
+            "Internal delays in contract reviews; deal stalled and went cold.",
+            "Shift in priorities to digital transformation; budget reallocated to consultancies.",
+            "Key ops manager changed; new SLAs mismatched our tiers.",
+            "Onboarding pilot hit roadblocks; customer opted for plug-and-play options.",
+            "Delivery veto on resource allocation; lost on scalability doubts.",
+            "Competitor offered bundled services; deal abandoned post-RFP."
+        ]
+    },
+    'entertainment': {
+        'gtx': [
+            "Pricing too high for GTX CGI; lost to software-only renderers.",
+            "Delays in VFX certs; deal cold due to {product} production timeline.",
+            "Priorities shifted to story; budget cut {product} graphics spend.",
+            "New director favored practical; mismatched {product}'s motion features.",
+            "Pilot fidelity low; opted for mid-range competitors.",
+            "{product} bitrate vetoed; lost on stream concerns.",
+            "Competitor undercut on previews; abandoned post-GTX demo."
+        ],
+        'mg': [
+            "Pricing unresolvable for MG scheduling; lost to whiteboards.",
+            "Delays in rights certs; deal stalled on {product} clearance rollout.",
+            "Priorities to indie; budget reallocated from {product}.",
+            "New strategist favored email; mismatched {product}'s asset features.",
+            "Pilot flow disrupted; opted for simple alternatives.",
+            "{product} localization vetoed; lost on custom needs.",
+            "Competitor free library; abandoned post-MG demo."
+        ],
+        'gtk': [
+            "Pricing too high for GTK CDNs; lost to edge caches.",
+            "Delays in stream setup; deal cold on {product} event deployment.",
+            "Priorities to local; budget cut {product} global capacity.",
+            "New exec favored YouTube; mismatched {product}'s HD power.",
+            "Pilot bandwidth overflow; opted for streaming competitors.",
+            "{product} format concerns; lost on pipelines.",
+            "Competitor bundled archive; abandoned post-GTK audit."
+        ],
+        'default': [
+            "Pricing objection unresolvable; lost to ad-supported free tiers.",
+            "Internal delays from content calendars; deal stalled and went cold.",
+            "Shift in priorities to VR focus; budget reallocated to niche tools.",
+            "Key creative changed; new formats mismatched our metadata.",
+            "Engagement pilot showed low lift; customer opted for legacy systems.",
+            "Production veto on rights complexities; lost on integration issues.",
+            "Competitor tied to major studio; deal abandoned post-pilot."
+        ]
+    },
+    'telecommunications': {
+        'gtx': [
+            "Pricing too high for GTX topologies; lost to text-based maps.",
+            "Delays in viz certs; deal cold due to {product} troubleshooting timeline.",
+            "Priorities shifted to voice; budget cut {product} flow spend.",
+            "New architect favored CLI; mismatched {product}'s beam features.",
+            "Pilot diagnostic low; opted for console competitors.",
+            "{product} handoff vetoed; lost on sim concerns.",
+            "Competitor undercut on visuals; abandoned post-GTX demo."
+        ],
+        'mg': [
+            "Pricing unresolvable for MG provisioning; lost to spreadsheets.",
+            "Delays in response certs; deal stalled on {product} outage rollout.",
+            "Priorities to field; budget reallocated from {product}.",
+            "New lead favored manual; mismatched {product}'s queue features.",
+            "Pilot response slow; opted for basic alternatives.",
+            "{product} utilization vetoed; lost on trend needs.",
+            "Competitor free tool; abandoned post-MG demo."
+        ],
+        'gtk': [
+            "Pricing too high for GTK traffic; lost to sample logs.",
+            "Delays in planning setup; deal cold on {product} capacity deployment.",
+            "Priorities to legacy; budget cut {product} terabit capacity.",
+            "New head favored dial-up; mismatched {product}'s anomaly power.",
+            "Pilot detection low; opted for rule-based competitors.",
+            "{product} monitoring concerns; lost on scale.",
+            "Competitor bundled core; abandoned post-GTK audit."
+        ],
+        'default': [
+            "Pricing objection unresolvable; lost to incumbent vendors with legacy discounts.",
+            "Internal delays in regulatory filings; deal stalled and went cold.",
+            "Shift in priorities to fiber rollout; budget reallocated to hardware.",
+            "Key network engineer changed; new specs mismatched our 5G.",
+            "Churn model accuracy questioned; customer opted for proven analytics.",
+            "Ops veto on downtime risks; lost on reliability concerns.",
+            "Competitor bundled with spectrum; deal abandoned post-tender."
+        ]
+    },
+    'finance': {
+        'gtx': [
+            "Pricing too high for GTX heatmaps; lost to line charts.",
+            "Delays in trading certs; deal cold due to {product} dashboard timeline.",
+            "Priorities shifted to reports; budget cut {product} viz spend.",
+            "New CFO favored tables; mismatched {product}'s scenario features.",
+            "Pilot speed low; opted for Excel competitors.",
+            "{product} graph vetoed; lost on perf concerns.",
+            "Competitor undercut on algos; abandoned post-GTX demo."
+        ],
+        'mg': [
+            "Pricing unresolvable for MG reconciliation; lost to ledgers.",
+            "Delays in audit certs; deal stalled on {product} reporting rollout.",
+            "Priorities to cash; budget reallocated from {product}.",
+            "New analyst favored manual; mismatched {product}'s alert features.",
+            "Pilot pattern miss; opted for rule-based alternatives.",
+            "{product} fraud vetoed; lost on custom needs.",
+            "Competitor free audit; abandoned post-MG demo."
+        ],
+        'gtk': [
+            "Pricing too high for GTK HFT; lost to batch processing.",
+            "Delays in surveillance setup; deal cold on {product} market deployment.",
+            "Priorities to quarterly; budget cut {product} stream capacity.",
+            "New director favored spreadsheets; mismatched {product}'s modeling power.",
+            "Pilot quant low; opted for mid-tier competitors.",
+            "{product} validation concerns; lost on chain.",
+            "Competitor bundled quant; abandoned post-GTK audit."
+        ],
+        'default': [
+            "Pricing objection unresolvable; lost to fintech startups with agile pricing.",
+            "Internal delays in compliance checks; deal stalled and went cold.",
+            "Shift in priorities to crypto regs; budget reallocated to blockchain natives.",
+            "Key risk officer changed; new mandates mismatched our reporting.",
+            "Fraud detection false positives high; customer opted for AI specialists.",
+            "Board veto on data sovereignty; lost on audit trail gaps.",
+            "Competitor certified by regulators; deal abandoned post-due diligence."
+        ]
+    },
+    'employment': {
+        'gtx': [
+            "Pricing too high for GTX maps; lost to org charts.",
+            "Delays in planning certs; deal cold due to {product} talent timeline.",
+            "Priorities shifted to resumes; budget cut {product} viz spend.",
+            "New director favored lists; mismatched {product}'s diversity features.",
+            "Pilot engagement low; opted for survey competitors.",
+            "{product} path vetoed; lost on metric concerns.",
+            "Competitor undercut on surveys; abandoned post-GTX demo."
+        ],
+        'mg': [
+            "Pricing unresolvable for MG pipelines; lost to job boards.",
+            "Delays in review certs; deal stalled on {product} performance rollout.",
+            "Priorities to interviews; budget reallocated from {product}.",
+            "New lead favored calendars; mismatched {product}'s enrollment features.",
+            "Pilot gap high; opted for manual alternatives.",
+            "{product} benefits vetoed; lost on workflow needs.",
+            "Competitor free HR; abandoned post-MG demo."
+        ],
+        'gtk': [
+            "Pricing too high for GTK HR; lost to small data tools.",
+            "Delays in analytics setup; deal cold on {product} hiring deployment.",
+            "Priorities to local; budget cut {product} global capacity.",
+            "New officer favored paper; mismatched {product}'s predictive power.",
+            "Pilot inventory low; opted for spreadsheet competitors.",
+            "{product} reporting concerns; lost on compliance.",
+            "Competitor bundled skills; abandoned post-GTK audit."
+        ],
+        'default': [
+            "Pricing objection unresolvable; lost to HR suites with free basics.",
+            "Internal delays in policy updates; deal stalled and went cold.",
+            "Shift in priorities to remote work; budget reallocated to comms tools.",
+            "Key HR lead changed; new DEI focus mismatched our metrics.",
+            "Talent pipeline pilot underdelivered; customer opted for manual processes.",
+            "Recruitment veto on bias risks; lost on algorithm transparency.",
+            "Competitor integrated with LinkedIn; deal abandoned post-trial."
+        ]
+    },
+    'marketing': {
+        'gtx': [
+            "Pricing too high for GTX heatmaps; lost to bar graphs.",
+            "Delays in creative certs; deal cold due to {product} mockup timeline.",
+            "Priorities shifted to text; budget cut {product} viz spend.",
+            "New CMO favored emails; mismatched {product}'s journey features.",
+            "Pilot conversion low; opted for static competitors.",
+            "{product} A/B vetoed; lost on funnel concerns.",
+            "Competitor undercut on attribution; abandoned post-GTX demo."
+        ],
+        'mg': [
+            "Pricing unresolvable for MG orchestration; lost to single-channel.",
+            "Delays in sequence certs; deal stalled on {product} nurturing rollout.",
+            "Priorities to social; budget reallocated from {product}.",
+            "New strategist favored manual; mismatched {product}'s rule features.",
+            "Pilot segment miss; opted for list-based alternatives.",
+            "{product} personalization vetoed; lost on asset needs.",
+            "Competitor free tool; abandoned post-MG demo."
+        ],
+        'gtk': [
+            "Pricing too high for GTK insights; lost to sample data.",
+            "Delays in engine setup; deal cold on {product} personalization deployment.",
+            "Priorities to local; budget cut {product} big data capacity.",
+            "New director favored Google; mismatched {product}'s modeling power.",
+            "Pilot behavior low; opted for mid-tier competitors.",
+            "{product} attribution concerns; lost on platform.",
+            "Competitor bundled insights; abandoned post-GTK audit."
+        ],
+        'default': [
+            "Pricing objection unresolvable; lost to agency in-house tools.",
+            "Internal delays from campaign cycles; deal stalled and went cold.",
+            "Shift in priorities to social meta; budget reallocated to TikTok ads.",
+            "Key strategist changed; new channels mismatched our attribution.",
+            "A/B test ROI low; customer opted for Google Analytics free.",
+            "Creative veto on privacy compliance; lost on cookie deprecation.",
+            "Competitor offered white-label; deal abandoned post-pitch."
+        ]
+    },
+    'technolgy': {
+        'gtx': [
+            "Pricing too high for GTX CAD; lost to 2D drafters.",
+            "Delays in prototype certs; deal cold due to {product} IoT timeline.",
+            "Priorities shifted to code; budget cut {product} sim spend.",
+            "New CTO favored text; mismatched {product}'s AR features.",
+            "Pilot debug low; opted for console competitors.",
+            "{product} board vetoed; lost on interface concerns.",
+            "Competitor undercut on stack; abandoned post-GTX demo."
+        ],
+        'mg': [
+            "Pricing unresolvable for MG pipelines; lost to notebooks.",
+            "Delays in IP certs; deal stalled on {product} patent rollout.",
+            "Priorities to prototypes; budget reallocated from {product}.",
+            "New owner favored solo; mismatched {product}'s suite features.",
+            "Pilot backlog high; opted for simple alternatives.",
+            "{product} testing vetoed; lost on deploy needs.",
+            "Competitor free backlog; abandoned post-MG demo."
+        ],
+        'gtk': [
+            "Pricing too high for GTK clusters; lost to single machines.",
+            "Delays in framework setup; deal cold on {product} quantum deployment.",
+            "Priorities to lab; budget cut {product} exascale capacity.",
+            "New manager favored desktop; mismatched {product}'s AI power.",
+            "Pilot model low; opted for cloud competitors.",
+            "{product} edge concerns; lost on deployments.",
+            "Competitor open lab; abandoned post-GTK audit."
+        ],
+        'default': [
+            "Pricing objection unresolvable; lost to open hardware alternatives.",
+            "Internal delays in R&D gates; deal stalled and went cold.",
+            "Shift in priorities to quantum; budget reallocated to startups.",
+            "Key innovator changed; new paradigms mismatched our edge.",
+            "Throughput PoC failed benchmarks; customer opted for Nvidia stacks.",
+            "Tech lead veto on power efficiency; lost on cooling requirements.",
+            "Competitor open-sourced core; deal abandoned post-hackathon."
+        ]
+    },
+    'other': {
+        'gtx': [
+            "Pricing too high for GTX dashboards; lost to tables.",
+            "Delays in flow certs; deal cold due to {product} ops timeline.",
+            "Priorities shifted to reports; budget cut {product} viz spend.",
+            "New head favored print; mismatched {product}'s sim features.",
+            "Pilot KPI low; opted for basic competitors.",
+            "{product} diagram vetoed; lost on workflow concerns.",
+            "Competitor undercut on visuals; abandoned post-GTX demo."
+        ],
+        'mg': [
+            "Pricing unresolvable for MG projects; lost to emails.",
+            "Delays in collab certs; deal stalled on {product} vendor rollout.",
+            "Priorities to solo; budget reallocated from {product}.",
+            "New sponsor favored notes; mismatched {product}'s approval features.",
+            "Pilot progress slow; opted for list alternatives.",
+            "{product} routine vetoed; lost on doc needs.",
+            "Competitor free manager; abandoned post-MG demo."
+        ],
+        'gtk': [
+            "Pricing too high for GTK datasets; lost to samples.",
+            "Delays in model setup; deal cold on {product} strategy deployment.",
+            "Priorities to quarterly; budget cut {product} query capacity.",
+            "New unit favored manual; mismatched {product}'s legacy power.",
+            "Pilot decision low; opted for mid-tier competitors.",
+            "{product} migration concerns; lost on support.",
+            "Competitor bundled planning; abandoned post-GTK audit."
+        ],
+        'default': [
+            "Pricing objection unresolvable; lost to cost-effective incumbents.",
+            "Internal delays in approvals; deal stalled and went cold.",
+            "Shift in priorities to core ops; budget reallocated elsewhere.",
+            "Key decision-maker changed; new goals mismatched our value.",
+            "Pilot showed limited uplift; customer opted for status quo.",
+            "Stakeholder veto on risks; lost on unproven track record.",
+            "Competitor had stronger references; deal abandoned post-review."
+        ]
+    }
 }
 
 configs = {

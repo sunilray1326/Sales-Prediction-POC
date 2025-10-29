@@ -77,110 +77,344 @@
     },
     "software": {
         "gtx": [
-            "Closed on {product}'s ML training ROI."
+            "Final negotiation successful; closed on {product}'s GPU build acceleration ROI.",
+            "Budget approved; won after GTX ML pipelines scaled training times.",
+            "Overcame rendering objections; {product} VR dev sealed with immersive demo.",
+            "Multi-year deal; expanded to include {product} game engine optimizations.",
+            "Stakeholder buy-in; {product} benchmarks convinced on parallel gains.",
+            "Custom shaders delivered; won on GTX-exclusive dev tools.",
+            "Competitive edge in simulations; closed with SDK bundle."
         ],
         "mg": [
-            "Won after {product} sprint planning gains."
+            "Final negotiation successful; closed on {product}'s workflow orchestration ROI.",
+            "Budget approved; won after MG sprint tools boosted velocity.",
+            "Overcame review objections; {product} automation sealed with efficiency demo.",
+            "Multi-year deal; expanded to include {product} backlog integrations.",
+            "Stakeholder buy-in; {product} dashboards convinced on vuln tracking.",
+            "Custom CI/CD pipelines; won on MG agile fit.",
+            "Competitive edge in collaboration; closed with training modules."
         ],
         "gtk": [
-            "Sealed with {product} cluster scale."
+            "Final negotiation successful; closed on {product}'s cluster simulation ROI.",
+            "Budget approved; won after GTK deployments handled petabyte repos.",
+            "Overcame load objections; {product} AI coding sealed with scale demo.",
+            "Multi-year deal; expanded to include {product} distributed clusters.",
+            "Stakeholder buy-in; {product} audits convinced on throughput.",
+            "Custom viz tools; won on GTK enterprise dev capacity.",
+            "Competitive edge in high-fidelity; closed with migration support."
         ],
-        "default": []
+        "default": [
+            "Final negotiation successful; contract signed due to seamless CI/CD fit and scalability.",
+            "Budget approved; closed won after code review and dev team endorsement.",
+            "Overcame integration concerns; accelerated API rollout sealed the deal.",
+            "Multi-year commitment secured; partnership expanded to cloud migrations.",
+            "Key stakeholder buy-in achieved; benchmark demo convinced on performance gains.",
+            "Custom dev tools provided; won on open-source compatibility commitment.",
+            "Competitive PoC won; closed with agile methodology alignment."
+        ]
     },
     "services": {
         "gtx": [
-            "Closed on {product}'s collaboration ROI."
+            "Final negotiation successful; closed on {product}'s immersive review ROI.",
+            "Budget approved; won after GTX Gantt charts enhanced collaboration.",
+            "Overcame latency objections; {product} VR training sealed with engagement demo.",
+            "Multi-year deal; expanded to include {product} blueprint visuals.",
+            "Stakeholder buy-in; {product} benchmarks convinced on resource gains.",
+            "Custom session tools; won on GTX service optimizations.",
+            "Competitive edge in interactivity; closed with deployment package."
         ],
         "mg": [
-            "Won after {product} SLA management."
+            "Final negotiation successful; closed on {product}'s engagement management ROI.",
+            "Budget approved; won after MG SLAs streamlined renewals.",
+            "Overcame feedback objections; {product} loops sealed with NPS demo.",
+            "Multi-year deal; expanded to include {product} knowledge bases.",
+            "Stakeholder buy-in; {product} dashboards convinced on billing accuracy.",
+            "Custom invoice tools; won on MG contract fit.",
+            "Competitive edge in coordination; closed with support modules."
         ],
         "gtk": [
-            "Sealed with {product} ticketing capacity."
+            "Final negotiation successful; closed on {product}'s ticketing scale ROI.",
+            "Budget approved; won after GTK fleets predicted maintenance.",
+            "Overcame queue objections; {product} desks sealed with volume demo.",
+            "Multi-year deal; expanded to include {product} global compliance.",
+            "Stakeholder buy-in; {product} audits convinced on metrics.",
+            "Custom dashboards; won on GTK enterprise capacity.",
+            "Competitive edge in high-volume; closed with integration support."
         ],
-        "default": []
+        "default": [
+            "Final negotiation successful; contract signed due to SLA guarantees and onboarding ease.",
+            "Budget approved; closed won after process audit and delivery team sign-off.",
+            "Overcame billing objections; accelerated support tiers sealed the deal.",
+            "Multi-year commitment secured; partnership expanded to consulting add-ons.",
+            "Key stakeholder buy-in achieved; dashboard demo convinced on efficiency metrics.",
+            "Custom service blueprints accepted; won on client success milestones.",
+            "Competitive RFP response excelled; closed with framework agreement."
+        ]
     },
     "entertainment": {
         "gtx": [
-            "Closed on {product}'s CGI speed ROI."
+            "Final negotiation successful; closed on {product}'s CGI rendering ROI.",
+            "Budget approved; won after GTX VFX previews accelerated production.",
+            "Overcame bitrate objections; {product} adaptation sealed with stream demo.",
+            "Multi-year deal; expanded to include {product} motion capture.",
+            "Stakeholder buy-in; {product} benchmarks convinced on fidelity.",
+            "Custom previews; won on GTX media optimizations.",
+            "Competitive edge in real-time; closed with SDK bundle."
         ],
         "mg": [
-            "Won after {product} production scheduling."
+            "Final negotiation successful; closed on {product}'s scheduling ROI.",
+            "Budget approved; won after MG assets boosted content flow.",
+            "Overcame clearance objections; {product} rights sealed with localization demo.",
+            "Multi-year deal; expanded to include {product} talent bookings.",
+            "Stakeholder buy-in; {product} dashboards convinced on engagement.",
+            "Custom libraries; won on MG distribution fit.",
+            "Competitive edge in orchestration; closed with analytics modules."
         ],
         "gtk": [
-            "Sealed with {product} streaming scale."
+            "Final negotiation successful; closed on {product}'s CDN scale ROI.",
+            "Budget approved; won after GTK streams handled live events.",
+            "Overcame pipeline objections; {product} HD sealed with format demo.",
+            "Multi-year deal; expanded to include {product} global archives.",
+            "Stakeholder buy-in; {product} audits convinced on storage.",
+            "Custom networks; won on GTK enterprise capacity.",
+            "Competitive edge in ultra-HD; closed with migration support."
         ],
-        "default": []
+        "default": [
+            "Final negotiation successful; contract signed due to engagement metrics and content fit.",
+            "Budget approved; closed won after screening pilot and creative endorsement.",
+            "Overcame rights management issues; accelerated metadata tools sealed the deal.",
+            "Multi-year commitment secured; partnership expanded to ad revenue shares.",
+            "Key stakeholder buy-in achieved; algo demo convinced on audience growth.",
+            "Custom fan interaction features; won on exclusive content integrations.",
+            "Competitive pitch won; closed with co-production opportunities."
+        ]
     },
     "telecommunications": {
         "gtx": [
-            "Closed on {product}'s topology viz ROI."
+            "Final negotiation successful; closed on {product}'s topology viz ROI.",
+            "Budget approved; won after GTX flows improved troubleshooting.",
+            "Overcame handoff objections; {product} beamforming sealed with sim demo.",
+            "Multi-year deal; expanded to include {product} fault maps.",
+            "Stakeholder buy-in; {product} benchmarks convinced on diagnostics.",
+            "Custom training; won on GTX telco optimizations.",
+            "Competitive edge in visuals; closed with VR bundle."
         ],
         "mg": [
-            "Won after {product} outage response."
+            "Final negotiation successful; closed on {product}'s provisioning ROI.",
+            "Budget approved; won after MG responses reduced outages.",
+            "Overcame utilization objections; {product} tracking sealed with trend demo.",
+            "Multi-year deal; expanded to include {product} care queues.",
+            "Stakeholder buy-in; {product} dashboards convinced on churn.",
+            "Custom workflows; won on MG ops fit.",
+            "Competitive edge in management; closed with retention modules."
         ],
         "gtk": [
-            "Sealed with {product} traffic processing."
+            "Final negotiation successful; closed on {product}'s traffic ROI.",
+            "Budget approved; won after GTK planning predicted capacity.",
+            "Overcame anomaly objections; {product} monitoring sealed with scale demo.",
+            "Multi-year deal; expanded to include {product} edge orchestration.",
+            "Stakeholder buy-in; {product} audits convinced on predictions.",
+            "Custom routers; won on GTK core capacity.",
+            "Competitive edge in terabit; closed with integration support."
         ],
-        "default": []
+        "default": [
+            "Final negotiation successful; contract signed due to reliability SLAs and 5G readiness.",
+            "Budget approved; closed won after network sim and ops team approval.",
+            "Overcame bandwidth concerns; accelerated IoT pilots sealed the deal.",
+            "Multi-year commitment secured; partnership expanded to spectrum auctions.",
+            "Key stakeholder buy-in achieved; churn model demo convinced on retention.",
+            "Custom monitoring dashboards; won on proactive outage predictions.",
+            "Competitive tender favored; closed with infrastructure consortium role."
+        ]
     },
     "finance": {
         "gtx": [
-            "Closed on {product}'s trading heatmap ROI."
+            "Final negotiation successful; closed on {product}'s heatmap ROI.",
+            "Budget approved; won after GTX dashboards enhanced trading.",
+            "Overcame scenario objections; {product} graphs sealed with perf demo.",
+            "Multi-year deal; expanded to include {product} compliance training.",
+            "Stakeholder buy-in; {product} benchmarks convinced on speed.",
+            "Custom algos; won on GTX finance optimizations.",
+            "Competitive edge in real-time; closed with SDK bundle."
         ],
         "mg": [
-            "Won after {product} ledger balancing."
+            "Final negotiation successful; closed on {product}'s reconciliation ROI.",
+            "Budget approved; won after MG audits streamlined reporting.",
+            "Overcame alert objections; {product} fraud sealed with pattern demo.",
+            "Multi-year deal; expanded to include {product} account management.",
+            "Stakeholder buy-in; {product} dashboards convinced on performance.",
+            "Custom ledgers; won on MG compliance fit.",
+            "Competitive edge in orchestration; closed with filing modules."
         ],
         "gtk": [
-            "Sealed with {product} HFT streams."
+            "Final negotiation successful; closed on {product}'s HFT ROI.",
+            "Budget approved; won after GTK surveillance scaled markets.",
+            "Overcame validation objections; {product} modeling sealed with quant demo.",
+            "Multi-year deal; expanded to include {product} stress testing.",
+            "Stakeholder buy-in; {product} audits convinced on computations.",
+            "Custom streams; won on GTK enterprise capacity.",
+            "Competitive edge in high-frequency; closed with migration support."
         ],
-        "default": []
+        "default": [
+            "Final negotiation successful; contract signed due to compliance audits and fraud reduction.",
+            "Budget approved; closed won after risk assessment and board endorsement.",
+            "Overcame KYC hurdles; accelerated transaction processing sealed the deal.",
+            "Multi-year commitment secured; partnership expanded to fintech APIs.",
+            "Key stakeholder buy-in achieved; algo demo convinced on risk-adjusted returns.",
+            "Custom reporting suites; won on regulatory filing automations.",
+            "Competitive due diligence passed; closed with custodial services add-on."
+        ]
     },
     "employment": {
         "gtx": [
-            "Closed on {product}'s talent map ROI."
+            "Final negotiation successful; closed on {product}'s talent map ROI.",
+            "Budget approved; won after GTX charts boosted planning.",
+            "Overcame path objections; {product} diversity sealed with metric demo.",
+            "Multi-year deal; expanded to include {product} onboarding VR.",
+            "Stakeholder buy-in; {product} benchmarks convinced on engagement.",
+            "Custom surveys; won on GTX HR optimizations.",
+            "Competitive edge in visuals; closed with deployment package."
         ],
         "mg": [
-            "Won after {product} recruitment pipeline."
+            "Final negotiation successful; closed on {product}'s pipeline ROI.",
+            "Budget approved; won after MG reviews enhanced performance.",
+            "Overcame enrollment objections; {product} benefits sealed with workflow demo.",
+            "Multi-year deal; expanded to include {product} learning tracking.",
+            "Stakeholder buy-in; {product} dashboards convinced on turnover.",
+            "Custom hiring; won on MG recruitment fit.",
+            "Competitive edge in management; closed with prediction modules."
         ],
         "gtk": [
-            "Sealed with {product} HR data scale."
+            "Final negotiation successful; closed on {product}'s HR scale ROI.",
+            "Budget approved; won after GTK analytics predicted hiring.",
+            "Overcame compliance objections; {product} reporting sealed with global demo.",
+            "Multi-year deal; expanded to include {product} skills inventory.",
+            "Stakeholder buy-in; {product} audits convinced on queries.",
+            "Custom warehouses; won on GTK enterprise capacity.",
+            "Competitive edge in data; closed with integration support."
         ],
-        "default": []
+        "default": [
+            "Final negotiation successful; contract signed due to ATS integrations and hiring speed.",
+            "Budget approved; closed won after DEI audit and HR team sign-off.",
+            "Overcame skills gap concerns; accelerated onboarding sealed the deal.",
+            "Multi-year commitment secured; partnership expanded to L&D platforms.",
+            "Key stakeholder buy-in achieved; pipeline demo convinced on talent ROI.",
+            "Custom retention tools; won on predictive analytics commitments.",
+            "Competitive vendor review won; closed with enterprise license."
+        ]
     },
     "marketing": {
         "gtx": [
-            "Closed on {product}'s heatmap ROI."
+            "Final negotiation successful; closed on {product}'s heatmap ROI.",
+            "Budget approved; won after GTX mockups accelerated creatives.",
+            "Overcame journey objections; {product} A/B sealed with conversion demo.",
+            "Multi-year deal; expanded to include {product} brand experiences.",
+            "Stakeholder buy-in; {product} benchmarks convinced on attribution.",
+            "Custom funnels; won on GTX campaign optimizations.",
+            "Competitive edge in interactivity; closed with SDK bundle."
         ],
         "mg": [
-            "Won after {product} channel orchestration."
+            "Final negotiation successful; closed on {product}'s orchestration ROI.",
+            "Budget approved; won after MG sequences boosted nurturing.",
+            "Overcame rule objections; {product} personalization sealed with segment demo.",
+            "Multi-year deal; expanded to include {product} asset libraries.",
+            "Stakeholder buy-in; {product} dashboards convinced on sentiment.",
+            "Custom channels; won on MG multi-channel fit.",
+            "Competitive edge in coordination; closed with analysis modules."
         ],
         "gtk": [
-            "Sealed with {product} insights scale."
+            "Final negotiation successful; closed on {product}'s insights ROI.",
+            "Budget approved; won after GTK engines personalized real-time.",
+            "Overcame modeling objections; {product} attribution sealed with platform demo.",
+            "Multi-year deal; expanded to include {product} predictive behavior.",
+            "Stakeholder buy-in; {product} audits convinced on consumers.",
+            "Custom big data; won on GTK enterprise capacity.",
+            "Competitive edge in scale; closed with migration support."
         ],
-        "default": []
+        "default": [
+            "Final negotiation successful; contract signed due to ROI tracking and campaign lift.",
+            "Budget approved; closed won after A/B test results and creative approval.",
+            "Overcame privacy objections; accelerated segmentation sealed the deal.",
+            "Multi-year commitment secured; partnership expanded to influencer tools.",
+            "Key stakeholder buy-in achieved; funnel demo convinced on conversions.",
+            "Custom attribution models; won on multi-channel support.",
+            "Competitive media pitch excelled; closed with retainer agreement."
+        ]
     },
     "technolgy": {
         "gtx": [
-            "Closed on {product}'s CAD acceleration ROI."
+            "Final negotiation successful; closed on {product}'s CAD acceleration ROI.",
+            "Budget approved; won after GTX prototypes enhanced IoT sims.",
+            "Overcame AR objections; {product} testing sealed with R&D demo.",
+            "Multi-year deal; expanded to include {product} board debugging.",
+            "Stakeholder buy-in; {product} benchmarks convinced on compatibility.",
+            "Custom interfaces; won on GTX innovation optimizations.",
+            "Competitive edge in rendering; closed with SDK bundle."
         ],
         "mg": [
-            "Won after {product} R&D pipelines."
+            "Final negotiation successful; closed on {product}'s pipeline ROI.",
+            "Budget approved; won after MG patents streamlined IP.",
+            "Overcame suite objections; {product} testing sealed with deployment demo.",
+            "Multi-year deal; expanded to include {product} backlog innovation.",
+            "Stakeholder buy-in; {product} dashboards convinced on stack.",
+            "Custom R&D; won on MG project fit.",
+            "Competitive edge in orchestration; closed with vuln modules."
         ],
         "gtk": [
-            "Sealed with {product} cluster power."
+            "Final negotiation successful; closed on {product}'s cluster ROI.",
+            "Budget approved; won after GTK frameworks simulated quantum.",
+            "Overcame deployment objections; {product} AI sealed with edge demo.",
+            "Multi-year deal; expanded to include {product} exascale modeling.",
+            "Stakeholder buy-in; {product} audits convinced on handling.",
+            "Custom labs; won on GTK enterprise capacity.",
+            "Competitive edge in supercomputing; closed with migration support."
         ],
-        "default": []
+        "default": [
+            "Final negotiation successful; contract signed due to edge computing fit and latency cuts.",
+            "Budget approved; closed won after PoC validation and tech lead endorsement.",
+            "Overcame cyber concerns; accelerated deployment sealed the deal.",
+            "Multi-year commitment secured; partnership expanded to AI accelerators.",
+            "Key stakeholder buy-in achieved; benchmark demo convinced on throughput.",
+            "Custom hardware provisioning; won on R&D collaboration pledges.",
+            "Competitive innovation challenge won; closed with joint lab setup."
+        ]
     },
     "other": {
         "gtx": [
-            "Closed on {product}'s dashboard ROI."
+            "Final negotiation successful; closed on {product}'s dashboard ROI.",
+            "Budget approved; won after GTX flows optimized processes.",
+            "Overcame sim objections; {product} visuals sealed with exec demo.",
+            "Multi-year deal; expanded to include {product} workflow diagrams.",
+            "Stakeholder buy-in; {product} benchmarks convinced on KPIs.",
+            "Custom presentations; won on GTX ops optimizations.",
+            "Competitive edge in interactivity; closed with deployment package."
         ],
         "mg": [
-            "Won after {product} project management."
+            "Final negotiation successful; closed on {product}'s management ROI.",
+            "Budget approved; won after MG collaborations boosted vendors.",
+            "Overcame approval objections; {product} routines sealed with dept demo.",
+            "Multi-year deal; expanded to include {product} document repos.",
+            "Stakeholder buy-in; {product} dashboards convinced on progress.",
+            "Custom projects; won on MG cross-function fit.",
+            "Competitive edge in coordination; closed with KPI modules."
         ],
         "gtk": [
-            "Sealed with {product} dataset processing."
+            "Final negotiation successful; closed on {product}'s dataset ROI.",
+            "Budget approved; won after GTK models forecasted strategy.",
+            "Overcame migration objections; {product} legacy sealed with C-suite demo.",
+            "Multi-year deal; expanded to include {product} decision support.",
+            "Stakeholder buy-in; {product} audits convinced on queries.",
+            "Custom planning; won on GTK enterprise capacity.",
+            "Competitive edge in big data; closed with integration support."
         ],
-        "default": []
+        "default": [
+            "Final negotiation successful; contract signed due to efficiency gains and quick ROI.",
+            "Budget approved; closed won after gap analysis and ops endorsement.",
+            "Overcame implementation hurdles; accelerated pilot sealed the deal.",
+            "Multi-year commitment secured; partnership expanded to vendor ecosystem.",
+            "Key stakeholder buy-in achieved; benefit demo convinced on KPIs.",
+            "Custom workflows accepted; won on scalability assurances.",
+            "Competitive evaluation favored; closed with framework contract."
+        ]
     }
 }
