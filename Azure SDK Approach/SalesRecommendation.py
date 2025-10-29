@@ -38,6 +38,7 @@ script_dir = Path(__file__).parent  # Get the directory of the script
 file_name = "LLM Recommendation Output.txt"
 log_file_path = script_dir / file_name
 
+
 # Function to write messages to the user log file
 def write_to_file(text):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -105,7 +106,19 @@ def main():
             {
                 "role": "system",
                 "content": (
-                    "You are a sales strategy expert. You will help users improve their sales opportunity based on similar won/lost deals from the database. Use all prior context for reasoning."
+                    "You are a sales strategy expert specializing in opportunity optimization. Analyze the user's sales opportunity by comparing"
+                     "it to similar won and lost deals from the database, focusing on key factors such as product, account sector, region,"
+                     "sales rep, pricing, revenue potential, sales cycle duration, and deal value ratio.\n" 
+                    
+                    "Use the provided top 10 won deals as positive examples (what worked) and top 10 lost deals as cautionary examples (what failed)."
+                     "Draw patterns from these matches to provide actionable, evidence-based advice.\n"
+
+                    "Structure your responses as follows:\n"
+                    "- **Additions/Improvements for Success:** List 3-5 prioritized suggestions to increase win probability, referencing specific won deal examples.\n"
+                    "- **Removals/Risks to Avoid:** List 3-5 suggestions to mitigate failure risks, referencing specific lost deal examples.\n"
+                    "- **Overall Strategy:** Summarize a high-level plan, including estimated impact on sales cycle or revenue.\n"
+
+                    "Base all recommendations on the full conversation history and prior context. Be concise, actionable, and professional."
                 )
             }
         ]
@@ -132,20 +145,27 @@ def main():
             f"=== Top 10 Successful Matches ===\n{format_docs(won_docs)}\n\n"
             f"=== Top 10 Failed Matches ===\n{format_docs(lost_docs)}\n"
         )
-        
         print("\n 🧠 Context for LLM:\n", context_msg)
+        write_to_file(f"Context for LLM:\n{context_msg}")
 
         # Add initial user/context message
         conversation.append({
             "role": "user",
             "content": (
-                f"{context_msg}\n"
-                "Recommend:\n"
-                "1. What should be added/improved to increase sale chances?\n"
-                "2. What should be removed to reduce failure risk?"
+                "Based on the following etails:"
+                "User Opportunity:" f"{prompt}\n"
+                "=== Top 10 Successful (Won) Matches ==="
+                f"{format_docs(won_docs)}\n"
+                "=== Top 10 Failed (Lost) Matches ==="
+                f"{format_docs(lost_docs)}\n"
+
+                "Provide tailored recommendations for this sales opportunty:"
+                "1. What 3-5 key additionor or improvements (e.g., to product pitch, pricing, or targeting) should be made to boost win chances? Prioritize by potential impact and reference specific won deal examples with rationale."
+                "2. What 3-5 elements (e.g., risks in sector, region, or sales approach) should be removed or mitigated to lower failure risk? Reference specific lost deal examples with rationale."
+                "3.  Overall, what is the estimated win probability improvement, and how might this affect revenue or sales cycle? Suggest next steps."
             )
         })
-        
+
         # Get LLM recommendation
         recommendation = llm_chat(conversation)
         print("\n🧠 GPT Recommendation:\n", recommendation)
@@ -160,7 +180,7 @@ def main():
         # Allow follow-up questions
         while True:
             follow_up = input("\nAsk any follow-up question on this sales scenario (or 'quit' to start over): ")
-            write_to_file(f"\n\nUser Follow-up Question:{follow_up}")
+            write_to_file(f"User Follow-up Question:{follow_up}")
             if follow_up.strip().lower() == "quit":
                 break
             conversation.append({
