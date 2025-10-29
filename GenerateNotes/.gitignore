@@ -2,6 +2,7 @@
 *.env
 *.log
 *.tmp
+*.csv
 *.xlsx
 *.txt
 
