@@ -1,0 +1,420 @@
+{
+    "medical": {
+        "gtx": [
+            "Conducted {product} demo; highlighted GPU acceleration for medical imaging.",
+            "Addressed rendering speed concerns; shared GTX case studies in diagnostics.",
+            "Follow-up with {product} benchmark report; requested imaging team input.",
+            "Technical deep-dive on {product} VR integration; resolved visualization queries.",
+            "Escalated to radiology leads; awaiting high-res pilot sign-off.",
+            "Shared {product} load balancing data; aligned on throughput needs.",
+            "Conducted simulation workshop; gathered feedback on {product} scalability."
+        ],
+        "mg": [
+            "Conducted {product} demo; focused on workflow automation for patient care.",
+            "Addressed scheduling conflicts; shared MG management success stories.",
+            "Follow-up email with {product} dashboard mockup; requested ops alignment.",
+            "Technical deep-dive on {product} reporting; resolved compliance issues.",
+            "Escalated to admin board; awaiting resource plan approval.",
+            "Shared {product} analytics previews; highlighted efficiency metrics.",
+            "Conducted process audit session; gathered customization for {product}."
+        ],
+        "gtk": [
+            "Conducted {product} demo; emphasized enterprise-scale data handling.",
+            "Addressed high-volume queries; shared GTK enterprise deployments.",
+            "Follow-up with {product} capacity planning tool; requested IT review.",
+            "Technical deep-dive on {product} clustering; resolved failover queries.",
+            "Escalated to CIO; awaiting strategic infrastructure nod.",
+            "Shared {product} performance audits; aligned on SLAs.",
+            "Conducted scalability workshop; gathered inputs for {product} tuning."
+        ],
+        "default": [
+            "Conducted product demo; positive feedback on HIPAA compliance features.",
+            "Addressed regulatory concerns; shared case studies from healthcare peers.",
+            "Follow-up email with customized ROI calculator; requested clinician input.",
+            "Technical deep-dive on EHR integration; resolved data migration queries.",
+            "Escalated to medical board for review; awaiting ethics approval.",
+            "Shared pilot program proposal; aligned on implementation timeline.",
+            "Conducted stakeholder workshop; gathered requirements for customization."
+        ]
+    },
+    "retail": {
+        "gtx": [
+            "Conducted {product} demo; showcased AR fitting room simulations.",
+            "Addressed display latency; shared GTX retail tech stories.",
+            "Follow-up with {product} e-com rendering samples; requested UX input.",
+            "Technical deep-dive on {product} kiosk integration; resolved API queries.",
+            "Escalated to store ops; awaiting in-store pilot approval.",
+            "Shared {product} traffic heatmap data; aligned on personalization.",
+            "Conducted shopper journey workshop; gathered {product} feedback."
+        ],
+        "mg": [
+            "Conducted {product} demo; focused on inventory orchestration.",
+            "Addressed supplier sync issues; shared MG chain management cases.",
+            "Follow-up email with {product} forecasting model; requested sales alignment.",
+            "Technical deep-dive on {product} loyalty tracking; resolved data flow.",
+            "Escalated to merch team; awaiting planogram sign-off.",
+            "Shared {product} demand analytics; highlighted stockout reductions.",
+            "Conducted returns process session; gathered {product} customizations."
+        ],
+        "gtk": [
+            "Conducted {product} demo; emphasized big data retail insights.",
+            "Addressed query speed; shared GTK logistics successes.",
+            "Follow-up with {product} supply chain simulator; requested logistics review.",
+            "Technical deep-dive on {product} CRM scaling; resolved volume queries.",
+            "Escalated to global ops; awaiting network integration nod.",
+            "Shared {product} sales history benchmarks; aligned on predictions.",
+            "Conducted omnichannel workshop; gathered inputs for {product}."
+        ],
+        "default": [
+            "Conducted product demo; positive feedback on real-time inventory sync.",
+            "Addressed POS integration concerns; shared retail chain success stories.",
+            "Follow-up email with dynamic pricing model; requested sales team alignment.",
+            "Technical deep-dive on e-commerce API; resolved omnichannel sync issues.",
+            "Escalated to merchandising team; awaiting seasonal rollout sign-off.",
+            "Shared customer loyalty analytics report; highlighted engagement metrics.",
+            "Conducted store visit simulation; gathered feedback on user interface."
+        ]
+    },
+    "software": {
+        "gtx": [
+            "Conducted {product} demo; highlighted GPU builds for ML models.",
+            "Addressed VR dev latency; shared GTX simulation cases.",
+            "Follow-up with {product} parallel processing repo; requested arch review.",
+            "Technical deep-dive on {product} engine rendering; resolved perf queries.",
+            "Escalated to dev leads; awaiting VR pilot sign-off.",
+            "Shared {product} CI/CD viz data; aligned on pipeline needs.",
+            "Conducted game dev workshop; gathered {product} scalability feedback."
+        ],
+        "mg": [
+            "Conducted {product} demo; focused on workflow orchestration.",
+            "Addressed dependency issues; shared MG release stories.",
+            "Follow-up email with {product} sprint planner; requested PM alignment.",
+            "Technical deep-dive on {product} review automation; resolved tool queries.",
+            "Escalated to QA team; awaiting backlog integration.",
+            "Shared {product} vuln tracking previews; highlighted security metrics.",
+            "Conducted agile session; gathered {product} customizations."
+        ],
+        "gtk": [
+            "Conducted {product} demo; emphasized cluster simulations.",
+            "Addressed distributed load; shared GTK cluster cases.",
+            "Follow-up with {product} AI coding tool; requested eng review.",
+            "Technical deep-dive on {product} repo scaling; resolved storage queries.",
+            "Escalated to CTO; awaiting exascale nod.",
+            "Shared {product} throughput audits; aligned on benchmarks.",
+            "Conducted hackathon; gathered inputs for {product}."
+        ],
+        "default": [
+            "Conducted product demo; positive feedback on API scalability.",
+            "Addressed version control integration; shared dev team case studies.",
+            "Follow-up email with code sample repo; requested architecture review.",
+            "Technical deep-dive on cloud provisioning; resolved deployment queries.",
+            "Escalated to engineering leads; awaiting sprint integration plan.",
+            "Shared performance benchmarking data; aligned on load testing.",
+            "Conducted pair-programming session; gathered agile workflow inputs."
+        ]
+    },
+    "services": {
+        "gtx": [
+            "Conducted {product} demo; showcased immersive project reviews.",
+            "Addressed collaboration latency; shared GTX service cases.",
+            "Follow-up with {product} Gantt renderer; requested PM input.",
+            "Technical deep-dive on {product} training VR; resolved immersion queries.",
+            "Escalated to delivery leads; awaiting blueprint sign-off.",
+            "Shared {product} resource viz data; aligned on allocation.",
+            "Conducted client workshop; gathered {product} feedback."
+        ],
+        "mg": [
+            "Conducted {product} demo; focused on engagement management.",
+            "Addressed SLA sync; shared MG contract stories.",
+            "Follow-up email with {product} feedback loop; requested ops alignment.",
+            "Technical deep-dive on {product} billing automation; resolved cycle queries.",
+            "Escalated to success team; awaiting milestone integration.",
+            "Shared {product} satisfaction previews; highlighted NPS metrics.",
+            "Conducted onboarding session; gathered {product} customizations."
+        ],
+        "gtk": [
+            "Conducted {product} demo; emphasized ticketing scale.",
+            "Addressed fleet volume; shared GTK maintenance cases.",
+            "Follow-up with {product} predictive tool; requested service review.",
+            "Technical deep-dive on {product} desk clustering; resolved queue queries.",
+            "Escalated to global heads; awaiting compliance nod.",
+            "Shared {product} metric audits; aligned on SLAs.",
+            "Conducted process workshop; gathered inputs for {product}."
+        ],
+        "default": [
+            "Conducted product demo; positive feedback on workflow automation.",
+            "Addressed SLA compliance concerns; shared service provider examples.",
+            "Follow-up email with service blueprint; requested ops team alignment.",
+            "Technical deep-dive on CRM sync; resolved client data queries.",
+            "Escalated to delivery directors; awaiting contract amendment sign-off.",
+            "Shared resource allocation dashboard; highlighted efficiency gains.",
+            "Conducted process mapping workshop; gathered onboarding feedback."
+        ]
+    },
+    "entertainment": {
+        "gtx": [
+            "Conducted {product} demo; highlighted CGI rendering speed.",
+            "Addressed VFX latency; shared GTX media cases.",
+            "Follow-up with {product} motion capture samples; requested creative input.",
+            "Technical deep-dive on {product} bitrate adaptation; resolved stream queries.",
+            "Escalated to producers; awaiting fan pilot sign-off.",
+            "Shared {product} engagement data; aligned on metrics.",
+            "Conducted screening workshop; gathered {product} feedback."
+        ],
+        "mg": [
+            "Conducted {product} demo; focused on production scheduling.",
+            "Addressed rights clearance; shared MG distribution stories.",
+            "Follow-up email with {product} asset library; requested talent alignment.",
+            "Technical deep-dive on {product} localization; resolved subtitle queries.",
+            "Escalated to content heads; awaiting booking integration.",
+            "Shared {product} viewer previews; highlighted retention metrics.",
+            "Conducted rights session; gathered {product} customizations."
+        ],
+        "gtk": [
+            "Conducted {product} demo; emphasized CDN scale.",
+            "Addressed live volume; shared GTK streaming cases.",
+            "Follow-up with {product} post-prod tool; requested dist review.",
+            "Technical deep-dive on {product} HD pipelines; resolved format queries.",
+            "Escalated to execs; awaiting global nod.",
+            "Shared {product} archive audits; aligned on storage.",
+            "Conducted event workshop; gathered inputs for {product}."
+        ],
+        "default": [
+            "Conducted product demo; positive feedback on content metadata tagging.",
+            "Addressed streaming latency concerns; shared media platform stories.",
+            "Follow-up email with audience analytics mockup; requested creative input.",
+            "Technical deep-dive on DRM integration; resolved rights management issues.",
+            "Escalated to production heads; awaiting pilot episode rollout.",
+            "Shared engagement heatmaps; aligned on recommendation algorithms.",
+            "Conducted virtual screening session; gathered user experience feedback."
+        ]
+    },
+    "telecommunications": {
+        "gtx": [
+            "Conducted {product} demo; showcased network flow visualizations.",
+            "Addressed topology latency; shared GTX telco cases.",
+            "Follow-up with {product} beamforming sim; requested arch input.",
+            "Technical deep-dive on {product} fault maps; resolved diagnostic queries.",
+            "Escalated to planners; awaiting 5G pilot sign-off.",
+            "Shared {product} traffic data; aligned on capacity.",
+            "Conducted VR training workshop; gathered {product} feedback."
+        ],
+        "mg": [
+            "Conducted {product} demo; focused on provisioning management.",
+            "Addressed outage workflows; shared MG response stories.",
+            "Follow-up email with {product} care queue; requested ops alignment.",
+            "Technical deep-dive on {product} utilization tracking; resolved trend queries.",
+            "Escalated to customer leads; awaiting SLA integration.",
+            "Shared {product} churn previews; highlighted retention metrics.",
+            "Conducted maintenance session; gathered {product} customizations."
+        ],
+        "gtk": [
+            "Conducted {product} demo; emphasized traffic log processing.",
+            "Addressed capacity volume; shared GTK planning cases.",
+            "Follow-up with {product} anomaly tool; requested core review.",
+            "Technical deep-dive on {product} router monitoring; resolved stream queries.",
+            "Escalated to CIO; awaiting edge nod.",
+            "Shared {product} detection audits; aligned on predictions.",
+            "Conducted IoT workshop; gathered inputs for {product}."
+        ],
+        "default": [
+            "Conducted product demo; positive feedback on network diagnostics.",
+            "Addressed spectrum allocation concerns; shared telco case studies.",
+            "Follow-up email with bandwidth simulator; requested ops alignment.",
+            "Technical deep-dive on 5G handoff; resolved latency queries.",
+            "Escalated to network planners; awaiting infrastructure upgrade sign-off.",
+            "Shared churn prediction models; highlighted retention strategies.",
+            "Conducted site survey simulation; gathered IoT integration inputs."
+        ]
+    },
+    "finance": {
+        "gtx": [
+            "Conducted {product} demo; highlighted market heatmap rendering.",
+            "Addressed trading latency; shared GTX finance cases.",
+            "Follow-up with {product} scenario sim; requested risk input.",
+            "Technical deep-dive on {product} portfolio graphs; resolved perf queries.",
+            "Escalated to quants; awaiting training pilot sign-off.",
+            "Shared {product} algo data; aligned on speed.",
+            "Conducted compliance workshop; gathered {product} feedback."
+        ],
+        "mg": [
+            "Conducted {product} demo; focused on ledger management.",
+            "Addressed audit workflows; shared MG reporting stories.",
+            "Follow-up email with {product} alert system; requested compliance alignment.",
+            "Technical deep-dive on {product} reconciliation; resolved transaction queries.",
+            "Escalated to treasury; awaiting fraud integration.",
+            "Shared {product} performance previews; highlighted return metrics.",
+            "Conducted filing session; gathered {product} customizations."
+        ],
+        "gtk": [
+            "Conducted {product} demo; emphasized HFT streams.",
+            "Addressed surveillance volume; shared GTK market cases.",
+            "Follow-up with {product} modeling tool; requested quant review.",
+            "Technical deep-dive on {product} validation; resolved chain queries.",
+            "Escalated to board; awaiting stress nod.",
+            "Shared {product} testing audits; aligned on computations.",
+            "Conducted due diligence workshop; gathered inputs for {product}."
+        ],
+        "default": [
+            "Conducted product demo; positive feedback on transaction auditing.",
+            "Addressed KYC compliance concerns; shared banking peer examples.",
+            "Follow-up email with risk scoring tool; requested compliance review.",
+            "Technical deep-dive on blockchain ledger; resolved audit trail issues.",
+            "Escalated to risk committees; awaiting regulatory nod.",
+            "Shared fraud pattern analytics; aligned on alert thresholds.",
+            "Conducted scenario planning workshop; gathered portfolio inputs."
+        ]
+    },
+    "employment": {
+        "gtx": [
+            "Conducted {product} demo; showcased talent map visualizations.",
+            "Addressed engagement latency; shared GTX HR cases.",
+            "Follow-up with {product} path sim; requested L&D input.",
+            "Technical deep-dive on {product} diversity graphs; resolved metric queries.",
+            "Escalated to directors; awaiting onboarding pilot sign-off.",
+            "Shared {product} survey data; aligned on retention.",
+            "Conducted planning workshop; gathered {product} feedback."
+        ],
+        "mg": [
+            "Conducted {product} demo; focused on pipeline management.",
+            "Addressed review cycles; shared MG performance stories.",
+            "Follow-up email with {product} enrollment tool; requested benefits alignment.",
+            "Technical deep-dive on {product} module tracking; resolved learning queries.",
+            "Escalated to acquisition; awaiting turnover integration.",
+            "Shared {product} prediction previews; highlighted gap metrics.",
+            "Conducted hiring session; gathered {product} customizations."
+        ],
+        "gtk": [
+            "Conducted {product} demo; emphasized HR data warehouses.",
+            "Addressed planning volume; shared GTK workforce cases.",
+            "Follow-up with {product} analytics tool; requested global review.",
+            "Technical deep-dive on {product} reporting; resolved compliance queries.",
+            "Escalated to CHRO; awaiting inventory nod.",
+            "Shared {product} skills audits; aligned on queries.",
+            "Conducted mobility workshop; gathered inputs for {product}."
+        ],
+        "default": [
+            "Conducted product demo; positive feedback on applicant tracking.",
+            "Addressed DEI metrics concerns; shared HR tech stories.",
+            "Follow-up email with talent pipeline dashboard; requested recruiter alignment.",
+            "Technical deep-dive on skills matching; resolved onboarding queries.",
+            "Escalated to talent leads; awaiting policy integration sign-off.",
+            "Shared retention forecasting; highlighted engagement surveys.",
+            "Conducted role-playing interviews; gathered feedback on automation."
+        ]
+    },
+    "marketing": {
+        "gtx": [
+            "Conducted {product} demo; highlighted heatmap rendering.",
+            "Addressed creative latency; shared GTX ad cases.",
+            "Follow-up with {product} journey sim; requested strategist input.",
+            "Technical deep-dive on {product} mockups; resolved conversion queries.",
+            "Escalated to buyers; awaiting demo pilot sign-off.",
+            "Shared {product} attribution data; aligned on ROI.",
+            "Conducted brand workshop; gathered {product} feedback."
+        ],
+        "mg": [
+            "Conducted {product} demo; focused on channel orchestration.",
+            "Addressed nurturing issues; shared MG sequence stories.",
+            "Follow-up email with {product} rule set; requested personalization alignment.",
+            "Technical deep-dive on {product} asset library; resolved content queries.",
+            "Escalated to creators; awaiting sentiment integration.",
+            "Shared {product} analysis previews; highlighted segmentation metrics.",
+            "Conducted campaign session; gathered {product} customizations."
+        ],
+        "gtk": [
+            "Conducted {product} demo; emphasized insights scale.",
+            "Addressed engine volume; shared GTK personalization cases.",
+            "Follow-up with {product} attribution tool; requested platform review.",
+            "Technical deep-dive on {product} modeling; resolved behavior queries.",
+            "Escalated to CMO; awaiting predictive nod.",
+            "Shared {product} consumer audits; aligned on models.",
+            "Conducted funnel workshop; gathered inputs for {product}."
+        ],
+        "default": [
+            "Conducted product demo; positive feedback on campaign attribution.",
+            "Addressed data privacy concerns; shared ad tech case studies.",
+            "Follow-up email with A/B test planner; requested creative alignment.",
+            "Technical deep-dive on pixel tracking; resolved conversion issues.",
+            "Escalated to media buyers; awaiting budget allocation sign-off.",
+            "Shared ROI projection models; aligned on KPI definitions.",
+            "Conducted persona workshop; gathered segmentation inputs."
+        ]
+    },
+    "technolgy": {
+        "gtx": [
+            "Conducted {product} demo; showcased CAD acceleration.",
+            "Addressed IoT latency; shared GTX prototype cases.",
+            "Follow-up with {product} AR test samples; requested R&D input.",
+            "Technical deep-dive on {product} board viz; resolved debug queries.",
+            "Escalated to engineers; awaiting interface pilot sign-off.",
+            "Shared {product} stack data; aligned on compatibility.",
+            "Conducted innovation workshop; gathered {product} feedback."
+        ],
+        "mg": [
+            "Conducted {product} demo; focused on project orchestration.",
+            "Addressed IP tracking; shared MG patent stories.",
+            "Follow-up email with {product} suite deploy; requested testing alignment.",
+            "Technical deep-dive on {product} backlog; resolved innovation queries.",
+            "Escalated to owners; awaiting vuln integration.",
+            "Shared {product} compatibility previews; highlighted stack metrics.",
+            "Conducted R&D session; gathered {product} customizations."
+        ],
+        "gtk": [
+            "Conducted {product} demo; emphasized cluster power.",
+            "Addressed sim volume; shared GTK quantum cases.",
+            "Follow-up with {product} AI framework; requested edge review.",
+            "Technical deep-dive on {product} deployments; resolved model queries.",
+            "Escalated to CTO; awaiting exascale nod.",
+            "Shared {product} throughput audits; aligned on handling.",
+            "Conducted lab workshop; gathered inputs for {product}."
+        ],
+        "default": [
+            "Conducted product demo; positive feedback on edge processing.",
+            "Addressed scalability concerns; shared tech firm examples.",
+            "Follow-up email with prototype code; requested dev review.",
+            "Technical deep-dive on API gateways; resolved security queries.",
+            "Escalated to innovation boards; awaiting proof-of-concept sign-off.",
+            "Shared latency benchmarks; aligned on throughput targets.",
+            "Conducted hackathon session; gathered feature prioritization."
+        ]
+    },
+    "other": {
+        "gtx": [
+            "Conducted {product} demo; highlighted dashboard rendering.",
+            "Addressed scenario latency; shared GTX ops cases.",
+            "Follow-up with {product} flow sim; requested unit input.",
+            "Technical deep-dive on {product} diagrams; resolved workflow queries.",
+            "Escalated to heads; awaiting presentation pilot sign-off.",
+            "Shared {product} KPI data; aligned on visuals.",
+            "Conducted exec workshop; gathered {product} feedback."
+        ],
+        "mg": [
+            "Conducted {product} demo; focused on project management.",
+            "Addressed vendor sync; shared MG collab stories.",
+            "Follow-up email with {product} approval tool; requested dept alignment.",
+            "Technical deep-dive on {product} repos; resolved doc queries.",
+            "Escalated to sponsors; awaiting routine integration.",
+            "Shared {product} progress previews; highlighted KPI metrics.",
+            "Conducted cross-function session; gathered {product} customizations."
+        ],
+        "gtk": [
+            "Conducted {product} demo; emphasized dataset processing.",
+            "Addressed forecast volume; shared GTK strategic cases.",
+            "Follow-up with {product} model tool; requested C-suite review.",
+            "Technical deep-dive on {product} migrations; resolved legacy queries.",
+            "Escalated to board; awaiting support nod.",
+            "Shared {product} decision audits; aligned on queries.",
+            "Conducted planning workshop; gathered inputs for {product}."
+        ],
+        "default": [
+            "Conducted product demo; positive feedback on core functionalities.",
+            "Addressed implementation concerns; shared cross-industry stories.",
+            "Follow-up email with project charter; requested team alignment.",
+            "Technical deep-dive on integrations; resolved compatibility issues.",
+            "Escalated to decision-makers; awaiting strategic fit review.",
+            "Shared benefit quantification; highlighted quick wins.",
+            "Conducted gap analysis workshop; gathered customization needs."
+        ]
+    }
+}

@@ -1,0 +1,160 @@
+{
+    "medical": {
+        "gtx": [
+            "Pricing too high for GTX graphics; lost to budget-friendly CPU alternatives.",
+            "Delays in imaging certs; deal cold due to {product} validation timeline.",
+            "Priorities shifted to software-only; budget cut {product} hardware spend.",
+            "New CTO favored open-source viz; mismatched {product}'s proprietary features.",
+            "Pilot showed heat issues; opted for cooler competitors.",
+            "{product} power draw vetoed; lost on energy efficiency concerns.",
+            "Competitor undercut on bundle; abandoned post-GTX comparison."
+        ],
+        "mg": [
+            "Pricing unresolvable for MG management; lost to basic spreadsheets.",
+            "Delays in workflow certs; deal stalled on {product} rollout.",
+            "Priorities to manual processes; budget reallocated from {product}.",
+            "New PM favored legacy tools; mismatched {product}'s automation.",
+            "Pilot usability low; opted for simpler alternatives.",
+            "{product} integration vetoed; lost on custom needs.",
+            "Competitor free tier; abandoned post-MG demo."
+        ],
+        "gtk": [
+            "Pricing too high for GTK scale; lost to cloud-only options.",
+            "Delays in cluster setup; deal cold on {product} deployment.",
+            "Priorities to on-prem shift; budget cut {product} capacity.",
+            "New IT head favored hybrid; mismatched {product}'s full power.",
+            "Pilot volume underdelivered; opted for modular competitors.",
+            "{product} failover concerns; lost on reliability.",
+            "Competitor bundled infra; abandoned post-GTK audit."
+        ],
+        "default": [
+            "Pricing objection unresolvable; lost to in-house solution with lower upfront costs.",
+            "Internal delays due to ethics review; deal stalled and went cold.",
+            "Shift in priorities to telehealth pivot; budget reallocated to competitors.",
+            "Key clinician changed; new requirements mismatched our compliance features.",
+            "Regulatory approval timeline exceeded; customer opted for quicker alternatives.",
+            "Pilot feedback on usability negative; lost on integration complexities.",
+            "Executive veto on vendor lock-in; deal abandoned post-audit."
+        ]
+    },
+    "retail": {
+        "gtx": [
+            "Lost to cheaper displays for {product}."
+        ],
+        "mg": [
+            "Stalled on {product} sync delays."
+        ],
+        "gtk": [
+            "Cold on {product} query costs."
+        ],
+        "default": []
+    },
+    "software": {
+        "gtx": [
+            "Lost to CPU for {product} builds."
+        ],
+        "mg": [
+            "Stalled on {product} dependency issues."
+        ],
+        "gtk": [
+            "Cold on {product} cluster price."
+        ],
+        "default": []
+    },
+    "services": {
+        "gtx": [
+            "Lost to basic viz for {product}."
+        ],
+        "mg": [
+            "Stalled on {product} SLA delays."
+        ],
+        "gtk": [
+            "Cold on {product} ticketing scale."
+        ],
+        "default": []
+    },
+    "entertainment": {
+        "gtx": [
+            "Lost to software render for {product}."
+        ],
+        "mg": [
+            "Stalled on {product} rights clearance."
+        ],
+        "gtk": [
+            "Cold on {product} CDN costs."
+        ],
+        "default": []
+    },
+    "telecommunications": {
+        "gtx": [
+            "Lost to 2D maps for {product}."
+        ],
+        "mg": [
+            "Stalled on {product} outage workflows."
+        ],
+        "gtk": [
+            "Cold on {product} traffic volume."
+        ],
+        "default": []
+    },
+    "finance": {
+        "gtx": [
+            "Lost to static charts for {product}."
+        ],
+        "mg": [
+            "Stalled on {product} audit cycles."
+        ],
+        "gtk": [
+            "Cold on {product} HFT speed."
+        ],
+        "default": []
+    },
+    "employment": {
+        "gtx": [
+            "Lost to flat charts for {product}."
+        ],
+        "mg": [
+            "Stalled on {product} hiring delays."
+        ],
+        "gtk": [
+            "Cold on {product} HR scale."
+        ],
+        "default": []
+    },
+    "marketing": {
+        "gtx": [
+            "Lost to simple graphs for {product}."
+        ],
+        "mg": [
+            "Stalled on {product} channel sync."
+        ],
+        "gtk": [
+            "Cold on {product} insights volume."
+        ],
+        "default": []
+    },
+    "technolgy": {
+        "gtx": [
+            "Lost to basic CAD for {product}."
+        ],
+        "mg": [
+            "Stalled on {product} IP tracking."
+        ],
+        "gtk": [
+            "Cold on {product} cluster costs."
+        ],
+        "default": []
+    },
+    "other": {
+        "gtx": [
+            "Lost to standard tools for {product}."
+        ],
+        "mg": [
+            "Stalled on {product} project delays."
+        ],
+        "gtk": [
+            "Cold on {product} dataset price."
+        ],
+        "default": []
+    }
+}

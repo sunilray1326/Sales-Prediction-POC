@@ -6,8 +6,6 @@ Data Files/
 *.env
 *.log
 *.tmp
-*.json
-*.csv
 *.xlsx
 *.txt
 

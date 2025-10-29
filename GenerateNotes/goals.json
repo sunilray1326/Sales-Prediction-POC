@@ -1,0 +1,332 @@
+{
+    "medical": {
+        "gtx": [
+            "Leverage {product} (GTX series) for high-performance diagnostics and real-time imaging analysis.",
+            "Enhance secure data visualization and AI-driven insights with {product} graphics capabilities.",
+            "Optimize surgical planning simulations using {product}'s scalable computing power.",
+            "Streamline telemedicine rendering and patient portal interactions via {product}.",
+            "Improve compliance dashboards with {product}'s efficient data processing."
+        ],
+        "mg": [
+            "Deploy {product} (MG series) to manage patient workflows and resource scheduling.",
+            "Centralize analytics for outcomes tracking and predictive care modeling with {product}.",
+            "Facilitate regulatory reporting and audit trails using {product}'s management tools.",
+            "Enhance team collaboration on treatment plans via {product}.",
+            "Automate inventory for medical supplies with {product}'s advanced tracking features."
+        ],
+        "gtk": [
+            "Scale enterprise-wide health data platforms with {product} (GTK 500) for ultra-high throughput.",
+            "Enable advanced genomic sequencing visualizations using {product}'s powerhouse specs.",
+            "Integrate {product} for hospital-wide AI model training and deployment.",
+            "Boost real-time monitoring systems with {product}'s enterprise-grade reliability.",
+            "Transform research data handling with {product}'s massive parallel processing."
+        ],
+        "default": [
+            "Streamline patient data management and compliance using {product}.",
+            "Enhance telemedicine capabilities and remote monitoring with {product}.",
+            "Improve diagnostic accuracy and workflow efficiency via {product}.",
+            "Strengthen data security and regulatory reporting through {product}.",
+            "Optimize resource allocation and staff scheduling leveraging {product}."
+        ]
+    },
+    "retail": {
+        "gtx": [
+            "Power point-of-sale displays and dynamic pricing engines with {product} (GTX series).",
+            "Enable high-res customer-facing kiosks and AR try-ons using {product}'s graphics.",
+            "Scale e-commerce backend rendering for personalized recommendations via {product}.",
+            "Optimize store analytics visualizations with {product}'s fast compute.",
+            "Drive in-store digital signage with {product}'s reliable performance."
+        ],
+        "mg": [
+            "Manage omnichannel inventory and supplier coordination using {product} (MG series).",
+            "Track sales trends and demand forecasting with {product}'s analytics suite.",
+            "Automate merchandising workflows and planogram updates via {product}.",
+            "Centralize customer loyalty data management through {product}.",
+            "Streamline returns processing and fraud alerts with {product}."
+        ],
+        "gtk": [
+            "Handle massive retail data lakes and real-time analytics with {product} (GTK 500).",
+            "Deploy {product} for supply chain simulations and predictive logistics.",
+            "Empower enterprise CRM with {product}'s high-capacity processing.",
+            "Integrate {product} for global store network monitoring.",
+            "Accelerate big data queries on sales histories using {product}."
+        ],
+        "default": [
+            "Enhance inventory tracking and customer analytics with {product}.",
+            "Boost personalized marketing and sales forecasting using {product}.",
+            "Streamline supply chain and omnichannel experiences via {product}.",
+            "Improve loss prevention and fraud detection through {product}.",
+            "Accelerate checkout processes and loyalty program engagement leveraging {product}."
+        ]
+    },
+    "software": {
+        "gtx": [
+            "Accelerate GPU-accelerated builds and simulations with {product} (GTX series).",
+            "Enhance 3D modeling and VR dev environments using {product}.",
+            "Scale ML training pipelines via {product}'s parallel processing.",
+            "Optimize game engine rendering with {product}.",
+            "Boost CI/CD visualization dashboards through {product}."
+        ],
+        "mg": [
+            "Orchestrate dev team workflows and issue tracking with {product} (MG series).",
+            "Manage release cycles and dependency graphs using {product}.",
+            "Automate code review processes via {product}.",
+            "Centralize sprint planning and backlog grooming through {product}.",
+            "Track security vulnerabilities with {product}'s monitoring tools."
+        ],
+        "gtk": [
+            "Power enterprise-scale simulations with {product} (GTK 500).",
+            "Deploy {product} for distributed computing clusters.",
+            "Enable high-fidelity data viz in dev tools using {product}.",
+            "Integrate {product} for AI-assisted coding at scale.",
+            "Handle petabyte-scale repo management via {product}."
+        ],
+        "default": [
+            "Improve development workflows and scalability via {product}.",
+            "Enhance code collaboration and CI/CD pipeline automation using {product}.",
+            "Strengthen security testing and bug tracking with {product}.",
+            "Optimize cloud deployment and resource management through {product}.",
+            "Facilitate agile sprint planning and team productivity leveraging {product}."
+        ]
+    },
+    "services": {
+        "gtx": [
+            "Visualize client project timelines and Gantt charts with {product} (GTX series) for immersive reviews.",
+            "Enhance virtual collaboration sessions using {product}'s high-res graphics rendering.",
+            "Scale resource allocation simulations via {product}'s compute power.",
+            "Optimize service blueprint visualizations with {product}.",
+            "Drive interactive training modules through {product}."
+        ],
+        "mg": [
+            "Coordinate client engagements and milestone tracking using {product} (MG series).",
+            "Manage contract renewals and SLA monitoring with {product}.",
+            "Automate feedback loops and satisfaction surveys via {product}.",
+            "Centralize knowledge base for service delivery through {product}.",
+            "Streamline billing cycles and invoice disputes with {product}."
+        ],
+        "gtk": [
+            "Handle enterprise service desk operations with {product} (GTK 500) for high-volume ticketing.",
+            "Deploy {product} for predictive maintenance in service fleets.",
+            "Empower global team dashboards with {product}'s robust processing.",
+            "Integrate {product} for cross-region compliance tracking.",
+            "Accelerate analytics on service metrics using {product}."
+        ],
+        "default": [
+            "Optimize service delivery and client onboarding through {product}.",
+            "Enhance project management and resource allocation using {product}.",
+            "Improve billing accuracy and contract compliance with {product}.",
+            "Streamline customer support and feedback loops via {product}.",
+            "Boost consulting efficiency and knowledge sharing leveraging {product}."
+        ]
+    },
+    "entertainment": {
+        "gtx": [
+            "Render high-fidelity CGI scenes and VFX previews with {product} (GTX series).",
+            "Enable real-time motion capture processing using {product}'s graphics acceleration.",
+            "Scale audience analytics visualizations via {product}.",
+            "Optimize streaming bitrate adaptation with {product}.",
+            "Drive interactive fan experiences through {product}."
+        ],
+        "mg": [
+            "Orchestrate content production schedules and asset libraries using {product} (MG series).",
+            "Manage rights clearances and distribution rights with {product}.",
+            "Automate subtitle synchronization and localization via {product}.",
+            "Centralize talent booking and contract management through {product}.",
+            "Track viewer engagement metrics with {product}."
+        ],
+        "gtk": [
+            "Power massive content delivery networks with {product} (GTK 500).",
+            "Deploy {product} for live event streaming at scale.",
+            "Enable ultra-HD post-production pipelines using {product}.",
+            "Integrate {product} for global distribution analytics.",
+            "Handle petabyte-scale media archives via {product}."
+        ],
+        "default": [
+            "Boost content production efficiency and audience engagement with {product}.",
+            "Enhance streaming quality and recommendation algorithms using {product}.",
+            "Streamline event ticketing and fan interaction via {product}.",
+            "Improve royalty tracking and rights management through {product}.",
+            "Optimize ad placement and monetization strategies leveraging {product}."
+        ]
+    },
+    "telecommunications": {
+        "gtx": [
+            "Visualize network topologies and traffic flows with {product} (GTX series) for troubleshooting.",
+            "Enhance spectrum analysis tools using {product}'s high-res rendering.",
+            "Scale simulation of 5G beamforming via {product}.",
+            "Optimize fault localization maps with {product}.",
+            "Drive VR network training modules through {product}."
+        ],
+        "mg": [
+            "Manage subscriber provisioning and billing cycles using {product} (MG series).",
+            "Orchestrate tower maintenance schedules with {product}.",
+            "Automate outage response workflows via {product}.",
+            "Centralize customer care queues through {product}.",
+            "Track network utilization trends with {product}."
+        ],
+        "gtk": [
+            "Process terabit-scale traffic logs with {product} (GTK 500).",
+            "Deploy {product} for predictive network capacity planning.",
+            "Empower core router monitoring with {product}'s power.",
+            "Integrate {product} for edge device orchestration.",
+            "Accelerate anomaly detection queries using {product}."
+        ],
+        "default": [
+            "Upgrade network monitoring and reliability using {product}.",
+            "Enhance 5G rollout and spectrum management with {product}.",
+            "Improve customer churn prediction and service personalization via {product}.",
+            "Streamline billing disputes and infrastructure maintenance through {product}.",
+            "Boost IoT device integration and data analytics leveraging {product}."
+        ]
+    },
+    "finance": {
+        "gtx": [
+            "Render real-time market heatmaps and trading floors with {product} (GTX series).",
+            "Enhance algorithmic visualization dashboards using {product}.",
+            "Scale risk scenario simulations via {product}.",
+            "Optimize portfolio performance graphs with {product}.",
+            "Drive immersive compliance training through {product}."
+        ],
+        "mg": [
+            "Manage transaction reconciliation and ledger balancing using {product} (MG series).",
+            "Orchestrate compliance audits and reporting with {product}.",
+            "Automate fraud alert workflows via {product}.",
+            "Centralize client account management through {product}.",
+            "Track investment performance metrics with {product}."
+        ],
+        "gtk": [
+            "Handle high-frequency trading data streams with {product} (GTK 500).",
+            "Deploy {product} for global market surveillance.",
+            "Empower quantitative modeling with {product}'s capacity.",
+            "Integrate {product} for blockchain transaction validation.",
+            "Accelerate stress testing computations using {product}."
+        ],
+        "default": [
+            "Strengthen fraud detection and reporting capabilities with {product}.",
+            "Enhance algorithmic trading and risk assessment using {product}.",
+            "Streamline compliance audits and transaction monitoring via {product}.",
+            "Improve portfolio optimization and client advisory through {product}.",
+            "Optimize payment processing and blockchain integration leveraging {product}."
+        ]
+    },
+    "employment": {
+        "gtx": [
+            "Visualize organizational charts and talent maps with {product} (GTX series) for strategic planning.",
+            "Enhance diversity analytics dashboards using {product}.",
+            "Scale employee engagement simulations via {product}.",
+            "Optimize career path visualizations with {product}.",
+            "Drive VR onboarding experiences through {product}."
+        ],
+        "mg": [
+            "Manage recruitment pipelines and candidate sourcing using {product} (MG series).",
+            "Orchestrate performance review cycles with {product}.",
+            "Automate benefits enrollment workflows via {product}.",
+            "Centralize learning module tracking through {product}.",
+            "Track turnover prediction models with {product}."
+        ],
+        "gtk": [
+            "Process enterprise HR data warehouses with {product} (GTK 500).",
+            "Deploy {product} for predictive hiring analytics.",
+            "Empower global workforce planning with {product}.",
+            "Integrate {product} for compliance reporting at scale.",
+            "Accelerate skills inventory queries using {product}."
+        ],
+        "default": [
+            "Automate recruitment processes and talent pipeline management via {product}.",
+            "Enhance employee onboarding and performance tracking using {product}.",
+            "Streamline diversity hiring and skills gap analysis with {product}.",
+            "Improve payroll automation and benefits administration through {product}.",
+            "Boost internal mobility and career development programs leveraging {product}."
+        ]
+    },
+    "marketing": {
+        "gtx": [
+            "Render campaign performance heatmaps and A/B test visuals with {product} (GTX series).",
+            "Enhance ad creative previews using {product}'s graphics.",
+            "Scale audience journey simulations via {product}.",
+            "Optimize content mockup rendering with {product}.",
+            "Drive interactive brand experience demos through {product}."
+        ],
+        "mg": [
+            "Manage multi-channel campaign orchestration using {product} (MG series).",
+            "Track lead nurturing sequences with {product}.",
+            "Automate personalization rule sets via {product}.",
+            "Centralize asset libraries for content through {product}.",
+            "Monitor sentiment analysis feeds with {product}."
+        ],
+        "gtk": [
+            "Handle big data customer insights with {product} (GTK 500).",
+            "Deploy {product} for real-time personalization engines.",
+            "Empower global campaign analytics with {product}.",
+            "Integrate {product} for cross-platform attribution.",
+            "Accelerate predictive modeling on consumer behavior using {product}."
+        ],
+        "default": [
+            "Drive targeted campaigns and ROI measurement using {product}.",
+            "Enhance lead generation and A/B testing capabilities with {product}.",
+            "Streamline content creation and multi-channel distribution via {product}.",
+            "Improve customer segmentation and sentiment analysis through {product}.",
+            "Optimize SEO strategies and conversion funnel tracking leveraging {product}."
+        ]
+    },
+    "technolgy": {
+        "gtx": [
+            "Accelerate prototype rendering and CAD models with {product} (GTX series).",
+            "Enhance IoT device simulations using {product}.",
+            "Scale AR/VR testing environments via {product}.",
+            "Optimize circuit board visualizations with {product}.",
+            "Drive hardware debugging interfaces through {product}."
+        ],
+        "mg": [
+            "Orchestrate R&D project pipelines using {product} (MG series).",
+            "Manage patent tracking and IP portfolios with {product}.",
+            "Automate testing suite deployments via {product}.",
+            "Centralize innovation backlog through {product}.",
+            "Track tech stack compatibility with {product}."
+        ],
+        "gtk": [
+            "Power supercomputing clusters for tech research with {product} (GTK 500).",
+            "Deploy {product} for quantum simulation frameworks.",
+            "Enable high-throughput data processing using {product}.",
+            "Integrate {product} for edge AI deployments.",
+            "Handle exascale modeling via {product}."
+        ],
+        "default": [
+            "Accelerate innovation and system integration with {product}.",
+            "Enhance cybersecurity protocols and threat detection using {product}.",
+            "Streamline DevOps automation and hardware provisioning via {product}.",
+            "Improve data lake management and AI model deployment through {product}.",
+            "Boost edge computing and real-time analytics leveraging {product}."
+        ]
+    },
+    "other": {
+        "gtx": [
+            "Visualize operational dashboards and process flows with {product} (GTX series).",
+            "Enhance simulation tools for business scenarios using {product}.",
+            "Scale reporting graphics via {product}.",
+            "Optimize workflow diagrams with {product}.",
+            "Drive executive presentations through {product}."
+        ],
+        "mg": [
+            "Manage cross-departmental projects using {product} (MG series).",
+            "Orchestrate vendor collaborations with {product}.",
+            "Automate routine approvals via {product}.",
+            "Centralize document repositories through {product}.",
+            "Track KPI progress with {product}."
+        ],
+        "gtk": [
+            "Process enterprise-wide datasets with {product} (GTK 500).",
+            "Deploy {product} for strategic forecasting models.",
+            "Empower C-suite analytics with {product}.",
+            "Integrate {product} for legacy system migrations.",
+            "Accelerate decision support queries using {product}."
+        ],
+        "default": [
+            "Achieve operational efficiency goals with {product} implementation.",
+            "Enhance cross-functional collaboration using {product}.",
+            "Streamline vendor management and procurement processes via {product}.",
+            "Improve sustainability tracking and ESG reporting through {product}.",
+            "Optimize budget forecasting and cost control leveraging {product}."
+        ]
+    }
+}

@@ -1,0 +1,97 @@
+{
+    "medical": [
+        "CTO",
+        "Project Manager",
+        "Clinical Director",
+        "Sponsor",
+        "Compliance Officer",
+        "Chief Medical Officer",
+        "IT Director"
+    ],
+    "retail": [
+        "Procurement Manager",
+        "Business Analyst",
+        "Operations Lead",
+        "CEO",
+        "Merchandising Director",
+        "Supply Chain Manager",
+        "Customer Experience Lead"
+    ],
+    "software": [
+        "CTO",
+        "Product Manager",
+        "DevOps Engineer",
+        "Sponsor",
+        "Software Architect",
+        "QA Lead",
+        "Engineering Manager"
+    ],
+    "services": [
+        "Account Executive",
+        "Operations Manager",
+        "Business Development Lead",
+        "Service Delivery Director",
+        "Client Success Manager",
+        "HR Partner"
+    ],
+    "entertainment": [
+        "Creative Director",
+        "Technical Producer",
+        "Marketing Head",
+        "Content Strategist",
+        "Talent Manager",
+        "Distribution Executive",
+        "Audience Insights Analyst"
+    ],
+    "telecommunications": [
+        "Network Architect",
+        "IT Director",
+        "Procurement Specialist",
+        "Customer Operations Lead",
+        "5G Strategy Manager",
+        "Data Analytics Head"
+    ],
+    "finance": [
+        "CFO",
+        "Risk Analyst",
+        "Compliance Officer",
+        "Sponsor",
+        "Treasury Manager",
+        "Investment Director",
+        "Regulatory Affairs Lead"
+    ],
+    "employment": [
+        "HR Director",
+        "Talent Acquisition Lead",
+        "Operations Manager",
+        "Diversity Officer",
+        "Learning & Development Head",
+        "Recruitment Specialist"
+    ],
+    "marketing": [
+        "CMO",
+        "Digital Strategist",
+        "Campaign Manager",
+        "Brand Director",
+        "Analytics Lead",
+        "Content Creator",
+        "SEO Specialist"
+    ],
+    "technolgy": [
+        "CTO",
+        "Systems Engineer",
+        "Innovation Lead",
+        "Data Scientist",
+        "Cybersecurity Analyst",
+        "Product Owner",
+        "R&D Manager"
+    ],
+    "other": [
+        "Decision Maker",
+        "Stakeholder",
+        "Operations Lead",
+        "Project Sponsor",
+        "Business Unit Head",
+        "Vendor Manager"
+    ]
+}
