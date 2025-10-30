@@ -1,3 +1,6 @@
+## This program generates Notes for sales opportunities based on various parameters.
+## The parameters are defined in JSON file and use createJSON.py to generate required JSON file used by this program
+
 import pandas as pd
 import json
 from datetime import datetime, timedelta

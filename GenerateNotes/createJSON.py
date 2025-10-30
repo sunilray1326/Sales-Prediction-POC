@@ -1,5 +1,6 @@
 ## This program is used to create JSON files for each dictionary used for generating Notes for sales opportunity
 ## Update the corresponding dictionary to add/update comments that should be part of Notes column in sale opportunity.
+## After creating JSON files, run GenerateNotes.py to add Notes column to sales opportunity test data file
 
 import json
 import pandas as pd
