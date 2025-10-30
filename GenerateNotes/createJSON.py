@@ -1,3 +1,6 @@
+## This program is used to create JSON files for each dictionary used for generating Notes for sales opportunity
+## Update the corresponding dictionary to add/update comments that should be part of Notes column in sale opportunity.
+
 import json
 import pandas as pd
 
