@@ -90,7 +90,8 @@ def upload_data_in_batches(df, batch_size=400):
                     "sales_cycle_duration": float(sales_cycle_duration) if sales_cycle_duration is not None else None,
                     "deal_value_ratio": float(deal_value_ratio) if deal_value_ratio is not None else None,
                     "content": content,
-                    "text_vector": embedding
+                    "text_vector": embedding,
+                    "Notes": str(row['Notes'])
                 }
                 docs.append(doc)
             except Exception as ex:
@@ -101,7 +102,7 @@ def upload_data_in_batches(df, batch_size=400):
 
 if __name__ == "__main__":
 
-    df = pd.read_csv("Sales-Opportunity-Data.csv", parse_dates=["deal_engage_date", "deal_close_date"], dayfirst=True)
+    df = pd.read_csv("Sales-Opportunity-Data-With-Notes.csv", parse_dates=["deal_engage_date", "deal_close_date"], dayfirst=True)
     df['deal_engage_date'] = pd.to_datetime(df['deal_engage_date'], errors='coerce').dt.strftime('%Y-%m-%dT%H:%M:%SZ')
     df['deal_close_date'] = pd.to_datetime(df['deal_close_date'], errors='coerce').dt.strftime('%Y-%m-%dT%H:%M:%SZ')
     

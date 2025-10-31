@@ -1,5 +1,5 @@
 {
-  "@odata.etag": "\"0x8DE16057EC3A19A\"",
+  "@odata.etag": "\"0x8DE1897488FFD4B\"",
   "name": "salespredictionindex",
   "fields": [
     {
@@ -226,6 +226,19 @@
       "key": false,
       "dimensions": 1536,
       "vectorSearchProfile": "vector-profile-1761638329791",
+      "synonymMaps": []
+    },
+    {
+      "name": "Notes",
+      "type": "Edm.String",
+      "searchable": true,
+      "filterable": true,
+      "retrievable": true,
+      "stored": true,
+      "sortable": true,
+      "facetable": false,
+      "key": false,
+      "analyzer": "standard.lucene",
       "synonymMaps": []
     }
   ],

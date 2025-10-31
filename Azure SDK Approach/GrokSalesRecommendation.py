@@ -11,6 +11,7 @@ from azure.core.credentials import AzureKeyCredential
 from datetime import datetime
 from pathlib import Path
 import json
+from collections import Counter
 
 
 # Load environment variables
@@ -39,6 +40,11 @@ script_dir = Path(__file__).parent  # Get the directory of the script
 stats_path = script_dir / "Cline_stats.json"
 with open(stats_path, "r", encoding="utf-8") as f:
     stats = json.load(f)
+
+# Load qualitative statistics
+qual_path = script_dir / "qualitative_stats.json"
+with open(qual_path, "r", encoding="utf-8") as f:
+    qual_stats = json.load(f)
 
 # Create a log file to log key operations
 file_name = "LLM Recommendation Output.txt"
@@ -83,11 +89,12 @@ def get_top_matches(prompt, stage_filter, top_k=10):
 
 
 def format_docs(docs):
+    # Enhanced: Append key note snippet from content if available (assuming 'content' includes notes)
     return "\n".join([
         f"{doc.get('opportunity_id')} | Stage: {doc.get('deal_stage').capitalize()} | Rep: {doc.get('sales_rep')} | "
         f"Product: {doc.get('product')} | Sector: {doc.get('account_sector')} | Region: {doc.get('account_region')} | "
         f"Price: {doc.get('sales_price')} | Revenue: {doc.get('revenue_from_deal')} | Sales Cycle Duration: {doc.get('sales_cycle_duration')} days | "
-        f"Deal Value Ratio: {doc.get('deal_value_ratio')}"
+        f"Deal Value Ratio: {doc.get('deal_value_ratio')} | Key Note: {doc.get('content', '')[:100]}..."  # Truncated note snippet
         for doc in docs
     ])
 
@@ -117,6 +124,16 @@ def extract_attributes(prompt):
     except json.JSONDecodeError:
         write_to_file("Extraction failed; using defaults.")
         return {}
+
+
+def llm_chat(messages):
+    response = openai_client.chat.completions.create(
+        model=CHAT_MODEL,
+        messages=messages,
+        temperature=0.6,
+        max_tokens=1000  # Increased for more detailed responses
+    )
+    return response.choices[0].message.content
 
 
 def get_relevant_stats(extracted_attrs):
@@ -234,6 +251,63 @@ def get_relevant_stats(extracted_attrs):
             })
     relevant["simulations"] = simulations
     
+    # Qualitative Insights: Filter by extracted attrs (e.g., sector), threshold freq > 0.1
+    relevant["qualitative_insights"] = {}
+    if sector and sector in qual_stats["segmented"]:
+        # Normalize segmented on-the-fly since raw counts
+        seg_data = qual_stats["segmented"][sector]
+        normalized_seg = {}
+        for cat_type in ["win_drivers", "loss_risks"]:
+            if cat_type in seg_data:
+                denom_key = "total_" + cat_type.split("_")[0].lower()
+                denom = qual_stats["overall"].get(denom_key, 1)
+                normalized_cat = {}
+                for category, count in seg_data[cat_type].items():
+                    freq = count / denom if denom > 0 else 0
+                    normalized_cat[category] = {
+                        "frequency": freq,
+                        "count": count,
+                        "examples": []  # No snippets for segmented
+                    }
+                # Filter freq > 0.1
+                filtered = {k: v for k, v in normalized_cat.items() if v["frequency"] > 0.1}
+                normalized_seg[cat_type] = filtered
+        relevant["qualitative_insights"] = normalized_seg
+    else:
+        # Fallback to overall top 3 (already normalized)
+        for cat_type in ["win_drivers", "loss_risks"]:
+            top_cats = Counter({k: v["frequency"] for k, v in qual_stats[cat_type].items() if v["frequency"] > 0.1}).most_common(3)
+            relevant["qualitative_insights"][cat_type] = {cat[0]: qual_stats[cat_type][cat[0]] for cat in top_cats}
+    
+    # Simple "lift" estimate from qual: Chain LLM for dynamic uplift
+    if "loss_risks" in relevant["qualitative_insights"] and relevant["qualitative_insights"]["loss_risks"]:
+        top_risk = max(relevant["qualitative_insights"]["loss_risks"], key=lambda k: relevant["qualitative_insights"]["loss_risks"][k]["frequency"])
+        top_risk_freq = relevant["qualitative_insights"]["loss_risks"][top_risk]["frequency"]
+        # Chain LLM for uplift estimation
+        sim_prompt = [
+            {
+                "role": "system",
+                "content": "You are a sales uplift estimator. Given a top qualitative risk (e.g., 'pricing_high') in a sector, estimate % win probability uplift if addressed (e.g., via bundling). Base on frequency and general sales knowledge. Return only a float (e.g., 12.5)."
+            },
+            {
+                "role": "user",
+                "content": f"Estimate % win uplift if addressing '{top_risk}' (freq: {top_risk_freq}) in {sector or 'general'} sector."
+            }
+        ]
+        try:
+            uplift_str = llm_chat(sim_prompt)
+            qual_uplift = float(uplift_str.strip("%"))  # Parse float
+            relevant["qual_lift_estimate"] = qual_uplift
+            simulations.append({
+                "description": f"Address top qual risk '{top_risk}'",
+                "estimated_win_rate": baseline_wr * (1 + qual_uplift / 100),
+                "uplift_percent": qual_uplift,
+                "from_qual": True
+            })
+        except ValueError:
+            relevant["qual_lift_estimate"] = (1 - top_risk_freq) * 10  # Fallback
+            write_to_file("Qual uplift parsing failed; using fallback.")
+    
     # Price/Revenue checks
     price = extracted_attrs.get("sales_price")
     if price:
@@ -243,18 +317,9 @@ def get_relevant_stats(extracted_attrs):
     if rev:
         relevant["revenue_insight"] = f"Expected revenue {rev}: Compare to product avgs for uplift potential."
     
+    relevant["simulations"] = simulations  # Update with any new sims
     write_to_file(f"Relevant stats summary: {json.dumps(relevant, indent=2)}")
     return relevant
-
-
-def llm_chat(messages):
-    response = openai_client.chat.completions.create(
-        model=CHAT_MODEL,
-        messages=messages,
-        temperature=0.6,
-        max_tokens=1000  # Increased for more detailed responses
-    )
-    return response.choices[0].message.content
 
 
 def main():
@@ -273,17 +338,19 @@ def main():
                      "sales rep, pricing, revenue potential, sales cycle duration, and deal value ratio.\n" 
                     
                     "Use the provided top 10 won deals as positive examples (what worked) and top 10 lost deals as cautionary examples (what failed)."
-                     "Draw patterns from these matches to provide actionable, evidence-based advice, leveraging the filtered RELEVANT_STATS.\n\n"
+                     "Draw patterns from these matches to provide actionable, evidence-based advice, leveraging the filtered RELEVANT_STATS and QUALITATIVE_INSIGHTS.\n\n"
                     
                     "RELEVANT_STATS is tailored to extracted attributes (e.g., sector, product); use it for precise suggestions. "
                     "Incorporate SIMULATIONS for estimated impacts (e.g., 'Switch to top rep for +4.7% win rate based on simulation').\n"
+                    "QUALITATIVE_INSIGHTS provide behavioral patterns (e.g., 'In retail losses, 22% cite pricing—mitigate via bundling for +8% win lift, citing example: \"Pricing too high... lost to LCD\"'). "
+                    "Only suggest if freq > 0.1; incorporate into suggestions with examples/snippets.\n"
                     "For reps: Suggest changes if top_reps show >5% lift over current_rep.\n"
-                    "Ground all in data; cite simulations/relevant metrics.\n\n"
+                    "Ground all in data; cite simulations/relevant metrics/qual insights.\n\n"
 
                     "Structure your responses as follows:\n"
-                    "- **Additions/Improvements for Success:** List 3-5 prioritized suggestions (e.g., product/rep changes), referencing won examples and quantifying with RELEVANT_STATS/SIMULATIONS (e.g., '+3% win rate, $X revenue').\n"
-                    "- **Removals/Risks to Avoid:** List 3-5 suggestions to mitigate risks (e.g., pricing adjustments), referencing lost examples and quantifying downsides.\n"
-                    "- **Overall Strategy:** Summarize plan, estimated win probability improvement (from simulations), revenue/cycle impact, and next steps.\n"
+                    "- **Additions/Improvements for Success:** List 3-5 prioritized suggestions (e.g., product/rep changes), referencing won examples and quantifying with RELEVANT_STATS/SIMULATIONS/QUALITATIVE_INSIGHTS (e.g., '+3% win rate, $X revenue; address demo_success pattern').\n"
+                    "- **Removals/Risks to Avoid:** List 3-5 suggestions to mitigate risks (e.g., pricing adjustments), referencing lost examples and quantifying downsides (e.g., 'Avoid feature_mismatch: 15% loss risk').\n"
+                    "- **Overall Strategy:** Summarize plan, estimated win probability improvement (from simulations/qual_lift_estimate), revenue/cycle impact, and next steps.\n"
 
                     "Be concise, actionable, and professional."
                 )
@@ -332,10 +399,10 @@ def main():
                 f"{context_msg}\n\n"
                 f"RELEVANT_STATS (filtered for this opportunity):\n{json.dumps(relevant_stats, indent=2)}\n\n"
 
-                "Provide tailored recommendations, using RELEVANT_STATS and SIMULATIONS to quantify impacts:\n"
-                "1. What 3-5 key additions/improvements (e.g., product/rep changes) to boost win chances? Prioritize, reference won examples, quantify (e.g., '+2% win rate via simulation, $X revenue').\n"
-                "2. What 3-5 elements to remove/mitigate (e.g., pricing risks)? Reference lost examples, quantify risks.\n"
-                "3. Overall: Estimated win probability improvement (e.g., +5-10% from baseline), revenue/cycle impact, next steps."
+                "Provide tailored recommendations, using RELEVANT_STATS, SIMULATIONS, and QUALITATIVE_INSIGHTS to quantify impacts:\n"
+                "1. What 3-5 key additions/improvements (e.g., product/rep changes) to boost win chances? Prioritize, reference won examples, quantify (e.g., '+2% win rate via simulation, $X revenue; leverage demo_success insight').\n"
+                "2. What 3-5 elements to remove/mitigate (e.g., pricing risks)? Reference lost examples, quantify risks (e.g., 'Mitigate competitor risk: 20% freq in losses').\n"
+                "3. Overall: Estimated win probability improvement (e.g., +5-10% from baseline, including qual_lift_estimate), revenue/cycle impact, next steps."
             )
         })
 
