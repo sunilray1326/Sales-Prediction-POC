@@ -128,12 +128,13 @@ def get_relevant_stats(extracted_attrs):
     }
     
     # Product-specific: If product extracted, include it and top 3 alternatives by lift
-    if extracted_attrs.get("product"):
+    product = extracted_attrs.get("product")
+    if product and product in stats["product"]["win_rate"]:
         prod_stats = stats["product"]
-        relevant["products"] = {extracted_attrs["product"]: prod_stats["win_rate"][extracted_attrs["product"]]}
+        relevant["products"] = {product: prod_stats["win_rate"][product]}
         # Top alternatives (exclude current)
         alts = sorted(
-            [(k, prod_stats["lift"][k]) for k in prod_stats["lift"].keys() if k != extracted_attrs["product"]],
+            [(k, prod_stats["lift"][k]) for k in prod_stats["lift"] if k != product],
             key=lambda x: x[1],
             reverse=True
         )[:3]
@@ -143,7 +144,7 @@ def get_relevant_stats(extracted_attrs):
     
     # Sector-specific
     sector = extracted_attrs.get("sector")
-    if sector:
+    if sector and sector in stats["account_sector"]["win_rate"]:
         sec_stats = stats["account_sector"]
         relevant["sector"] = {
             sector: {
@@ -153,7 +154,7 @@ def get_relevant_stats(extracted_attrs):
         }
         # Top 3 alternative sectors by lift
         alts = sorted(
-            [(k, sec_stats["lift"][k]) for k in sec_stats["lift"].keys() if k != sector],
+            [(k, sec_stats["lift"][k]) for k in sec_stats["lift"] if k != sector],
             key=lambda x: x[1],
             reverse=True
         )[:3]
@@ -164,20 +165,20 @@ def get_relevant_stats(extracted_attrs):
             }
         
         # Product-sector combos if product also extracted
-        if extracted_attrs.get("product"):
-            prod_sec_key = f"{extracted_attrs['product']}_{sector}"
+        if product:
+            prod_sec_key = f"{product}_{sector}"
             if prod_sec_key in stats["product_sector_win_rates"]:
                 relevant["product_sector"] = {prod_sec_key: stats["product_sector_win_rates"][prod_sec_key]}
             # Top 3 alternative products in this sector
             sec_combos = [(k.split("_")[0], v) for k, v in stats["product_sector_win_rates"].items() if k.endswith(f"_{sector}")]
             alts = sorted(sec_combos, key=lambda x: x[1], reverse=True)[:3]
             for alt_prod, wr in alts:
-                if alt_prod != extracted_attrs["product"]:
+                if alt_prod != product:
                     relevant["product_sector"][f"{alt_prod}_{sector}"] = wr
     
     # Region-specific
     region = extracted_attrs.get("region")
-    if region:
+    if region and region in stats["account_region"]["win_rate"]:
         reg_stats = stats["account_region"]
         relevant["region"] = {
             region: {
@@ -198,7 +199,7 @@ def get_relevant_stats(extracted_attrs):
         }
     # Top 5 reps by lift
     top_reps = sorted(
-        [(k, rep_stats["lift"][k], rep_stats["win_rate"][k], rep_stats["sample_size"][k]) for k in rep_stats["lift"].keys()],
+        [(k, rep_stats["lift"][k], rep_stats["win_rate"][k], rep_stats["sample_size"][k]) for k in rep_stats["lift"]],
         key=lambda x: x[1],
         reverse=True
     )[:5]
@@ -216,7 +217,7 @@ def get_relevant_stats(extracted_attrs):
         })
     if "products" in relevant:
         for prod, wr in relevant["products"].items():
-            lift = stats["product"]["lift"][prod]  # Assume we have lift
+            lift = stats["product"]["lift"][prod]
             simulations.append({
                 "description": f"Switch to {prod}",
                 "estimated_win_rate": baseline_wr * lift,

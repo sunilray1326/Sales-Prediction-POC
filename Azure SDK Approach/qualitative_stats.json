@@ -1,0 +1,326 @@
+{
+  "win_drivers": {
+    "demo_success": {
+      "frequency": 0.6998584237848041,
+      "count": 2966,
+      "examples": [
+        "11-11-2016: Escalated to store ops; awaiting in-store pilot approval.",
+        "25-12-2016: Conducted shopper journey workshop; gathered GTX Plus Basic feedback.",
+        "28-11-2016: Follow-up with GTX Pro benchmark report; requested imaging team input."
+      ]
+    },
+    "bundling_support": {
+      "frequency": 0.16021708352996697,
+      "count": 679,
+      "examples": [
+        "16-01-2017: Multi-year deal; expanded to include GTX Plus Basic signage networks.",
+        "01-01-2017: Competitive edge in graphics; closed with bundled support package.",
+        "31-12-2016: Multi-year deal; expanded to include GTX Basic game engine optimizations."
+      ]
+    },
+    "roi_evidence": {
+      "frequency": 0.021000471920717318,
+      "count": 89,
+      "examples": [
+        "21-01-2017: Budget approved; won after MG forecasting reduced stockouts.",
+        "27-01-2017: Final negotiation successful; closed on MG Special's workflow automation ROI.",
+        "30-01-2017: Final negotiation successful; closed on MG Special's workflow automation ROI."
+      ]
+    },
+    "delays_stalls": {
+      "frequency": 0.22652194431335534,
+      "count": 960,
+      "examples": [
+        "22-11-2016: Escalated to producers; awaiting fan pilot sign-off.",
+        "21-11-2016: Escalated to radiology leads; awaiting high-res pilot sign-off.",
+        "06-01-2017: Escalated to admin board; awaiting resource plan approval."
+      ]
+    },
+    "competitive_edge": {
+      "frequency": 0.13213780084945728,
+      "count": 560,
+      "examples": [
+        "21-01-2017: Final negotiation successful; closed on GTX Plus Basic's superior imaging speed and cost ROI.",
+        "14-01-2017: Competitive edge in visuals; closed with deployment package.",
+        "25-01-2017: Competitive edge in orchestration; closed with vuln modules."
+      ]
+    }
+  },
+  "loss_risks": {
+    "demo_success": {
+      "frequency": 0.6979377274565305,
+      "count": 1726,
+      "examples": [
+        "10-01-2017: Conducted GTX Pro demo; showcased AR fitting room simulations.",
+        "22-01-2017: Competitor free tool; abandoned post-MG demo.",
+        "07-01-2017: Competitor undercut on previews; abandoned post-GTX demo."
+      ]
+    },
+    "pricing_high": {
+      "frequency": 0.22361504245855238,
+      "count": 553,
+      "examples": [
+        "01-02-2017: Pilot conversion low; opted for static signage competitors.",
+        "11-01-2017: Priorities shifted to non-digital; budget cut GTX Plus Pro kiosk spend.",
+        "21-01-2017: Priorities shifted to reports; budget cut GTX Basic viz spend."
+      ]
+    },
+    "delays_stalls": {
+      "frequency": 0.37646583097452485,
+      "count": 931,
+      "examples": [
+        "30-11-2016: Escalated to producers; awaiting fan pilot sign-off.",
+        "09-01-2017: Escalated to producers; awaiting fan pilot sign-off.",
+        "21-01-2017: Delays in response certs; deal stalled on MG Special outage rollout."
+      ]
+    },
+    "feature_mismatch": {
+      "frequency": 0.14031540638900122,
+      "count": 347,
+      "examples": [
+        "29-01-2017: New director favored practical; mismatched GTX Plus Pro's motion features.",
+        "07-02-2017: New CTO favored text; mismatched GTX Plus Basic's AR features.",
+        "20-01-2017: New manager favored Excel; mismatched MG Advanced's feedback features."
+      ]
+    },
+    "competitor": {
+      "frequency": 0.14840274969672462,
+      "count": 367,
+      "examples": [
+        "27-01-2017: Competitor free app; abandoned post-MG forecast.",
+        "12-02-2017: Pilot NPS low; opted for survey-only alternatives.",
+        "11-02-2017: Pilot debug low; opted for console competitors."
+      ]
+    }
+  },
+  "overall": {
+    "total_won": 4238,
+    "total_lost": 2473,
+    "total_notes": 26826
+  },
+  "segmented": {
+    "GTX Plus Basic": {
+      "win_drivers": {
+        "demo_success": 864,
+        "bundling_support": 105,
+        "competitive_edge": 104
+      },
+      "loss_risks": {
+        "delays_stalls": 292,
+        "feature_mismatch": 54,
+        "pricing_high": 124,
+        "competitor": 55
+      }
+    },
+    "retail": {
+      "win_drivers": {
+        "demo_success": 943,
+        "bundling_support": 114,
+        "roi_evidence": 48,
+        "competitive_edge": 108
+      },
+      "loss_risks": {
+        "pricing_high": 131,
+        "delays_stalls": 182,
+        "competitor": 48,
+        "feature_mismatch": 59
+      }
+    },
+    "GTX Pro": {
+      "win_drivers": {
+        "demo_success": 937,
+        "bundling_support": 114,
+        "competitive_edge": 105
+      },
+      "loss_risks": {
+        "pricing_high": 145,
+        "delays_stalls": 289,
+        "feature_mismatch": 64,
+        "competitor": 52
+      }
+    },
+    "medical": {
+      "win_drivers": {
+        "demo_success": 816,
+        "bundling_support": 158,
+        "competitive_edge": 59,
+        "roi_evidence": 41
+      },
+      "loss_risks": {
+        "delays_stalls": 318,
+        "feature_mismatch": 55,
+        "pricing_high": 72,
+        "competitor": 81
+      }
+    },
+    "MG Special": {
+      "win_drivers": {
+        "demo_success": 546,
+        "roi_evidence": 50,
+        "bundling_support": 145,
+        "competitive_edge": 81
+      },
+      "loss_risks": {
+        "delays_stalls": 402,
+        "feature_mismatch": 66,
+        "competitor": 71
+      }
+    },
+    "GTX Basic": {
+      "win_drivers": {
+        "demo_success": 1187,
+        "bundling_support": 139,
+        "competitive_edge": 141
+      },
+      "loss_risks": {
+        "delays_stalls": 366,
+        "pricing_high": 175,
+        "feature_mismatch": 78,
+        "competitor": 81
+      }
+    },
+    "software": {
+      "win_drivers": {
+        "demo_success": 420,
+        "bundling_support": 60,
+        "competitive_edge": 64
+      },
+      "loss_risks": {
+        "delays_stalls": 241,
+        "pricing_high": 37,
+        "feature_mismatch": 38,
+        "competitor": 60
+      }
+    },
+    "services": {
+      "win_drivers": {
+        "demo_success": 228,
+        "bundling_support": 41,
+        "competitive_edge": 36
+      },
+      "loss_risks": {
+        "feature_mismatch": 20,
+        "delays_stalls": 105,
+        "competitor": 15,
+        "pricing_high": 26
+      }
+    },
+    "entertainment": {
+      "win_drivers": {
+        "bundling_support": 45,
+        "demo_success": 255,
+        "competitive_edge": 38
+      },
+      "loss_risks": {
+        "delays_stalls": 148,
+        "feature_mismatch": 18,
+        "pricing_high": 28,
+        "competitor": 25
+      }
+    },
+    "GTX Plus Pro": {
+      "win_drivers": {
+        "demo_success": 617,
+        "competitive_edge": 51,
+        "bundling_support": 82
+      },
+      "loss_risks": {
+        "pricing_high": 103,
+        "delays_stalls": 188,
+        "feature_mismatch": 27,
+        "competitor": 33
+      }
+    },
+    "marketing": {
+      "win_drivers": {
+        "demo_success": 520,
+        "bundling_support": 46,
+        "competitive_edge": 58
+      },
+      "loss_risks": {
+        "feature_mismatch": 38,
+        "pricing_high": 59,
+        "delays_stalls": 98,
+        "competitor": 10
+      }
+    },
+    "telecommunications": {
+      "win_drivers": {
+        "demo_success": 311,
+        "competitive_edge": 35,
+        "bundling_support": 46
+      },
+      "loss_risks": {
+        "delays_stalls": 153,
+        "pricing_high": 41,
+        "feature_mismatch": 19,
+        "competitor": 24
+      }
+    },
+    "MG Advanced": {
+      "win_drivers": {
+        "demo_success": 527,
+        "competitive_edge": 75,
+        "roi_evidence": 39,
+        "bundling_support": 91
+      },
+      "loss_risks": {
+        "delays_stalls": 348,
+        "feature_mismatch": 56,
+        "competitor": 74
+      }
+    },
+    "finance": {
+      "win_drivers": {
+        "demo_success": 370,
+        "competitive_edge": 48,
+        "bundling_support": 49
+      },
+      "loss_risks": {
+        "pricing_high": 55,
+        "delays_stalls": 204,
+        "competitor": 32,
+        "feature_mismatch": 31
+      }
+    },
+    "technolgy": {
+      "win_drivers": {
+        "competitive_edge": 98,
+        "bundling_support": 93,
+        "demo_success": 661
+      },
+      "loss_risks": {
+        "delays_stalls": 344,
+        "feature_mismatch": 51,
+        "competitor": 57,
+        "pricing_high": 90
+      }
+    },
+    "employment": {
+      "win_drivers": {
+        "demo_success": 168,
+        "bundling_support": 27,
+        "competitive_edge": 16
+      },
+      "loss_risks": {
+        "delays_stalls": 98,
+        "competitor": 15,
+        "pricing_high": 14,
+        "feature_mismatch": 18
+      }
+    },
+    "GTK 500": {
+      "win_drivers": {
+        "bundling_support": 3,
+        "demo_success": 14,
+        "competitive_edge": 3
+      },
+      "loss_risks": {
+        "delays_stalls": 6,
+        "pricing_high": 6,
+        "feature_mismatch": 2,
+        "competitor": 1
+      }
+    }
+  }
+}
