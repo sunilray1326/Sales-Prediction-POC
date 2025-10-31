@@ -81,7 +81,7 @@ def get_top_matches(prompt, stage_filter, top_k=10):
         filter=filter_expr,
         select=[
             "opportunity_id", "content", "deal_stage", "product", "account_sector", "sales_rep", "account_region", 
-            "sales_price", "revenue_from_deal", "sales_cycle_duration", "deal_value_ratio"
+            "sales_price", "revenue_from_deal", "sales_cycle_duration", "deal_value_ratio", "Notes"
         ],
         top=top_k
     )
@@ -89,12 +89,12 @@ def get_top_matches(prompt, stage_filter, top_k=10):
 
 
 def format_docs(docs):
-    # Enhanced: Append key note snippet from content if available (assuming 'content' includes notes)
+    # Enhanced: Append Note snippet from content if available (assuming 'content' includes notes)
     return "\n".join([
         f"{doc.get('opportunity_id')} | Stage: {doc.get('deal_stage').capitalize()} | Rep: {doc.get('sales_rep')} | "
         f"Product: {doc.get('product')} | Sector: {doc.get('account_sector')} | Region: {doc.get('account_region')} | "
         f"Price: {doc.get('sales_price')} | Revenue: {doc.get('revenue_from_deal')} | Sales Cycle Duration: {doc.get('sales_cycle_duration')} days | "
-        f"Deal Value Ratio: {doc.get('deal_value_ratio')} | Key Note: {doc.get('content', '')[:100]}..."  # Truncated note snippet
+        f"Deal Value Ratio: {doc.get('deal_value_ratio')} | Note: {doc.get('Notes', '')[:400]}..."
         for doc in docs
     ])
 
