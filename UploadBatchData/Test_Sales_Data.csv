@@ -1,0 +1,550 @@
+opportunity_id,sales_rep,product,product_series,sales_price,account_name,account_sector,account_region,account_size,account_revenue,deal_stage,deal_engage_date,deal_close_date,revenue_from_deal
+1C1I7A6R,Moses Frase,GTX Plus Basic,GTX,1096,Cancity,retail,United States,2448,718.62,Won,20-10-2016,01-03-2017,1054
+Z063OYW0,Darcel Schlecht,GTX Pro,GTX,4821,Isdom,medical,United States,4540,3178.24,Won,25-10-2016,11-03-2017,4514
+EC4QE1BX,Darcel Schlecht,MG Special,MG,55,Cancity,retail,United States,2448,718.62,Won,25-10-2016,07-03-2017,50
+MV1LWRNH,Moses Frase,GTX Basic,GTX,550,Codehow,software,United States,2641,2714.9,Won,25-10-2016,09-03-2017,588
+PE84CX4O,Zane Levy,GTX Basic,GTX,550,Hatfan,services,United States,1299,792.46,Won,25-10-2016,02-03-2017,517
+ZNBS69V1,Anna Snelling,MG Special,MG,55,Ron-tech,medical,United States,6837,3922.42,Won,29-10-2016,01-03-2017,49
+9ME3374G,Vicki Laflamme,MG Special,MG,55,J-Texon,retail,United States,3583,1388.67,Won,30-10-2016,02-03-2017,57
+7GN8Q4LL,Markita Hansen,GTX Basic,GTX,550,Cheers,entertainment,United States,6472,4269.9,Won,01-11-2016,07-03-2017,601
+OLK9LKZB,Niesha Huffines,GTX Plus Basic,GTX,1096,Zumgoity,medical,United States,1210,441.08,Won,01-11-2016,03-03-2017,1026
+NL3JZH1Z,Anna Snelling,MG Special,MG,55,Bioholding,medical,Philipines,1356,587.34,Won,04-11-2016,10-03-2017,53
+KWVA7VR1,Gladys Colclough,GTX Pro,GTX,4821,Genco Pura Olive Oil Company,retail,Italy,1635,894.33,Lost,04-11-2016,18-03-2017,0
+S8DX3XOU,James Ascencio,GTX Plus Pro,GTX,5482,Sunnamplex,marketing,Poland,1593,894.37,Won,04-11-2016,10-03-2017,5169
+ENB2XD8G,Maureen Marcano,GTX Plus Pro,GTX,5482,Sonron,telecommunications,United States,5108,1699.85,Won,04-11-2016,06-03-2017,4631
+09YE9QOV,Hayden Neloms,MG Advanced,MG,3393,Finjob,employment,United States,3644,2059.9,Won,05-11-2016,11-03-2017,3393
+3F5MZNEH,Rosalina Dieter,MG Special,MG,55,Sonron,telecommunications,United States,5108,1699.85,Lost,05-11-2016,03-03-2017,0
+M6WEJXC0,Rosalina Dieter,MG Advanced,MG,3393,Scotfind,software,United States,16780,6354.87,Won,05-11-2016,06-03-2017,3284
+6PTR7VBR,Versie Hillebrand,MG Special,MG,55,Treequote,telecommunications,United States,8595,5266.09,Won,06-11-2016,05-03-2017,61
+902REDPA,Daniell Hammack,GTX Pro,GTX,4821,Xx-zobam,entertainment,United States,8274,3838.39,Lost,07-11-2016,09-03-2017,0
+5J9CMGDV,Elease Gluck,MG Special,MG,55,Rantouch,telecommunications,United States,3015,1188.42,Won,07-11-2016,08-03-2017,46
+JJXRR8R6,James Ascencio,GTX Plus Pro,GTX,5482,Fasehatice,retail,United States,7523,4968.91,Lost,07-11-2016,17-03-2017,0
+WF4HA5NW,Moses Frase,MG Special,MG,55,Ron-tech,medical,United States,6837,3922.42,Won,07-11-2016,18-03-2017,50
+C5K2JP1H,Violet Mclelland,GTX Plus Basic,GTX,1096,Vehement Capital Partners,finance,United States,883,646.1,Won,07-11-2016,11-03-2017,1014
+ADRB8OMB,Darcel Schlecht,GTX Basic,GTX,550,Warephase,services,United States,5276,2041.73,Won,08-11-2016,26-03-2017,561
+SBCR987L,Kami Bicknell,GTX Basic,GTX,550,Zoomit,entertainment,United States,978,324.19,Won,10-11-2016,23-03-2017,590
+JSD4APT2,Versie Hillebrand,MG Special,MG,55,Bioholding,medical,Philipines,1356,587.34,Won,10-11-2016,12-03-2017,61
+AO9Z2D17,Violet Mclelland,GTX Plus Pro,GTX,5482,Xx-zobam,entertainment,United States,8274,3838.39,Lost,10-11-2016,11-03-2017,0
+5M58DTJK,Elease Gluck,MG Special,MG,55,Cheers,entertainment,United States,6472,4269.9,Won,11-11-2016,05-03-2017,58
+KNY1OSAB,Maureen Marcano,GTX Pro,GTX,4821,Labdrill,medical,United States,9226,2741.37,Won,11-11-2016,14-03-2017,4899
+EAZDUUM9,Rosie Papadopoulos,MG Advanced,MG,3393,Zotware,software,United States,13809,4478.47,Lost,11-11-2016,01-03-2017,0
+2STUSOFE,Versie Hillebrand,MG Special,MG,55,dambase,marketing,United States,2928,2173.98,Won,11-11-2016,03-03-2017,67
+JYKM0B00,James Ascencio,GTX Pro,GTX,4821,Xx-holding,finance,United States,20293,7537.24,Won,12-11-2016,06-03-2017,4338
+KU28360J,Kary Hendrixson,GTX Basic,GTX,550,Fasehatice,retail,United States,7523,4968.91,Won,12-11-2016,19-03-2017,578
+N4SD17JR,Reed Clapper,GTX Basic,GTX,550,Acme Corporation,technolgy,United States,2822,1100.04,Won,12-11-2016,01-03-2017,556
+E67P9Y3Q,Rosalina Dieter,GTX Basic,GTX,550,Green-Plus,services,United States,1922,692.19,Won,12-11-2016,03-03-2017,635
+AT3MMVIS,Wilburn Farren,MG Advanced,MG,3393,The New York Inquirer,medical,United States,792,439.21,Won,12-11-2016,07-03-2017,3045
+REJ11LRY,Garret Kinder,GTX Plus Basic,GTX,1096,Mathtouch,marketing,Jordan,9516,3027.46,Won,13-11-2016,14-03-2017,1233
+ERV0CAZ7,Versie Hillebrand,MG Special,MG,55,Zumgoity,medical,United States,1210,441.08,Won,13-11-2016,09-03-2017,60
+8SOQADK7,Anna Snelling,MG Special,MG,55,Gogozoom,telecommunications,United States,187,86.68,Lost,14-11-2016,30-03-2017,0
+TCHFT25B,Darcel Schlecht,GTX Basic,GTX,550,Stanredtax,finance,United States,3798,1698.2,Lost,14-11-2016,08-03-2017,0
+CZVN09WN,Darcel Schlecht,GTX Plus Basic,GTX,1096,Konmatfix,marketing,United States,1190,375.43,Won,14-11-2016,20-03-2017,1170
+30UQWUKB,Marty Freudenburg,GTX Plus Basic,GTX,1096,Genco Pura Olive Oil Company,retail,Italy,1635,894.33,Won,15-11-2016,20-03-2017,1162
+97UN20YY,Darcel Schlecht,MG Advanced,MG,3393,Conecom,technolgy,United States,1806,1520.66,Won,16-11-2016,14-03-2017,3725
+JXLERZ9O,Kary Hendrixson,GTX Basic,GTX,550,Golddex,finance,United States,165,52.5,Won,16-11-2016,31-03-2017,559
+6ROE69W5,Rosalina Dieter,GTX Basic,GTX,550,Plexzap,retail,United States,4874,2437.85,Lost,16-11-2016,11-03-2017,0
+0DFXFKT7,Darcel Schlecht,GTX Plus Basic,GTX,1096,Rundofase,technolgy,United States,1238,1008.06,Lost,17-11-2016,21-03-2017,0
+XKMZVSN4,James Ascencio,GTX Plus Pro,GTX,5482,Sonron,telecommunications,United States,5108,1699.85,Won,17-11-2016,05-03-2017,4667
+IU8V0BZK,Marty Freudenburg,GTX Plus Basic,GTX,1096,Finhigh,finance,United States,1759,1102.43,Won,17-11-2016,17-03-2017,903
+XY42936P,Maureen Marcano,GTX Plus Basic,GTX,1096,Finjob,employment,United States,3644,2059.9,Won,17-11-2016,13-03-2017,1180
+XRN54MBM,Niesha Huffines,GTX Basic,GTX,550,Ron-tech,medical,United States,6837,3922.42,Won,17-11-2016,05-03-2017,487
+2V848WZD,Lajuana Vencill,MG Advanced,MG,3393,Stanredtax,finance,United States,3798,1698.2,Won,18-11-2016,04-03-2017,3180
+ONYNTUCG,Darcel Schlecht,GTX Pro,GTX,4821,Funholding,finance,United States,7227,2819.5,Lost,19-11-2016,17-03-2017,0
+HIOHX80Y,Darcel Schlecht,MG Advanced,MG,3393,Gogozoom,telecommunications,United States,187,86.68,Won,19-11-2016,18-03-2017,3563
+LPKT07PV,Boris Faz,GTX Pro,GTX,4821,Opentech,finance,United States,853,355.23,Won,20-11-2016,23-03-2017,4704
+WPB2SLIG,Donn Cantrell,GTX Plus Pro,GTX,5482,Silis,medical,United States,6290,2818.38,Won,20-11-2016,14-03-2017,5585
+XUSUEAV7,Elease Gluck,GTK 500,GTK,26768,Zoomit,entertainment,United States,978,324.19,Won,20-11-2016,09-03-2017,25897
+3TYPII47,Kami Bicknell,GTX Plus Basic,GTX,1096,Goodsilron,marketing,United States,5107,2952.73,Won,20-11-2016,03-03-2017,1207
+7WAX8Z8O,Lajuana Vencill,MG Advanced,MG,3393,Cancity,retail,United States,2448,718.62,Lost,20-11-2016,08-03-2017,0
+MYDUMR3R,Lajuana Vencill,GTX Basic,GTX,550,Rangreen,technolgy,Panama,8775,2938.67,Won,20-11-2016,04-03-2017,559
+37JFKD4I,Niesha Huffines,GTX Plus Basic,GTX,1096,dambase,marketing,United States,2928,2173.98,Won,20-11-2016,09-03-2017,1033
+25YKPHX8,Donn Cantrell,GTX Basic,GTX,550,Kan-code,software,United States,34288,11698.03,Won,21-11-2016,21-03-2017,462
+BXXMA7F3,Hayden Neloms,MG Advanced,MG,3393,Nam-zim,services,Brazil,1179,405.59,Lost,21-11-2016,01-03-2017,0
+GIUUTBXM,Kary Hendrixson,GTX Pro,GTX,4821,Y-corporation,employment,United States,9561,2871.35,Won,21-11-2016,14-03-2017,5539
+MFX2LR1Q,Lajuana Vencill,MG Advanced,MG,3393,Ron-tech,medical,United States,6837,3922.42,Won,21-11-2016,15-03-2017,3573
+DUHE9FLY,Marty Freudenburg,GTX Pro,GTX,4821,Conecom,technolgy,United States,1806,1520.66,Won,21-11-2016,01-03-2017,4926
+96BSG7R1,Zane Levy,GTX Plus Basic,GTX,1096,Sunnamplex,marketing,Poland,1593,894.37,Lost,21-11-2016,17-03-2017,0
+7FQMSWIX,Corliss Cosme,MG Special,MG,55,Bioplex,medical,United States,1016,326.82,Won,22-11-2016,04-03-2017,62
+C20AVXN7,Darcel Schlecht,GTX Pro,GTX,4821,Gogozoom,telecommunications,United States,187,86.68,Won,22-11-2016,14-03-2017,4359
+GS1QVWCR,Kami Bicknell,GTX Basic,GTX,550,Plusstrip,entertainment,United States,315,349.81,Won,22-11-2016,31-03-2017,566
+ZWH8FXY3,Marty Freudenburg,GTX Basic,GTX,550,Toughzap,retail,United States,799,332.43,Won,22-11-2016,03-03-2017,508
+2U94Y3Q9,Rosie Papadopoulos,MG Advanced,MG,3393,Vehement Capital Partners,finance,United States,883,646.1,Lost,22-11-2016,20-03-2017,0
+AAR79NOO,Versie Hillebrand,MG Special,MG,55,Codehow,software,United States,2641,2714.9,Won,22-11-2016,11-03-2017,51
+B6B0PNR2,Vicki Laflamme,GTX Pro,GTX,4821,Dalttechnology,software,United States,96,98.79,Won,22-11-2016,05-03-2017,4899
+LXZA2OSZ,Corliss Cosme,GTX Plus Pro,GTX,5482,Ontomedia,employment,United States,2769,882.12,Won,23-11-2016,03-03-2017,5790
+N0ONCYVZ,Donn Cantrell,MG Special,MG,55,Kinnamplus,retail,United States,1831,702.72,Lost,23-11-2016,30-03-2017,0
+513DPFX5,Gladys Colclough,GTX Pro,GTX,4821,Codehow,software,United States,2641,2714.9,Won,23-11-2016,03-03-2017,4438
+RU023K5W,Gladys Colclough,MG Advanced,MG,3393,Finhigh,finance,United States,1759,1102.43,Won,23-11-2016,17-03-2017,2972
+BZCBQ514,Markita Hansen,GTX Basic,GTX,550,Y-corporation,employment,United States,9561,2871.35,Won,23-11-2016,01-03-2017,523
+HEE6P0QH,Anna Snelling,MG Advanced,MG,3393,Statholdings,employment,United States,586,291.27,Won,24-11-2016,25-03-2017,3647
+L8CHRJ2B,Cassey Cress,MG Advanced,MG,3393,Umbrella Corporation,finance,United States,5113,2022.14,Won,24-11-2016,01-03-2017,4200
+V2X2KMUR,Kami Bicknell,GTX Plus Basic,GTX,1096,Faxquote,telecommunications,United States,5595,1825.82,Won,24-11-2016,28-03-2017,1059
+AJIPJP75,Marty Freudenburg,GTX Plus Basic,GTX,1096,Codehow,software,United States,2641,2714.9,Lost,24-11-2016,05-03-2017,0
+NYVA2G6U,Versie Hillebrand,MG Special,MG,55,Dontechi,software,United States,10083,4618,Won,24-11-2016,02-03-2017,57
+FF45BXTL,Vicki Laflamme,MG Advanced,MG,3393,Konex,technolgy,United States,13756,7708.38,Won,24-11-2016,27-03-2017,3671
+TTA9LYBS,Anna Snelling,MG Special,MG,55,Treequote,telecommunications,United States,8595,5266.09,Won,25-11-2016,01-03-2017,58
+PAGZQH8L,Cecily Lampkin,MG Advanced,MG,3393,Treequote,telecommunications,United States,8595,5266.09,Won,25-11-2016,06-03-2017,3956
+J7YF6DS7,Corliss Cosme,GTX Plus Pro,GTX,5482,Betasoloin,medical,United States,495,251.41,Won,25-11-2016,01-03-2017,5964
+S5IXY4Z9,Corliss Cosme,GTX Pro,GTX,4821,Betasoloin,medical,United States,495,251.41,Won,25-11-2016,06-03-2017,4570
+JQBJMETQ,Darcel Schlecht,MG Special,MG,55,Domzoom,entertainment,United States,551,217.87,Won,25-11-2016,27-03-2017,49
+0LVWSWEW,Violet Mclelland,MG Special,MG,55,Donquadtech,technolgy,United States,3194,1712.68,Won,25-11-2016,06-03-2017,65
+K53BC1T9,Anna Snelling,MG Special,MG,55,Domzoom,entertainment,United States,551,217.87,Lost,26-11-2016,27-03-2017,0
+D40N5I9Y,Darcel Schlecht,GTX Pro,GTX,4821,Finhigh,finance,United States,1759,1102.43,Won,26-11-2016,08-03-2017,4739
+051QTX8Z,Niesha Huffines,GTX Plus Basic,GTX,1096,Globex Corporation,technolgy,Norway,2497,1223.72,Won,26-11-2016,21-03-2017,1080
+5D2XH04S,Reed Clapper,MG Special,MG,55,Plussunin,retail,United States,4018,1419.98,Won,26-11-2016,12-03-2017,57
+V9E582SK,Garret Kinder,GTX Basic,GTX,550,Konex,technolgy,United States,13756,7708.38,Won,27-11-2016,16-03-2017,469
+UK0LEZRJ,Kary Hendrixson,GTX Basic,GTX,550,Condax,medical,United States,9,4.54,Won,27-11-2016,03-03-2017,532
+IT10CFQH,Rosalina Dieter,GTX Basic,GTX,550,Konex,technolgy,United States,13756,7708.38,Won,27-11-2016,26-03-2017,538
+8VKD2CCH,Rosie Papadopoulos,GTX Pro,GTX,4821,Massive Dynamic,entertainment,United States,1095,665.06,Won,27-11-2016,21-03-2017,4829
+2XQAKBXH,Zane Levy,GTX Plus Pro,GTX,5482,Doncon,technolgy,United States,1501,587.72,Won,27-11-2016,11-03-2017,5370
+7G7YLGJO,Zane Levy,GTX Plus Pro,GTX,5482,Hatfan,services,United States,1299,792.46,Won,27-11-2016,21-03-2017,6499
+GCA97W27,Darcel Schlecht,GTX Plus Basic,GTX,1096,Genco Pura Olive Oil Company,retail,Italy,1635,894.33,Won,28-11-2016,06-03-2017,1161
+K8FUZHOG,Kary Hendrixson,GTX Basic,GTX,550,Scotfind,software,United States,16780,6354.87,Won,28-11-2016,26-03-2017,576
+5WJZMULK,Maureen Marcano,GTX Plus Basic,GTX,1096,Hatfan,services,United States,1299,792.46,Won,28-11-2016,19-03-2017,979
+ZPYD4T9W,Versie Hillebrand,MG Special,MG,55,Stanredtax,finance,United States,3798,1698.2,Won,28-11-2016,07-03-2017,43
+KE9ZEDS8,Gladys Colclough,MG Special,MG,55,Scottech,marketing,United States,100,45.39,Won,29-11-2016,07-03-2017,57
+7KK0HQ4C,Lajuana Vencill,MG Special,MG,55,Ron-tech,medical,United States,6837,3922.42,Lost,29-11-2016,28-03-2017,0
+FP7014Z0,Lajuana Vencill,GTX Plus Basic,GTX,1096,Funholding,finance,United States,7227,2819.5,Won,29-11-2016,12-03-2017,948
+N4HFHDMW,Wilburn Farren,MG Advanced,MG,3393,Plussunin,retail,United States,4018,1419.98,Won,29-11-2016,10-03-2017,3012
+2HFLKREC,Cassey Cress,MG Advanced,MG,3393,Zotware,software,United States,13809,4478.47,Won,30-11-2016,15-03-2017,3665
+7JVTTVCO,Violet Mclelland,GTX Basic,GTX,550,Gekko & Co,retail,United States,3502,2520.83,Won,30-11-2016,24-03-2017,564
+3X13866U,Anna Snelling,GTX Plus Basic,GTX,1096,dambase,marketing,United States,2928,2173.98,Lost,01-12-2016,06-03-2017,0
+7LE19SYE,Cassey Cress,MG Advanced,MG,3393,Initech,telecommunications,United States,20275,6395.05,Won,01-12-2016,22-03-2017,3463
+J5V2M7Y1,Corliss Cosme,GTX Basic,GTX,550,Gekko & Co,retail,United States,3502,2520.83,Won,01-12-2016,26-03-2017,513
+41MURAI5,Corliss Cosme,GTX Basic,GTX,550,Konex,technolgy,United States,13756,7708.38,Won,01-12-2016,28-03-2017,590
+QHI8WRIA,Darcel Schlecht,GTX Pro,GTX,4821,Dontechi,software,United States,10083,4618,Won,01-12-2016,30-03-2017,4511
+AJXAXV4W,Lajuana Vencill,MG Advanced,MG,3393,Finhigh,finance,United States,1759,1102.43,Lost,01-12-2016,02-03-2017,0
+VPDXX5PJ,Niesha Huffines,GTX Basic,GTX,550,Cancity,retail,United States,2448,718.62,Won,01-12-2016,26-03-2017,546
+PZB9NUK8,Vicki Laflamme,MG Special,MG,55,Y-corporation,employment,United States,9561,2871.35,Won,01-12-2016,05-03-2017,46
+A0ANOYPF,Darcel Schlecht,GTX Pro,GTX,4821,Ron-tech,medical,United States,6837,3922.42,Won,02-12-2016,09-03-2017,4891
+0P4AAPYX,Hayden Neloms,GTX Plus Basic,GTX,1096,Golddex,finance,United States,165,52.5,Won,02-12-2016,03-03-2017,1040
+O6T5WC3W,Hayden Neloms,GTX Plus Basic,GTX,1096,Sonron,telecommunications,United States,5108,1699.85,Won,02-12-2016,04-03-2017,1108
+0NO04P6C,Hayden Neloms,MG Special,MG,55,Nam-zim,services,Brazil,1179,405.59,Won,02-12-2016,04-03-2017,59
+22OFSXBT,Jonathan Berthelot,GTX Pro,GTX,4821,Statholdings,employment,United States,586,291.27,Won,02-12-2016,30-03-2017,5406
+MRXZTMM6,Kary Hendrixson,GTX Basic,GTX,550,Cheers,entertainment,United States,6472,4269.9,Won,02-12-2016,20-03-2017,515
+LGI8QEC2,Moses Frase,GTX Basic,GTX,550,Treequote,telecommunications,United States,8595,5266.09,Won,02-12-2016,06-03-2017,583
+6KZ0NCFX,Versie Hillebrand,MG Special,MG,55,Funholding,finance,United States,7227,2819.5,Won,02-12-2016,14-03-2017,54
+3SF8O9S6,Vicki Laflamme,MG Special,MG,55,Plusstrip,entertainment,United States,315,349.81,Won,02-12-2016,27-03-2017,60
+XK668R7C,Darcel Schlecht,GTX Basic,GTX,550,Dontechi,software,United States,10083,4618,Lost,03-12-2016,12-03-2017,0
+TZCAQWL3,Darcel Schlecht,GTX Pro,GTX,4821,Funholding,finance,United States,7227,2819.5,Lost,03-12-2016,19-03-2017,0
+BADC6A9H,Darcel Schlecht,GTX Basic,GTX,550,Globex Corporation,technolgy,Norway,2497,1223.72,Won,03-12-2016,23-03-2017,516
+B8E0UUZR,Darcel Schlecht,GTX Pro,GTX,4821,Rangreen,technolgy,Panama,8775,2938.67,Won,03-12-2016,22-03-2017,4829
+I043RXJV,Moses Frase,GTX Plus Basic,GTX,1096,Dontechi,software,United States,10083,4618,Lost,03-12-2016,17-03-2017,0
+MWWB44CC,Reed Clapper,GTX Plus Basic,GTX,1096,Donquadtech,technolgy,United States,3194,1712.68,Won,03-12-2016,02-03-2017,950
+HBTINPDG,Vicki Laflamme,GTX Plus Basic,GTX,1096,Xx-holding,finance,United States,20293,7537.24,Lost,03-12-2016,09-03-2017,0
+DZ3KHZSX,Corliss Cosme,GTX Basic,GTX,550,Initech,telecommunications,United States,20275,6395.05,Won,04-12-2016,20-03-2017,513
+3W1K7X5F,Darcel Schlecht,GTX Pro,GTX,4821,Condax,medical,United States,9,4.54,Lost,04-12-2016,09-03-2017,0
+45A57X68,Darcel Schlecht,GTX Plus Pro,GTX,5482,Ron-tech,medical,United States,6837,3922.42,Won,04-12-2016,12-03-2017,5522
+9SLYC4TR,Gladys Colclough,MG Special,MG,55,Cancity,retail,United States,2448,718.62,Won,04-12-2016,09-03-2017,56
+JLWKWQYC,James Ascencio,GTX Pro,GTX,4821,Doncon,technolgy,United States,1501,587.72,Won,04-12-2016,08-03-2017,5673
+7QC6FOKW,Kami Bicknell,GTX Basic,GTX,550,Xx-holding,finance,United States,20293,7537.24,Won,04-12-2016,10-03-2017,598
+XA184CMW,Marty Freudenburg,GTX Plus Pro,GTX,5482,Rangreen,technolgy,Panama,8775,2938.67,Won,04-12-2016,16-03-2017,5787
+S0N7BYU3,Maureen Marcano,GTX Plus Basic,GTX,1096,Singletechno,retail,United States,5374,2214.94,Won,04-12-2016,08-03-2017,1070
+6WOMHAJM,Boris Faz,MG Advanced,MG,3393,Donquadtech,technolgy,United States,3194,1712.68,Won,05-12-2016,14-03-2017,3677
+G1QGATKV,Cassey Cress,GTX Plus Pro,GTX,5482,Ontomedia,employment,United States,2769,882.12,Won,05-12-2016,30-03-2017,5425
+6XFVQI32,Donn Cantrell,MG Advanced,MG,3393,Yearin,retail,United States,3851,2261.05,Won,05-12-2016,23-03-2017,3415
+OGD4MDJ9,Maureen Marcano,GTX Plus Basic,GTX,1096,Lexiqvolax,medical,United States,3889,1618.89,Won,05-12-2016,21-03-2017,891
+4NGBUZWJ,Lajuana Vencill,GTX Basic,GTX,550,Codehow,software,United States,2641,2714.9,Won,06-12-2016,12-03-2017,609
+EFG5DGV5,Markita Hansen,MG Special,MG,55,Plusstrip,entertainment,United States,315,349.81,Won,06-12-2016,16-03-2017,54
+82MM4H33,Zane Levy,GTX Plus Basic,GTX,1096,Labdrill,medical,United States,9226,2741.37,Won,06-12-2016,09-03-2017,1049
+14PM641K,Cassey Cress,GTX Plus Basic,GTX,1096,Gekko & Co,retail,United States,3502,2520.83,Won,07-12-2016,07-03-2017,1152
+DSBGHOPN,Daniell Hammack,MG Special,MG,55,Plussunin,retail,United States,4018,1419.98,Lost,07-12-2016,20-03-2017,0
+1YSOZLHF,Daniell Hammack,GTX Pro,GTX,4821,Umbrella Corporation,finance,United States,5113,2022.14,Won,07-12-2016,28-03-2017,4799
+E8RP9FRW,Gladys Colclough,MG Special,MG,55,dambase,marketing,United States,2928,2173.98,Won,07-12-2016,12-03-2017,51
+787IRG9Q,Hayden Neloms,MG Advanced,MG,3393,J-Texon,retail,United States,3583,1388.67,Won,07-12-2016,03-03-2017,3426
+0TUS4NAC,Jonathan Berthelot,MG Special,MG,55,Rangreen,technolgy,Panama,8775,2938.67,Won,07-12-2016,11-03-2017,51
+FAJTQMUM,Kami Bicknell,GTX Basic,GTX,550,Finjob,employment,United States,3644,2059.9,Won,07-12-2016,20-03-2017,564
+TWF0J0DF,Cecily Lampkin,GTX Plus Pro,GTX,5482,Isdom,medical,United States,4540,3178.24,Won,08-12-2016,01-03-2017,5882
+UQ14O415,Donn Cantrell,GTX Pro,GTX,4821,Plussunin,retail,United States,4018,1419.98,Won,08-12-2016,20-03-2017,5059
+BOJSLNDG,Kami Bicknell,MG Advanced,MG,3393,Singletechno,retail,United States,5374,2214.94,Won,08-12-2016,11-03-2017,3388
+DASMR0EK,Markita Hansen,GTX Plus Pro,GTX,5482,Zoomit,entertainment,United States,978,324.19,Won,08-12-2016,10-03-2017,5410
+A76M0OOH,Reed Clapper,GTX Plus Basic,GTX,1096,Zathunicon,retail,United States,144,71.12,Won,08-12-2016,28-03-2017,978
+E1VKE2PH,Vicki Laflamme,MG Special,MG,55,Scotfind,software,United States,16780,6354.87,Won,08-12-2016,26-03-2017,54
+SKY95DVG,Anna Snelling,MG Special,MG,55,Betatech,medical,Kenya,1185,647.18,Lost,09-12-2016,22-03-2017,0
+V5OK4V5I,Cassey Cress,GTX Basic,GTX,550,Bubba Gump,software,United States,2253,987.39,Won,09-12-2016,14-03-2017,549
+GJ4L5HHN,Corliss Cosme,GTX Plus Basic,GTX,1096,Mathtouch,marketing,Jordan,9516,3027.46,Won,09-12-2016,14-03-2017,1034
+9R8JWY3J,Donn Cantrell,GTX Pro,GTX,4821,Vehement Capital Partners,finance,United States,883,646.1,Won,09-12-2016,03-03-2017,4998
+0EOFVU05,Donn Cantrell,MG Advanced,MG,3393,Ontomedia,employment,United States,2769,882.12,Won,09-12-2016,28-03-2017,3421
+HNHOPL7M,Kary Hendrixson,GTX Plus Pro,GTX,5482,Doncon,technolgy,United States,1501,587.72,Won,09-12-2016,04-03-2017,5425
+Y0NYI17R,Vicki Laflamme,MG Special,MG,55,Dalttechnology,software,United States,96,98.79,Won,09-12-2016,15-03-2017,55
+R4F4RGAL,Violet Mclelland,MG Advanced,MG,3393,Silis,medical,United States,6290,2818.38,Won,09-12-2016,14-03-2017,3558
+0ZHLQFGU,Kami Bicknell,GTX Pro,GTX,4821,Blackzim,retail,United States,1588,497.11,Won,10-12-2016,22-03-2017,4839
+40DPY158,Markita Hansen,MG Special,MG,55,Hottechi,technolgy,Korea,16499,8170.38,Won,10-12-2016,25-03-2017,47
+DP9E525R,Maureen Marcano,GTX Plus Basic,GTX,1096,Fasehatice,retail,United States,7523,4968.91,Won,10-12-2016,24-03-2017,1007
+DBDUMQQK,Niesha Huffines,MG Special,MG,55,Inity,marketing,United States,8801,2403.58,Won,10-12-2016,24-03-2017,48
+CNBN12RL,Versie Hillebrand,MG Special,MG,55,Treequote,telecommunications,United States,8595,5266.09,Won,10-12-2016,07-03-2017,49
+OXL0YWEE,Violet Mclelland,GTX Basic,GTX,550,Mathtouch,marketing,Jordan,9516,3027.46,Won,10-12-2016,18-03-2017,504
+5CSSZJF4,Jonathan Berthelot,GTX Basic,GTX,550,Finhigh,finance,United States,1759,1102.43,Won,11-12-2016,21-03-2017,543
+0XG8TOJF,Kary Hendrixson,GTX Plus Pro,GTX,5482,Fasehatice,retail,United States,7523,4968.91,Lost,11-12-2016,18-03-2017,0
+IIS0O91J,Kary Hendrixson,GTX Pro,GTX,4821,Fasehatice,retail,United States,7523,4968.91,Won,11-12-2016,28-03-2017,5149
+2LP5SUR5,Lajuana Vencill,GTX Basic,GTX,550,Treequote,telecommunications,United States,8595,5266.09,Lost,11-12-2016,09-03-2017,0
+PYZZ3IS6,Markita Hansen,GTX Plus Basic,GTX,1096,Blackzim,retail,United States,1588,497.11,Won,11-12-2016,11-03-2017,1043
+5I4K5TQE,Cassey Cress,GTX Plus Pro,GTX,5482,Sumace,retail,Romania,493,167.89,Lost,12-12-2016,09-03-2017,0
+RV3LPOYP,James Ascencio,GTX Basic,GTX,550,Condax,medical,United States,9,4.54,Won,12-12-2016,29-03-2017,437
+1HVNTEPV,Rosie Papadopoulos,GTX Pro,GTX,4821,Kinnamplus,retail,United States,1831,702.72,Won,12-12-2016,11-03-2017,4465
+LC85AQ1I,Vicki Laflamme,GTX Basic,GTX,550,Konex,technolgy,United States,13756,7708.38,Won,12-12-2016,18-03-2017,443
+TBV972NP,Violet Mclelland,MG Special,MG,55,Sumace,retail,Romania,493,167.89,Lost,12-12-2016,23-03-2017,0
+EJMX0EIJ,Darcel Schlecht,GTX Plus Pro,GTX,5482,Betatech,medical,Kenya,1185,647.18,Won,13-12-2016,20-03-2017,4278
+VR9NYBOV,Garret Kinder,MG Special,MG,55,Kinnamplus,retail,United States,1831,702.72,Won,13-12-2016,06-03-2017,41
+3U25FK08,Jonathan Berthelot,GTX Basic,GTX,550,Isdom,medical,United States,4540,3178.24,Won,13-12-2016,28-03-2017,519
+CRLK4Z1P,Maureen Marcano,GTX Basic,GTX,550,Kan-code,software,United States,34288,11698.03,Won,13-12-2016,04-03-2017,524
+OGENAT0L,Zane Levy,GTX Basic,GTX,550,Singletechno,retail,United States,5374,2214.94,Won,13-12-2016,27-03-2017,552
+F57JWIDF,Gladys Colclough,GTX Plus Basic,GTX,1096,Konmatfix,marketing,United States,1190,375.43,Won,14-12-2016,02-03-2017,970
+LF8JZ3Q5,Kary Hendrixson,GTX Plus Basic,GTX,1096,Hatfan,services,United States,1299,792.46,Won,14-12-2016,13-03-2017,1046
+MRGBSMQ5,Kary Hendrixson,GTX Plus Basic,GTX,1096,Sunnamplex,marketing,Poland,1593,894.37,Won,14-12-2016,14-03-2017,988
+CBAV8ZJL,Lajuana Vencill,GTX Basic,GTX,550,Codehow,software,United States,2641,2714.9,Won,14-12-2016,22-03-2017,547
+NN4DWBVN,Maureen Marcano,GTX Pro,GTX,4821,Singletechno,retail,United States,5374,2214.94,Lost,14-12-2016,04-03-2017,0
+6JXHEZYK,Versie Hillebrand,MG Special,MG,55,Isdom,medical,United States,4540,3178.24,Won,14-12-2016,31-03-2017,54
+WDHNR2EI,Violet Mclelland,MG Special,MG,55,Silis,medical,United States,6290,2818.38,Won,14-12-2016,20-03-2017,57
+4K750D6F,Violet Mclelland,MG Special,MG,55,Yearin,retail,United States,3851,2261.05,Won,14-12-2016,18-03-2017,55
+94GI0ZJ7,Anna Snelling,GTX Plus Pro,GTX,5482,Stanredtax,finance,United States,3798,1698.2,Won,15-12-2016,15-03-2017,5765
+TODG6DEK,Daniell Hammack,GTX Basic,GTX,550,Bioplex,medical,United States,1016,326.82,Won,15-12-2016,16-03-2017,639
+G0ECB8FS,Kary Hendrixson,GTX Pro,GTX,4821,Labdrill,medical,United States,9226,2741.37,Won,15-12-2016,15-03-2017,5100
+96MZYUY0,Vicki Laflamme,GTX Pro,GTX,4821,Fasehatice,retail,United States,7523,4968.91,Won,15-12-2016,07-03-2017,4906
+JZOKHHWN,Donn Cantrell,GTX Plus Basic,GTX,1096,Opentech,finance,United States,853,355.23,Won,16-12-2016,07-03-2017,1037
+EH6I67I0,James Ascencio,GTX Basic,GTX,550,Plexzap,retail,United States,4874,2437.85,Won,16-12-2016,15-03-2017,537
+JUUXF02Z,Kary Hendrixson,GTX Pro,GTX,4821,Hatfan,services,United States,1299,792.46,Won,16-12-2016,09-03-2017,4694
+OT87JDWO,Lajuana Vencill,GTX Basic,GTX,550,Konmatfix,marketing,United States,1190,375.43,Won,16-12-2016,24-03-2017,560
+YHKT6YJ7,Moses Frase,GTX Basic,GTX,550,dambase,marketing,United States,2928,2173.98,Won,16-12-2016,13-03-2017,589
+H78I3TAY,Reed Clapper,GTX Basic,GTX,550,Mathtouch,marketing,Jordan,9516,3027.46,Won,16-12-2016,14-03-2017,493
+1ROC43JK,Versie Hillebrand,MG Special,MG,55,Betatech,medical,Kenya,1185,647.18,Won,16-12-2016,08-03-2017,50
+LPZLQL48,Vicki Laflamme,GTX Basic,GTX,550,Y-corporation,employment,United States,9561,2871.35,Won,16-12-2016,28-03-2017,492
+3KR50X38,Corliss Cosme,GTX Plus Basic,GTX,1096,Konex,technolgy,United States,13756,7708.38,Won,17-12-2016,13-03-2017,1255
+Q3WLHRE9,Darcel Schlecht,GTX Basic,GTX,550,Statholdings,employment,United States,586,291.27,Won,17-12-2016,04-03-2017,463
+IX7UEOAP,Donn Cantrell,GTX Plus Basic,GTX,1096,Initech,telecommunications,United States,20275,6395.05,Lost,17-12-2016,27-03-2017,0
+NQU62K1H,Donn Cantrell,GTX Basic,GTX,550,Zencorporation,technolgy,China,142,40.79,Won,17-12-2016,12-03-2017,605
+NAQKOU0T,Hayden Neloms,GTX Plus Basic,GTX,1096,Fasehatice,retail,United States,7523,4968.91,Won,17-12-2016,20-03-2017,1315
+I3V3GUAI,Lajuana Vencill,GTX Basic,GTX,550,Zumgoity,medical,United States,1210,441.08,Won,17-12-2016,02-03-2017,559
+PN4VJDXY,Moses Frase,GTX Basic,GTX,550,Rundofase,technolgy,United States,1238,1008.06,Won,17-12-2016,28-03-2017,557
+K9D4DQ3R,Rosie Papadopoulos,MG Special,MG,55,Vehement Capital Partners,finance,United States,883,646.1,Won,17-12-2016,02-03-2017,48
+9X6V79KE,Versie Hillebrand,GTX Plus Pro,GTX,5482,Isdom,medical,United States,4540,3178.24,Won,17-12-2016,25-03-2017,6282
+W1KLFNE4,Anna Snelling,MG Advanced,MG,3393,Isdom,medical,United States,4540,3178.24,Won,18-12-2016,02-03-2017,3246
+GD2OCW12,Darcel Schlecht,GTX Basic,GTX,550,Finhigh,finance,United States,1759,1102.43,Won,18-12-2016,14-03-2017,514
+6XO4RYXK,Donn Cantrell,GTX Plus Basic,GTX,1096,Silis,medical,United States,6290,2818.38,Won,18-12-2016,15-03-2017,1132
+18Y7GRPW,Garret Kinder,GTX Plus Pro,GTX,5482,Silis,medical,United States,6290,2818.38,Won,18-12-2016,21-03-2017,5918
+127ZPLXQ,Kary Hendrixson,GTX Pro,GTX,4821,Hottechi,technolgy,Korea,16499,8170.38,Lost,18-12-2016,18-03-2017,0
+U07C2HEG,Maureen Marcano,MG Special,MG,55,Kan-code,software,United States,34288,11698.03,Lost,18-12-2016,14-03-2017,0
+RNTOJ78L,Rosalina Dieter,MG Special,MG,55,Hatfan,services,United States,1299,792.46,Lost,18-12-2016,13-03-2017,0
+NLB4D5BQ,Versie Hillebrand,MG Advanced,MG,3393,Gogozoom,telecommunications,United States,187,86.68,Won,18-12-2016,24-03-2017,2955
+FCFDJIEZ,Vicki Laflamme,GTX Pro,GTX,4821,Fasehatice,retail,United States,7523,4968.91,Won,18-12-2016,21-03-2017,3742
+YZGDW4G1,Violet Mclelland,MG Special,MG,55,Initech,telecommunications,United States,20275,6395.05,Won,18-12-2016,14-03-2017,64
+G8AO5FA2,Wilburn Farren,MG Advanced,MG,3393,Initech,telecommunications,United States,20275,6395.05,Lost,18-12-2016,27-03-2017,0
+LXXW3TRW,Elease Gluck,GTX Plus Basic,GTX,1096,Scotfind,software,United States,16780,6354.87,Won,19-12-2016,18-03-2017,1164
+8KJ3H262,Elease Gluck,MG Special,MG,55,Singletechno,retail,United States,5374,2214.94,Won,19-12-2016,07-03-2017,65
+88POGNEL,Gladys Colclough,GTX Plus Basic,GTX,1096,Cancity,retail,United States,2448,718.62,Lost,19-12-2016,07-03-2017,0
+UYP3NNU6,Kami Bicknell,GTX Basic,GTX,550,Groovestreet,retail,United States,299,223.8,Won,19-12-2016,16-03-2017,441
+S1V8684Y,Marty Freudenburg,GTX Plus Basic,GTX,1096,Finhigh,finance,United States,1759,1102.43,Lost,19-12-2016,12-03-2017,0
+MOPWEMB5,Vicki Laflamme,GTX Pro,GTX,4821,Hatfan,services,United States,1299,792.46,Won,19-12-2016,16-03-2017,4907
+L62MDI48,Anna Snelling,MG Advanced,MG,3393,Isdom,medical,United States,4540,3178.24,Lost,20-12-2016,01-03-2017,0
+3EL8D4WO,Darcel Schlecht,MG Advanced,MG,3393,Codehow,software,United States,2641,2714.9,Won,20-12-2016,25-03-2017,3269
+VOAN1NXG,Donn Cantrell,GTX Basic,GTX,550,Kinnamplus,retail,United States,1831,702.72,Won,20-12-2016,12-03-2017,579
+ALW92XQL,Gladys Colclough,GTX Basic,GTX,550,Isdom,medical,United States,4540,3178.24,Lost,20-12-2016,25-03-2017,0
+TJ6ZA1M3,Kary Hendrixson,GTX Basic,GTX,550,Dalttechnology,software,United States,96,98.79,Lost,20-12-2016,07-03-2017,0
+FKAFO8O9,Kary Hendrixson,MG Special,MG,55,Xx-holding,finance,United States,20293,7537.24,Won,20-12-2016,31-03-2017,51
+1XBC7M9F,Markita Hansen,MG Special,MG,55,Faxquote,telecommunications,United States,5595,1825.82,Won,20-12-2016,08-03-2017,64
+8IXBS90G,Rosie Papadopoulos,MG Special,MG,55,Donware,marketing,United States,2570,1197.44,Won,20-12-2016,08-03-2017,60
+2X45BEOS,Cassey Cress,GTX Plus Basic,GTX,1096,Ganjaflex,retail,Japan,17479,5158.71,Won,21-12-2016,27-03-2017,1186
+EQ8X0QTL,Corliss Cosme,MG Advanced,MG,3393,Yearin,retail,United States,3851,2261.05,Won,21-12-2016,09-03-2017,3577
+5QD53WHF,Daniell Hammack,GTX Plus Basic,GTX,1096,Donquadtech,technolgy,United States,3194,1712.68,Won,21-12-2016,07-03-2017,1020
+79EABK3X,Hayden Neloms,MG Special,MG,55,Zoomit,entertainment,United States,978,324.19,Won,21-12-2016,23-03-2017,53
+2DKO9X1T,Jonathan Berthelot,GTX Basic,GTX,550,Rundofase,technolgy,United States,1238,1008.06,Lost,21-12-2016,10-03-2017,0
+IBDEQVBN,Kary Hendrixson,GTX Basic,GTX,550,Faxquote,telecommunications,United States,5595,1825.82,Lost,21-12-2016,28-03-2017,0
+QZ3VV4C1,Kary Hendrixson,GTX Pro,GTX,4821,Sunnamplex,marketing,Poland,1593,894.37,Won,21-12-2016,08-03-2017,4719
+62AK8UWX,Moses Frase,GTX Basic,GTX,550,Codehow,software,United States,2641,2714.9,Won,21-12-2016,22-03-2017,546
+5QM4ORNT,Niesha Huffines,GTX Plus Basic,GTX,1096,Domzoom,entertainment,United States,551,217.87,Won,21-12-2016,21-03-2017,1212
+S91N9YBL,Vicki Laflamme,GTX Basic,GTX,550,Sunnamplex,marketing,Poland,1593,894.37,Lost,21-12-2016,08-03-2017,0
+44H0FJMH,Anna Snelling,GTX Plus Pro,GTX,5482,Bioholding,medical,Philipines,1356,587.34,Lost,22-12-2016,27-03-2017,0
+N5AZLQZR,Gladys Colclough,GTX Plus Pro,GTX,5482,Dontechi,software,United States,10083,4618,Won,22-12-2016,14-03-2017,5533
+4T295XQL,Kami Bicknell,MG Advanced,MG,3393,Finjob,employment,United States,3644,2059.9,Won,22-12-2016,01-03-2017,3295
+YFS5KLJJ,Rosalina Dieter,MG Special,MG,55,Finjob,employment,United States,3644,2059.9,Won,22-12-2016,31-03-2017,45
+S8GLKDB9,Violet Mclelland,MG Special,MG,55,Bioplex,medical,United States,1016,326.82,Won,22-12-2016,04-03-2017,56
+01QKN578,Darcel Schlecht,GTX Pro,GTX,4821,Funholding,finance,United States,7227,2819.5,Won,23-12-2016,20-03-2017,4247
+M0JKP0HT,Gladys Colclough,MG Advanced,MG,3393,Isdom,medical,United States,4540,3178.24,Won,23-12-2016,13-03-2017,3440
+ZC3KKSUK,James Ascencio,GTX Pro,GTX,4821,Plexzap,retail,United States,4874,2437.85,Won,23-12-2016,02-03-2017,5040
+3X8VLQ5G,Jonathan Berthelot,GTX Basic,GTX,550,Cancity,retail,United States,2448,718.62,Won,23-12-2016,12-03-2017,469
+EZLXL6GL,Moses Frase,MG Special,MG,55,Isdom,medical,United States,4540,3178.24,Won,23-12-2016,07-03-2017,58
+R8PEL8V8,Cecily Lampkin,MG Advanced,MG,3393,Isdom,medical,United States,4540,3178.24,Won,24-12-2016,16-03-2017,2955
+L1R32S8H,Corliss Cosme,GTX Plus Pro,GTX,5482,Condax,medical,United States,9,4.54,Won,24-12-2016,26-03-2017,5228
+J7N8J8NM,Darcel Schlecht,MG Advanced,MG,3393,Toughzap,retail,United States,799,332.43,Won,24-12-2016,14-03-2017,3358
+TO7PGVP1,Elease Gluck,GTX Plus Pro,GTX,5482,Green-Plus,services,United States,1922,692.19,Lost,24-12-2016,29-03-2017,0
+A051G1B4,Jonathan Berthelot,GTX Basic,GTX,550,Codehow,software,United States,2641,2714.9,Won,24-12-2016,31-03-2017,517
+NMDMM5YJ,Moses Frase,GTX Basic,GTX,550,Dontechi,software,United States,10083,4618,Won,24-12-2016,03-03-2017,615
+LWPJEV3U,Niesha Huffines,GTX Basic,GTX,550,Domzoom,entertainment,United States,551,217.87,Lost,24-12-2016,10-03-2017,0
+I93ZFHEM,Versie Hillebrand,MG Special,MG,55,Condax,medical,United States,9,4.54,Won,24-12-2016,08-03-2017,62
+B2VJCVBB,Darcel Schlecht,GTX Plus Pro,GTX,5482,Isdom,medical,United States,4540,3178.24,Won,25-12-2016,13-03-2017,4711
+F90O03ZH,Donn Cantrell,GTX Pro,GTX,4821,Kinnamplus,retail,United States,1831,702.72,Lost,25-12-2016,23-03-2017,0
+PC78RLUX,Garret Kinder,GTX Basic,GTX,550,Yearin,retail,United States,3851,2261.05,Won,25-12-2016,30-03-2017,510
+X6GL64T5,Gladys Colclough,GTX Pro,GTX,4821,Warephase,services,United States,5276,2041.73,Won,25-12-2016,25-03-2017,4891
+OWM3BPGW,Hayden Neloms,GTX Plus Basic,GTX,1096,Green-Plus,services,United States,1922,692.19,Won,25-12-2016,17-03-2017,926
+RP5PS9A5,Lajuana Vencill,MG Special,MG,55,Betatech,medical,Kenya,1185,647.18,Won,25-12-2016,10-03-2017,56
+F2PW7WP2,Violet Mclelland,MG Special,MG,55,Ontomedia,employment,United States,2769,882.12,Won,25-12-2016,05-03-2017,47
+GK8YD2XW,Darcel Schlecht,GTX Basic,GTX,550,Rangreen,technolgy,Panama,8775,2938.67,Lost,26-12-2016,23-03-2017,0
+U4LRR9E9,James Ascencio,GTX Plus Pro,GTX,5482,Nam-zim,services,Brazil,1179,405.59,Won,26-12-2016,10-03-2017,6490
+9N55D1AH,Niesha Huffines,MG Advanced,MG,3393,Treequote,telecommunications,United States,8595,5266.09,Won,26-12-2016,02-03-2017,3841
+WI4PODA2,Kary Hendrixson,GTX Plus Pro,GTX,5482,Faxquote,telecommunications,United States,5595,1825.82,Won,27-12-2016,15-03-2017,5256
+VF1V41RI,Markita Hansen,MG Special,MG,55,Kan-code,software,United States,34288,11698.03,Lost,27-12-2016,28-03-2017,0
+1B4L7TNG,Markita Hansen,MG Advanced,MG,3393,Sonron,telecommunications,United States,5108,1699.85,Lost,27-12-2016,25-03-2017,0
+MZAN11FT,Anna Snelling,GTX Basic,GTX,550,Conecom,technolgy,United States,1806,1520.66,Won,28-12-2016,01-03-2017,625
+0IO00FNS,Darcel Schlecht,GTX Pro,GTX,4821,Warephase,services,United States,5276,2041.73,Lost,28-12-2016,16-03-2017,0
+8S6TNXYB,Darcel Schlecht,GTX Pro,GTX,4821,Conecom,technolgy,United States,1806,1520.66,Won,28-12-2016,22-03-2017,3952
+MOLGOSGE,Kary Hendrixson,GTX Plus Pro,GTX,5482,Konex,technolgy,United States,13756,7708.38,Won,28-12-2016,13-03-2017,5515
+FA1VHZSV,Reed Clapper,MG Special,MG,55,Vehement Capital Partners,finance,United States,883,646.1,Won,28-12-2016,16-03-2017,57
+PXQEX039,Versie Hillebrand,MG Special,MG,55,Konmatfix,marketing,United States,1190,375.43,Won,28-12-2016,28-03-2017,51
+RX56S6G3,Vicki Laflamme,MG Advanced,MG,3393,Fasehatice,retail,United States,7523,4968.91,Won,28-12-2016,13-03-2017,3803
+G4F8W039,Anna Snelling,GTX Plus Pro,GTX,5482,Rundofase,technolgy,United States,1238,1008.06,Won,29-12-2016,27-03-2017,5459
+4T31MWVO,Anna Snelling,MG Advanced,MG,3393,Stanredtax,finance,United States,3798,1698.2,Won,29-12-2016,23-03-2017,4148
+83XN082U,Corliss Cosme,GTX Plus Pro,GTX,5482,Ganjaflex,retail,Japan,17479,5158.71,Won,29-12-2016,23-03-2017,5002
+J21W3WIW,Corliss Cosme,MG Advanced,MG,3393,Gekko & Co,retail,United States,3502,2520.83,Won,29-12-2016,03-03-2017,3351
+52UPJFYI,Gladys Colclough,GTX Basic,GTX,550,Domzoom,entertainment,United States,551,217.87,Won,29-12-2016,19-03-2017,571
+QOL51JIB,James Ascencio,GTX Basic,GTX,550,Goodsilron,marketing,United States,5107,2952.73,Won,29-12-2016,10-03-2017,601
+93AGN8A6,Markita Hansen,GTX Basic,GTX,550,Zoomit,entertainment,United States,978,324.19,Won,29-12-2016,13-03-2017,576
+J7UNJFJL,Marty Freudenburg,MG Special,MG,55,Funholding,finance,United States,7227,2819.5,Won,29-12-2016,03-03-2017,52
+A4H5ESTU,Maureen Marcano,GTX Plus Basic,GTX,1096,Fasehatice,retail,United States,7523,4968.91,Won,29-12-2016,13-03-2017,1185
+8EZ04VQB,Reed Clapper,GTX Plus Basic,GTX,1096,Gekko & Co,retail,United States,3502,2520.83,Lost,29-12-2016,28-03-2017,0
+4501T63I,Rosalina Dieter,MG Special,MG,55,Plexzap,retail,United States,4874,2437.85,Won,29-12-2016,14-03-2017,56
+FPNGEJRC,Violet Mclelland,MG Special,MG,55,Opentech,finance,United States,853,355.23,Won,29-12-2016,29-03-2017,54
+S33WRL0Y,Zane Levy,GTX Pro,GTX,4821,Xx-holding,finance,United States,20293,7537.24,Won,29-12-2016,13-03-2017,4818
+Q7IRUJK7,Anna Snelling,GTX Plus Pro,GTX,5482,Codehow,software,United States,2641,2714.9,Won,01-01-2017,01-03-2017,5087
+DTZPYISJ,Daniell Hammack,GTX Plus Basic,GTX,1096,Opentech,finance,United States,853,355.23,Won,01-01-2017,19-03-2017,1116
+Y9HWSG8Z,Darcel Schlecht,GTX Basic,GTX,550,Gogozoom,telecommunications,United States,187,86.68,Won,01-01-2017,20-03-2017,510
+JOQCXC9Z,Jonathan Berthelot,GTX Basic,GTX,550,Streethex,retail,Belgium,1165,1376.8,Won,01-01-2017,16-03-2017,565
+AP7PCLAZ,Kami Bicknell,GTX Basic,GTX,550,Finjob,employment,United States,3644,2059.9,Won,01-01-2017,26-03-2017,633
+BIE471SO,Reed Clapper,MG Advanced,MG,3393,Xx-zobam,entertainment,United States,8274,3838.39,Won,01-01-2017,29-03-2017,3962
+UA8AWDG4,Vicki Laflamme,MG Advanced,MG,3393,Y-corporation,employment,United States,9561,2871.35,Won,01-01-2017,22-03-2017,3672
+FZDRB789,Zane Levy,GTX Pro,GTX,4821,Goodsilron,marketing,United States,5107,2952.73,Won,01-01-2017,18-03-2017,4586
+PC1NUL8Q,Anna Snelling,MG Special,MG,55,Hottechi,technolgy,Korea,16499,8170.38,Won,02-01-2017,02-03-2017,60
+F1X5ZJ7V,Jonathan Berthelot,GTX Basic,GTX,550,Dontechi,software,United States,10083,4618,Won,02-01-2017,04-05-2017,572
+IF7MJ88P,Kary Hendrixson,GTX Basic,GTX,550,Goodsilron,marketing,United States,5107,2952.73,Won,02-01-2017,01-03-2017,550
+06B7XWPC,Kary Hendrixson,GTX Pro,GTX,4821,Sonron,telecommunications,United States,5108,1699.85,Won,02-01-2017,17-03-2017,4125
+12MQ3WM8,Marty Freudenburg,MG Advanced,MG,3393,Zumgoity,medical,United States,1210,441.08,Won,02-01-2017,10-03-2017,3647
+91M6FY8S,Moses Frase,GTX Basic,GTX,550,Dontechi,software,United States,10083,4618,Won,02-01-2017,21-03-2017,573
+0LNZRNEU,Violet Mclelland,GTX Basic,GTX,550,Zencorporation,technolgy,China,142,40.79,Won,02-01-2017,29-03-2017,542
+NKOKUS7D,Cassey Cress,MG Advanced,MG,3393,Donware,marketing,United States,2570,1197.44,Won,03-01-2017,12-03-2017,3479
+NF6GCTMV,Daniell Hammack,MG Advanced,MG,3393,Ganjaflex,retail,Japan,17479,5158.71,Lost,03-01-2017,22-03-2017,0
+I4UCA7CU,Darcel Schlecht,GTX Plus Basic,GTX,1096,Stanredtax,finance,United States,3798,1698.2,Won,03-01-2017,21-03-2017,1012
+1LI7ETNZ,James Ascencio,GTX Plus Basic,GTX,1096,Doncon,technolgy,United States,1501,587.72,Won,03-01-2017,06-03-2017,990
+N36DEZBR,James Ascencio,GTX Pro,GTX,4821,Sunnamplex,marketing,Poland,1593,894.37,Won,03-01-2017,18-03-2017,4374
+77ZECYVJ,Kary Hendrixson,GTX Basic,GTX,550,Finjob,employment,United States,3644,2059.9,Lost,03-01-2017,17-03-2017,0
+IRB461Y7,Kary Hendrixson,GTX Plus Basic,GTX,1096,Xx-holding,finance,United States,20293,7537.24,Won,03-01-2017,30-03-2017,1054
+NM2Q3CGW,Vicki Laflamme,MG Special,MG,55,Scotfind,software,United States,16780,6354.87,Won,03-01-2017,15-03-2017,55
+OEEUEIPJ,Violet Mclelland,MG Special,MG,55,Ganjaflex,retail,Japan,17479,5158.71,Lost,03-01-2017,05-03-2017,0
+5E14LG51,Boris Faz,GTX Plus Basic,GTX,1096,Iselectrics,technolgy,United States,1428,527.11,Won,04-01-2017,25-03-2017,1073
+TIAGZQ54,Cecily Lampkin,MG Advanced,MG,3393,Genco Pura Olive Oil Company,retail,Italy,1635,894.33,Lost,04-01-2017,20-03-2017,0
+CRX91A45,Kary Hendrixson,GTX Basic,GTX,550,Faxquote,telecommunications,United States,5595,1825.82,Won,04-01-2017,16-03-2017,586
+ZOQ8RC86,Marty Freudenburg,GTX Pro,GTX,4821,Treequote,telecommunications,United States,8595,5266.09,Won,04-01-2017,05-05-2017,4667
+SV4SOO2K,Vicki Laflamme,GTX Plus Basic,GTX,1096,Hottechi,technolgy,Korea,16499,8170.38,Won,04-01-2017,28-03-2017,880
+ITHR5WLF,Vicki Laflamme,MG Advanced,MG,3393,Plexzap,retail,United States,4874,2437.85,Won,04-01-2017,12-03-2017,3676
+279625VN,Anna Snelling,MG Advanced,MG,3393,Funholding,finance,United States,7227,2819.5,Lost,05-01-2017,25-03-2017,0
+RK52YU8S,Darcel Schlecht,GTX Pro,GTX,4821,Treequote,telecommunications,United States,8595,5266.09,Lost,05-01-2017,09-03-2017,0
+E8EY51IC,Garret Kinder,GTX Plus Basic,GTX,1096,Opentech,finance,United States,853,355.23,Lost,05-01-2017,26-03-2017,0
+HG07LMHI,Jonathan Berthelot,GTX Pro,GTX,4821,Treequote,telecommunications,United States,8595,5266.09,Won,05-01-2017,19-03-2017,4716
+85XNDIK1,Kary Hendrixson,GTX Basic,GTX,550,Blackzim,retail,United States,1588,497.11,Lost,05-01-2017,30-03-2017,0
+2U54WYQ1,Vicki Laflamme,GTX Pro,GTX,4821,Goodsilron,marketing,United States,5107,2952.73,Won,05-01-2017,23-03-2017,4211
+VCA1WAB0,Anna Snelling,MG Advanced,MG,3393,Funholding,finance,United States,7227,2819.5,Lost,06-01-2017,21-03-2017,0
+MXNVX2AM,Darcel Schlecht,GTX Pro,GTX,4821,Codehow,software,United States,2641,2714.9,Lost,06-01-2017,18-03-2017,0
+1G866GH4,Darcel Schlecht,MG Special,MG,55,Toughzap,retail,United States,799,332.43,Won,06-01-2017,17-03-2017,56
+WDG0B1IR,Gladys Colclough,MG Special,MG,55,Rundofase,technolgy,United States,1238,1008.06,Lost,06-01-2017,23-03-2017,0
+Q5CABPMO,Gladys Colclough,MG Special,MG,55,Funholding,finance,United States,7227,2819.5,Won,06-01-2017,23-03-2017,44
+HHBA93J5,Kary Hendrixson,GTX Basic,GTX,550,Konex,technolgy,United States,13756,7708.38,Won,06-01-2017,27-03-2017,532
+R0W6A9BG,Lajuana Vencill,GTX Basic,GTX,550,Treequote,telecommunications,United States,8595,5266.09,Lost,06-01-2017,10-05-2017,0
+P5EGQ0HI,Lajuana Vencill,GTX Basic,GTX,550,Zumgoity,medical,United States,1210,441.08,Lost,06-01-2017,20-03-2017,0
+L1EJIE5L,Reed Clapper,GTX Pro,GTX,4821,Kinnamplus,retail,United States,1831,702.72,Lost,06-01-2017,17-03-2017,0
+S3XI6YB3,Versie Hillebrand,GTX Basic,GTX,550,Domzoom,entertainment,United States,551,217.87,Lost,06-01-2017,24-03-2017,0
+BBC3JB3H,Anna Snelling,GTX Basic,GTX,550,Isdom,medical,United States,4540,3178.24,Won,07-01-2017,08-03-2017,622
+7XVLKX8G,Cecily Lampkin,GTX Plus Pro,GTX,5482,Cancity,retail,United States,2448,718.62,Lost,07-01-2017,05-03-2017,0
+OX4P78HP,Corliss Cosme,GTX Plus Basic,GTX,1096,Xx-zobam,entertainment,United States,8274,3838.39,Won,07-01-2017,16-03-2017,1257
+72LNJRY9,Maureen Marcano,GTX Plus Basic,GTX,1096,Lexiqvolax,medical,United States,3889,1618.89,Won,07-01-2017,25-03-2017,1135
+8C2WG2FB,Zane Levy,MG Advanced,MG,3393,Hottechi,technolgy,Korea,16499,8170.38,Lost,07-01-2017,28-03-2017,0
+L0345WKB,Zane Levy,GTX Pro,GTX,4821,Newex,services,Germany,3492,1012.72,Won,07-01-2017,14-03-2017,4313
+S24L8LVR,Anna Snelling,GTX Plus Pro,GTX,5482,dambase,marketing,United States,2928,2173.98,Won,08-01-2017,18-03-2017,5210
+JXWXEJXE,Lajuana Vencill,MG Special,MG,55,Ron-tech,medical,United States,6837,3922.42,Won,08-01-2017,27-03-2017,47
+W2JCRPLX,Markita Hansen,MG Advanced,MG,3393,Konex,technolgy,United States,13756,7708.38,Won,08-01-2017,22-03-2017,3220
+1M2I2NXQ,Rosie Papadopoulos,MG Special,MG,55,Donware,marketing,United States,2570,1197.44,Won,08-01-2017,26-03-2017,47
+54EGR0AD,Violet Mclelland,MG Special,MG,55,Yearin,retail,United States,3851,2261.05,Won,08-01-2017,25-03-2017,63
+VT5Y73GX,Anna Snelling,MG Special,MG,55,Betatech,medical,Kenya,1185,647.18,Won,09-01-2017,15-03-2017,56
+8O9V7UOZ,Anna Snelling,MG Special,MG,55,Rundofase,technolgy,United States,1238,1008.06,Won,09-01-2017,01-03-2017,65
+GIIC5H9X,Boris Faz,GTX Plus Pro,GTX,5482,Donquadtech,technolgy,United States,3194,1712.68,Won,09-01-2017,19-03-2017,5743
+9WMU7YHD,Cassey Cress,MG Special,MG,55,Mathtouch,marketing,Jordan,9516,3027.46,Won,09-01-2017,03-03-2017,53
+8BQMFR86,Corliss Cosme,GTX Plus Pro,GTX,5482,Betasoloin,medical,United States,495,251.41,Won,09-01-2017,30-03-2017,4974
+DDCC6ZPK,Donn Cantrell,MG Advanced,MG,3393,Ontomedia,employment,United States,2769,882.12,Won,09-01-2017,25-03-2017,3892
+YMGWLEHY,Garret Kinder,GTX Pro,GTX,4821,Betasoloin,medical,United States,495,251.41,Won,09-01-2017,21-03-2017,3822
+FKS9MVF6,Jonathan Berthelot,GTX Basic,GTX,550,Inity,marketing,United States,8801,2403.58,Won,09-01-2017,02-03-2017,504
+HF8ABDF6,Rosalina Dieter,MG Advanced,MG,3393,Xx-holding,finance,United States,20293,7537.24,Won,09-01-2017,29-03-2017,3145
+SIRC44NM,Vicki Laflamme,GTX Basic,GTX,550,Finjob,employment,United States,3644,2059.9,Won,09-01-2017,27-03-2017,564
+7S6SHJJG,Zane Levy,GTX Plus Basic,GTX,1096,Fasehatice,retail,United States,7523,4968.91,Won,09-01-2017,14-03-2017,1117
+ZE84UHHB,Anna Snelling,MG Special,MG,55,Inity,marketing,United States,8801,2403.58,Won,10-01-2017,26-03-2017,59
+2R3ZA84D,Darcel Schlecht,MG Special,MG,55,Finhigh,finance,United States,1759,1102.43,Won,10-01-2017,28-03-2017,52
+LTTYTAXA,Donn Cantrell,GTX Pro,GTX,4821,Kan-code,software,United States,34288,11698.03,Won,10-01-2017,24-03-2017,4694
+ZWFPD71J,Kami Bicknell,GTX Pro,GTX,4821,Plusstrip,entertainment,United States,315,349.81,Won,10-01-2017,06-03-2017,5620
+T5C527Z9,Kary Hendrixson,GTX Plus Basic,GTX,1096,Singletechno,retail,United States,5374,2214.94,Won,10-01-2017,08-03-2017,1095
+XC4LTIEO,Lajuana Vencill,GTX Basic,GTX,550,Conecom,technolgy,United States,1806,1520.66,Lost,10-01-2017,02-05-2017,0
+AEBF9M5T,Lajuana Vencill,GTX Basic,GTX,550,Ron-tech,medical,United States,6837,3922.42,Won,10-01-2017,30-03-2017,489
+EV46ES18,Markita Hansen,GTX Plus Pro,GTX,5482,Golddex,finance,United States,165,52.5,Won,10-01-2017,16-03-2017,5908
+ID3IJHUS,Markita Hansen,MG Advanced,MG,3393,Xx-holding,finance,United States,20293,7537.24,Won,10-01-2017,11-03-2017,3820
+YBJ72HKE,Maureen Marcano,GTX Plus Basic,GTX,1096,Hottechi,technolgy,Korea,16499,8170.38,Lost,10-01-2017,12-03-2017,0
+5DEO8EDS,Vicki Laflamme,GTX Basic,GTX,550,Rantouch,telecommunications,United States,3015,1188.42,Won,10-01-2017,20-03-2017,581
+WPXAMXD2,Darcel Schlecht,GTX Plus Pro,GTX,5482,Funholding,finance,United States,7227,2819.5,Lost,11-01-2017,10-03-2017,0
+A4BBDK82,Jonathan Berthelot,GTX Basic,GTX,550,Gogozoom,telecommunications,United States,187,86.68,Won,11-01-2017,28-03-2017,585
+4XCJP60W,Kami Bicknell,GTX Basic,GTX,550,Nam-zim,services,Brazil,1179,405.59,Won,11-01-2017,06-05-2017,572
+CDKX2A19,Lajuana Vencill,MG Advanced,MG,3393,Zumgoity,medical,United States,1210,441.08,Won,11-01-2017,12-03-2017,3669
+344I60EI,Markita Hansen,GTX Plus Basic,GTX,1096,Golddex,finance,United States,165,52.5,Won,11-01-2017,16-03-2017,1091
+YI30GSB5,Marty Freudenburg,GTX Plus Basic,GTX,1096,Rangreen,technolgy,Panama,8775,2938.67,Lost,11-01-2017,31-03-2017,0
+0IYQX303,Reed Clapper,GTX Pro,GTX,4821,Donquadtech,technolgy,United States,3194,1712.68,Won,11-01-2017,17-03-2017,4905
+6IMUQYMN,Corliss Cosme,GTX Basic,GTX,550,Vehement Capital Partners,finance,United States,883,646.1,Won,12-01-2017,10-03-2017,540
+N9GAZ6B6,Gladys Colclough,MG Special,MG,55,Zumgoity,medical,United States,1210,441.08,Won,12-01-2017,20-03-2017,49
+8O3IYWSM,Jonathan Berthelot,GTX Basic,GTX,550,Globex Corporation,technolgy,Norway,2497,1223.72,Won,12-01-2017,17-05-2017,513
+R3OR0J5C,Lajuana Vencill,MG Special,MG,55,Gogozoom,telecommunications,United States,187,86.68,Won,12-01-2017,30-03-2017,54
+RXV4UXRE,Violet Mclelland,MG Special,MG,55,Yearin,retail,United States,3851,2261.05,Won,12-01-2017,23-03-2017,56
+5AKGNKX1,Anna Snelling,MG Special,MG,55,Konmatfix,marketing,United States,1190,375.43,Won,13-01-2017,16-03-2017,58
+KNLMLTJH,Anna Snelling,MG Special,MG,55,Treequote,telecommunications,United States,8595,5266.09,Won,13-01-2017,27-03-2017,58
+G9GH5KV5,Kami Bicknell,GTX Pro,GTX,4821,Nam-zim,services,Brazil,1179,405.59,Won,13-01-2017,21-03-2017,4453
+H06UZJH8,Kary Hendrixson,MG Special,MG,55,Plusstrip,entertainment,United States,315,349.81,Lost,13-01-2017,08-05-2017,0
+K1RXVUG9,Kary Hendrixson,GTX Basic,GTX,550,Nam-zim,services,Brazil,1179,405.59,Won,13-01-2017,14-03-2017,619
+1QT3STIA,Maureen Marcano,GTX Plus Pro,GTX,5482,Xx-holding,finance,United States,20293,7537.24,Won,13-01-2017,14-05-2017,5163
+070M5M6X,Maureen Marcano,GTX Pro,GTX,4821,Green-Plus,services,United States,1922,692.19,Won,13-01-2017,25-03-2017,4071
+DFTR2O9K,Reed Clapper,MG Special,MG,55,Donquadtech,technolgy,United States,3194,1712.68,Won,13-01-2017,08-05-2017,56
+S9MECO24,Violet Mclelland,MG Advanced,MG,3393,Sumace,retail,Romania,493,167.89,Lost,13-01-2017,31-03-2017,0
+EJSFO67U,Donn Cantrell,GTX Pro,GTX,4821,Zotware,software,United States,13809,4478.47,Won,14-01-2017,29-03-2017,4375
+SKTD4GGU,Kami Bicknell,GTX Basic,GTX,550,Golddex,finance,United States,165,52.5,Won,14-01-2017,28-03-2017,610
+SNAPG5KC,Vicki Laflamme,MG Advanced,MG,3393,Hatfan,services,United States,1299,792.46,Lost,14-01-2017,05-05-2017,0
+561707V4,Vicki Laflamme,GTX Pro,GTX,4821,Xx-holding,finance,United States,20293,7537.24,Won,14-01-2017,17-03-2017,4554
+J28ZRO9G,Wilburn Farren,MG Advanced,MG,3393,Konex,technolgy,United States,13756,7708.38,Won,14-01-2017,18-05-2017,2880
+KZ8Q0AFX,Corliss Cosme,GTX Plus Basic,GTX,1096,Initech,telecommunications,United States,20275,6395.05,Lost,15-01-2017,02-05-2017,0
+AOOFHH6F,Markita Hansen,MG Special,MG,55,Scotfind,software,United States,16780,6354.87,Won,15-01-2017,18-05-2017,60
+5U9Y1P87,Maureen Marcano,GTX Basic,GTX,550,Condax,medical,United States,9,4.54,Won,15-01-2017,21-03-2017,688
+J0Y91LUA,Maureen Marcano,GTX Plus Pro,GTX,5482,Goodsilron,marketing,United States,5107,2952.73,Won,15-01-2017,22-03-2017,6142
+YBRZQFEO,Maureen Marcano,GTX Pro,GTX,4821,Green-Plus,services,United States,1922,692.19,Won,15-01-2017,31-03-2017,4939
+PHR8KB1Y,Niesha Huffines,GTX Plus Pro,GTX,5482,Warephase,services,United States,5276,2041.73,Won,15-01-2017,15-05-2017,6270
+TBZMXKH4,Wilburn Farren,MG Advanced,MG,3393,Acme Corporation,technolgy,United States,2822,1100.04,Won,15-01-2017,29-03-2017,3833
+WNXZ1FGS,Daniell Hammack,GTX Plus Basic,GTX,1096,Bubba Gump,software,United States,2253,987.39,Lost,16-01-2017,28-03-2017,0
+6389JY2H,Moses Frase,MG Special,MG,55,Hottechi,technolgy,Korea,16499,8170.38,Won,16-01-2017,02-06-2017,57
+SZ81H1PM,Versie Hillebrand,MG Special,MG,55,Cancity,retail,United States,2448,718.62,Won,16-01-2017,17-03-2017,47
+M842E8JB,Violet Mclelland,MG Special,MG,55,Donware,marketing,United States,2570,1197.44,Lost,16-01-2017,13-03-2017,0
+JRJ7DBW5,Daniell Hammack,MG Advanced,MG,3393,Plussunin,retail,United States,4018,1419.98,Lost,17-01-2017,19-03-2017,0
+N9C0OCYY,Gladys Colclough,MG Special,MG,55,Inity,marketing,United States,8801,2403.58,Won,17-01-2017,04-05-2017,57
+R7XZAIWS,Jonathan Berthelot,MG Advanced,MG,3393,Genco Pura Olive Oil Company,retail,Italy,1635,894.33,Won,17-01-2017,14-03-2017,3257
+FFO5WOHT,Kami Bicknell,GTX Basic,GTX,550,Sunnamplex,marketing,Poland,1593,894.37,Won,17-01-2017,08-05-2017,511
+XHHJ48MJ,Kami Bicknell,GTX Basic,GTX,550,Y-corporation,employment,United States,9561,2871.35,Won,17-01-2017,14-03-2017,607
+YAR5GGA4,Markita Hansen,GTX Plus Pro,GTX,5482,Cheers,entertainment,United States,6472,4269.9,Won,17-01-2017,29-03-2017,5120
+NOVPMLOV,Niesha Huffines,GTX Plus Basic,GTX,1096,Hottechi,technolgy,Korea,16499,8170.38,Won,17-01-2017,23-03-2017,1343
+UPHN2I1Q,Niesha Huffines,MG Special,MG,55,Rundofase,technolgy,United States,1238,1008.06,Won,17-01-2017,14-05-2017,55
+NN9R2Y4W,Vicki Laflamme,MG Special,MG,55,Faxquote,telecommunications,United States,5595,1825.82,Won,17-01-2017,30-03-2017,49
+977FJ9QQ,Boris Faz,GTX Basic,GTX,550,The New York Inquirer,medical,United States,792,439.21,Lost,18-01-2017,29-03-2017,0
+A6Y1V5Z0,Garret Kinder,GTX Pro,GTX,4821,Zotware,software,United States,13809,4478.47,Won,18-01-2017,04-06-2017,4426
+NU8LWEWU,James Ascencio,GTX Plus Pro,GTX,5482,Groovestreet,retail,United States,299,223.8,Won,18-01-2017,03-05-2017,5264
+PFHS80CR,Jonathan Berthelot,GTX Pro,GTX,4821,Conecom,technolgy,United States,1806,1520.66,Lost,18-01-2017,20-05-2017,0
+904203D6,Moses Frase,MG Special,MG,55,Dontechi,software,United States,10083,4618,Won,18-01-2017,29-03-2017,59
+Z0TSV030,Garret Kinder,GTX Basic,GTX,550,Opentech,finance,United States,853,355.23,Won,19-01-2017,30-03-2017,617
+8C4QM1X6,Gladys Colclough,GTX Basic,GTX,550,Codehow,software,United States,2641,2714.9,Won,19-01-2017,04-06-2017,565
+NOPI41RP,James Ascencio,GTX Basic,GTX,550,Sonron,telecommunications,United States,5108,1699.85,Won,19-01-2017,01-03-2017,511
+2536CW3V,Kami Bicknell,GTX Plus Basic,GTX,1096,Rantouch,telecommunications,United States,3015,1188.42,Lost,19-01-2017,08-05-2017,0
+AC5YXLIR,Kary Hendrixson,MG Special,MG,55,Faxquote,telecommunications,United States,5595,1825.82,Won,19-01-2017,30-03-2017,60
+HSGJKH6U,Kary Hendrixson,MG Advanced,MG,3393,Plexzap,retail,United States,4874,2437.85,Won,19-01-2017,29-03-2017,3407
+4TZF9N1D,Kary Hendrixson,MG Advanced,MG,3393,Xx-holding,finance,United States,20293,7537.24,Won,19-01-2017,28-03-2017,3273
+HNKZ2IC6,Markita Hansen,GTX Plus Basic,GTX,1096,Y-corporation,employment,United States,9561,2871.35,Lost,19-01-2017,26-03-2017,0
+BB6TCH8B,Markita Hansen,MG Special,MG,55,Sunnamplex,marketing,Poland,1593,894.37,Lost,19-01-2017,05-05-2017,0
+IMTPZV7J,Moses Frase,MG Advanced,MG,3393,Gogozoom,telecommunications,United States,187,86.68,Won,19-01-2017,01-05-2017,3363
+6NXY7144,Vicki Laflamme,GTX Basic,GTX,550,Xx-holding,finance,United States,20293,7537.24,Won,19-01-2017,31-03-2017,365
+KBKHKULU,Zane Levy,GTX Plus Pro,GTX,5482,Lexiqvolax,medical,United States,3889,1618.89,Won,19-01-2017,18-03-2017,4869
+INMJIFTF,Corliss Cosme,GTX Basic,GTX,550,Ontomedia,employment,United States,2769,882.12,Won,20-01-2017,06-06-2017,599
+FUVQ5UKB,Daniell Hammack,MG Advanced,MG,3393,Konex,technolgy,United States,13756,7708.38,Won,20-01-2017,20-05-2017,3194
+O462ARMZ,Garret Kinder,GTX Plus Pro,GTX,5482,Condax,medical,United States,9,4.54,Won,20-01-2017,05-06-2017,5429
+6DCKCXDC,Jonathan Berthelot,GTX Pro,GTX,4821,Hottechi,technolgy,Korea,16499,8170.38,Won,20-01-2017,05-05-2017,5008
+QVF0JRM5,Jonathan Berthelot,MG Advanced,MG,3393,Domzoom,entertainment,United States,551,217.87,Won,20-01-2017,28-03-2017,3459
+7QGG2LO3,Kary Hendrixson,GTX Pro,GTX,4821,Xx-holding,finance,United States,20293,7537.24,Lost,20-01-2017,25-05-2017,0
+Y6HNPIIT,Kary Hendrixson,GTX Pro,GTX,4821,Hottechi,technolgy,Korea,16499,8170.38,Won,20-01-2017,07-03-2017,4559
+IBKRO1AN,Kary Hendrixson,GTX Pro,GTX,4821,Labdrill,medical,United States,9226,2741.37,Won,20-01-2017,28-03-2017,4221
+3TDWLPMV,Lajuana Vencill,MG Advanced,MG,3393,Warephase,services,United States,5276,2041.73,Lost,20-01-2017,11-03-2017,0
+JN1ZFD18,Lajuana Vencill,MG Special,MG,55,Domzoom,entertainment,United States,551,217.87,Won,20-01-2017,06-03-2017,56
+ZE7ILYKB,Markita Hansen,GTX Pro,GTX,4821,Nam-zim,services,Brazil,1179,405.59,Won,20-01-2017,03-05-2017,5508
+SRFVQ0HG,Moses Frase,GTX Plus Basic,GTX,1096,Codehow,software,United States,2641,2714.9,Lost,20-01-2017,24-03-2017,0
+D7H1EGS9,Zane Levy,GTX Basic,GTX,550,Lexiqvolax,medical,United States,3889,1618.89,Lost,20-01-2017,20-03-2017,0
+1DDW2GQW,Anna Snelling,MG Advanced,MG,3393,Cancity,retail,United States,2448,718.62,Lost,21-01-2017,09-03-2017,0
+WPGTHV8V,Darcel Schlecht,GTX Basic,GTX,550,Ron-tech,medical,United States,6837,3922.42,Won,21-01-2017,19-03-2017,657
+6GNJMYMO,Kami Bicknell,GTX Pro,GTX,4821,J-Texon,retail,United States,3583,1388.67,Lost,21-01-2017,05-05-2017,0
+GWAT8UWK,Lajuana Vencill,GTX Basic,GTX,550,Scottech,marketing,United States,100,45.39,Won,21-01-2017,25-03-2017,638
+IZD69C5Q,Marty Freudenburg,MG Special,MG,55,Betatech,medical,Kenya,1185,647.18,Won,21-01-2017,06-06-2017,41
+QFU565JJ,Rosie Papadopoulos,GTX Plus Pro,GTX,5482,Initech,telecommunications,United States,20275,6395.05,Won,21-01-2017,07-05-2017,5582
+Z5BCBTAO,Versie Hillebrand,MG Special,MG,55,Konmatfix,marketing,United States,1190,375.43,Won,21-01-2017,20-05-2017,60
+2KKRRM1G,Zane Levy,GTX Plus Basic,GTX,1096,Y-corporation,employment,United States,9561,2871.35,Won,21-01-2017,03-05-2017,1036
+RLUGVSNV,Darcel Schlecht,GTX Plus Basic,GTX,1096,Funholding,finance,United States,7227,2819.5,Won,22-01-2017,12-05-2017,943
+ZKSJ1DOK,Elease Gluck,GTX Basic,GTX,550,Kan-code,software,United States,34288,11698.03,Won,22-01-2017,07-06-2017,581
+K8RQWTP4,Jonathan Berthelot,MG Special,MG,55,Codehow,software,United States,2641,2714.9,Lost,22-01-2017,15-05-2017,0
+RSZC6BMW,Moses Frase,GTX Basic,GTX,550,Toughzap,retail,United States,799,332.43,Won,22-01-2017,07-05-2017,538
+O7YNBRX0,Reed Clapper,GTX Plus Basic,GTX,1096,Donquadtech,technolgy,United States,3194,1712.68,Won,22-01-2017,28-03-2017,1100
+AAYV8GV4,Anna Snelling,MG Advanced,MG,3393,Inity,marketing,United States,8801,2403.58,Lost,23-01-2017,05-05-2017,0
+EDEBWIOX,Cecily Lampkin,MG Advanced,MG,3393,Finhigh,finance,United States,1759,1102.43,Lost,23-01-2017,28-05-2017,0
+VAH6Y3F6,Jonathan Berthelot,GTX Plus Basic,GTX,1096,Hottechi,technolgy,Korea,16499,8170.38,Won,23-01-2017,17-05-2017,1039
+4U431MNA,Lajuana Vencill,MG Special,MG,55,dambase,marketing,United States,2928,2173.98,Lost,23-01-2017,11-05-2017,0
+5HKAT5GS,Reed Clapper,GTX Plus Basic,GTX,1096,Umbrella Corporation,finance,United States,5113,2022.14,Won,23-01-2017,10-05-2017,1076
+F5VDTC4M,Rosalina Dieter,MG Special,MG,55,Konex,technolgy,United States,13756,7708.38,Lost,23-01-2017,06-05-2017,0
+UO4KXDBC,Rosalina Dieter,MG Special,MG,55,Rantouch,telecommunications,United States,3015,1188.42,Lost,23-01-2017,23-05-2017,0
+TBIW957T,Versie Hillebrand,MG Special,MG,55,Rundofase,technolgy,United States,1238,1008.06,Won,23-01-2017,16-03-2017,53
+MSEIIH95,Versie Hillebrand,MG Advanced,MG,3393,Statholdings,employment,United States,586,291.27,Won,23-01-2017,23-03-2017,3046
+V4324HG4,Violet Mclelland,MG Special,MG,55,Acme Corporation,technolgy,United States,2822,1100.04,Lost,23-01-2017,06-05-2017,0
+N852D2Z8,Zane Levy,GTX Basic,GTX,550,Scotfind,software,United States,16780,6354.87,Lost,23-01-2017,30-03-2017,0
+CF1CSNPX,Daniell Hammack,GTX Pro,GTX,4821,Kan-code,software,United States,34288,11698.03,Won,24-01-2017,31-03-2017,5140
+NOXNFJ2L,Darcel Schlecht,GTX Plus Basic,GTX,1096,Warephase,services,United States,5276,2041.73,Won,24-01-2017,17-05-2017,1067
+3LJAJVHR,Cassey Cress,GTX Pro,GTX,4821,Opentech,finance,United States,853,355.23,Lost,25-01-2017,29-05-2017,0
+NN6CSUWT,Daniell Hammack,GTX Plus Basic,GTX,1096,Zathunicon,retail,United States,144,71.12,Won,25-01-2017,21-03-2017,1065
+X69POZIN,Kary Hendrixson,GTX Basic,GTX,550,Lexiqvolax,medical,United States,3889,1618.89,Won,25-01-2017,06-05-2017,481
+4FAEDB16,Markita Hansen,GTX Basic,GTX,550,J-Texon,retail,United States,3583,1388.67,Lost,25-01-2017,22-05-2017,0
+CPGCT81C,Maureen Marcano,GTX Basic,GTX,550,Dalttechnology,software,United States,96,98.79,Won,25-01-2017,06-03-2017,499
+TK9T01QM,Reed Clapper,GTX Pro,GTX,4821,Acme Corporation,technolgy,United States,2822,1100.04,Lost,25-01-2017,07-05-2017,0
+P13DDOTM,Rosie Papadopoulos,MG Special,MG,55,Bioplex,medical,United States,1016,326.82,Won,25-01-2017,08-03-2017,59
+1PN7TVPX,Vicki Laflamme,MG Special,MG,55,Hottechi,technolgy,Korea,16499,8170.38,Lost,25-01-2017,01-05-2017,0
+9ZKORPL2,Violet Mclelland,MG Special,MG,55,Initech,telecommunications,United States,20275,6395.05,Won,25-01-2017,09-05-2017,45
+1ZCOKNNI,Zane Levy,GTX Pro,GTX,4821,Sonron,telecommunications,United States,5108,1699.85,Won,25-01-2017,14-05-2017,5743
+BVYMJ6TD,Cassey Cress,GTX Plus Pro,GTX,5482,Vehement Capital Partners,finance,United States,883,646.1,Won,26-01-2017,13-05-2017,6117
+W5ADQ9SH,Darcel Schlecht,GTX Pro,GTX,4821,Domzoom,entertainment,United States,551,217.87,Lost,26-01-2017,26-05-2017,0
+VXX8GJGY,Donn Cantrell,GTX Plus Basic,GTX,1096,The New York Inquirer,medical,United States,792,439.21,Won,26-01-2017,19-03-2017,1158
+ES9L0DXE,Garret Kinder,MG Special,MG,55,Kinnamplus,retail,United States,1831,702.72,Won,26-01-2017,22-05-2017,59
+AANB25RH,Kami Bicknell,GTX Plus Basic,GTX,1096,Dalttechnology,software,United States,96,98.79,Lost,26-01-2017,24-05-2017,0
+36PTGLTW,Maureen Marcano,MG Advanced,MG,3393,Xx-holding,finance,United States,20293,7537.24,Won,26-01-2017,24-03-2017,3106
+6WTNSL1T,Rosalina Dieter,MG Advanced,MG,3393,Newex,services,Germany,3492,1012.72,Won,26-01-2017,19-03-2017,2982
+PV1DISEC,Zane Levy,GTX Plus Pro,GTX,5482,Hottechi,technolgy,Korea,16499,8170.38,Won,26-01-2017,16-03-2017,6101
+S6BG03TB,Anna Snelling,GTX Plus Pro,GTX,5482,Treequote,telecommunications,United States,8595,5266.09,Won,27-01-2017,08-05-2017,5883
+2YOW2BI0,Corliss Cosme,GTX Plus Pro,GTX,5482,Xx-zobam,entertainment,United States,8274,3838.39,Won,27-01-2017,22-05-2017,5051
+IQ9KYZCG,Darcel Schlecht,GTX Plus Basic,GTX,1096,Statholdings,employment,United States,586,291.27,Won,27-01-2017,11-05-2017,1155
+AWDOKG69,Garret Kinder,GTX Basic,GTX,550,Bluth Company,technolgy,United States,3027,1242.32,Lost,27-01-2017,10-05-2017,0
+C4AFMVFM,James Ascencio,GTX Plus Pro,GTX,5482,Cheers,entertainment,United States,6472,4269.9,Won,27-01-2017,06-03-2017,5616
+WK6ERCGR,James Ascencio,GTX Plus Pro,GTX,5482,Golddex,finance,United States,165,52.5,Won,27-01-2017,06-06-2017,5116
+64DJ954O,Kary Hendrixson,GTX Plus Basic,GTX,1096,Condax,medical,United States,9,4.54,Won,27-01-2017,30-03-2017,1136
+84V18DBW,Anna Snelling,GTX Plus Basic,GTX,1096,Finhigh,finance,United States,1759,1102.43,Won,28-01-2017,01-06-2017,1216
+WFY0S4WW,Anna Snelling,GTX Plus Basic,GTX,1096,Hottechi,technolgy,Korea,16499,8170.38,Won,28-01-2017,02-05-2017,1089
+HA1KXAIS,Cassey Cress,MG Advanced,MG,3393,Condax,medical,United States,9,4.54,Won,28-01-2017,04-06-2017,3908
+EAYD98X2,Darcel Schlecht,GTX Pro,GTX,4821,Dontechi,software,United States,10083,4618,Lost,28-01-2017,27-05-2017,0
+YR4W59KS,Darcel Schlecht,GTX Pro,GTX,4821,Finhigh,finance,United States,1759,1102.43,Lost,28-01-2017,18-05-2017,0
+SNFW1FD7,Darcel Schlecht,MG Advanced,MG,3393,Streethex,retail,Belgium,1165,1376.8,Won,28-01-2017,07-05-2017,3369
+2EOF1QCY,James Ascencio,GTX Plus Pro,GTX,5482,J-Texon,retail,United States,3583,1388.67,Won,28-01-2017,20-05-2017,5259
+O5O4ZAAC,Maureen Marcano,GTX Plus Basic,GTX,1096,Y-corporation,employment,United States,9561,2871.35,Lost,28-01-2017,08-05-2017,0
+YBAKNQ8Z,Reed Clapper,MG Advanced,MG,3393,Bubba Gump,software,United States,2253,987.39,Lost,28-01-2017,30-03-2017,0
+QY6HCHDH,Anna Snelling,MG Special,MG,55,Condax,medical,United States,9,4.54,Won,29-01-2017,25-05-2017,52
+CZ3XOD03,Boris Faz,GTX Plus Pro,GTX,5482,Acme Corporation,technolgy,United States,2822,1100.04,Won,29-01-2017,11-05-2017,5772
+LQ44KCMI,Cassey Cress,GTX Pro,GTX,4821,Umbrella Corporation,finance,United States,5113,2022.14,Lost,29-01-2017,13-03-2017,0
+WVJBVA61,Cecily Lampkin,MG Advanced,MG,3393,Domzoom,entertainment,United States,551,217.87,Won,29-01-2017,21-03-2017,3496
+MV9AO6WU,Elease Gluck,MG Advanced,MG,3393,Finjob,employment,United States,3644,2059.9,Won,29-01-2017,12-03-2017,3602
+VS2G74XQ,Garret Kinder,MG Special,MG,55,Yearin,retail,United States,3851,2261.05,Won,29-01-2017,09-03-2017,57
+Q37IWCG1,Gladys Colclough,MG Special,MG,55,Funholding,finance,United States,7227,2819.5,Won,29-01-2017,11-05-2017,51
+CUR03RXO,Hayden Neloms,MG Advanced,MG,3393,Sonron,telecommunications,United States,5108,1699.85,Won,29-01-2017,14-06-2017,3689
+81APSLDP,James Ascencio,GTX Plus Basic,GTX,1096,Xx-holding,finance,United States,20293,7537.24,Won,29-01-2017,03-05-2017,1170
+RBXWRHBJ,Jonathan Berthelot,GTX Basic,GTX,550,Rundofase,technolgy,United States,1238,1008.06,Lost,29-01-2017,06-03-2017,0
+G2GU9DYX,Jonathan Berthelot,GTX Pro,GTX,4821,Rangreen,technolgy,Panama,8775,2938.67,Won,29-01-2017,06-05-2017,4736
+05DTWSVC,Niesha Huffines,MG Special,MG,55,Genco Pura Olive Oil Company,retail,Italy,1635,894.33,Lost,29-01-2017,05-05-2017,0
+2YQHHWJ3,Versie Hillebrand,MG Special,MG,55,Zumgoity,medical,United States,1210,441.08,Lost,29-01-2017,22-05-2017,0
+ZW58VIDI,Vicki Laflamme,MG Special,MG,55,Hatfan,services,United States,1299,792.46,Won,29-01-2017,25-05-2017,64
+Q7IIF1IP,Vicki Laflamme,MG Special,MG,55,J-Texon,retail,United States,3583,1388.67,Won,29-01-2017,05-06-2017,55
+AALARPLH,Vicki Laflamme,MG Advanced,MG,3393,Goodsilron,marketing,United States,5107,2952.73,Won,29-01-2017,13-03-2017,2970
+5FFY13G5,Cecily Lampkin,MG Special,MG,55,Scottech,marketing,United States,100,45.39,Lost,30-01-2017,19-05-2017,0
+01X8H9SO,Corliss Cosme,GTX Pro,GTX,4821,Bubba Gump,software,United States,2253,987.39,Won,30-01-2017,13-05-2017,5035
+VLADQZ43,Darcel Schlecht,GTX Pro,GTX,4821,Domzoom,entertainment,United States,551,217.87,Lost,30-01-2017,31-05-2017,0
+N9VYMV3W,Darcel Schlecht,GTX Pro,GTX,4821,Funholding,finance,United States,7227,2819.5,Won,30-01-2017,10-03-2017,4774
+2FTB6A7I,James Ascencio,GTX Plus Pro,GTX,5482,Kan-code,software,United States,34288,11698.03,Won,30-01-2017,16-05-2017,5390
+7V9A9TXZ,Marty Freudenburg,GTX Plus Basic,GTX,1096,Codehow,software,United States,2641,2714.9,Won,30-01-2017,06-06-2017,1190
+HWDRCUYU,Moses Frase,GTX Plus Pro,GTX,5482,Betatech,medical,Kenya,1185,647.18,Won,30-01-2017,14-05-2017,5755
+GFV4W89I,Rosalina Dieter,GTX Pro,GTX,4821,Scotfind,software,United States,16780,6354.87,Won,30-01-2017,13-06-2017,4933
+7A4AC5BC,Versie Hillebrand,MG Advanced,MG,3393,Ron-tech,medical,United States,6837,3922.42,Won,30-01-2017,04-06-2017,3642
+3B6HWK65,Vicki Laflamme,MG Special,MG,55,Blackzim,retail,United States,1588,497.11,Lost,30-01-2017,07-05-2017,0
+A3BK99P6,Cassey Cress,MG Advanced,MG,3393,Kan-code,software,United States,34288,11698.03,Won,31-01-2017,17-03-2017,2923
+NY21X16G,Darcel Schlecht,GTX Pro,GTX,4821,Zumgoity,medical,United States,1210,441.08,Won,31-01-2017,10-03-2017,5035
+O5BC64NW,Maureen Marcano,GTX Pro,GTX,4821,Zoomit,entertainment,United States,978,324.19,Lost,31-01-2017,26-05-2017,0

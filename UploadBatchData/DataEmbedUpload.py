@@ -5,7 +5,18 @@
 ## tqdm - to show progress bar during embedding generation
 ## After running this script, the data will be available in the Azure AI Search index for vector-based search queries.
 ## USe GetLLMRecommendations.py to query the uploaded data.
-
+##
+## IMPORTANT - Verify which INDEX this progam uploads and update the name in the .env file accordingly.
+## IMPORTANT - Make sure to set up the .env file with correct keys and endpoints before running the script.
+##             The INDEX has 4 fields - opportunity_id (key), content (searchable text), metadata (json string), 
+##             content_vector (vector field for embeddings) - check DataEmbedUploadIndex.JSON for matching INDEX schema.
+##
+## IMPORTANT - The CSV file 'Test_Sales_Data.csv' must be in the same folder as this script or provide full path.
+##             It should have a sheet named 'sales_pipeline' with relevant sales data.
+##             The script processes columns: product, account_sector, account_region, deal_stage, sales_price, revenue_from_deal.
+##             NOTE: IT SHOULD NOT HAVE MORE THAN 500 ROWS - IDEA IS TO UPLOAD AND TEST IF FUNCTIONALITY WORKS.
+##             FOR LARGE DATA UPLOADS, USE BULK UPLOAD METHODS OR AZURE DATA FACTORY.
+           
 
 import os
 import json
@@ -43,9 +54,9 @@ def create_embeddings(text):
 
 # Step 2 Prepare data from Excel and create vector embedding
 def prepare_data(file_path):
-    print("🔹 Reading Excel file...")
+    print("🔹 Reading CSV file...")
         
-    df = pd.read_excel(file_path, sheet_name="sales_pipeline")
+    df = pd.read_csv(file_path, sheet_name="sales_pipeline")
 
     # Ensure consistent stage labels
     df["Deal Stage"] = df["deal_stage"].str.strip().str.lower()
@@ -117,10 +128,10 @@ def fetch_doc_by_id(doc_id):
 
 # ---------- STEP 5: Run Workflow ----------
 if __name__ == "__main__":
-    excel_path = "Test Sales Data.xlsx"
+    csv_path = "Test_Sales_Data.csv"
 
     # ---- Data preparation & upload (run once) ----
-    docs = prepare_data(excel_path)
+    docs = prepare_data(csv_path)
     upload_to_search(docs)
     print("🔹 Data preparation and upload completed.")
 

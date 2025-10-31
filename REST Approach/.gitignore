@@ -3,7 +3,6 @@
 *.log
 *.tmp
 *.json
-*.csv
 *.xlsx
 *.txt
 

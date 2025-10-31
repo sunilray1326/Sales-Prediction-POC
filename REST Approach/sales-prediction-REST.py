@@ -47,8 +47,8 @@ def create_embeddings(text):
 
 # ---------- STEP 1: Prepare Data & Create Embeddings ----------
 def prepare_data(file_path):
-    print("🔹 Reading Excel file...")
-    df = pd.read_excel(file_path, sheet_name="sales_pipeline")
+    print("🔹 Reading CSV file...")
+    df = pd.read_csv(file_path)
 
     # Ensure consistent stage labels
     df["Deal Stage"] = df["deal_stage"].str.strip().str.lower()
@@ -185,10 +185,10 @@ def llm_recommendation(user_query, won_context, lost_context):
 
 # ---------- STEP 5: Run Workflow ----------
 if __name__ == "__main__":
-    excel_path = "Test Sales Data.xlsx"
+    csv_path = "Test_Sales_Data.csv"
 
     # ---- Data preparation & upload (run once) ----
-    docs = prepare_data(excel_path)
+    docs = prepare_data(csv_path)
     upload_to_search(docs)
 
     # ---- Interactive query loop ----
