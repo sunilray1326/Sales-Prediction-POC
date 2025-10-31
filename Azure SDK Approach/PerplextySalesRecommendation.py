@@ -69,7 +69,7 @@ def extract_prompt_values(prompt, prompt_map):
 
 
 # Load metrics once at startup
-metrics_path = os.path.join(script_dir, "all_sales_metrics.json")
+metrics_path = os.path.join(script_dir, "perplexity_metrics.json")
 with open(metrics_path, "r") as f:
     sales_metrics = json.load(f)
 
@@ -215,20 +215,25 @@ def main():
                     user_metrics_summary.append(f"{field}: {val} | Win Rate: {metrics['win_rate']:.1%} | Uplift: {metrics['uplift']:.1%} | Count: {metrics['count']}")
 
         user_metrics_str = "\n".join(user_metrics_summary)
-        print("User Metrics:", {user_metrics_str})
+        print(f"User Metrics:, {user_metrics_str}")
+        write_to_file(f"User Metrics: {user_metrics_str}")
 
         # Summarize metrics for top matches:
         won_metrics = [summarize_deal(doc) for doc in won_docs]
         lost_metrics = [summarize_deal(doc) for doc in lost_docs]
 
         print("WON METRICS LIST:")
+        write_to_file("WON METRICES LIST")
         for idx, entry in enumerate(won_metrics, 1):
             print(f"{idx}: {entry}")
+            write_to_file(f"{idx}: {entry}")
 
         # Print each element of lost_metrics list
         print("\nLOST METRICS LIST:")
+        write_to_file("LOST METRICES LIST")
         for idx, entry in enumerate(lost_metrics, 1):
             print(f"{idx}: {entry}")
+            write_to_file(f"{idx}: {entry}")
         
         won_metrics_str = "\n".join(won_metrics)
         lost_metrics_str = "\n".join(lost_metrics)
@@ -236,9 +241,11 @@ def main():
         # Print the joined string versions
         print("\nWON METRICS (joined string):")
         print(won_metrics_str)
+        write_to_file(f"WON METRICES STR: {won_metrics_str}")
 
         print("\nLOST METRICS (joined string):")
         print(lost_metrics_str)
+        write_to_file(f"LOST METRICES STR:, {lost_metrics_str}")
 
         context_msg = (
             f"User Opportunity:\n{prompt}\n\n"

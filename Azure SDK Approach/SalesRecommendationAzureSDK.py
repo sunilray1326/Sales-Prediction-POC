@@ -46,7 +46,7 @@ EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL")
 
 # Create a log file to log key operations
 script_dir = Path(__file__).parent  # Get the directory of the script
-file_name = "LLM Prediction Output.txt"
+file_name = "LLM Recommendation Output.txt"
 log_file_path = script_dir / file_name
 
 # Function to write messages to the user log file
@@ -66,10 +66,10 @@ def create_embeddings(text):
 
 # Step 2 Prepare data from Excel and create vector embedding
 def prepare_data(file_path):
-    print("🔹 Reading Excel file...")
-    write_to_file(f"Reading Excel file {file_path} for data preparation...")
+    print("🔹 Reading CSV file...")
+    write_to_file(f"Reading CSV file {file_path} for data preparation...")
         
-    df = pd.read_excel(file_path, sheet_name="sales_pipeline")
+    df = pd.read_csv(file_path)
 
     # Ensure consistent stage labels
     df["Deal Stage"] = df["Deal Stage"].str.strip().str.lower()
@@ -214,10 +214,10 @@ def fetch_doc_by_id(doc_id):
 
 # ---------- STEP 5: Run Workflow ----------
 if __name__ == "__main__":
-    excel_path = "Test Sales Data.xlsx"
+    csv_path = "Test_Sales_Data.csv"
 
     # ---- Data preparation & upload (run once) ----
-    docs = prepare_data(excel_path)
+    docs = prepare_data(csv_path)
     upload_to_search(docs)
 
     ###################################################################################
