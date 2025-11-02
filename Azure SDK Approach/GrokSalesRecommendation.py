@@ -184,14 +184,21 @@ def get_relevant_stats(extracted_attrs):
         # Product-sector combos if product also extracted
         if product:
             prod_sec_key = f"{product}_{sector}"
+            relevant["product_sector"] = {}  # Always initialize to avoid KeyError
             if prod_sec_key in stats["product_sector_win_rates"]:
-                relevant["product_sector"] = {prod_sec_key: stats["product_sector_win_rates"][prod_sec_key]}
-            # Top 3 alternative products in this sector
+                relevant["product_sector"][prod_sec_key] = stats["product_sector_win_rates"][prod_sec_key]
+            else:
+                write_to_file(f"No product-sector combo found for {prod_sec_key}; using alternatives only.")
+            
+            # Top 3 alternative products in this sector (safe even if no current)
             sec_combos = [(k.split("_")[0], v) for k, v in stats["product_sector_win_rates"].items() if k.endswith(f"_{sector}")]
-            alts = sorted(sec_combos, key=lambda x: x[1], reverse=True)[:3]
-            for alt_prod, wr in alts:
-                if alt_prod != product:
-                    relevant["product_sector"][f"{alt_prod}_{sector}"] = wr
+            if sec_combos:  # Only if combos exist
+                alts = sorted(sec_combos, key=lambda x: x[1], reverse=True)[:3]
+                for alt_prod, wr in alts:
+                    if alt_prod != product:
+                        relevant["product_sector"][f"{alt_prod}_{sector}"] = wr
+            else:
+                write_to_file(f"No sector combos found for {sector}; skipping product_sector.")
     
     # Region-specific
     region = extracted_attrs.get("region")
