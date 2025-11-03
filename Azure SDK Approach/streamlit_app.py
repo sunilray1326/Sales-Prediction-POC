@@ -40,6 +40,48 @@ st.markdown("""
     h2 {
         font-size: 1.2rem !important;
     }
+    /* Simple font for text elements - remove all styling */
+    .stText, [data-testid="stText"] {
+        font-family: "Source Sans Pro", sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 400 !important;
+        line-height: 1.6 !important;
+        color: rgb(250, 250, 250) !important;
+    }
+    .stText div, [data-testid="stText"] div {
+        font-family: "Source Sans Pro", sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 400 !important;
+        line-height: 1.6 !important;
+        color: rgb(250, 250, 250) !important;
+    }
+    /* White font color for text area with normal font weight */
+    .stTextArea textarea {
+        color: rgb(250, 250, 250) !important;
+        font-weight: 400 !important;
+        font-family: "Source Sans Pro", sans-serif !important;
+        font-size: 14px !important;
+    }
+    /* White font color for disabled text area */
+    .stTextArea textarea:disabled {
+        color: rgb(250, 250, 250) !important;
+        -webkit-text-fill-color: rgb(250, 250, 250) !important;
+        opacity: 1 !important;
+        font-weight: 400 !important;
+    }
+    /* Target text area by data-testid */
+    [data-testid="stTextArea"] textarea {
+        color: rgb(250, 250, 250) !important;
+        font-weight: 400 !important;
+        font-family: "Source Sans Pro", sans-serif !important;
+        font-size: 14px !important;
+    }
+    [data-testid="stTextArea"] textarea:disabled {
+        color: rgb(250, 250, 250) !important;
+        -webkit-text-fill-color: rgb(250, 250, 250) !important;
+        opacity: 1 !important;
+        font-weight: 400 !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -137,7 +179,7 @@ def format_docs(docs):
         f"{doc.get('opportunity_id')} | Stage: {doc.get('deal_stage').capitalize()} | Rep: {doc.get('sales_rep')} | "
         f"Product: {doc.get('product')} | Sector: {doc.get('account_sector')} | Region: {doc.get('account_region')} | "
         f"Price: {doc.get('sales_price')} | Revenue: {doc.get('revenue_from_deal')} | Sales Cycle Duration: {doc.get('sales_cycle_duration')} days | "
-        f"Deal Value Ratio: {doc.get('deal_value_ratio')} | Note: {doc.get('Notes', '')[:400]}..."  
+        f"Deal Value Ratio: {doc.get('deal_value_ratio')} | Note: {doc.get('Notes', '')[:800]}..."  
         for doc in docs
     ])
 
@@ -157,7 +199,7 @@ def extract_attributes(prompt, openai_client, chat_model):
         model=chat_model,
         messages=extraction_prompt,
         temperature=0.1,
-        max_tokens=200
+        max_tokens=4000
     )
     try:
         extracted = json.loads(response.choices[0].message.content)
@@ -170,7 +212,7 @@ def llm_chat(messages, openai_client, chat_model):
         model=chat_model,
         messages=messages,
         temperature=0.6,
-        max_tokens=1000
+        max_tokens=4000
     )
     return response.choices[0].message.content
 
@@ -538,6 +580,8 @@ def main():
     
     # Display results - Show when analysis is available
     if st.session_state.show_analysis and st.session_state.recommendation:
+        st.write("")  # Add spacing
+        st.write("")  # Add spacing
         st.header("🧠 AI Recommendation")
 
         # Display extracted attributes - simple single line
@@ -558,9 +602,9 @@ def main():
                 if attrs.get('expected_revenue'):
                     attr_parts.append(f"Expected Revenue: ${attrs['expected_revenue']}")
 
-                # Simple join with comma separator
+                # Simple join with comma separator - use st.text to avoid LaTeX rendering
                 attr_line = ", ".join(attr_parts)
-                st.write(attr_line)
+                st.text(attr_line)
 
         # Display similar opportunities - in a text area with scroll
         if st.session_state.won_docs or st.session_state.lost_docs:
@@ -570,7 +614,8 @@ def main():
 
                 if st.session_state.won_docs:
                     content_lines.append("✅ TOP 10 WON CASES")
-                    content_lines.append("_" * 160)
+                    content_lines.append("_" * 170)
+                    content_lines.append("")
                     for idx, doc in enumerate(st.session_state.won_docs, 1):
                         content_lines.append(f"{idx}. {doc.get('opportunity_id')} | Rep: {doc.get('sales_rep')} | Product: {doc.get('product')} | Sector: {doc.get('account_sector')} | Region: {doc.get('account_region')} | Price: ${doc.get('sales_price'):,.0f} | Revenue: ${doc.get('revenue_from_deal'):,.0f} | Cycle: {doc.get('sales_cycle_duration')} days")
                         content_lines.append(f" Note: {doc.get('Notes', '')}")
@@ -580,13 +625,14 @@ def main():
                         content_lines.append("")
                     content_lines.append("❌ TOP 10 LOST CASES")
                     content_lines.append("_" * 160)
+                    content_lines.append("")
                     for idx, doc in enumerate(st.session_state.lost_docs, 1):
                         content_lines.append(f"{idx}. {doc.get('opportunity_id')} | Rep: {doc.get('sales_rep')} | Product: {doc.get('product')} | Sector: {doc.get('account_sector')} | Region: {doc.get('account_region')} | Price: ${doc.get('sales_price'):,.0f} | Revenue: ${doc.get('revenue_from_deal'):,.0f} | Cycle: {doc.get('sales_cycle_duration')} days")
                         content_lines.append(f" Note: {doc.get('Notes', '')}")
                         
                         
                 # Display in text area with scroll
-                st.text_area("Similar Opportunities", value="\n".join(content_lines), height=300, disabled=True, label_visibility="collapsed")
+                st.text_area("Similar Opportunities", value="\n".join(content_lines), height=300, disabled=False, label_visibility="collapsed")
         
         # Display key statistics - compact format
         if st.session_state.relevant_stats and 'simulations' in st.session_state.relevant_stats:
@@ -594,36 +640,37 @@ def main():
                 # Compact simulation display - no "Simulated Scenarios" header
                 for sim in st.session_state.relevant_stats['simulations'][:5]:
                     uplift_color = "🟢" if sim['uplift_percent'] > 0 else "🔴"
-                    st.markdown(f"**{sim['description']}** | Win Rate: {sim['estimated_win_rate']*100:.1f}% | Uplift: {uplift_color} {sim['uplift_percent']:.1f}%")
+                    st.text(f"{sim['description']} | Win Rate: {sim['estimated_win_rate']*100:.1f}% | Uplift: {uplift_color} {sim['uplift_percent']:.1f}%")
 
                 # Display qualitative insights if available - side by side
                 if 'qualitative_insights' in st.session_state.relevant_stats:
-                    st.subheader("📝 Qualitative Insights from Notes")
+                    st.text("")
+                    st.markdown("**<u>📝 Qualitative Insights from Notes</u>**", unsafe_allow_html=True)
+                    st.text("")
                     qual_insights = st.session_state.relevant_stats['qualitative_insights']
 
                     col1, col2 = st.columns(2)
 
                     with col1:
                         if 'win_drivers' in qual_insights and qual_insights['win_drivers']:
-                            st.markdown("**✅ Win Drivers (Success Patterns):**")
+                            st.text("✅ Win Drivers (Success Patterns):")
                             for driver, data in qual_insights['win_drivers'].items():
                                 freq_pct = data['frequency'] * 100
-                                st.write(f"• **{driver.replace('_', ' ').title()}**: {freq_pct:.1f}% ({data.get('count', 'N/A')} cases)")
+                                st.text(f"• {driver.replace('_', ' ').title()}: {freq_pct:.1f}% ({data.get('count', 'N/A')} cases)")
 
                     with col2:
                         if 'loss_risks' in qual_insights and qual_insights['loss_risks']:
-                            st.markdown("**⚠️ Loss Risks (Failure Patterns):**")
+                            st.text("⚠️ Loss Risks (Failure Patterns):")
                             for risk, data in qual_insights['loss_risks'].items():
                                 freq_pct = data['frequency'] * 100
-                                st.write(f"• **{risk.replace('_', ' ').title()}**: {freq_pct:.1f}% ({data.get('count', 'N/A')} cases)")
+                                st.text(f"• {risk.replace('_', ' ').title()}: {freq_pct:.1f}% ({data.get('count', 'N/A')} cases)")
 
-                    st.markdown("")
+                    st.text("")
                     if 'qual_lift_estimate' in st.session_state.relevant_stats:
-                        st.info(f"💡 **Estimated uplift from addressing top qualitative risk:** +{st.session_state.relevant_stats['qual_lift_estimate']:.1f}%")
+                        st.text(f"💡 Estimated uplift from addressing top qualitative risk: +{st.session_state.relevant_stats['qual_lift_estimate']:.1f}%")
 
         # Display recommendation - Print directly on UI
         st.markdown("💡 **Initial Recommendation**")
-        st.markdown("---")
         st.write(st.session_state.recommendation)
 
         # Display all follow-up Q&A pairs
