@@ -10,7 +10,6 @@ from dotenv import load_dotenv
 from openai import AzureOpenAI
 from azure.search.documents import SearchClient
 from azure.core.credentials import AzureKeyCredential
-from datetime import datetime
 from pathlib import Path
 import json
 from collections import Counter
@@ -26,6 +25,11 @@ st.set_page_config(
 # Custom CSS for better formatting
 st.markdown("""
     <style>
+    /* Reduce top padding to move content up */
+    .block-container {
+        padding-top: 1rem !important;
+        padding-bottom: 0rem !important;
+    }
     .main-header {
         font-size: 2rem;
         font-weight: bold;
@@ -39,33 +43,23 @@ st.markdown("""
         text-align: center;
         margin-bottom: 1rem;
     }
-    .recommendation-box {
+    /* Wrapper for follow-up Q&A - hide empty divs */
+    .rec-wrapper {
+        display: contents;
+    }
+    .rec-wrapper + [data-testid="stMarkdownContainer"] {
         background-color: #f0f8ff;
         padding: 20px;
         border-radius: 10px;
-        border-left: 5px solid #1E88E5;
+        border: none !important;
         margin: 10px 0;
     }
-    .success-box {
-        background-color: #e8f5e9;
-        padding: 15px;
-        border-radius: 8px;
-        border-left: 5px solid #4CAF50;
-        margin: 10px 0;
+    .rec-wrapper + [data-testid="stMarkdownContainer"] strong {
+        font-weight: normal;
     }
-    .warning-box {
-        background-color: #fff3e0;
-        padding: 15px;
-        border-radius: 8px;
-        border-left: 5px solid #FF9800;
-        margin: 10px 0;
-    }
-    .metric-card {
-        background-color: #ffffff;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        margin: 5px;
+    /* Center align button text */
+    div.stButton > button {
+        text-align: center;
     }
     /* Compact font sizes */
     .stMarkdown, .stText {
@@ -89,24 +83,6 @@ st.markdown("""
     .stExpander {
         font-size: 0.9rem;
     }
-    /* Make metric values same size as labels */
-    [data-testid="stMetricValue"] {
-        font-size: 0.9rem !important;
-    }
-    [data-testid="stMetricLabel"] {
-        font-size: 0.9rem !important;
-    }
-    /* Underlined headings */
-    .underlined-heading {
-        text-decoration: underline;
-        font-weight: bold;
-    }
-    /* Vertical divider */
-    .vertical-divider {
-        border-left: 1px solid rgba(0, 0, 0, 0.1);
-        height: 100%;
-        margin: 0 10px;
-    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -125,6 +101,12 @@ if 'lost_docs' not in st.session_state:
     st.session_state.lost_docs = None
 if 'current_opportunity' not in st.session_state:
     st.session_state.current_opportunity = ""
+if 'follow_up_responses' not in st.session_state:
+    st.session_state.follow_up_responses = []
+if 'show_analysis' not in st.session_state:
+    st.session_state.show_analysis = False
+if 'clear_input' not in st.session_state:
+    st.session_state.clear_input = False
 
 # Load environment variables
 @st.cache_resource
@@ -428,10 +410,6 @@ def get_relevant_stats(extracted_attrs, stats, qual_stats, openai_client, chat_m
 
 # Main UI
 def main():
-    # Header
-    st.markdown('<div class="main-header">💡 Sales Recommendation Advisor</div>', unsafe_allow_html=True)
-    st.markdown('<div class="sub-header">AI-Powered Sales Opportunity Analysis using Azure OpenAI & Cognitive Search</div>', unsafe_allow_html=True)
-    
     # Initialize clients and load data
     try:
         openai_client, search_client = init_clients()
@@ -450,10 +428,12 @@ def main():
             "providing data-driven recommendations to improve your chances of success."
         )
         
+        st.markdown("---")
         st.header("📊 Model Info")
         st.write(f"**Chat Model:** {config['CHAT_MODEL']}")
         st.write(f"**Embedding Model:** {config['EMBEDDING_MODEL']}")
         
+        st.markdown("---")
         st.header("📈 Statistics")
         st.metric("Overall Win Rate", f"{stats['overall_win_rate']*100:.1f}%")
         if isinstance(stats['avg_cycle_days'], dict):
@@ -470,31 +450,31 @@ def main():
             st.session_state.won_docs = None
             st.session_state.lost_docs = None
             st.session_state.current_opportunity = ""
+            st.session_state.follow_up_responses = []
+            st.session_state.show_analysis = False
             st.rerun()
     
-    # Main input area
-    st.header("📝 Describe Your Sales Opportunity")
+    # Show input area only if no analysis is shown
+    if not st.session_state.show_analysis:
+        # Header - only show when no analysis - moved down 3 lines
+        st.markdown("<br><br><br>", unsafe_allow_html=True)
+        st.markdown('<div class="main-header">💡 Sales Recommendation Advisor</div>', unsafe_allow_html=True)
+        st.markdown('<div class="sub-header">AI-Powered Sales Opportunity Analysis using Azure OpenAI & Cognitive Search</div>', unsafe_allow_html=True)
 
-    opportunity_description = st.text_area(
-        "Enter details about your sales opportunity:",
-        height=150,
-        placeholder="Example: We're pursuing a $50,000 deal with a healthcare company in the Northeast region for our GTX-2000 product. The sales rep is John Smith, and we're competing against two other vendors...",
-        help="Include details like product, sector, region, price, sales rep, and any other relevant information."
-    )
+        st.header("📝 Describe Your Sales Opportunity")
 
-    analyze_button = st.button("🔍 Analyze", type="primary")
-    st.caption("💡 *Use 'Follow-up Questions' section after recommendation to ask further questions about the opportunity*")
-    
-    # Check if user entered a new opportunity (different from current)
-    if opportunity_description.strip() and opportunity_description.strip() != st.session_state.current_opportunity:
-        # Clear previous analysis if it's a new opportunity
-        if st.session_state.current_opportunity != "":
-            st.session_state.conversation_history = []
-            st.session_state.recommendation = None
-            st.session_state.extracted_attrs = None
-            st.session_state.relevant_stats = None
-            st.session_state.won_docs = None
-            st.session_state.lost_docs = None
+        opportunity_description = st.text_area(
+            "Enter details about your sales opportunity:",
+            height=150,
+            placeholder="Example: We're pursuing a $50,000 deal with a healthcare company in the Northeast region for our GTX-2000 product. The sales rep is John Smith, and we're competing against two other vendors...",
+            help="Include details like product, sector, region, price, sales rep, and any other relevant information."
+        )
+
+        analyze_button = st.button("🔍 Analyze", type="primary")
+    else:
+        # When analysis is shown, don't display the input area
+        analyze_button = False
+        opportunity_description = st.session_state.current_opportunity
 
     if analyze_button and opportunity_description.strip():
         st.session_state.current_opportunity = opportunity_description.strip()
@@ -562,9 +542,9 @@ def main():
                             "Ground all in data; cite simulations/relevant metrics/qual insights.\n\n"
 
                             "Structure your responses as follows:\n"
-                            "- **Additions/Improvements for Success:** List 3-5 prioritized suggestions (e.g., product/rep changes), referencing won examples and quantifying with RELEVANT_STATS/SIMULATIONS/QUALITATIVE_INSIGHTS (e.g., '+3% win rate, $X revenue; address demo_success pattern').\n"
-                            "- **Removals/Risks to Avoid:** List 3-5 suggestions to mitigate risks (e.g., pricing adjustments), referencing lost examples and quantifying downsides (e.g., 'Avoid feature_mismatch: 15% loss risk').\n"
-                            "- **Overall Strategy:** Summarize plan, estimated win probability improvement (from simulations/qual_lift_estimate), revenue/cycle impact, and next steps.\n\n"
+                            "Additions/Improvements for Success: List 3-5 prioritized suggestions (e.g., product/rep changes), referencing won examples and quantifying with RELEVANT_STATS/SIMULATIONS/QUALITATIVE_INSIGHTS (e.g., '+3% win rate, $X revenue; address demo_success pattern').\n"
+                            "Removals/Risks to Avoid: List 3-5 suggestions to mitigate risks (e.g., pricing adjustments), referencing lost examples and quantifying downsides (e.g., 'Avoid feature_mismatch: 15% loss risk').\n"
+                            "Overall Strategy: Summarize plan, estimated win probability improvement (from simulations/qual_lift_estimate), revenue/cycle impact, and next steps.\n\n"
 
                             "Be concise, actionable, and professional."
                         )
@@ -587,84 +567,75 @@ def main():
                 # Get recommendation
                 st.session_state.recommendation = llm_chat(conversation, openai_client, config['CHAT_MODEL'])
                 st.session_state.conversation_history = conversation
-                
+                st.session_state.follow_up_responses = []  # Clear previous follow-ups
+                st.session_state.show_analysis = True  # Show analysis view
+                st.rerun()  # Rerun to update UI
+
             except Exception as e:
                 st.error(f"❌ Error during analysis: {str(e)}")
                 return
     
-    # Display results
-    if st.session_state.recommendation:
-        st.markdown("---")
+    # Display results - Show when analysis is available
+    if st.session_state.show_analysis and st.session_state.recommendation:
+        # Move header down one line
+        st.markdown("<br>", unsafe_allow_html=True)
         st.header("🧠 AI Recommendation")
 
-        # Display extracted attributes
+        # Display extracted attributes - simple single line
         if st.session_state.extracted_attrs:
             with st.expander("📋 Extracted Attributes", expanded=False):
-                cols = st.columns(3)
                 attrs = st.session_state.extracted_attrs
-                with cols[0]:
-                    if attrs.get('product'):
-                        st.metric("Product", attrs['product'])
-                    if attrs.get('sector'):
-                        st.metric("Sector", attrs['sector'])
-                with cols[1]:
-                    if attrs.get('region'):
-                        st.metric("Region", attrs['region'])
-                    if attrs.get('current_rep'):
-                        st.metric("Sales Rep", attrs['current_rep'])
-                with cols[2]:
-                    if attrs.get('sales_price'):
-                        st.metric("Price", f"${attrs['sales_price']:,.0f}")
-                    if attrs.get('expected_revenue'):
-                        st.metric("Expected Revenue", f"${attrs['expected_revenue']:,.0f}")
+                attr_parts = []
+                if attrs.get('product'):
+                    attr_parts.append(f"Product: {attrs['product']}")
+                if attrs.get('sector'):
+                    attr_parts.append(f"Sector: {attrs['sector']}")
+                if attrs.get('region'):
+                    attr_parts.append(f"Region: {attrs['region']}")
+                if attrs.get('current_rep'):
+                    attr_parts.append(f"Sales Rep: {attrs['current_rep']}")
+                if attrs.get('sales_price'):
+                    attr_parts.append(f"Price: ${attrs['sales_price']}")
+                if attrs.get('expected_revenue'):
+                    attr_parts.append(f"Expected Revenue: ${attrs['expected_revenue']}")
 
-        # Display similar opportunities
+                # Simple join with comma separator
+                attr_line = ", ".join(attr_parts)
+                st.write(attr_line)
+
+        # Display similar opportunities - in a text area with scroll
         if st.session_state.won_docs or st.session_state.lost_docs:
             with st.expander("🔍 Similar Sales Opportunities Matching Your Opportunity", expanded=False):
+                # Build content for text area
+                content_lines = []
+
                 if st.session_state.won_docs:
-                    st.subheader("✅ Top 10 Won Cases")
+                    content_lines.append("✅ TOP 10 WON CASES")
+                    content_lines.append("_" * 160)
                     for idx, doc in enumerate(st.session_state.won_docs, 1):
-                        st.markdown(f"""
-                        **{idx}. {doc.get('opportunity_id')}** | Rep: {doc.get('sales_rep')} | Product: {doc.get('product')} |
-                        Sector: {doc.get('account_sector')} | Region: {doc.get('account_region')} |
-                        Price: ${doc.get('sales_price'):,.0f} | Revenue: ${doc.get('revenue_from_deal'):,.0f} |
-                        Cycle: {doc.get('sales_cycle_duration')} days
-
-                        *Note: {doc.get('Notes', '')}*
-                        """)
-                        if idx < len(st.session_state.won_docs):
-                            st.markdown("---")
-
-                st.markdown("")
-
+                        content_lines.append(f"{idx}. {doc.get('opportunity_id')} | Rep: {doc.get('sales_rep')} | Product: {doc.get('product')} | Sector: {doc.get('account_sector')} | Region: {doc.get('account_region')} | Price: ${doc.get('sales_price'):,.0f} | Revenue: ${doc.get('revenue_from_deal'):,.0f} | Cycle: {doc.get('sales_cycle_duration')} days")
+                        content_lines.append(f" Note: {doc.get('Notes', '')}")
+                        
                 if st.session_state.lost_docs:
-                    st.subheader("❌ Top 10 Lost Cases")
+                    if content_lines:
+                        content_lines.append("")
+                    content_lines.append("❌ TOP 10 LOST CASES")
+                    content_lines.append("_" * 160)
                     for idx, doc in enumerate(st.session_state.lost_docs, 1):
-                        st.markdown(f"""
-                        **{idx}. {doc.get('opportunity_id')}** | Rep: {doc.get('sales_rep')} | Product: {doc.get('product')} |
-                        Sector: {doc.get('account_sector')} | Region: {doc.get('account_region')} |
-                        Price: ${doc.get('sales_price'):,.0f} | Revenue: ${doc.get('revenue_from_deal'):,.0f} |
-                        Cycle: {doc.get('sales_cycle_duration')} days
-
-                        *Note: {doc.get('Notes', '')}*
-                        """)
-                        if idx < len(st.session_state.lost_docs):
-                            st.markdown("---")
+                        content_lines.append(f"{idx}. {doc.get('opportunity_id')} | Rep: {doc.get('sales_rep')} | Product: {doc.get('product')} | Sector: {doc.get('account_sector')} | Region: {doc.get('account_region')} | Price: ${doc.get('sales_price'):,.0f} | Revenue: ${doc.get('revenue_from_deal'):,.0f} | Cycle: {doc.get('sales_cycle_duration')} days")
+                        content_lines.append(f" Note: {doc.get('Notes', '')}")
+                        
+                        
+                # Display in text area with scroll
+                st.text_area("Similar Opportunities", value="\n".join(content_lines), height=300, disabled=True, label_visibility="collapsed")
         
-        # Display key statistics
+        # Display key statistics - compact format
         if st.session_state.relevant_stats and 'simulations' in st.session_state.relevant_stats:
             with st.expander("📊 Detailed Simulations & Statistics", expanded=False):
-                st.subheader("Simulated Scenarios")
+                # Compact simulation display - no "Simulated Scenarios" header
                 for sim in st.session_state.relevant_stats['simulations'][:5]:
-                    col1, col2, col3 = st.columns(3)
-                    with col1:
-                        st.write(f"**{sim['description']}**")
-                    with col2:
-                        st.metric("Win Rate", f"{sim['estimated_win_rate']*100:.1f}%")
-                    with col3:
-                        uplift_color = "🟢" if sim['uplift_percent'] > 0 else "🔴"
-                        st.metric("Uplift", f"{uplift_color} {sim['uplift_percent']:.1f}%")
-                    st.markdown("---")
+                    uplift_color = "🟢" if sim['uplift_percent'] > 0 else "🔴"
+                    st.markdown(f"**{sim['description']}** | Win Rate: {sim['estimated_win_rate']*100:.1f}% | Uplift: {uplift_color} {sim['uplift_percent']:.1f}%")
 
                 # Display qualitative insights if available - side by side
                 if 'qualitative_insights' in st.session_state.relevant_stats:
@@ -691,21 +662,65 @@ def main():
                     if 'qual_lift_estimate' in st.session_state.relevant_stats:
                         st.info(f"💡 **Estimated uplift from addressing top qualitative risk:** +{st.session_state.relevant_stats['qual_lift_estimate']:.1f}%")
 
-        # Display recommendation - Main section
-        st.subheader("💡 Recommendations")
-        st.markdown('<div class="recommendation-box">', unsafe_allow_html=True)
-        st.markdown(st.session_state.recommendation)
-        st.markdown('</div>', unsafe_allow_html=True)
+        # Display recommendation - Main section in text area with scroll
+        st.markdown(" 💡 Initial Recommendation")
 
-        # Follow-up questions
+        # Display in text area with scroll for compact UI
+        st.text_area("Recommendation", value=st.session_state.recommendation, height=400, disabled=True, label_visibility="collapsed")
+
+        # Display all follow-up Q&A pairs
+        if st.session_state.follow_up_responses:
+            st.markdown("---")
+            st.subheader("💬 Follow-up Discussions")
+            for idx, qa in enumerate(st.session_state.follow_up_responses, 1):
+                st.markdown(f"### Question {idx}")
+                # Use same wrapper approach as initial recommendation to avoid empty divs
+                st.markdown('<div class="rec-wrapper">', unsafe_allow_html=True)
+                st.markdown(f"**Q:** {qa['question']}\n\n**A:** {qa['answer']}")
+                st.markdown('</div>', unsafe_allow_html=True)
+
+        # Follow-up questions section - Always at the bottom
         st.markdown("---")
-        st.header("💬 Follow-up Questions")
-        follow_up = st.text_input(
-            "Ask a follow-up question about this opportunity:",
-            placeholder="e.g., What if we lower the price by 10%?"
-        )
-        
-        if st.button("Ask") and follow_up.strip():
+
+        # Clear input flag handling
+        if st.session_state.clear_input:
+            follow_up = st.text_input(
+                "💬 Ask a follow-up question about this opportunity:",
+                value="",
+                placeholder="e.g., What if we lower the price by 10%?",
+                key=f"follow_up_input_{len(st.session_state.follow_up_responses)}"
+            )
+            st.session_state.clear_input = False
+        else:
+            follow_up = st.text_input(
+                "💬 Ask a follow-up question about this opportunity:",
+                placeholder="e.g., What if we lower the price by 10%?",
+                key=f"follow_up_input_{len(st.session_state.follow_up_responses)}"
+            )
+
+        col1, col2, _ = st.columns([0.5, 1.5, 8])
+        with col1:
+            ask_button = st.button("Ask", type="primary", use_container_width=True)
+        with col2:
+            new_analysis_button = st.button("Analyze New Opportunity", type="secondary", use_container_width=True)
+
+        # Handle "Analyze New Opportunity" button
+        if new_analysis_button:
+            # Clear all session state
+            st.session_state.conversation_history = []
+            st.session_state.recommendation = None
+            st.session_state.extracted_attrs = None
+            st.session_state.relevant_stats = None
+            st.session_state.won_docs = None
+            st.session_state.lost_docs = None
+            st.session_state.current_opportunity = ""
+            st.session_state.follow_up_responses = []
+            st.session_state.show_analysis = False
+            st.session_state.clear_input = False
+            st.rerun()
+
+        # Handle "Ask" button
+        if ask_button and follow_up.strip():
             with st.spinner("Thinking..."):
                 st.session_state.conversation_history.append({
                     "role": "user",
@@ -716,9 +731,13 @@ def main():
                     "role": "assistant",
                     "content": answer
                 })
-                st.markdown('<div class="recommendation-box">', unsafe_allow_html=True)
-                st.markdown(f"**Q:** {follow_up}\n\n**A:** {answer}")
-                st.markdown('</div>', unsafe_allow_html=True)
+                # Add to follow-up responses
+                st.session_state.follow_up_responses.append({
+                    "question": follow_up,
+                    "answer": answer
+                })
+                st.session_state.clear_input = True  # Set flag to clear input on next render
+                st.rerun()  # Rerun to display the new Q&A
 
 if __name__ == "__main__":
     main()
