@@ -29,6 +29,17 @@ st.markdown("""
         padding-top: 1rem !important;
         padding-bottom: 0rem !important;
     }
+    /* Reduce Statistics metric font size by 50% */
+    [data-testid="stMetricValue"] {
+        font-size: 1.5em !important;
+    }
+    /* Reduce font size for main title and headers */
+    h1 {
+        font-size: 1.5rem !important;
+    }
+    h2 {
+        font-size: 1.2rem !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -375,10 +386,12 @@ def main():
         )
         
         st.markdown("---")
-        st.header("📊 Model Info")
-        st.write(f"**Chat Model:** {config['CHAT_MODEL']}")
-        st.write(f"**Embedding Model:** {config['EMBEDDING_MODEL']}")
-        
+
+        # Model Info as expandable section
+        with st.expander("📊 Model Info", expanded=False):
+            st.write(f"**Chat Model:** {config['CHAT_MODEL']}")
+            st.write(f"**Embedding Model:** {config['EMBEDDING_MODEL']}")
+
         st.markdown("---")
         st.header("📈 Statistics")
         st.metric("Overall Win Rate", f"{stats['overall_win_rate']*100:.1f}%")
@@ -402,6 +415,8 @@ def main():
     
     # Show input area only if no analysis is shown
     if not st.session_state.show_analysis:
+        st.write("")  # Add spacing
+        st.write("")  # Add spacing
         st.title("💡 Sales Recommendation Advisor")
         st.caption("AI-Powered Sales Opportunity Analysis using Azure OpenAI & Cognitive Search")
 
@@ -489,6 +504,7 @@ def main():
                             "Additions/Improvements for Success: List 3-5 prioritized suggestions (e.g., product/rep changes), referencing won examples and quantifying with RELEVANT_STATS/SIMULATIONS/QUALITATIVE_INSIGHTS (e.g., '+3% win rate, $X revenue; address demo_success pattern').\n"
                             "Removals/Risks to Avoid: List 3-5 suggestions to mitigate risks (e.g., pricing adjustments), referencing lost examples and quantifying downsides (e.g., 'Avoid feature_mismatch: 15% loss risk').\n"
                             "Overall Strategy: Summarize plan, estimated win probability improvement (from simulations/qual_lift_estimate), revenue/cycle impact, and next steps.\n\n"
+                            "Always provide all sections including Next Steps in your response. If information is not available for any section, clearly state that recommendation cannot be provided due to lack of data."
 
                             "Be concise, actionable, and professional."
                         )
@@ -503,7 +519,8 @@ def main():
                             "Provide tailored recommendations, using RELEVANT_STATS, SIMULATIONS, and QUALITATIVE_INSIGHTS to quantify impacts:\n"
                             "1. What 3-5 key additions/improvements (e.g., product/rep changes) to boost win chances? Prioritize, reference won examples, quantify (e.g., '+2% win rate via simulation, $X revenue; leverage demo_success insight').\n"
                             "2. What 3-5 elements to remove/mitigate (e.g., pricing risks)? Reference lost examples, quantify risks (e.g., 'Mitigate competitor risk: 20% freq in losses').\n"
-                            "3. Overall: Estimated win probability improvement (e.g., +5-10% from baseline, including qual_lift_estimate), revenue/cycle impact, next steps."
+                            "3. Overall Strategy: Summarize plan, estimated win probability improvement (from simulations/qual_lift_estimate), revenue/cycle impact, and next steps."
+                            "4. Next Steps: Provide a clear, concise summary of the next steps to take based on the recommendations."
                         )
                     }
                 ]
@@ -604,11 +621,10 @@ def main():
                     if 'qual_lift_estimate' in st.session_state.relevant_stats:
                         st.info(f"💡 **Estimated uplift from addressing top qualitative risk:** +{st.session_state.relevant_stats['qual_lift_estimate']:.1f}%")
 
-        # Display recommendation - Main section in text area with scroll
-        st.markdown(" 💡 Initial Recommendation")
-
-        # Display in text area with scroll for compact UI
-        st.text_area("Recommendation", value=st.session_state.recommendation, height=400, disabled=True, label_visibility="collapsed")
+        # Display recommendation - Print directly on UI
+        st.markdown("💡 **Initial Recommendation**")
+        st.markdown("---")
+        st.write(st.session_state.recommendation)
 
         # Display all follow-up Q&A pairs
         if st.session_state.follow_up_responses:
