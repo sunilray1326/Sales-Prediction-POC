@@ -40,47 +40,14 @@ st.markdown("""
     h2 {
         font-size: 1.2rem !important;
     }
-    /* Simple font for text elements - remove all styling */
-    .stText, [data-testid="stText"] {
-        font-family: "Source Sans Pro", sans-serif !important;
-        font-size: 14px !important;
-        font-weight: 400 !important;
-        line-height: 1.6 !important;
-        color: rgb(250, 250, 250) !important;
-    }
+    /* Simple font for text elements */
+    .stText, [data-testid="stText"],
     .stText div, [data-testid="stText"] div {
         font-family: "Source Sans Pro", sans-serif !important;
         font-size: 14px !important;
         font-weight: 400 !important;
         line-height: 1.6 !important;
         color: rgb(250, 250, 250) !important;
-    }
-    /* White font color for text area with normal font weight */
-    .stTextArea textarea {
-        color: rgb(250, 250, 250) !important;
-        font-weight: 400 !important;
-        font-family: "Source Sans Pro", sans-serif !important;
-        font-size: 14px !important;
-    }
-    /* White font color for disabled text area */
-    .stTextArea textarea:disabled {
-        color: rgb(250, 250, 250) !important;
-        -webkit-text-fill-color: rgb(250, 250, 250) !important;
-        opacity: 1 !important;
-        font-weight: 400 !important;
-    }
-    /* Target text area by data-testid */
-    [data-testid="stTextArea"] textarea {
-        color: rgb(250, 250, 250) !important;
-        font-weight: 400 !important;
-        font-family: "Source Sans Pro", sans-serif !important;
-        font-size: 14px !important;
-    }
-    [data-testid="stTextArea"] textarea:disabled {
-        color: rgb(250, 250, 250) !important;
-        -webkit-text-fill-color: rgb(250, 250, 250) !important;
-        opacity: 1 !important;
-        font-weight: 400 !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -624,15 +591,28 @@ def main():
                     if content_lines:
                         content_lines.append("")
                     content_lines.append("❌ TOP 10 LOST CASES")
-                    content_lines.append("_" * 160)
-                    content_lines.append("")
                     for idx, doc in enumerate(st.session_state.lost_docs, 1):
                         content_lines.append(f"{idx}. {doc.get('opportunity_id')} | Rep: {doc.get('sales_rep')} | Product: {doc.get('product')} | Sector: {doc.get('account_sector')} | Region: {doc.get('account_region')} | Price: ${doc.get('sales_price'):,.0f} | Revenue: ${doc.get('revenue_from_deal'):,.0f} | Cycle: {doc.get('sales_cycle_duration')} days")
                         content_lines.append(f" Note: {doc.get('Notes', '')}")
                         
-                        
-                # Display in text area with scroll
-                st.text_area("Similar Opportunities", value="\n".join(content_lines), height=300, disabled=False, label_visibility="collapsed")
+                # Display in custom text area with transparent background
+                content_text = "\n".join(content_lines)
+                st.markdown(f"""
+                    <div style="
+                        background-color: transparent;
+                        border: 1px solid rgba(250, 250, 250, 0.2);
+                        border-radius: 5px;
+                        padding: 10px;
+                        height: 300px;
+                        overflow-y: auto;
+                        font-family: 'Source Sans Pro', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
+                        color: rgb(250, 250, 250);
+                        white-space: pre-wrap;
+                        word-wrap: break-word;
+                    ">{content_text}</div>
+                """, unsafe_allow_html=True)
         
         # Display key statistics - compact format
         if st.session_state.relevant_stats and 'simulations' in st.session_state.relevant_stats:

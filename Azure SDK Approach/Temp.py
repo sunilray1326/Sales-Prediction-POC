@@ -40,14 +40,8 @@ st.markdown("""
     h2 {
         font-size: 1.2rem !important;
     }
-    /* Simple font for text elements - remove all styling */
-    .stText, [data-testid="stText"] {
-        font-family: "Source Sans Pro", sans-serif !important;
-        font-size: 14px !important;
-        font-weight: 400 !important;
-        line-height: 1.6 !important;
-        color: rgb(250, 250, 250) !important;
-    }
+    /* Simple font for text elements */
+    .stText, [data-testid="stText"],
     .stText div, [data-testid="stText"] div {
         font-family: "Source Sans Pro", sans-serif !important;
         font-size: 14px !important;
@@ -56,31 +50,17 @@ st.markdown("""
         color: rgb(250, 250, 250) !important;
     }
     /* White font color for text area with normal font weight */
-    .stTextArea textarea {
-        color: rgb(250, 250, 250) !important;
-        font-weight: 400 !important;
-        font-family: "Source Sans Pro", sans-serif !important;
-        font-size: 14px !important;
-    }
-    /* White font color for disabled text area */
-    .stTextArea textarea:disabled {
-        color: rgb(250, 250, 250) !important;
-        -webkit-text-fill-color: rgb(250, 250, 250) !important;
-        opacity: 1 !important;
-        font-weight: 400 !important;
-    }
-    /* Target text area by data-testid */
+    .stTextArea textarea,
     [data-testid="stTextArea"] textarea {
         color: rgb(250, 250, 250) !important;
         font-weight: 400 !important;
         font-family: "Source Sans Pro", sans-serif !important;
         font-size: 14px !important;
     }
+    .stTextArea textarea:disabled,
     [data-testid="stTextArea"] textarea:disabled {
-        color: rgb(250, 250, 250) !important;
         -webkit-text-fill-color: rgb(250, 250, 250) !important;
         opacity: 1 !important;
-        font-weight: 400 !important;
     }
     </style>
 """, unsafe_allow_html=True)
