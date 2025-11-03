@@ -22,66 +22,12 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS for better formatting
+# Custom CSS - minimal styling
 st.markdown("""
     <style>
-    /* Reduce top padding to move content up */
     .block-container {
         padding-top: 1rem !important;
         padding-bottom: 0rem !important;
-    }
-    .main-header {
-        font-size: 2rem;
-        font-weight: bold;
-        color: #1E88E5;
-        text-align: center;
-        margin-bottom: 0.5rem;
-    }
-    .sub-header {
-        font-size: 1rem;
-        color: #666;
-        text-align: center;
-        margin-bottom: 1rem;
-    }
-    /* Wrapper for follow-up Q&A - hide empty divs */
-    .rec-wrapper {
-        display: contents;
-    }
-    .rec-wrapper + [data-testid="stMarkdownContainer"] {
-        background-color: #f0f8ff;
-        padding: 20px;
-        border-radius: 10px;
-        border: none !important;
-        margin: 10px 0;
-    }
-    .rec-wrapper + [data-testid="stMarkdownContainer"] strong {
-        font-weight: normal;
-    }
-    /* Center align button text */
-    div.stButton > button {
-        text-align: center;
-    }
-    /* Compact font sizes */
-    .stMarkdown, .stText {
-        font-size: 0.9rem;
-    }
-    h1 {
-        font-size: 1.5rem !important;
-        margin-top: 0.5rem !important;
-        margin-bottom: 0.5rem !important;
-    }
-    h2 {
-        font-size: 1.3rem !important;
-        margin-top: 0.5rem !important;
-        margin-bottom: 0.5rem !important;
-    }
-    h3 {
-        font-size: 1.1rem !important;
-        margin-top: 0.3rem !important;
-        margin-bottom: 0.3rem !important;
-    }
-    .stExpander {
-        font-size: 0.9rem;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -456,10 +402,8 @@ def main():
     
     # Show input area only if no analysis is shown
     if not st.session_state.show_analysis:
-        # Header - only show when no analysis - moved down 3 lines
-        st.markdown("<br><br><br>", unsafe_allow_html=True)
-        st.markdown('<div class="main-header">💡 Sales Recommendation Advisor</div>', unsafe_allow_html=True)
-        st.markdown('<div class="sub-header">AI-Powered Sales Opportunity Analysis using Azure OpenAI & Cognitive Search</div>', unsafe_allow_html=True)
+        st.title("💡 Sales Recommendation Advisor")
+        st.caption("AI-Powered Sales Opportunity Analysis using Azure OpenAI & Cognitive Search")
 
         st.header("📝 Describe Your Sales Opportunity")
 
@@ -577,8 +521,6 @@ def main():
     
     # Display results - Show when analysis is available
     if st.session_state.show_analysis and st.session_state.recommendation:
-        # Move header down one line
-        st.markdown("<br>", unsafe_allow_html=True)
         st.header("🧠 AI Recommendation")
 
         # Display extracted attributes - simple single line
@@ -674,10 +616,7 @@ def main():
             st.subheader("💬 Follow-up Discussions")
             for idx, qa in enumerate(st.session_state.follow_up_responses, 1):
                 st.markdown(f"### Question {idx}")
-                # Use same wrapper approach as initial recommendation to avoid empty divs
-                st.markdown('<div class="rec-wrapper">', unsafe_allow_html=True)
                 st.markdown(f"**Q:** {qa['question']}\n\n**A:** {qa['answer']}")
-                st.markdown('</div>', unsafe_allow_html=True)
 
         # Follow-up questions section - Always at the bottom
         st.markdown("---")
