@@ -404,6 +404,22 @@ def main():
             st.write(f"**Embedding Model:** {config['EMBEDDING_MODEL']}")
 
         st.markdown("---")
+
+        # Add "Analyze New Opportunity" button in sidebar
+        if st.button("🔍 Analyze New Opportunity", type="secondary", key="sidebar_new_analysis_btn", use_container_width=True):
+            # Clear all session state
+            st.session_state.conversation_history = []
+            st.session_state.recommendation = None
+            st.session_state.extracted_attrs = None
+            st.session_state.relevant_stats = None
+            st.session_state.won_docs = None
+            st.session_state.lost_docs = None
+            st.session_state.current_opportunity = ""
+            st.session_state.follow_up_responses = []
+            st.session_state.show_analysis = False
+            st.rerun()
+
+        st.markdown("---")
         st.header("📈 Statistics")
         st.metric("Overall Win Rate", f"{stats['overall_win_rate']*100:.1f}%")
         if isinstance(stats['avg_cycle_days'], dict):
@@ -761,6 +777,17 @@ def main():
                 placeholder="e.g., What if we lower the price by 10%?",
                 key=f"follow_up_input_{len(st.session_state.follow_up_responses)}"
             )
+
+        # Add custom CSS for dark yellow background on "Analyze New Opportunity" buttons
+        st.markdown("""
+            <style>
+            /* Style for Analyze New Opportunity button - dark yellow background */
+            button[kind="secondary"] {
+                background-color: #DAA520 !important;
+                color: white !important;
+            }
+            </style>
+        """, unsafe_allow_html=True)
 
         col1, col2, _ = st.columns([0.5, 1.5, 8])
         with col1:
