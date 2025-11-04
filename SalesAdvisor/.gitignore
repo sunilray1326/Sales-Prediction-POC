@@ -3,6 +3,7 @@
 *.log
 *.tmp
 *.xlsx
+*.md
 
 # Compiled class file
 *.class
