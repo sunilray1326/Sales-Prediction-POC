@@ -48,7 +48,7 @@ avg_cycle_lost = df[df['is_won'] == 0]['cycle_days'].mean()
 stats['avg_cycle_days'] = {'won': round(avg_cycle_won, 1), 'lost': round(avg_cycle_lost, 1)}
 
 # Save stats to JSON for LLM
-with open('Cline_stats.json', 'w') as f:
+with open('quantitative_stats.json', 'w') as f:
     json.dump(stats, f, indent=4)
 
 print("Baseline stats saved to baseline_stats.json")
