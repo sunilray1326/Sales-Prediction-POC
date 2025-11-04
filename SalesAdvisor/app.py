@@ -312,11 +312,13 @@ def get_relevant_stats(extracted_attrs, stats, qual_stats, openai_client, chat_m
         normalized_seg = {}
         for cat_type in ["win_drivers", "loss_risks"]:
             if cat_type in seg_data:
-                denom_key = "total_" + cat_type.split("_")[0].lower()
-                denom = qual_stats["overall"].get(denom_key, 1)
+                # Calculate total for this segment's category (sum of all counts in this category)
+                segment_total = sum(seg_data[cat_type].values())
+
                 normalized_cat = {}
                 for category, count in seg_data[cat_type].items():
-                    freq = count / denom if denom > 0 else 0
+                    # Calculate frequency as percentage of this segment's total
+                    freq = count / segment_total if segment_total > 0 else 0
                     normalized_cat[category] = {
                         "frequency": freq,
                         "count": count,
