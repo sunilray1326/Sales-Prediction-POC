@@ -395,7 +395,7 @@ def main():
             "This tool analyzes your sales opportunity by comparing it to similar won and lost deals, "
             "providing data-driven recommendations to improve your chances of success."
         )
-        
+
         st.markdown("---")
 
         # Model Info as expandable section
@@ -726,17 +726,22 @@ def main():
                     uplift_value = st.session_state.relevant_stats['qual_lift_estimate']
                     st.markdown(f"💡 Estimated uplift from addressing top qualitative risk: <b><span style='color: #4169E1; font-size: 125%;'>+{uplift_value:.1f}%</span></b>", unsafe_allow_html=True)
 
-        # Display recommendation - Print directly on UI
-        st.markdown("💡 **Initial Recommendation**")
-        st.write(st.session_state.recommendation)
+        # Display recommendation in expander with fixed height and scroll (expanded by default)
+        with st.expander("💡 Initial Recommendation", expanded=True):
+            # Use container with height parameter for scrolling
+            with st.container(height=400):
+                st.markdown(st.session_state.recommendation)
 
-        # Display all follow-up Q&A pairs
+        # Display all follow-up Q&A pairs in expanders with fixed height and scroll
         if st.session_state.follow_up_responses:
-            st.markdown("---")
-            st.subheader("💬 Follow-up Discussions")
             for idx, qa in enumerate(st.session_state.follow_up_responses, 1):
-                st.markdown(f"### Question {idx}")
-                st.markdown(f"**Q:** {qa['question']}\n\n**A:** {qa['answer']}")
+                with st.expander(f"💬 Follow-up Question {idx}: {qa['question'][:60]}{'...' if len(qa['question']) > 60 else ''}", expanded=True):
+                    st.markdown(f"**Q:** {qa['question']}")
+                    st.markdown("")
+
+                    # Use container with height parameter for scrolling
+                    with st.container(height=400):
+                        st.markdown(qa['answer'])
 
         # Follow-up questions section - Always at the bottom
         st.markdown("---")
