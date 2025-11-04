@@ -578,7 +578,7 @@ def main():
         # Display similar opportunities - in a text area with scroll
         if st.session_state.won_docs or st.session_state.lost_docs:
             with st.expander("🔍 Similar Sales Opportunities Matching Your Opportunity", expanded=False):
-                # Build content for text area
+                # Build content for text area with HTML formatting for Notes
                 content_lines = []
 
                 if st.session_state.won_docs:
@@ -587,18 +587,22 @@ def main():
                     content_lines.append("")
                     for idx, doc in enumerate(st.session_state.won_docs, 1):
                         content_lines.append(f"{idx}. {doc.get('opportunity_id')} | Rep: {doc.get('sales_rep')} | Product: {doc.get('product')} | Sector: {doc.get('account_sector')} | Region: {doc.get('account_region')} | Price: ${doc.get('sales_price'):,.0f} | Revenue: ${doc.get('revenue_from_deal'):,.0f} | Cycle: {doc.get('sales_cycle_duration')} days")
-                        content_lines.append(f" Note: {doc.get('Notes', '')}")
-                        
+                        # Make Notes value dark blue
+                        note_text = doc.get('Notes', '')
+                        content_lines.append(f" Note: <span style='color: #4169E1;'>{note_text}</span>")
+
                 if st.session_state.lost_docs:
                     if content_lines:
                         content_lines.append("")
                     content_lines.append("❌ TOP 10 LOST CASES")
                     for idx, doc in enumerate(st.session_state.lost_docs, 1):
                         content_lines.append(f"{idx}. {doc.get('opportunity_id')} | Rep: {doc.get('sales_rep')} | Product: {doc.get('product')} | Sector: {doc.get('account_sector')} | Region: {doc.get('account_region')} | Price: ${doc.get('sales_price'):,.0f} | Revenue: ${doc.get('revenue_from_deal'):,.0f} | Cycle: {doc.get('sales_cycle_duration')} days")
-                        content_lines.append(f" Note: {doc.get('Notes', '')}")
-                        
+                        # Make Notes value dark blue
+                        note_text = doc.get('Notes', '')
+                        content_lines.append(f" Note: <span style='color: #4169E1;'>{note_text}</span>")
+
                 # Display in custom text area with transparent background
-                content_text = "\n".join(content_lines)
+                content_text = "<br>".join(content_lines)  # Use <br> for HTML line breaks
                 st.markdown(f"""
                     <div style="
                         background-color: transparent;
@@ -619,37 +623,108 @@ def main():
         # Display key statistics - compact format
         if st.session_state.relevant_stats and 'simulations' in st.session_state.relevant_stats:
             with st.expander("📊 Detailed Simulations & Statistics", expanded=False):
-                # Compact simulation display - no "Simulated Scenarios" header
-                for sim in st.session_state.relevant_stats['simulations'][:5]:
-                    uplift_color = "🟢" if sim['uplift_percent'] > 0 else "🔴"
-                    st.text(f"{sim['description']} | Win Rate: {sim['estimated_win_rate']*100:.1f}% | Uplift: {uplift_color} {sim['uplift_percent']:.1f}%")
+                # Prepare data
+                simulations = st.session_state.relevant_stats['simulations'][:5]
+                qual_insights = st.session_state.relevant_stats.get('qualitative_insights', {})
+                win_drivers = qual_insights.get('win_drivers', {})
+                loss_risks = qual_insights.get('loss_risks', {})
 
-                # Display qualitative insights if available - side by side
-                if 'qualitative_insights' in st.session_state.relevant_stats:
-                    st.text("")
-                    st.markdown("**<u>📝 Qualitative Insights from Notes</u>**", unsafe_allow_html=True)
-                    st.text("")
-                    qual_insights = st.session_state.relevant_stats['qualitative_insights']
+                # Convert to lists with bold, italic, dark blue values, and larger font (125%)
+                sim_list = []
+                for sim in simulations:
+                    uplift_symbol = "+" if sim['uplift_percent'] > 0 else ""
+                    text = f"{sim['description']}: <b><i><span style='color: #4169E1; font-size: 125%;'>{sim['estimated_win_rate']*100:.1f}%</span></i></b> <b><i><span style='color: #4169E1; font-size: 125%;'>({uplift_symbol}{sim['uplift_percent']:.1f}%)</span></i></b>"
+                    sim_list.append(text)
 
-                    col1, col2 = st.columns(2)
+                win_list = []
+                for driver, data in win_drivers.items():
+                    freq_pct = data['frequency'] * 100
+                    text = f"{driver.replace('_', ' ').title()}: <b><i><span style='color: #4169E1; font-size: 125%;'>{freq_pct:.1f}%</span></i></b> <b><i><span style='color: #4169E1; font-size: 125%;'>({data.get('count', 'N/A')} cases)</span></i></b>"
+                    win_list.append(text)
 
-                    with col1:
-                        if 'win_drivers' in qual_insights and qual_insights['win_drivers']:
-                            st.text("✅ Win Drivers (Success Patterns):")
-                            for driver, data in qual_insights['win_drivers'].items():
-                                freq_pct = data['frequency'] * 100
-                                st.text(f"• {driver.replace('_', ' ').title()}: {freq_pct:.1f}% ({data.get('count', 'N/A')} cases)")
+                loss_list = []
+                for risk, data in loss_risks.items():
+                    freq_pct = data['frequency'] * 100
+                    text = f"{risk.replace('_', ' ').title()}: <b><i><span style='color: #4169E1; font-size: 125%;'>{freq_pct:.1f}%</span></i></b> <b><i><span style='color: #4169E1; font-size: 125%;'>({data.get('count', 'N/A')} cases)</span></i></b>"
+                    loss_list.append(text)
 
-                    with col2:
-                        if 'loss_risks' in qual_insights and qual_insights['loss_risks']:
-                            st.text("⚠️ Loss Risks (Failure Patterns):")
-                            for risk, data in qual_insights['loss_risks'].items():
-                                freq_pct = data['frequency'] * 100
-                                st.text(f"• {risk.replace('_', ' ').title()}: {freq_pct:.1f}% ({data.get('count', 'N/A')} cases)")
+                # Determine max rows
+                max_rows = max(len(sim_list), len(win_list), len(loss_list))
 
-                    st.text("")
-                    if 'qual_lift_estimate' in st.session_state.relevant_stats:
-                        st.text(f"💡 Estimated uplift from addressing top qualitative risk: +{st.session_state.relevant_stats['qual_lift_estimate']:.1f}%")
+                # Build HTML table with fixed widths and grey borders
+                table_html = """
+                <style>
+                    .stats-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        font-family: 'Source Sans Pro', sans-serif;
+                        font-size: 14px;
+                    }
+                    .stats-table th {
+                        background-color: #2d2d2d;
+                        color: #fafafa;
+                        font-weight: bold;
+                        padding: 10px;
+                        border: 1px solid #666;
+                        text-align: left;
+                    }
+                    .stats-table td {
+                        padding: 8px;
+                        border: 1px solid #666;
+                        color: #fafafa;
+                        vertical-align: top;
+                    }
+                    .stats-table th:nth-child(1), .stats-table td:nth-child(1) {
+                        width: 40%;
+                    }
+                    .stats-table th:nth-child(2), .stats-table td:nth-child(2) {
+                        width: 30%;
+                    }
+                    .stats-table th:nth-child(3), .stats-table td:nth-child(3) {
+                        width: 30%;
+                    }
+                </style>
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>Quantitative Metrics</th>
+                            <th>Win Drivers (Success)</th>
+                            <th>Loss Risks (Failure)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                """
+
+                # Add data rows
+                for i in range(max_rows):
+                    col1 = sim_list[i] if i < len(sim_list) else ""
+                    col2 = win_list[i] if i < len(win_list) else ""
+                    col3 = loss_list[i] if i < len(loss_list) else ""
+
+                    table_html += f"""
+                        <tr>
+                            <td>{col1}</td>
+                            <td>{col2}</td>
+                            <td>{col3}</td>
+                        </tr>
+                    """
+
+                table_html += """
+                    </tbody>
+                </table>
+                """
+
+                # Display the table using components.html for better rendering
+                import streamlit.components.v1 as components
+
+                # Calculate dynamic height based on number of rows (header + rows + padding)
+                table_height = (max_rows + 1) * 40 + 20  # 40px per row + 20px padding
+                components.html(table_html, height=table_height, scrolling=False)
+
+                # Display qualitative lift estimate if available (no gap)
+                if 'qual_lift_estimate' in st.session_state.relevant_stats:
+                    uplift_value = st.session_state.relevant_stats['qual_lift_estimate']
+                    st.markdown(f"💡 Estimated uplift from addressing top qualitative risk: <b><span style='color: #4169E1; font-size: 125%;'>+{uplift_value:.1f}%</span></b>", unsafe_allow_html=True)
 
         # Display recommendation - Print directly on UI
         st.markdown("💡 **Initial Recommendation**")
