@@ -398,13 +398,6 @@ def main():
 
         st.markdown("---")
 
-        # Model Info as expandable section
-        with st.expander("📊 Model Info", expanded=False):
-            st.write(f"**Chat Model:** {config['CHAT_MODEL']}")
-            st.write(f"**Embedding Model:** {config['EMBEDDING_MODEL']}")
-
-        st.markdown("---")
-
         # Add "Analyze New Opportunity" button in sidebar
         if st.button("🔍 Analyze New Opportunity", type="secondary", key="sidebar_new_analysis_btn", use_container_width=True):
             # Clear all session state
@@ -427,7 +420,7 @@ def main():
             st.metric("Avg Sales Cycle (Lost)", f"{stats['avg_cycle_days']['lost']:.0f} days")
         else:
             st.metric("Avg Sales Cycle", f"{stats['avg_cycle_days']:.0f} days")
-        
+
         if st.button("🔄 Clear History"):
             st.session_state.conversation_history = []
             st.session_state.recommendation = None
@@ -439,6 +432,13 @@ def main():
             st.session_state.follow_up_responses = []
             st.session_state.show_analysis = False
             st.rerun()
+
+        st.markdown("---")
+
+        # Model Info as expandable section - moved to end
+        with st.expander("📊 Model Info", expanded=False):
+            st.write(f"**Chat Model:** {config['CHAT_MODEL']}")
+            st.write(f"**Embedding Model:** {config['EMBEDDING_MODEL']}")
     
     # Show input area only if no analysis is shown
     if not st.session_state.show_analysis:
