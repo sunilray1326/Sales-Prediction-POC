@@ -49,6 +49,11 @@ st.markdown("""
         line-height: 1.6 !important;
         color: rgb(250, 250, 250) !important;
     }
+    /* Style for Analyze New Opportunity button - dark yellow background */
+    button[kind="secondary"] {
+        background-color: #DAA520 !important;
+        color: white !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -777,17 +782,6 @@ def main():
                 placeholder="e.g., What if we lower the price by 10%?",
                 key=f"follow_up_input_{len(st.session_state.follow_up_responses)}"
             )
-
-        # Add custom CSS for dark yellow background on "Analyze New Opportunity" buttons
-        st.markdown("""
-            <style>
-            /* Style for Analyze New Opportunity button - dark yellow background */
-            button[kind="secondary"] {
-                background-color: #DAA520 !important;
-                color: white !important;
-            }
-            </style>
-        """, unsafe_allow_html=True)
 
         col1, col2, _ = st.columns([0.5, 1.5, 8])
         with col1:
