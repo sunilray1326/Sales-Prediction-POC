@@ -108,7 +108,7 @@ def init_clients():
 @st.cache_data
 def load_statistics():
     script_dir = Path(__file__).parent
-    with open(script_dir / "Cline_stats.json", "r", encoding="utf-8") as f:
+    with open(script_dir / "quantitative_stats.json", "r", encoding="utf-8") as f:
         stats = json.load(f)
     with open(script_dir / "qualitative_stats.json", "r", encoding="utf-8") as f:
         qual_stats = json.load(f)

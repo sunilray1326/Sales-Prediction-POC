@@ -37,7 +37,7 @@ search_client = SearchClient(
 
 # Load historical statistics
 script_dir = Path(__file__).parent  # Get the directory of the script
-stats_path = script_dir / "Cline_stats.json"
+stats_path = script_dir / "quantitative_stats.json"
 with open(stats_path, "r", encoding="utf-8") as f:
     stats = json.load(f)
 

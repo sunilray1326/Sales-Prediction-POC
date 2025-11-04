@@ -7,7 +7,6 @@ Data Files/
 *.log
 *.tmp
 *.xlsx
-*.txt
 
 # Compiled class file
 *.class
