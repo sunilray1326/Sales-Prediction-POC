@@ -722,6 +722,5 @@ def main():
                 st.rerun()  # Rerun to display the new Q&A
 
 if __name__ == "__main__":
-    st.set_option('server.enableCORS', True)
     main()
     
