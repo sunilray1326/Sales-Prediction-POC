@@ -45,6 +45,19 @@ st.markdown("""
         font-style: italic !important;
         color: #FFD700 !important;
     }
+    /* Make chat input narrower (70% width) and taller (3-4 lines visible) */
+    .stChatInput {
+        width: 70% !important;
+        max-width: 70% !important;
+    }
+    .stChatInput > div {
+        min-height: 100px !important;
+    }
+    .stChatInput textarea {
+        min-height: 100px !important;
+        height: auto !important;
+        max-height: 200px !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -429,21 +442,15 @@ def main():
         # Input section
         st.markdown("<p style='font-size: 1.25em;'>Enter details about your sales opportunity:</p>", unsafe_allow_html=True)
 
-        opportunity_description = st.text_area(
-            "Enter details about your sales opportunity:",
-            height=75,
-            placeholder="Example: We're pursuing a $50,000 deal with a healthcare company in the Northeast region for our GTX-2000 product. The sales rep is John Smith, and we're competing against two other vendors...",
-            help="Include details like product, sector, region, price, sales rep, and any other relevant information.",
-            label_visibility="collapsed"
+        opportunity_description = st.chat_input(
+            "Example: We're pursuing a $50,000 deal with a healthcare company in the Northeast region for our GTX-2000 product. The sales rep is John Smith...",
+            key="main_opportunity_input"
         )
-
-        analyze_button = st.button("🔍 Analyze", type="primary")
     else:
-        analyze_button = False
-        opportunity_description = ""
+        opportunity_description = None
 
-    # Handle Analyze button
-    if analyze_button and opportunity_description.strip():
+    # Handle chat input submission (Enter key pressed)
+    if opportunity_description and opportunity_description.strip():
         with st.spinner("Analyzing your opportunity..."):
             try:
                 st.session_state.current_opportunity = opportunity_description
@@ -604,33 +611,14 @@ def main():
         st.markdown("---")
         st.subheader("Ask Follow-up Question")
 
-        follow_up = st.text_input(
-            "Ask a follow-up question about this opportunity:",
-            placeholder="e.g., What if we lower the price by 10%?",
-            key=f"follow_up_input_{st.session_state.follow_up_input_key}"
+        # Chat input for follow-up questions
+        follow_up = st.chat_input(
+            "Ask a follow-up question (e.g., What if we lower the price by 10%?)",
+            key=f"follow_up_chat_{st.session_state.follow_up_input_key}"
         )
 
-        col1, col2, _ = st.columns([1, 2, 7])
-        with col1:
-            ask_button = st.button("Ask", type="primary", use_container_width=True)
-        with col2:
-            new_analysis_button = st.button("🔍 Analyze New Opportunity", use_container_width=True)
-
-        # Handle "Analyze New Opportunity" button
-        if new_analysis_button:
-            st.session_state.conversation_history = []
-            st.session_state.recommendation = None
-            st.session_state.extracted_attrs = None
-            st.session_state.relevant_stats = None
-            st.session_state.won_docs = None
-            st.session_state.lost_docs = None
-            st.session_state.current_opportunity = ""
-            st.session_state.follow_up_responses = []
-            st.session_state.show_analysis = False
-            st.rerun()
-
-        # Handle "Ask" button
-        if ask_button and follow_up.strip():
+        # Handle follow-up question submission (Enter key pressed)
+        if follow_up and follow_up.strip():
             with st.spinner("Thinking..."):
                 st.session_state.conversation_history.append({
                     "role": "user",
@@ -645,7 +633,7 @@ def main():
                     "question": follow_up,
                     "answer": answer
                 })
-                # Clear the input by incrementing the key
+                # Increment key to clear input
                 st.session_state.follow_up_input_key += 1
                 st.rerun()
 
