@@ -29,7 +29,7 @@ To find out all the Python version supported by Azure App Service
 az webapp list-runtimes --os-type linux | findstr /i python
 
 => Create ZIP File 
-tar -a -c -f "streamlitapp.zip" app.py requirements.txt quantitative_stats.json qualitative_stats.json 
+tar -a -c -f "streamlitapp.zip" app.py requirements.txt quantitative_stats.json qualitative_stats.json .streamlit
 
 Create Resource Group and where to cretae, location like East US
 Not Executed ==> az group create --name rg-sunil --location eastus
@@ -103,3 +103,7 @@ az webapp config appsettings list --resource-group rg-sunil --name salesadv
 
 ==To restart the Web App from AZ CLI
 az webapp restart --resource-group rg-sunil --name salesadv
+
+After any code changes, just use below 2 commands to deploy the latest code to Azure Web App
+tar -a -c -f "streamlitapp.zip" app.py requirements.txt quantitative_stats.json qualitative_stats.json .streamlit
+az webapp deployment source config-zip --resource-group rg-sunil --name salesadv --src streamlitapp.zip
