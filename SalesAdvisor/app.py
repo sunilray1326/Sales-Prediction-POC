@@ -164,7 +164,14 @@ def extract_attributes(prompt, openai_client, chat_model):
     extraction_prompt = [
         {
             "role": "system",
-            "content": "You are an attribute extractor. Parse the user prompt and extract: product (str or None), sector (str or None), region (str or None), sales_price (float or None), expected_revenue (float or None), current_rep (str or None). Return as JSON dict."
+            "content": (
+                "You are an attribute extractor. Parse the user prompt and extract: product (str or None), sector (str or None), region (str or None), sales_price (float or None), expected_revenue (float or None), current_rep (str or None). Return as JSON dict.\n\n"
+                "IMPORTANT FORMATTING RULES:\n"
+                "- sector: MUST be lowercase (e.g., 'finance', 'marketing', 'medical', 'retail', 'software', 'entertainment', 'employment', 'services', 'technolgy', 'telecommunications')\n"
+                "- region: Title case (e.g., 'Romania', 'Germany', 'Panama', 'United States', 'China', 'Belgium', 'Brazil', 'Italy', 'Japan', 'Jordan', 'Kenya', 'Korea', 'Norway', 'Philipines', 'Poland')\n"
+                "- product: Exact case as mentioned (e.g., 'MG Advanced', 'MG Special', 'GTX Basic', 'GTX Plus Basic', 'GTX Plus Pro', 'GTX Pro', 'GTK 500')\n"
+                "- current_rep: Full name with proper capitalization (e.g., 'Donn Cantrell', 'Cecily Lampkin', 'Boris Faz')"
+            )
         },
         {
             "role": "user",
@@ -179,6 +186,9 @@ def extract_attributes(prompt, openai_client, chat_model):
     )
     try:
         extracted = json.loads(response.choices[0].message.content)
+        # Normalize sector to lowercase for consistent matching
+        if extracted.get("sector"):
+            extracted["sector"] = extracted["sector"].lower()
         return extracted
     except json.JSONDecodeError:
         return {}
@@ -204,14 +214,22 @@ def get_relevant_stats(extracted_attrs, stats, qual_stats, openai_client, chat_m
     product = extracted_attrs.get("product")
     if product and product in stats["product"]["win_rate"]:
         prod_stats = stats["product"]
-        relevant["products"] = {product: prod_stats["win_rate"][product]}
+        relevant["products"] = {
+            product: {
+                "win_rate": prod_stats["win_rate"][product],
+                "lift": prod_stats["lift"][product]
+            }
+        }
         alts = sorted(
             [(k, prod_stats["lift"][k]) for k in prod_stats["lift"] if k != product],
             key=lambda x: x[1],
             reverse=True
         )[:3]
         for alt_prod, _ in alts:
-            relevant["products"][alt_prod] = prod_stats["win_rate"][alt_prod]
+            relevant["products"][alt_prod] = {
+                "win_rate": prod_stats["win_rate"][alt_prod],
+                "lift": prod_stats["lift"][alt_prod]
+            }
         relevant["avg_revenue_by_product"] = {k: stats["avg_revenue_by_product"][k] for k in relevant["products"]}
     
     # Sector-specific
@@ -287,8 +305,8 @@ def get_relevant_stats(extracted_attrs, stats, qual_stats, openai_client, chat_m
             "uplift_percent": (sec_lift - 1) * 100
         })
     if "products" in relevant:
-        for prod, wr in relevant["products"].items():
-            lift = stats["product"]["lift"][prod]
+        for prod, prod_data in relevant["products"].items():
+            lift = prod_data["lift"]
             simulations.append({
                 "description": f"Switch to {prod}",
                 "estimated_win_rate": baseline_wr * lift,
@@ -509,20 +527,58 @@ def main():
                             "Use the provided top 10 won deals as positive examples (what worked) and top 10 lost deals as cautionary examples (what failed). "
                             "Draw patterns from these matches to provide actionable, evidence-based advice, leveraging the filtered RELEVANT_STATS and QUALITATIVE_INSIGHTS.\n\n"
 
-                            "RELEVANT_STATS is tailored to extracted attributes (e.g., sector, product); use it for precise suggestions. "
-                            "Incorporate SIMULATIONS for estimated impacts (e.g., 'Switch to top rep for +4.7% win rate based on simulation').\n"
-                            "QUALITATIVE_INSIGHTS provide behavioral patterns (e.g., 'In retail losses, 22% cite pricing—mitigate via bundling for +8% win lift, citing example: \"Pricing too high... lost to LCD\"'). "
-                            "Only suggest if freq > 0.1; incorporate into suggestions with examples/snippets.\n"
-                            "For reps: Suggest changes if top_reps show >5% lift over current_rep.\n"
-                            "Ground all in data; cite simulations/relevant metrics/qual insights.\n\n"
+                            "IMPORTANT: You MUST start your response with a 'LIFT ANALYSIS' section that shows the lift metrics for each extracted attribute.\n\n"
 
-                            "Structure your responses as follows:\n"
-                            "- **Additions/Improvements for Success:** List 3-5 prioritized suggestions (e.g., product/rep changes), referencing won examples and quantifying with RELEVANT_STATS/SIMULATIONS/QUALITATIVE_INSIGHTS (e.g., '+3% win rate, $X revenue; address demo_success pattern').\n"
-                            "- **Removals/Risks to Avoid:** List 3-5 suggestions to mitigate risks (e.g., pricing adjustments), referencing lost examples and quantifying downsides (e.g., 'Avoid feature_mismatch: 15% loss risk').\n"
-                            "- **Overall Strategy:** Summarize plan, estimated win probability improvement (from simulations/qual_lift_estimate), revenue/cycle impact, and next steps.\n"
-                            "Always provide all sections including Next Steps in your response. If information is not available for any of the above 3 sections, clearly state that recommendation cannot be provided due to lack of data."
+                            "**REQUIRED RESPONSE FORMAT:**\n\n"
 
-                            "Be concise, actionable, and professional."
+                            "## 📊 LIFT ANALYSIS\n\n"
+                            "For each extracted attribute (product, sector, region, sales_rep, sales_price, expected_revenue), display:\n"
+                            "- ✅ or ❌ indicator (✅ if lift > 1.0, ❌ if lift < 1.0)\n"
+                            "- Attribute name and value\n"
+                            "- Win rate percentage\n"
+                            "- Lift value with interpretation (e.g., 'Lift: 1.0268 → 2.68% above baseline')\n"
+                            "- One-line insight\n\n"
+
+                            "Example format:\n"
+                            "✅ **Product: MG Special** - Win Rate: 64.84% | Lift: 1.0268 → 2.68% above baseline\n"
+                            "   _Strong product choice with above-average performance_\n\n"
+
+                            "❌ **Sector: Finance** - Win Rate: 61.17% | Lift: 0.9686 → 3.14% below baseline\n"
+                            "   _Challenging sector, consider mitigation strategies_\n\n"
+
+                            "After the LIFT ANALYSIS section, provide:\n\n"
+
+                            "## 💡 RECOMMENDATION SUMMARY\n"
+                            "- **Overall Assessment:** One sentence (e.g., 'Strong opportunity' or 'High risk opportunity')\n"
+                            "- **Estimated Win Probability:** X% (based on combined lift factors)\n"
+                            "- **Key Insight:** One-liner highlighting the most important factor\n\n"
+
+                            "## ✅ ADDITIONS/IMPROVEMENTS FOR SUCCESS\n"
+                            "List 3-5 prioritized suggestions (e.g., product/rep changes), referencing won examples and quantifying with RELEVANT_STATS/SIMULATIONS/QUALITATIVE_INSIGHTS (e.g., '+3% win rate, $X revenue; address demo_success pattern').\n\n"
+
+                            "## ⚠️ REMOVALS/RISKS TO AVOID\n"
+                            "List 3-5 suggestions to mitigate risks (e.g., pricing adjustments), referencing lost examples and quantifying downsides (e.g., 'Avoid feature_mismatch: 15% loss risk').\n\n"
+
+                            "## 🎯 OVERALL STRATEGY\n"
+                            "Summarize plan, estimated win probability improvement (from simulations/qual_lift_estimate), revenue/cycle impact, and next steps.\n\n"
+
+                            "## 🚀 CONSIDER\n"
+                            "List 2-3 alternative options or strategies to explore (e.g., 'Consider switching to Product X for higher revenue potential', 'Consider assigning to top rep Y for +5% lift').\n\n"
+
+                            "CRITICAL: Always start with the LIFT ANALYSIS section showing all extracted attributes with their lift metrics. "
+                            "Use the RELEVANT_STATS data to extract win_rate and lift values for each attribute.\n\n"
+
+                            "HOW TO ACCESS DATA FROM RELEVANT_STATS:\n"
+                            "- Product: RELEVANT_STATS['products'][product_name]['win_rate'] and RELEVANT_STATS['products'][product_name]['lift']\n"
+                            "- Sector: RELEVANT_STATS['sector'][sector_name]['win_rate'] and RELEVANT_STATS['sector'][sector_name]['lift']\n"
+                            "- Region: RELEVANT_STATS['region'][region_name]['win_rate'] and RELEVANT_STATS['region'][region_name]['lift']\n"
+                            "- Sales Rep: RELEVANT_STATS['current_rep']['win_rate'] and RELEVANT_STATS['current_rep']['lift']\n"
+                            "- Sales Price: RELEVANT_STATS['price_insight'] or RELEVANT_STATS['correlations']['sales_price']\n"
+                            "- Expected Revenue: RELEVANT_STATS['revenue_insight'] or compare to RELEVANT_STATS['avg_revenue_by_product']\n\n"
+
+                            "If an attribute is not found in RELEVANT_STATS, state 'Data not available'.\n\n"
+
+                            "Be concise, actionable, and professional. Use emojis for visual clarity."
                         )
                     },
                     {
@@ -532,10 +588,26 @@ def main():
                             f"{context_msg}\n\n"
                             f"RELEVANT_STATS (filtered for this opportunity):\n{json.dumps(st.session_state.relevant_stats, indent=2)}\n\n"
 
-                            "Provide tailored recommendations, using RELEVANT_STATS, SIMULATIONS, and QUALITATIVE_INSIGHTS to quantify impacts:\n"
-                            "1. What 3-5 key additions/improvements (e.g., product/rep changes) to boost win chances? Prioritize, reference won examples, quantify (e.g., '+2% win rate via simulation, $X revenue; leverage demo_success insight').\n"
-                            "2. What 3-5 elements to remove/mitigate (e.g., pricing risks)? Reference lost examples, quantify risks (e.g., 'Mitigate competitor risk: 20% freq in losses').\n"
-                            "3. Overall: Estimated win probability improvement (e.g., +5-10% from baseline, including qual_lift_estimate), revenue/cycle impact, next steps."
+                            "Provide a comprehensive analysis following the REQUIRED RESPONSE FORMAT above.\n\n"
+
+                            "CRITICAL INSTRUCTIONS:\n"
+                            "1. START with the '📊 LIFT ANALYSIS' section showing lift metrics for ALL extracted attributes\n"
+                            "2. For each attribute, show: indicator (✅/❌), name, win rate, lift value, and one-line insight\n"
+                            "3. Access data correctly from RELEVANT_STATS:\n"
+                            "   - For product: Use RELEVANT_STATS['products'][product_name]['win_rate'] and ['lift']\n"
+                            "   - For sector: Use RELEVANT_STATS['sector'][sector_name]['win_rate'] and ['lift']\n"
+                            "   - For region: Use RELEVANT_STATS['region'][region_name]['win_rate'] and ['lift']\n"
+                            "   - For sales rep: Use RELEVANT_STATS['current_rep']['win_rate'] and ['lift']\n"
+                            "4. Then provide the '💡 RECOMMENDATION SUMMARY' with estimated win probability\n"
+                            "5. Follow with detailed sections: Additions/Improvements, Removals/Risks, Overall Strategy, and Consider options\n"
+                            "6. Use RELEVANT_STATS to extract exact win_rate and lift values - don't estimate or guess\n"
+                            "7. Calculate estimated win probability by combining lift factors from all attributes\n\n"
+
+                            "EXAMPLE for accessing sector data:\n"
+                            "If RELEVANT_STATS contains: {'sector': {'finance': {'win_rate': 0.6117, 'lift': 0.9686}}}\n"
+                            "Then display: ❌ **Sector: finance** - Win Rate: 61.17% | Lift: 0.9686 → 3.14% below baseline\n\n"
+
+                            "Remember: The LIFT ANALYSIS section is MANDATORY and must come FIRST in your response."
                         )
                     }
                 ]
