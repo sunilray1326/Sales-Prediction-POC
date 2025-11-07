@@ -166,11 +166,12 @@ def extract_attributes(prompt, openai_client, chat_model):
             "role": "system",
             "content": (
                 "You are an attribute extractor. Parse the user prompt and extract: product (str or None), sector (str or None), region (str or None), sales_price (float or None), expected_revenue (float or None), current_rep (str or None). Return as JSON dict.\n\n"
-                "IMPORTANT FORMATTING RULES:\n"
-                "- sector: MUST be lowercase (e.g., 'finance', 'marketing', 'medical', 'retail', 'software', 'entertainment', 'employment', 'services', 'technolgy', 'telecommunications')\n"
-                "- region: Title case (e.g., 'Romania', 'Germany', 'Panama', 'United States', 'China', 'Belgium', 'Brazil', 'Italy', 'Japan', 'Jordan', 'Kenya', 'Korea', 'Norway', 'Philipines', 'Poland')\n"
-                "- product: Exact case as mentioned (e.g., 'MG Advanced', 'MG Special', 'GTX Basic', 'GTX Plus Basic', 'GTX Plus Pro', 'GTX Pro', 'GTK 500')\n"
-                "- current_rep: Full name with proper capitalization (e.g., 'Donn Cantrell', 'Cecily Lampkin', 'Boris Faz')"
+                "Extract the values as they appear in the prompt. Case doesn't matter - the system will handle case-insensitive matching.\n\n"
+                "Examples:\n"
+                "- sector: 'finance', 'Finance', or 'FINANCE' are all acceptable\n"
+                "- region: 'romania', 'Romania', or 'ROMANIA' are all acceptable\n"
+                "- product: 'mg advanced', 'MG Advanced', or 'MG ADVANCED' are all acceptable\n"
+                "- current_rep: 'donn cantrell', 'Donn Cantrell', or 'DONN CANTRELL' are all acceptable"
             )
         },
         {
@@ -186,9 +187,7 @@ def extract_attributes(prompt, openai_client, chat_model):
     )
     try:
         extracted = json.loads(response.choices[0].message.content)
-        # Normalize sector to lowercase for consistent matching
-        if extracted.get("sector"):
-            extracted["sector"] = extracted["sector"].lower()
+        # No need to normalize - case-insensitive lookup handles it
         return extracted
     except json.JSONDecodeError:
         return {}
@@ -202,6 +201,27 @@ def llm_chat(messages, openai_client, chat_model):
     )
     return response.choices[0].message.content
 
+def case_insensitive_lookup(search_value, data_dict):
+    """
+    Perform case-insensitive lookup in a dictionary.
+    Returns the actual key from the dictionary if found, None otherwise.
+
+    Args:
+        search_value: The value to search for (case-insensitive)
+        data_dict: Dictionary with keys to search in
+
+    Returns:
+        The actual key from the dictionary (with correct case) or None
+    """
+    if not search_value or not data_dict:
+        return None
+
+    # Create a mapping of lowercase keys to actual keys
+    lowercase_map = {k.lower(): k for k in data_dict.keys()}
+
+    # Look up using lowercase
+    return lowercase_map.get(search_value.lower())
+
 def get_relevant_stats(extracted_attrs, stats, qual_stats, openai_client, chat_model):
     """Filter and summarize relevant stats from JSON based on extracted attributes."""
     relevant = {
@@ -210,18 +230,19 @@ def get_relevant_stats(extracted_attrs, stats, qual_stats, openai_client, chat_m
         "correlations": stats["correlations"]
     }
     
-    # Product-specific
+    # Product-specific (case-insensitive lookup)
     product = extracted_attrs.get("product")
-    if product and product in stats["product"]["win_rate"]:
+    product_key = case_insensitive_lookup(product, stats["product"]["win_rate"])
+    if product_key:
         prod_stats = stats["product"]
         relevant["products"] = {
-            product: {
-                "win_rate": prod_stats["win_rate"][product],
-                "lift": prod_stats["lift"][product]
+            product_key: {
+                "win_rate": prod_stats["win_rate"][product_key],
+                "lift": prod_stats["lift"][product_key]
             }
         }
         alts = sorted(
-            [(k, prod_stats["lift"][k]) for k in prod_stats["lift"] if k != product],
+            [(k, prod_stats["lift"][k]) for k in prod_stats["lift"] if k.lower() != product_key.lower()],
             key=lambda x: x[1],
             reverse=True
         )[:3]
@@ -232,18 +253,19 @@ def get_relevant_stats(extracted_attrs, stats, qual_stats, openai_client, chat_m
             }
         relevant["avg_revenue_by_product"] = {k: stats["avg_revenue_by_product"][k] for k in relevant["products"]}
     
-    # Sector-specific
+    # Sector-specific (case-insensitive lookup)
     sector = extracted_attrs.get("sector")
-    if sector and sector in stats["account_sector"]["win_rate"]:
+    sector_key = case_insensitive_lookup(sector, stats["account_sector"]["win_rate"])
+    if sector_key:
         sec_stats = stats["account_sector"]
         relevant["sector"] = {
-            sector: {
-                "win_rate": sec_stats["win_rate"][sector],
-                "lift": sec_stats["lift"][sector]
+            sector_key: {
+                "win_rate": sec_stats["win_rate"][sector_key],
+                "lift": sec_stats["lift"][sector_key]
             }
         }
         alts = sorted(
-            [(k, sec_stats["lift"][k]) for k in sec_stats["lift"] if k != sector],
+            [(k, sec_stats["lift"][k]) for k in sec_stats["lift"] if k.lower() != sector_key.lower()],
             key=lambda x: x[1],
             reverse=True
         )[:3]
@@ -252,40 +274,52 @@ def get_relevant_stats(extracted_attrs, stats, qual_stats, openai_client, chat_m
                 "win_rate": sec_stats["win_rate"][alt_sec],
                 "lift": sec_stats["lift"][alt_sec]
             }
-        
-        if product:
-            prod_sec_key = f"{product}_{sector}"
+
+        # Product-sector combinations (case-insensitive)
+        if product_key:
+            # Try to find product_sector combination with case-insensitive matching
+            prod_sec_key = case_insensitive_lookup(f"{product_key}_{sector_key}", stats["product_sector_win_rates"])
             relevant["product_sector"] = {}
-            if prod_sec_key in stats["product_sector_win_rates"]:
+            if prod_sec_key:
                 relevant["product_sector"][prod_sec_key] = stats["product_sector_win_rates"][prod_sec_key]
-            
-            sec_combos = [(k.split("_")[0], v) for k, v in stats["product_sector_win_rates"].items() if k.endswith(f"_{sector}")]
+
+            # Find alternative product-sector combinations
+            sec_combos = []
+            for k, v in stats["product_sector_win_rates"].items():
+                parts = k.split("_", 1)  # Split only on first underscore
+                if len(parts) == 2 and parts[1].lower() == sector_key.lower():
+                    sec_combos.append((parts[0], v))
+
             if sec_combos:
                 alts = sorted(sec_combos, key=lambda x: x[1], reverse=True)[:3]
                 for alt_prod, wr in alts:
-                    if alt_prod != product:
-                        relevant["product_sector"][f"{alt_prod}_{sector}"] = wr
+                    if alt_prod.lower() != product_key.lower() if product_key else True:
+                        combo_key = case_insensitive_lookup(f"{alt_prod}_{sector_key}", stats["product_sector_win_rates"])
+                        if combo_key:
+                            relevant["product_sector"][combo_key] = wr
     
-    # Region-specific
+    # Region-specific (case-insensitive lookup)
     region = extracted_attrs.get("region")
-    if region and region in stats["account_region"]["win_rate"]:
+    region_key = case_insensitive_lookup(region, stats["account_region"]["win_rate"])
+    if region_key:
         reg_stats = stats["account_region"]
         relevant["region"] = {
-            region: {
-                "win_rate": reg_stats["win_rate"][region],
-                "lift": reg_stats["lift"][region]
+            region_key: {
+                "win_rate": reg_stats["win_rate"][region_key],
+                "lift": reg_stats["lift"][region_key]
             }
         }
-    
-    # Sales Rep stats
+
+    # Sales Rep stats (case-insensitive lookup)
     rep_stats = stats["sales_rep"]
     current_rep = extracted_attrs.get("current_rep")
-    if current_rep and current_rep in rep_stats["win_rate"]:
+    current_rep_key = case_insensitive_lookup(current_rep, rep_stats["win_rate"])
+    if current_rep_key:
         relevant["current_rep"] = {
-            "name": current_rep,
-            "win_rate": rep_stats["win_rate"][current_rep],
-            "lift": rep_stats["lift"][current_rep],
-            "sample_size": rep_stats["sample_size"][current_rep]
+            "name": current_rep_key,
+            "win_rate": rep_stats["win_rate"][current_rep_key],
+            "lift": rep_stats["lift"][current_rep_key],
+            "sample_size": rep_stats["sample_size"][current_rep_key]
         }
     top_reps = sorted(
         [(k, rep_stats["lift"][k], rep_stats["win_rate"][k], rep_stats["sample_size"][k]) for k in rep_stats["lift"]],
@@ -297,10 +331,10 @@ def get_relevant_stats(extracted_attrs, stats, qual_stats, openai_client, chat_m
     # Simulations
     simulations = []
     baseline_wr = relevant["overall_win_rate"]
-    if "sector" in relevant and sector:
-        sec_lift = relevant["sector"][sector]["lift"]
+    if "sector" in relevant and sector_key:
+        sec_lift = relevant["sector"][sector_key]["lift"]
         simulations.append({
-            "description": f"Baseline adjusted for {sector} sector",
+            "description": f"Baseline adjusted for {sector_key} sector",
             "estimated_win_rate": baseline_wr * sec_lift,
             "uplift_percent": (sec_lift - 1) * 100
         })
@@ -323,10 +357,11 @@ def get_relevant_stats(extracted_attrs, stats, qual_stats, openai_client, chat_m
             })
     relevant["simulations"] = simulations
 
-    # Qualitative Insights
+    # Qualitative Insights (case-insensitive lookup)
     relevant["qualitative_insights"] = {}
-    if sector and sector in qual_stats.get("segmented", {}):
-        seg_data = qual_stats["segmented"][sector]
+    qual_sector_key = case_insensitive_lookup(sector, qual_stats.get("segmented", {}))
+    if qual_sector_key:
+        seg_data = qual_stats["segmented"][qual_sector_key]
         normalized_seg = {}
         for cat_type in ["win_drivers", "loss_risks"]:
             if cat_type in seg_data:
@@ -359,7 +394,7 @@ def get_relevant_stats(extracted_attrs, stats, qual_stats, openai_client, chat_m
             },
             {
                 "role": "user",
-                "content": f"Estimate % win uplift if addressing '{top_risk}' (freq: {top_risk_freq}) in {sector or 'general'} sector."
+                "content": f"Estimate % win uplift if addressing '{top_risk}' (freq: {top_risk_freq}) in {sector_key or 'general'} sector."
             }
         ]
         try:
