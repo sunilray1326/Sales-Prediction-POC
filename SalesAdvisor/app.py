@@ -166,8 +166,32 @@ def extract_attributes(prompt, openai_client, chat_model):
             "role": "system",
             "content": (
                 "You are an attribute extractor. Parse the user prompt and extract: product (str or None), sector (str or None), region (str or None), sales_price (float or None), expected_revenue (float or None), current_rep (str or None). Return as JSON dict.\n\n"
+
+                "CRITICAL RULES:\n"
+                "1. ONLY extract values that are EXPLICITLY mentioned in the prompt\n"
+                "2. If a value is not stated, return null for that field\n"
+                "3. Do NOT infer, guess, or estimate any values\n"
+                "4. Do NOT use knowledge from training data to fill in missing values\n"
+                "5. Extract exact values as written, without interpretation\n"
+                "6. Extract ONLY the core value without extra words (e.g., 'Marketing' not 'Marketing sector')\n\n"
+
                 "Extract the values as they appear in the prompt. Case doesn't matter - the system will handle case-insensitive matching.\n\n"
-                "Examples:\n"
+
+                "Examples of CORRECT extraction:\n"
+                "- Prompt: 'MG Special deal in Marketing sector, Panama region, rep: Cecily Lampkin'\n"
+                "  → {\"product\": \"MG Special\", \"sector\": \"Marketing\", \"region\": \"Panama\", \"sales_price\": null, \"expected_revenue\": null, \"current_rep\": \"Cecily Lampkin\"}\n\n"
+
+                "- Prompt: 'Finance sector deal with price $75000'\n"
+                "  → {\"product\": null, \"sector\": \"Finance\", \"region\": null, \"sales_price\": 75000, \"expected_revenue\": null, \"current_rep\": null}\n\n"
+
+                "Examples of INCORRECT extraction:\n"
+                "- Prompt: 'MG Special deal in Marketing sector'\n"
+                "  → {\"product\": \"MG Special\", \"sector\": \"Marketing\", \"sales_price\": 55000} ❌ WRONG (price not mentioned)\n\n"
+
+                "- Prompt: 'Marketing sector deal'\n"
+                "  → {\"sector\": \"Marketing sector\"} ❌ WRONG (should be just 'Marketing')\n\n"
+
+                "Case examples:\n"
                 "- sector: 'finance', 'Finance', or 'FINANCE' are all acceptable\n"
                 "- region: 'romania', 'Romania', or 'ROMANIA' are all acceptable\n"
                 "- product: 'mg advanced', 'MG Advanced', or 'MG ADVANCED' are all acceptable\n"
@@ -182,12 +206,26 @@ def extract_attributes(prompt, openai_client, chat_model):
     response = openai_client.chat.completions.create(
         model=chat_model,
         messages=extraction_prompt,
-        temperature=0.1,
+        temperature=0.0,  # Changed from 0.1 for deterministic extraction
         max_tokens=200
     )
     try:
         extracted = json.loads(response.choices[0].message.content)
-        # No need to normalize - case-insensitive lookup handles it
+
+        # Validation: Remove hallucinated price if not mentioned in prompt
+        if extracted.get("sales_price") is not None:
+            price_keywords = ["$", "price", "cost", "dollar", "usd"]
+            if not any(keyword in prompt.lower() for keyword in price_keywords):
+                extracted["sales_price"] = None
+
+        # Validation: Remove hallucinated revenue if not mentioned in prompt
+        if extracted.get("expected_revenue") is not None:
+            revenue_keywords = ["revenue", "expected", "forecast"]
+            # Only check for revenue if $ is not already counted as price
+            if not any(keyword in prompt.lower() for keyword in revenue_keywords):
+                if "$" not in prompt:
+                    extracted["expected_revenue"] = None
+
         return extracted
     except json.JSONDecodeError:
         return {}
@@ -256,6 +294,13 @@ def get_relevant_stats(extracted_attrs, stats, qual_stats, openai_client, chat_m
     # Sector-specific (case-insensitive lookup)
     sector = extracted_attrs.get("sector")
     sector_key = case_insensitive_lookup(sector, stats["account_sector"]["win_rate"])
+
+    # Debug logging for sector lookup
+    if sector and not sector_key:
+        import sys
+        print(f"⚠️ WARNING: Sector '{sector}' not found in stats.", file=sys.stderr)
+        print(f"   Available sectors: {list(stats['account_sector']['win_rate'].keys())}", file=sys.stderr)
+
     if sector_key:
         sec_stats = stats["account_sector"]
         relevant["sector"] = {
@@ -514,6 +559,10 @@ def main():
                     openai_client,
                     config['CHAT_MODEL']
                 )
+
+                # Debug: Show what was extracted
+                with st.expander("🔍 DEBUG: Extracted Attributes", expanded=False):
+                    st.json(st.session_state.extracted_attrs)
 
                 # Get relevant stats
                 st.session_state.relevant_stats = get_relevant_stats(
