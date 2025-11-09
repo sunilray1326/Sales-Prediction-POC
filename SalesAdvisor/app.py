@@ -699,18 +699,26 @@ def main():
                             "You MUST include EXACTLY these items:\n\n"
 
                             "**Select NEXT 2 SIMULATIONS (ranked #4 and #5 by uplift_percent)**\n"
-                            "- From the ranked simulations list (already sorted by uplift_percent descending)\n"
-                            "- Select the #4 (fourth highest) and #5 (fifth highest) as alternative strategies\n"
+                            "- CRITICAL: Rank ALL simulations in RELEVANT_STATS['simulations'] by 'uplift_percent' in DESCENDING order (same list used for ADDITIONS section)\n"
+                            "- You already selected #1, #2, #3 for ADDITIONS section\n"
+                            "- Now select the NEXT TWO: #4 (fourth highest uplift) and #5 (fifth highest uplift)\n"
+                            "- DO NOT group by type (product/rep/risk) - use ONLY the uplift_percent ranking\n"
+                            "- DO NOT skip any simulations - if you selected ranks #1, #2, #3 above, you MUST select #4 and #5 here\n"
                             "- Format: [Alternative strategy] (Based on simulation: '[description]' - +[uplift_percent]% uplift, [confidence] confidence)\n\n"
 
-                            "**TOTAL OUTPUT: EXACTLY 2 alternative strategies**\n\n"
+                            "**TOTAL OUTPUT: EXACTLY 2 alternative strategies (simulations ranked #4 and #5)**\n\n"
 
                             "═══════════════════════════════════════════════════════════════════\n"
                             "📋 EXAMPLE OF CORRECT OUTPUT FORMAT\n"
                             "═══════════════════════════════════════════════════════════════════\n\n"
 
                             "**Given this data:**\n"
-                            "- Simulations ranked by uplift_percent: [8.5%, 4.1%, 3.2%, 2.8%, 1.5%]\n"
+                            "- ALL Simulations ranked by uplift_percent (ONE master list):\n"
+                            "  Rank #1: Address pricing risk - 8.5% uplift\n"
+                            "  Rank #2: Assign to Sarah Chen - 4.1% uplift\n"
+                            "  Rank #3: Switch to GTX Pro - 3.2% uplift\n"
+                            "  Rank #4: Switch to GTX Plus - 2.8% uplift\n"
+                            "  Rank #5: Offer trial period - 1.5% uplift\n"
                             "- Win drivers ranked by frequency: [0.70, 0.16, 0.13]\n"
                             "- Loss risks ranked by frequency: [0.45, 0.32, 0.22]\n\n"
 
@@ -718,9 +726,9 @@ def main():
 
                             "## ✅ ADDITIONS/IMPROVEMENTS FOR SUCCESS\n\n"
 
-                            "1. Address pricing concerns through bundling strategy (Based on simulation: 'Address top qual risk pricing_high' - +8.5% uplift, High confidence)\n"
-                            "2. Assign to Sarah Chen for better outcomes (Based on simulation: 'Assign to rep Sarah Chen' - +4.1% uplift, High confidence)\n"
-                            "3. Switch to GTX Pro for higher win rate (Based on simulation: 'Switch to GTX Pro' - +3.2% uplift, High confidence, $55K revenue estimate)\n"
+                            "1. Address pricing concerns through bundling strategy (Based on simulation: 'Address top qual risk pricing_high' - +8.5% uplift, High confidence) ← Rank #1\n"
+                            "2. Assign to Sarah Chen for better outcomes (Based on simulation: 'Assign to rep Sarah Chen' - +4.1% uplift, High confidence) ← Rank #2\n"
+                            "3. Switch to GTX Pro for higher win rate (Based on simulation: 'Switch to GTX Pro' - +3.2% uplift, High confidence, $55K revenue estimate) ← Rank #3\n"
                             "4. Conduct product demo workshop early in sales cycle (Based on qualitative win driver: 'demo_success' - 70% of won deals had successful demos)\n"
                             "5. Offer bundled packages with support services (Based on qualitative win driver: 'bundling_support' - 16% of won deals included bundling)\n\n"
 
@@ -732,8 +740,10 @@ def main():
 
                             "## 🚀 CONSIDER\n\n"
 
-                            "1. Consider switching to GTX Plus for mid-tier positioning (Based on simulation: 'Switch to GTX Plus' - +2.8% uplift, Medium confidence)\n"
-                            "2. Consider offering extended trial period (Based on simulation: 'Offer trial period' - +1.5% uplift, Medium confidence)\n\n"
+                            "1. Consider switching to GTX Plus for mid-tier positioning (Based on simulation: 'Switch to GTX Plus' - +2.8% uplift, Medium confidence) ← Rank #4 from SAME list\n"
+                            "2. Consider offering extended trial period (Based on simulation: 'Offer trial period' - +1.5% uplift, Medium confidence) ← Rank #5 from SAME list\n\n"
+
+                            "**CRITICAL: Notice that CONSIDER uses ranks #4 and #5 from the SAME simulation ranking used in ADDITIONS (ranks #1, #2, #3)**\n\n"
 
                             "═══════════════════════════════════════════════════════════════════\n\n"
 
@@ -951,10 +961,13 @@ def main():
                             "8. **STRICT SELECTION REQUIREMENT:** You MUST follow the exact 'Top N' selection rules for each section:\n"
                             "   - ✅ ADDITIONS: EXACTLY 5 items (Top 3 simulations by uplift_percent + Top 2 win drivers by frequency)\n"
                             "   - ⚠️ REMOVALS: EXACTLY 3 items (Top 3 loss risks by frequency)\n"
-                            "   - 🚀 CONSIDER: EXACTLY 2 items (Simulations ranked #4 and #5 by uplift_percent)\n"
+                            "   - 🚀 CONSIDER: EXACTLY 2 items (Simulations ranked #4 and #5 by uplift_percent from the SAME ranked list used in ADDITIONS)\n"
                             "   - DO NOT add extra items, DO NOT skip items, DO NOT change the order\n"
                             "9. **MANDATORY RANKING:** Before selecting items, you MUST:\n"
-                            "   - Rank ALL simulations by 'uplift_percent' in descending order (highest first)\n"
+                            "   - Rank ALL simulations by 'uplift_percent' in descending order (highest first) - this creates ONE master list\n"
+                            "   - Use ranks #1, #2, #3 from this list for ADDITIONS section\n"
+                            "   - Use ranks #4, #5 from this SAME list for CONSIDER section\n"
+                            "   - DO NOT create separate rankings for different simulation types (product/rep/risk)\n"
                             "   - Rank ALL win_drivers by 'frequency' in descending order (highest first)\n"
                             "   - Rank ALL loss_risks by 'frequency' in descending order (highest first)\n"
                             "   - Then select the top N from each ranked list as specified\n"
