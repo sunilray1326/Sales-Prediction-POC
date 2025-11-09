@@ -637,33 +637,95 @@ def main():
                             "- **Estimated Win Probability:** X% (based on combined lift factors)\n"
                             "- **Key Insight:** One-liner highlighting the most important factor\n\n"
 
-                            "## ✅ ADDITIONS/IMPROVEMENTS FOR SUCCESS\n"
-                            "List 3-5 prioritized suggestions (e.g., product/rep changes), referencing won examples and quantifying with RELEVANT_STATS/SIMULATIONS/QUALITATIVE_INSIGHTS.\n\n"
-                            "**MANDATORY:** Each suggestion MUST include a citation in brackets showing:\n"
-                            "- Data source (simulation/qualitative win driver/quantitative stats)\n"
-                            "- Key metric (uplift %, frequency %, win rate, lift)\n"
-                            "- Brief explanation of what the metric means\n\n"
-                            "**Format:** [Recommendation] (Based on [source]: [details] - [metric with explanation])\n\n"
+                            "## ✅ ADDITIONS/IMPROVEMENTS FOR SUCCESS\n\n"
 
-                            "## ⚠️ REMOVALS/RISKS TO AVOID\n"
-                            "List 3-5 suggestions to mitigate risks (e.g., pricing adjustments), referencing lost examples and quantifying downsides.\n\n"
-                            "**MANDATORY:** Each risk mitigation MUST include a citation in brackets showing:\n"
-                            "- Data source (simulation/qualitative loss risk/quantitative stats)\n"
-                            "- Key metric (frequency % of losses, negative lift, correlation)\n"
-                            "- Brief explanation of the risk severity\n\n"
-                            "**Format:** [Risk to avoid] (Based on [source]: [details] - [metric with explanation])\n\n"
+                            "**STRICT SELECTION RULES - FOLLOW EXACTLY:**\n\n"
 
-                            "## 🎯 OVERALL STRATEGY\n"
-                            "Summarize plan, estimated win probability improvement (from simulations/qual_lift_estimate), revenue/cycle impact, and next steps.\n"
-                            "Include citations for the overall win probability calculation showing which factors contributed what percentage.\n\n"
+                            "You MUST include EXACTLY these items in this EXACT order:\n\n"
 
-                            "## 🚀 CONSIDER\n"
-                            "List 2-3 alternative options or strategies to explore.\n\n"
-                            "**MANDATORY:** Each alternative MUST include a citation in brackets showing:\n"
-                            "- Data source (simulation/qualitative/quantitative)\n"
-                            "- Expected impact (uplift %, revenue estimate)\n"
-                            "- Confidence level or frequency\n\n"
-                            "**Format:** [Alternative strategy] (Based on [source]: [details] - [impact metric])\n\n"
+                            "**STEP 1: Select TOP 3 SIMULATIONS by uplift_percent (highest to lowest)**\n"
+                            "- Rank ALL simulations in RELEVANT_STATS['simulations'] by 'uplift_percent' in DESCENDING order\n"
+                            "- Select the #1 (highest), #2 (second highest), #3 (third highest)\n"
+                            "- List them in order: highest uplift first, then second, then third\n"
+                            "- Format: [Action based on simulation] (Based on simulation: '[description]' - +[uplift_percent]% uplift, [confidence] confidence, $[revenue_estimate if available])\n\n"
+
+                            "**STEP 2: Select TOP 2 QUALITATIVE WIN DRIVERS by frequency (highest to lowest)**\n"
+                            "- Rank ALL win_drivers in RELEVANT_STATS['qualitative_insights']['win_drivers'] by 'frequency' in DESCENDING order\n"
+                            "- Select the #1 (most frequent), #2 (second most frequent)\n"
+                            "- List them in order: most frequent first, then second most frequent\n"
+                            "- Format: [Action to leverage this driver] (Based on qualitative win driver: '[pattern_name]' - [frequency*100]% of won deals had this pattern)\n\n"
+
+                            "**TOTAL OUTPUT: EXACTLY 5 recommendations (3 simulations + 2 win drivers) in the order specified above**\n\n"
+
+                            "## ⚠️ REMOVALS/RISKS TO AVOID\n\n"
+
+                            "**STRICT SELECTION RULES - FOLLOW EXACTLY:**\n\n"
+
+                            "You MUST include EXACTLY these items in this EXACT order:\n\n"
+
+                            "**Select TOP 3 QUALITATIVE LOSS RISKS by frequency (highest to lowest)**\n"
+                            "- Rank ALL loss_risks in RELEVANT_STATS['qualitative_insights']['loss_risks'] by 'frequency' in DESCENDING order\n"
+                            "- Select the #1 (most frequent), #2 (second most frequent), #3 (third most frequent)\n"
+                            "- List them in order: most frequent risk first, then second, then third\n"
+                            "- Format: [Mitigation action for this risk] (Based on qualitative loss risk: '[pattern_name]' - [frequency*100]% of lost deals had this issue)\n\n"
+
+                            "**TOTAL OUTPUT: EXACTLY 3 risk mitigations in the order specified above**\n\n"
+
+                            "## 🎯 OVERALL STRATEGY\n\n"
+
+                            "Summarize the overall plan by:\n"
+                            "1. Combining the top 2-3 highest-impact recommendations from ADDITIONS section\n"
+                            "2. Highlighting the most critical risk from REMOVALS section\n"
+                            "3. Calculating estimated win probability improvement using the combined win probability formula from Section 3\n"
+                            "4. Estimating revenue impact (if available from simulations)\n"
+                            "5. Outlining 2-3 concrete next steps\n\n"
+
+                            "Include citations showing which factors contributed what percentage to the win probability.\n\n"
+
+                            "## 🚀 CONSIDER\n\n"
+
+                            "**STRICT SELECTION RULES - FOLLOW EXACTLY:**\n\n"
+
+                            "You MUST include EXACTLY these items:\n\n"
+
+                            "**Select NEXT 2 SIMULATIONS (ranked #4 and #5 by uplift_percent)**\n"
+                            "- From the ranked simulations list (already sorted by uplift_percent descending)\n"
+                            "- Select the #4 (fourth highest) and #5 (fifth highest) as alternative strategies\n"
+                            "- Format: [Alternative strategy] (Based on simulation: '[description]' - +[uplift_percent]% uplift, [confidence] confidence)\n\n"
+
+                            "**TOTAL OUTPUT: EXACTLY 2 alternative strategies**\n\n"
+
+                            "═══════════════════════════════════════════════════════════════════\n"
+                            "📋 EXAMPLE OF CORRECT OUTPUT FORMAT\n"
+                            "═══════════════════════════════════════════════════════════════════\n\n"
+
+                            "**Given this data:**\n"
+                            "- Simulations ranked by uplift_percent: [8.5%, 4.1%, 3.2%, 2.8%, 1.5%]\n"
+                            "- Win drivers ranked by frequency: [0.70, 0.16, 0.13]\n"
+                            "- Loss risks ranked by frequency: [0.45, 0.32, 0.22]\n\n"
+
+                            "**Your output MUST be:**\n\n"
+
+                            "## ✅ ADDITIONS/IMPROVEMENTS FOR SUCCESS\n\n"
+
+                            "1. Address pricing concerns through bundling strategy (Based on simulation: 'Address top qual risk pricing_high' - +8.5% uplift, High confidence)\n"
+                            "2. Assign to Sarah Chen for better outcomes (Based on simulation: 'Assign to rep Sarah Chen' - +4.1% uplift, High confidence)\n"
+                            "3. Switch to GTX Pro for higher win rate (Based on simulation: 'Switch to GTX Pro' - +3.2% uplift, High confidence, $55K revenue estimate)\n"
+                            "4. Conduct product demo workshop early in sales cycle (Based on qualitative win driver: 'demo_success' - 70% of won deals had successful demos)\n"
+                            "5. Offer bundled packages with support services (Based on qualitative win driver: 'bundling_support' - 16% of won deals included bundling)\n\n"
+
+                            "## ⚠️ REMOVALS/RISKS TO AVOID\n\n"
+
+                            "1. Avoid aggressive pricing; offer value-based packages instead (Based on qualitative loss risk: 'pricing_high' - 45% of lost deals had pricing issues)\n"
+                            "2. Ensure product features match customer requirements closely (Based on qualitative loss risk: 'feature_mismatch' - 32% of lost deals had feature gaps)\n"
+                            "3. Address competitive positioning early in sales cycle (Based on qualitative loss risk: 'competitive_pressure' - 22% of lost deals lost to competitors)\n\n"
+
+                            "## 🚀 CONSIDER\n\n"
+
+                            "1. Consider switching to GTX Plus for mid-tier positioning (Based on simulation: 'Switch to GTX Plus' - +2.8% uplift, Medium confidence)\n"
+                            "2. Consider offering extended trial period (Based on simulation: 'Offer trial period' - +1.5% uplift, Medium confidence)\n\n"
+
+                            "═══════════════════════════════════════════════════════════════════\n\n"
 
                             "CRITICAL: Always start with the LIFT ANALYSIS section showing all extracted attributes with their lift metrics. "
                             "Use the RELEVANT_STATS data to extract win_rate and lift values for each attribute.\n\n"
@@ -876,7 +938,17 @@ def main():
                             "5. Follow with detailed sections: Additions/Improvements, Removals/Risks, Overall Strategy, and Consider options\n"
                             "6. Use RELEVANT_STATS to extract exact win_rate and lift values - don't estimate or guess\n"
                             "7. Calculate estimated win probability by combining lift factors from all attributes\n"
-                            "8. **MANDATORY CITATION REQUIREMENT:** EVERY recommendation in sections ✅ ADDITIONS/IMPROVEMENTS, ⚠️ REMOVALS/RISKS, and 🚀 CONSIDER MUST include a citation in brackets showing:\n"
+                            "8. **STRICT SELECTION REQUIREMENT:** You MUST follow the exact 'Top N' selection rules for each section:\n"
+                            "   - ✅ ADDITIONS: EXACTLY 5 items (Top 3 simulations by uplift_percent + Top 2 win drivers by frequency)\n"
+                            "   - ⚠️ REMOVALS: EXACTLY 3 items (Top 3 loss risks by frequency)\n"
+                            "   - 🚀 CONSIDER: EXACTLY 2 items (Simulations ranked #4 and #5 by uplift_percent)\n"
+                            "   - DO NOT add extra items, DO NOT skip items, DO NOT change the order\n"
+                            "9. **MANDATORY RANKING:** Before selecting items, you MUST:\n"
+                            "   - Rank ALL simulations by 'uplift_percent' in descending order (highest first)\n"
+                            "   - Rank ALL win_drivers by 'frequency' in descending order (highest first)\n"
+                            "   - Rank ALL loss_risks by 'frequency' in descending order (highest first)\n"
+                            "   - Then select the top N from each ranked list as specified\n"
+                            "10. **MANDATORY CITATION REQUIREMENT:** EVERY recommendation MUST include a citation in brackets showing:\n"
                             "   - The data source (simulation/qualitative win driver/qualitative loss risk/quantitative stats)\n"
                             "   - The key metric with explanation (e.g., '+3.2% uplift, High confidence' or '69.98% of won deals' or '45% of lost deals')\n"
                             "   - What the metric means in plain language\n\n"
