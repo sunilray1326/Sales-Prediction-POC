@@ -638,16 +638,32 @@ def main():
                             "- **Key Insight:** One-liner highlighting the most important factor\n\n"
 
                             "## ✅ ADDITIONS/IMPROVEMENTS FOR SUCCESS\n"
-                            "List 3-5 prioritized suggestions (e.g., product/rep changes), referencing won examples and quantifying with RELEVANT_STATS/SIMULATIONS/QUALITATIVE_INSIGHTS (e.g., '+3% win rate, $X revenue; address demo_success pattern').\n\n"
+                            "List 3-5 prioritized suggestions (e.g., product/rep changes), referencing won examples and quantifying with RELEVANT_STATS/SIMULATIONS/QUALITATIVE_INSIGHTS.\n\n"
+                            "**MANDATORY:** Each suggestion MUST include a citation in brackets showing:\n"
+                            "- Data source (simulation/qualitative win driver/quantitative stats)\n"
+                            "- Key metric (uplift %, frequency %, win rate, lift)\n"
+                            "- Brief explanation of what the metric means\n\n"
+                            "**Format:** [Recommendation] (Based on [source]: [details] - [metric with explanation])\n\n"
 
                             "## ⚠️ REMOVALS/RISKS TO AVOID\n"
-                            "List 3-5 suggestions to mitigate risks (e.g., pricing adjustments), referencing lost examples and quantifying downsides (e.g., 'Avoid feature_mismatch: 15% loss risk').\n\n"
+                            "List 3-5 suggestions to mitigate risks (e.g., pricing adjustments), referencing lost examples and quantifying downsides.\n\n"
+                            "**MANDATORY:** Each risk mitigation MUST include a citation in brackets showing:\n"
+                            "- Data source (simulation/qualitative loss risk/quantitative stats)\n"
+                            "- Key metric (frequency % of losses, negative lift, correlation)\n"
+                            "- Brief explanation of the risk severity\n\n"
+                            "**Format:** [Risk to avoid] (Based on [source]: [details] - [metric with explanation])\n\n"
 
                             "## 🎯 OVERALL STRATEGY\n"
-                            "Summarize plan, estimated win probability improvement (from simulations/qual_lift_estimate), revenue/cycle impact, and next steps.\n\n"
+                            "Summarize plan, estimated win probability improvement (from simulations/qual_lift_estimate), revenue/cycle impact, and next steps.\n"
+                            "Include citations for the overall win probability calculation showing which factors contributed what percentage.\n\n"
 
                             "## 🚀 CONSIDER\n"
-                            "List 2-3 alternative options or strategies to explore (e.g., 'Consider switching to Product X for higher revenue potential', 'Consider assigning to top rep Y for +5% lift').\n\n"
+                            "List 2-3 alternative options or strategies to explore.\n\n"
+                            "**MANDATORY:** Each alternative MUST include a citation in brackets showing:\n"
+                            "- Data source (simulation/qualitative/quantitative)\n"
+                            "- Expected impact (uplift %, revenue estimate)\n"
+                            "- Confidence level or frequency\n\n"
+                            "**Format:** [Alternative strategy] (Based on [source]: [details] - [impact metric])\n\n"
 
                             "CRITICAL: Always start with the LIFT ANALYSIS section showing all extracted attributes with their lift metrics. "
                             "Use the RELEVANT_STATS data to extract win_rate and lift values for each attribute.\n\n"
@@ -780,6 +796,60 @@ def main():
                             'Instead of: "Ensure successful demo"\n'
                             'Better: "Conduct shopper journey workshop and gather product feedback (similar to won deal: \'Conducted shopper journey workshop; gathered GTX Plus Basic feedback\' - demo_success pattern, 70% of wins)"\n\n'
 
+                            "**6. MANDATORY CITATION FORMAT FOR ALL RECOMMENDATIONS:**\n\n"
+
+                            "**CRITICAL REQUIREMENT:** Every single recommendation in the ADDITIONS/IMPROVEMENTS, REMOVALS/RISKS, and CONSIDER sections MUST include a citation in brackets showing the data source.\n\n"
+
+                            "**Citation Format:**\n\n"
+
+                            "A. **For Simulation-Based Recommendations:**\n"
+                            '   Format: (Based on simulation: [description] - [uplift_percent]% uplift, [confidence] confidence)\n\n'
+
+                            "   **Example:**\n"
+                            '   "Switch to GTX Pro for higher win rate (Based on simulation: \'Switch to GTX Pro\' - +3.2% uplift, High confidence, $55K revenue estimate)"\n\n'
+
+                            "B. **For Qualitative Win Driver Recommendations:**\n"
+                            '   Format: (Based on qualitative win driver: [pattern_name] - [frequency]% of won deals)\n\n'
+
+                            "   **Example:**\n"
+                            '   "Conduct product demo workshop early in sales cycle (Based on qualitative win driver: \'demo_success\' - 69.98% of won deals had successful demos)"\n\n'
+
+                            "C. **For Qualitative Loss Risk Recommendations:**\n"
+                            '   Format: (Based on qualitative loss risk: [pattern_name] - [frequency]% of lost deals)\n\n'
+
+                            "   **Example:**\n"
+                            '   "Avoid aggressive pricing; offer bundled packages instead (Based on qualitative loss risk: \'pricing_high\' - 45.21% of lost deals had pricing issues)"\n\n'
+
+                            "D. **For Quantitative Stats Recommendations:**\n"
+                            '   Format: (Based on quantitative stats: [attribute] - [win_rate]% win rate, [lift] lift)\n\n'
+
+                            "   **Example:**\n"
+                            '   "Assign to Sarah Chen for better outcomes (Based on quantitative stats: Sarah Chen - 68.5% win rate, 1.085 lift)"\n\n'
+
+                            "E. **For Combined Data Recommendations:**\n"
+                            '   Format: (Based on simulation + qualitative: [details])\n\n'
+
+                            "   **Example:**\n"
+                            '   "Address pricing concerns through bundling strategy (Based on simulation: \'Address top qual risk pricing_high\' - +8.5% uplift + qualitative loss risk: \'pricing_high\' - 45% of losses)"\n\n'
+
+                            "**MANDATORY CITATION RULES:**\n"
+                            "1. EVERY recommendation MUST have a citation in brackets\n"
+                            "2. Citations MUST specify the exact data source (simulation/qualitative/quantitative)\n"
+                            "3. Citations MUST include the key metric (uplift %, frequency %, win rate, or lift)\n"
+                            "4. For simulations: Include uplift_percent and confidence level\n"
+                            "5. For qualitative: Include frequency as percentage and explain what it means\n"
+                            "6. For quantitative: Include win_rate and lift value\n"
+                            "7. Never make a recommendation without citing the supporting data\n\n"
+
+                            "**EXPLANATION REQUIREMENT:**\n"
+                            "When citing qualitative metrics, briefly explain what the frequency means:\n"
+                            '- "69.98% of won deals" means this pattern appeared in nearly 70% of successful deals\n'
+                            '- "45.21% of lost deals" means this risk factor appeared in 45% of failed deals\n\n'
+
+                            "When citing simulations, explain the confidence level:\n"
+                            '- "High confidence" means based on >200 historical samples\n'
+                            '- "Medium confidence" means based on <200 historical samples\n\n'
+
                             "═══════════════════════════════════════════════════════════════════\n\n"
 
                             "Be concise, actionable, and professional. Use emojis for visual clarity."
@@ -805,7 +875,18 @@ def main():
                             "4. Then provide the '💡 RECOMMENDATION SUMMARY' with estimated win probability\n"
                             "5. Follow with detailed sections: Additions/Improvements, Removals/Risks, Overall Strategy, and Consider options\n"
                             "6. Use RELEVANT_STATS to extract exact win_rate and lift values - don't estimate or guess\n"
-                            "7. Calculate estimated win probability by combining lift factors from all attributes\n\n"
+                            "7. Calculate estimated win probability by combining lift factors from all attributes\n"
+                            "8. **MANDATORY CITATION REQUIREMENT:** EVERY recommendation in sections ✅ ADDITIONS/IMPROVEMENTS, ⚠️ REMOVALS/RISKS, and 🚀 CONSIDER MUST include a citation in brackets showing:\n"
+                            "   - The data source (simulation/qualitative win driver/qualitative loss risk/quantitative stats)\n"
+                            "   - The key metric with explanation (e.g., '+3.2% uplift, High confidence' or '69.98% of won deals' or '45% of lost deals')\n"
+                            "   - What the metric means in plain language\n\n"
+
+                            "**CITATION EXAMPLES YOU MUST FOLLOW:**\n"
+                            "✅ GOOD: 'Switch to GTX Pro for higher win rate (Based on simulation: +3.2% uplift, High confidence from >200 samples, $55K revenue estimate)'\n"
+                            "✅ GOOD: 'Conduct product demo workshop early (Based on qualitative win driver: demo_success - 69.98% of won deals had successful demos)'\n"
+                            "✅ GOOD: 'Avoid aggressive pricing (Based on qualitative loss risk: pricing_high - 45.21% of lost deals had pricing issues)'\n"
+                            "❌ BAD: 'Switch to GTX Pro for higher win rate' (NO CITATION)\n"
+                            "❌ BAD: 'Conduct demos' (NO CITATION, TOO VAGUE)\n\n"
 
                             "EXAMPLE for accessing sector data:\n"
                             "If RELEVANT_STATS contains: {'sector': {'finance': {'win_rate': 0.6117, 'lift': 0.9686}}}\n"
@@ -873,7 +954,9 @@ def main():
 
         # Display LLM recommendation
         st.subheader("AI Recommendation")
-        st.markdown(st.session_state.recommendation)
+        # Escape dollar signs to prevent LaTeX rendering (e.g., $550 being treated as math)
+        recommendation_text = st.session_state.recommendation.replace('$', r'\$')
+        st.markdown(recommendation_text)
 
         # Display follow-up Q&A - show heading before first question
         if st.session_state.follow_up_responses:
@@ -881,7 +964,9 @@ def main():
             st.subheader("💬 Follow-up Questions & Answers")
             for idx, qa in enumerate(st.session_state.follow_up_responses, 1):
                 st.markdown(f'<p class="followup-question">Q{idx}: {qa["question"]}</p>', unsafe_allow_html=True)
-                st.markdown(qa['answer'])
+                # Escape dollar signs in follow-up answers too
+                answer_text = qa['answer'].replace('$', r'\$')
+                st.markdown(answer_text)
 
         # Follow-up question section
         st.markdown("---")
