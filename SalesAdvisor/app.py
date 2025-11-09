@@ -560,8 +560,8 @@ def main():
                     config['CHAT_MODEL']
                 )
 
-                # Debug: Show what was extracted
-                with st.expander("🔍 DEBUG: Extracted Attributes", expanded=False):
+                # Show what was extracted
+                with st.expander("🔍 Extracted Attributes", expanded=False):
                     st.json(st.session_state.extracted_attrs)
 
                 # Get relevant stats
@@ -661,6 +661,126 @@ def main():
                             "- Expected Revenue: RELEVANT_STATS['revenue_insight'] or compare to RELEVANT_STATS['avg_revenue_by_product']\n\n"
 
                             "If an attribute is not found in RELEVANT_STATS, state 'Data not available'.\n\n"
+
+                            "═══════════════════════════════════════════════════════════════════\n"
+                            "📚 HOW TO INTERPRET AND USE SIMULATIONS & QUALITATIVE INSIGHTS\n"
+                            "═══════════════════════════════════════════════════════════════════\n\n"
+
+                            "**1. SIMULATIONS STRUCTURE & INTERPRETATION:**\n\n"
+
+                            "RELEVANT_STATS['simulations'] contains scenario analyses with this structure:\n"
+                            "{\n"
+                            '  "description": "Switch to GTX Pro",\n'
+                            '  "estimated_win_rate": 0.68,        // Projected win rate if this change is made\n'
+                            '  "uplift_percent": 2.5,             // % improvement over baseline\n'
+                            '  "revenue_estimate": 50000,         // Expected revenue (if available)\n'
+                            '  "confidence": "High",              // High (>200 samples) or Medium (<200 samples)\n'
+                            '  "from_qual": true                  // True if based on qualitative risk mitigation\n'
+                            "}\n\n"
+
+                            "**HOW TO USE SIMULATIONS:**\n"
+                            "- Prioritize by: (1) uplift_percent (higher is better), (2) confidence level, (3) revenue_estimate\n"
+                            '- Simulations with "confidence": "High" are more reliable than "Medium"\n'
+                            '- Simulations with "from_qual": true show impact of addressing qualitative risks\n'
+                            "- Combine multiple compatible simulations (e.g., product switch + rep change)\n"
+                            "- Use simulations to quantify recommendations in ADDITIONS/IMPROVEMENTS section\n\n"
+
+                            "**EXAMPLE:**\n"
+                            "If simulations show:\n"
+                            '  - "Switch to GTX Pro": uplift_percent: 3.2%, revenue_estimate: $55000, confidence: "High"\n'
+                            '  - "Assign to Sarah Chen": uplift_percent: 4.1%, confidence: "High"\n'
+                            'Then recommend: "Switch to GTX Pro (+3.2% win rate, $55K revenue) AND assign to Sarah Chen (+4.1% win rate) for combined ~7.3% uplift"\n\n'
+
+                            "**2. QUALITATIVE INSIGHTS STRUCTURE & INTERPRETATION:**\n\n"
+
+                            "RELEVANT_STATS['qualitative_insights'] contains patterns from historical deals:\n"
+                            "{\n"
+                            '  "win_drivers": {\n'
+                            '    "demo_success": {\n'
+                            '      "frequency": 0.6998,           // 69.98% of WON deals had successful demos\n'
+                            '      "count": 2966,                 // Absolute number of occurrences\n'
+                            '      "examples": [...]              // Real examples from historical deals\n'
+                            "    }\n"
+                            "  },\n"
+                            '  "loss_risks": {\n'
+                            '    "pricing_high": {\n'
+                            '      "frequency": 0.4521,           // 45.21% of LOST deals had pricing issues\n'
+                            '      "count": 1823,\n'
+                            '      "examples": [...]\n'
+                            "    }\n"
+                            "  }\n"
+                            "}\n\n"
+
+                            "**HOW TO INTERPRET FREQUENCY:**\n"
+                            "- frequency > 0.5 (50%): CRITICAL pattern - appears in majority of deals\n"
+                            "- frequency 0.3-0.5 (30-50%): SIGNIFICANT pattern - common factor\n"
+                            "- frequency 0.1-0.3 (10-30%): MODERATE pattern - worth mentioning\n"
+                            "- frequency < 0.1 (10%): MINOR pattern - usually filtered out\n\n"
+
+                            "**HOW TO USE QUALITATIVE INSIGHTS:**\n\n"
+
+                            "A. **For WIN_DRIVERS (positive patterns):**\n"
+                            '   - High frequency (>50%): "Demo success is CRITICAL - present in 70% of won deals"\n'
+                            "   - Use examples to provide specific, actionable advice\n"
+                            "   - Recommend replicating these patterns in current opportunity\n\n"
+
+                            "B. **For LOSS_RISKS (negative patterns):**\n"
+                            '   - High frequency (>40%): "Pricing issues caused 45% of losses - HIGH RISK"\n'
+                            "   - Use to identify what to AVOID in current opportunity\n"
+                            '   - Quantify risk: "45% loss risk if pricing not addressed"\n\n'
+
+                            "C. **Combining with SIMULATIONS:**\n"
+                            '   - If loss_risk "pricing_high" has frequency 0.45, and simulation shows "Address top qual risk \'pricing_high\'" with uplift_percent: 8.5%\n'
+                            '   - Then recommend: "Address pricing concerns (45% of losses) for estimated +8.5% win rate improvement"\n\n'
+
+                            "**3. CALCULATING COMBINED WIN PROBABILITY:**\n\n"
+
+                            "**FORMULA:**\n"
+                            "Estimated Win Probability = Baseline × Product_Lift × Sector_Lift × Region_Lift × Rep_Lift × (1 + Qual_Adjustment)\n\n"
+
+                            "Where:\n"
+                            "- Baseline = RELEVANT_STATS['overall_win_rate'] (typically ~0.63 or 63%)\n"
+                            "- Product_Lift = RELEVANT_STATS['products'][product]['lift']\n"
+                            "- Sector_Lift = RELEVANT_STATS['sector'][sector]['lift']\n"
+                            "- Region_Lift = RELEVANT_STATS['region'][region]['lift']\n"
+                            "- Rep_Lift = RELEVANT_STATS['current_rep']['lift']\n"
+                            "- Qual_Adjustment = Sum of major qualitative risks (as negative %) and drivers (as positive %)\n\n"
+
+                            "**EXAMPLE CALCULATION:**\n"
+                            "- Baseline: 63%\n"
+                            "- Product (GTX Pro) lift: 1.05 (+5%)\n"
+                            "- Sector (Finance) lift: 0.97 (-3%)\n"
+                            "- Region (Brazil) lift: 1.02 (+2%)\n"
+                            "- Rep (John Doe) lift: 0.95 (-5%)\n"
+                            "- Qualitative: demo_success driver (+10% from freq 0.70), pricing_high risk (-8% from freq 0.45)\n\n"
+
+                            "Step 1: Quantitative = 0.63 × 1.05 × 0.97 × 1.02 × 0.95 = 0.619 (61.9%)\n"
+                            "Step 2: Qualitative adjustment = +10% - 8% = +2%\n"
+                            "Step 3: Final = 61.9% × 1.02 = 63.1%\n\n"
+
+                            '**Display as:** "Estimated Win Probability: 63.1% (baseline 63% adjusted for product +5%, sector -3%, region +2%, rep -5%, qualitative +2%)"\n\n'
+
+                            "**4. PRIORITIZING RECOMMENDATIONS:**\n\n"
+
+                            "**Use this priority order:**\n"
+                            "1. **High-impact, low-effort changes** (e.g., assign to better rep: +4% uplift)\n"
+                            "2. **Address critical qualitative risks** (frequency > 0.4 in loss_risks)\n"
+                            "3. **Leverage critical win drivers** (frequency > 0.5 in win_drivers)\n"
+                            "4. **Product/pricing optimizations** (use simulations for quantification)\n"
+                            "5. **Long-term strategic changes** (e.g., sector repositioning)\n\n"
+
+                            "**5. USING EXAMPLES FROM QUALITATIVE INSIGHTS:**\n\n"
+
+                            'The "examples" field contains real historical deal notes. Use them to:\n'
+                            "- Provide specific, concrete advice (not generic)\n"
+                            "- Show what actually worked/failed in similar situations\n"
+                            "- Make recommendations more credible and actionable\n\n"
+
+                            "**EXAMPLE:**\n"
+                            'Instead of: "Ensure successful demo"\n'
+                            'Better: "Conduct shopper journey workshop and gather product feedback (similar to won deal: \'Conducted shopper journey workshop; gathered GTX Plus Basic feedback\' - demo_success pattern, 70% of wins)"\n\n'
+
+                            "═══════════════════════════════════════════════════════════════════\n\n"
 
                             "Be concise, actionable, and professional. Use emojis for visual clarity."
                         )
