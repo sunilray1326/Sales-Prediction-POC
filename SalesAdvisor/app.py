@@ -474,6 +474,40 @@ def get_relevant_stats(extracted_attrs, stats, qual_stats, openai_client, chat_m
     if rev:
         relevant["revenue_insight"] = f"Expected revenue {rev}: Compare to product avgs for uplift potential."
 
+    # ═══════════════════════════════════════════════════════════════════
+    # PRE-SORT DATA IN PYTHON FOR DETERMINISTIC LLM SELECTION
+    # ═══════════════════════════════════════════════════════════════════
+
+    # Sort simulations by uplift_percent (highest first)
+    # This ensures LLM always sees simulations in the same order
+    simulations = sorted(
+        simulations,
+        key=lambda x: x.get("uplift_percent", 0),
+        reverse=True  # Descending order: highest uplift first
+    )
+
+    # Sort win_drivers by frequency (highest first)
+    if "win_drivers" in relevant["qualitative_insights"]:
+        win_drivers_sorted = dict(
+            sorted(
+                relevant["qualitative_insights"]["win_drivers"].items(),
+                key=lambda x: x[1]["frequency"],
+                reverse=True  # Descending order: most frequent first
+            )
+        )
+        relevant["qualitative_insights"]["win_drivers"] = win_drivers_sorted
+
+    # Sort loss_risks by frequency (highest first)
+    if "loss_risks" in relevant["qualitative_insights"]:
+        loss_risks_sorted = dict(
+            sorted(
+                relevant["qualitative_insights"]["loss_risks"].items(),
+                key=lambda x: x[1]["frequency"],
+                reverse=True  # Descending order: most frequent first
+            )
+        )
+        relevant["qualitative_insights"]["loss_risks"] = loss_risks_sorted
+
     relevant["simulations"] = simulations
     return relevant
 
@@ -651,21 +685,24 @@ def main():
 
                             "**STRICT SELECTION RULES - FOLLOW EXACTLY:**\n\n"
 
+                            "⚠️ IMPORTANT: All data in RELEVANT_STATS is PRE-SORTED for you:\n"
+                            "- simulations[] is already sorted by uplift_percent (highest first)\n"
+                            "- win_drivers{} is already sorted by frequency (highest first)\n"
+                            "- loss_risks{} is already sorted by frequency (highest first)\n\n"
+
                             "You MUST include EXACTLY these items in this EXACT order:\n\n"
 
-                            "**STEP 1: Select TOP 3 SIMULATIONS by uplift_percent (highest to lowest)**\n"
-                            "- Rank ALL simulations in RELEVANT_STATS['simulations'] by 'uplift_percent' in DESCENDING order\n"
-                            "- Select the #1 (highest), #2 (second highest), #3 (third highest)\n"
-                            "- List them in order: highest uplift first, then second, then third\n"
+                            "**STEP 1: Select FIRST 3 SIMULATIONS from RELEVANT_STATS['simulations']**\n"
+                            "- Take simulations[0], simulations[1], simulations[2] (already sorted by uplift_percent, highest first)\n"
+                            "- List them in the order they appear (DO NOT re-sort)\n"
                             "- Format: [Action based on simulation] (Based on simulation: '[description]' - +[uplift_percent]% uplift, [confidence] confidence, $[revenue_estimate if available])\n\n"
 
-                            "**STEP 2: Select TOP 2 QUALITATIVE WIN DRIVERS by frequency (highest to lowest)**\n"
-                            "- Rank ALL win_drivers in RELEVANT_STATS['qualitative_insights']['win_drivers'] by 'frequency' in DESCENDING order\n"
-                            "- Select the #1 (most frequent), #2 (second most frequent)\n"
-                            "- List them in order: most frequent first, then second most frequent\n"
+                            "**STEP 2: Select FIRST 2 WIN DRIVERS from RELEVANT_STATS['qualitative_insights']['win_drivers']**\n"
+                            "- Take the first 2 entries (already sorted by frequency, highest first)\n"
+                            "- List them in the order they appear (DO NOT re-sort)\n"
                             "- Format: [Action to leverage this driver] (Based on qualitative win driver: '[pattern_name]' - [frequency*100]% of won deals had this pattern)\n\n"
 
-                            "**TOTAL OUTPUT: EXACTLY 5 recommendations (3 simulations + 2 win drivers) in the order specified above**\n\n"
+                            "**TOTAL OUTPUT: EXACTLY 5 recommendations (3 simulations + 2 win drivers) in the order they appear in the data**\n\n"
 
                             "## ⚠️ REMOVALS/RISKS TO AVOID\n\n"
 
@@ -673,13 +710,12 @@ def main():
 
                             "You MUST include EXACTLY these items in this EXACT order:\n\n"
 
-                            "**Select TOP 3 QUALITATIVE LOSS RISKS by frequency (highest to lowest)**\n"
-                            "- Rank ALL loss_risks in RELEVANT_STATS['qualitative_insights']['loss_risks'] by 'frequency' in DESCENDING order\n"
-                            "- Select the #1 (most frequent), #2 (second most frequent), #3 (third most frequent)\n"
-                            "- List them in order: most frequent risk first, then second, then third\n"
+                            "**Select FIRST 3 LOSS RISKS from RELEVANT_STATS['qualitative_insights']['loss_risks']**\n"
+                            "- Take the first 3 entries (already sorted by frequency, highest first)\n"
+                            "- List them in the order they appear (DO NOT re-sort)\n"
                             "- Format: [Mitigation action for this risk] (Based on qualitative loss risk: '[pattern_name]' - [frequency*100]% of lost deals had this issue)\n\n"
 
-                            "**TOTAL OUTPUT: EXACTLY 3 risk mitigations in the order specified above**\n\n"
+                            "**TOTAL OUTPUT: EXACTLY 3 risk mitigations in the order they appear in the data**\n\n"
 
                             "## 🎯 OVERALL STRATEGY\n\n"
 
@@ -698,52 +734,63 @@ def main():
 
                             "You MUST include EXACTLY these items:\n\n"
 
-                            "**Select NEXT 2 SIMULATIONS (ranked #4 and #5 by uplift_percent)**\n"
-                            "- CRITICAL: Rank ALL simulations in RELEVANT_STATS['simulations'] by 'uplift_percent' in DESCENDING order (same list used for ADDITIONS section)\n"
-                            "- You already selected #1, #2, #3 for ADDITIONS section\n"
-                            "- Now select the NEXT TWO: #4 (fourth highest uplift) and #5 (fifth highest uplift)\n"
-                            "- DO NOT group by type (product/rep/risk) - use ONLY the uplift_percent ranking\n"
-                            "- DO NOT skip any simulations - if you selected ranks #1, #2, #3 above, you MUST select #4 and #5 here\n"
+                            "**Select NEXT 2 SIMULATIONS from RELEVANT_STATS['simulations']**\n"
+                            "- Take simulations[3] and simulations[4] (already sorted by uplift_percent, highest first)\n"
+                            "- You already used simulations[0], [1], [2] in ADDITIONS section\n"
+                            "- Now use the NEXT TWO: simulations[3] and simulations[4]\n"
+                            "- List them in the order they appear (DO NOT re-sort)\n"
                             "- Format: [Alternative strategy] (Based on simulation: '[description]' - +[uplift_percent]% uplift, [confidence] confidence)\n\n"
 
-                            "**TOTAL OUTPUT: EXACTLY 2 alternative strategies (simulations ranked #4 and #5)**\n\n"
+                            "**TOTAL OUTPUT: EXACTLY 2 alternative strategies (simulations[3] and simulations[4])**\n\n"
 
                             "═══════════════════════════════════════════════════════════════════\n"
                             "📋 EXAMPLE OF CORRECT OUTPUT FORMAT\n"
                             "═══════════════════════════════════════════════════════════════════\n\n"
 
-                            "**Given this data:**\n"
-                            "- ALL Simulations ranked by uplift_percent (ONE master list):\n"
-                            "  Rank #1: Address pricing risk - 8.5% uplift\n"
-                            "  Rank #2: Assign to Sarah Chen - 4.1% uplift\n"
-                            "  Rank #3: Switch to GTX Pro - 3.2% uplift\n"
-                            "  Rank #4: Switch to GTX Plus - 2.8% uplift\n"
-                            "  Rank #5: Offer trial period - 1.5% uplift\n"
-                            "- Win drivers ranked by frequency: [0.70, 0.16, 0.13]\n"
-                            "- Loss risks ranked by frequency: [0.45, 0.32, 0.22]\n\n"
+                            "**Given this PRE-SORTED data (already sorted in Python):**\n\n"
+
+                            "RELEVANT_STATS['simulations'] = [\n"
+                            "  [0]: {'description': 'Address pricing risk', 'uplift_percent': 8.5, ...},  ← FIRST (highest uplift)\n"
+                            "  [1]: {'description': 'Assign to Sarah Chen', 'uplift_percent': 4.1, ...},\n"
+                            "  [2]: {'description': 'Switch to GTX Pro', 'uplift_percent': 3.2, ...},\n"
+                            "  [3]: {'description': 'Switch to GTX Plus', 'uplift_percent': 2.8, ...},\n"
+                            "  [4]: {'description': 'Offer trial period', 'uplift_percent': 1.5, ...}\n"
+                            "]\n\n"
+
+                            "RELEVANT_STATS['qualitative_insights']['win_drivers'] = {\n"
+                            "  'demo_success': {'frequency': 0.70, ...},  ← FIRST (most frequent)\n"
+                            "  'bundling_support': {'frequency': 0.16, ...},  ← SECOND\n"
+                            "  'roi_evidence': {'frequency': 0.13, ...}\n"
+                            "}\n\n"
+
+                            "RELEVANT_STATS['qualitative_insights']['loss_risks'] = {\n"
+                            "  'pricing_high': {'frequency': 0.45, ...},  ← FIRST (most frequent)\n"
+                            "  'feature_mismatch': {'frequency': 0.32, ...},  ← SECOND\n"
+                            "  'competitive_pressure': {'frequency': 0.22, ...}  ← THIRD\n"
+                            "}\n\n"
 
                             "**Your output MUST be:**\n\n"
 
                             "## ✅ ADDITIONS/IMPROVEMENTS FOR SUCCESS\n\n"
 
-                            "1. Address pricing concerns through bundling strategy (Based on simulation: 'Address top qual risk pricing_high' - +8.5% uplift, High confidence) ← Rank #1\n"
-                            "2. Assign to Sarah Chen for better outcomes (Based on simulation: 'Assign to rep Sarah Chen' - +4.1% uplift, High confidence) ← Rank #2\n"
-                            "3. Switch to GTX Pro for higher win rate (Based on simulation: 'Switch to GTX Pro' - +3.2% uplift, High confidence, $55K revenue estimate) ← Rank #3\n"
-                            "4. Conduct product demo workshop early in sales cycle (Based on qualitative win driver: 'demo_success' - 70% of won deals had successful demos)\n"
-                            "5. Offer bundled packages with support services (Based on qualitative win driver: 'bundling_support' - 16% of won deals included bundling)\n\n"
+                            "1. Address pricing concerns through bundling strategy (Based on simulation: 'Address top qual risk pricing_high' - +8.5% uplift, High confidence) ← simulations[0]\n"
+                            "2. Assign to Sarah Chen for better outcomes (Based on simulation: 'Assign to rep Sarah Chen' - +4.1% uplift, High confidence) ← simulations[1]\n"
+                            "3. Switch to GTX Pro for higher win rate (Based on simulation: 'Switch to GTX Pro' - +3.2% uplift, High confidence, $55K revenue estimate) ← simulations[2]\n"
+                            "4. Conduct product demo workshop early in sales cycle (Based on qualitative win driver: 'demo_success' - 70% of won deals had successful demos) ← win_drivers[0]\n"
+                            "5. Offer bundled packages with support services (Based on qualitative win driver: 'bundling_support' - 16% of won deals included bundling) ← win_drivers[1]\n\n"
 
                             "## ⚠️ REMOVALS/RISKS TO AVOID\n\n"
 
-                            "1. Avoid aggressive pricing; offer value-based packages instead (Based on qualitative loss risk: 'pricing_high' - 45% of lost deals had pricing issues)\n"
-                            "2. Ensure product features match customer requirements closely (Based on qualitative loss risk: 'feature_mismatch' - 32% of lost deals had feature gaps)\n"
-                            "3. Address competitive positioning early in sales cycle (Based on qualitative loss risk: 'competitive_pressure' - 22% of lost deals lost to competitors)\n\n"
+                            "1. Avoid aggressive pricing; offer value-based packages instead (Based on qualitative loss risk: 'pricing_high' - 45% of lost deals had pricing issues) ← loss_risks[0]\n"
+                            "2. Ensure product features match customer requirements closely (Based on qualitative loss risk: 'feature_mismatch' - 32% of lost deals had feature gaps) ← loss_risks[1]\n"
+                            "3. Address competitive positioning early in sales cycle (Based on qualitative loss risk: 'competitive_pressure' - 22% of lost deals lost to competitors) ← loss_risks[2]\n\n"
 
                             "## 🚀 CONSIDER\n\n"
 
-                            "1. Consider switching to GTX Plus for mid-tier positioning (Based on simulation: 'Switch to GTX Plus' - +2.8% uplift, Medium confidence) ← Rank #4 from SAME list\n"
-                            "2. Consider offering extended trial period (Based on simulation: 'Offer trial period' - +1.5% uplift, Medium confidence) ← Rank #5 from SAME list\n\n"
+                            "1. Consider switching to GTX Plus for mid-tier positioning (Based on simulation: 'Switch to GTX Plus' - +2.8% uplift, Medium confidence) ← simulations[3]\n"
+                            "2. Consider offering extended trial period (Based on simulation: 'Offer trial period' - +1.5% uplift, Medium confidence) ← simulations[4]\n\n"
 
-                            "**CRITICAL: Notice that CONSIDER uses ranks #4 and #5 from the SAME simulation ranking used in ADDITIONS (ranks #1, #2, #3)**\n\n"
+                            "**CRITICAL: All data is PRE-SORTED in Python. Just select the FIRST N items in the order they appear. DO NOT re-sort!**\n\n"
 
                             "═══════════════════════════════════════════════════════════════════\n\n"
 
@@ -958,19 +1005,17 @@ def main():
                             "5. Follow with detailed sections: Additions/Improvements, Removals/Risks, Overall Strategy, and Consider options\n"
                             "6. Use RELEVANT_STATS to extract exact win_rate and lift values - don't estimate or guess\n"
                             "7. Calculate estimated win probability by combining lift factors from all attributes\n"
-                            "8. **STRICT SELECTION REQUIREMENT:** You MUST follow the exact 'Top N' selection rules for each section:\n"
-                            "   - ✅ ADDITIONS: EXACTLY 5 items (Top 3 simulations by uplift_percent + Top 2 win drivers by frequency)\n"
-                            "   - ⚠️ REMOVALS: EXACTLY 3 items (Top 3 loss risks by frequency)\n"
-                            "   - 🚀 CONSIDER: EXACTLY 2 items (Simulations ranked #4 and #5 by uplift_percent from the SAME ranked list used in ADDITIONS)\n"
+                            "8. **CRITICAL: ALL DATA IS PRE-SORTED IN PYTHON** - You do NOT need to rank or sort anything:\n"
+                            "   - RELEVANT_STATS['simulations'] is already sorted by uplift_percent (highest first)\n"
+                            "   - RELEVANT_STATS['qualitative_insights']['win_drivers'] is already sorted by frequency (highest first)\n"
+                            "   - RELEVANT_STATS['qualitative_insights']['loss_risks'] is already sorted by frequency (highest first)\n"
+                            "   - Just select the FIRST N items in the order they appear - DO NOT re-sort!\n\n"
+                            "9. **STRICT SELECTION REQUIREMENT:** You MUST follow these exact selection rules:\n"
+                            "   - ✅ ADDITIONS: EXACTLY 5 items (simulations[0,1,2] + first 2 win_drivers)\n"
+                            "   - ⚠️ REMOVALS: EXACTLY 3 items (first 3 loss_risks)\n"
+                            "   - 🚀 CONSIDER: EXACTLY 2 items (simulations[3,4])\n"
                             "   - DO NOT add extra items, DO NOT skip items, DO NOT change the order\n"
-                            "9. **MANDATORY RANKING:** Before selecting items, you MUST:\n"
-                            "   - Rank ALL simulations by 'uplift_percent' in descending order (highest first) - this creates ONE master list\n"
-                            "   - Use ranks #1, #2, #3 from this list for ADDITIONS section\n"
-                            "   - Use ranks #4, #5 from this SAME list for CONSIDER section\n"
-                            "   - DO NOT create separate rankings for different simulation types (product/rep/risk)\n"
-                            "   - Rank ALL win_drivers by 'frequency' in descending order (highest first)\n"
-                            "   - Rank ALL loss_risks by 'frequency' in descending order (highest first)\n"
-                            "   - Then select the top N from each ranked list as specified\n"
+                            "   - Use items in the EXACT order they appear in RELEVANT_STATS\n"
                             "10. **MANDATORY CITATION REQUIREMENT:** EVERY recommendation MUST include a citation in brackets showing:\n"
                             "   - The data source (simulation/qualitative win driver/qualitative loss risk/quantitative stats)\n"
                             "   - The key metric with explanation (e.g., '+3.2% uplift, High confidence' or '69.98% of won deals' or '45% of lost deals')\n"
