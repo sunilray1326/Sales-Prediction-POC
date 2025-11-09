@@ -230,13 +230,22 @@ def extract_attributes(prompt, openai_client, chat_model):
     except json.JSONDecodeError:
         return {}
 
-def llm_chat(messages, openai_client, chat_model):
-    response = openai_client.chat.completions.create(
-        model=chat_model,
-        messages=messages,
-        temperature=0.8,
-        max_tokens=4000
-    )
+def llm_chat(messages, openai_client, chat_model, temperature=0.8, seed=None):
+    """
+    Chat with LLM.
+    For consistent recommendations, use temperature=0.1 and seed=12345.
+    For deterministic numeric outputs, use temperature=0.0 and seed=12345.
+    """
+    params = {
+        "model": chat_model,
+        "messages": messages,
+        "temperature": temperature,
+        "max_tokens": 4000
+    }
+    if seed is not None:
+        params["seed"] = seed
+
+    response = openai_client.chat.completions.create(**params)
     return response.choices[0].message.content
 
 def case_insensitive_lookup(search_value, data_dict):
@@ -443,7 +452,8 @@ def get_relevant_stats(extracted_attrs, stats, qual_stats, openai_client, chat_m
             }
         ]
         try:
-            uplift_str = llm_chat(sim_prompt, openai_client, chat_model)
+            # Use temperature=0.0 for deterministic numeric uplift estimation
+            uplift_str = llm_chat(sim_prompt, openai_client, chat_model, temperature=0.0, seed=12345)
             qual_uplift = float(uplift_str.strip("%"))
             relevant["qual_lift_estimate"] = qual_uplift
             simulations.append({
@@ -969,8 +979,14 @@ def main():
                     }
                 ]
 
-                # Get recommendation
-                st.session_state.recommendation = llm_chat(conversation, openai_client, config['CHAT_MODEL'])
+                # Get recommendation with low temperature for consistency
+                st.session_state.recommendation = llm_chat(
+                    conversation,
+                    openai_client,
+                    config['CHAT_MODEL'],
+                    temperature=0.1,  # Low temperature for high consistency while maintaining natural language
+                    seed=12345  # Fixed seed for reproducibility
+                )
                 st.session_state.conversation_history = conversation
                 st.session_state.follow_up_responses = []
                 st.session_state.show_analysis = True
@@ -1057,7 +1073,14 @@ def main():
                     "role": "user",
                     "content": follow_up
                 })
-                answer = llm_chat(st.session_state.conversation_history, openai_client, config['CHAT_MODEL'])
+                # Use low temperature for consistent follow-up answers
+                answer = llm_chat(
+                    st.session_state.conversation_history,
+                    openai_client,
+                    config['CHAT_MODEL'],
+                    temperature=0.1,
+                    seed=12345
+                )
                 st.session_state.conversation_history.append({
                     "role": "assistant",
                     "content": answer
