@@ -508,6 +508,31 @@ def get_relevant_stats(extracted_attrs, stats, qual_stats, openai_client, chat_m
         )
         relevant["qualitative_insights"]["loss_risks"] = loss_risks_sorted
 
+    # ═══════════════════════════════════════════════════════════════════
+    # PRE-CALCULATE WIN PROBABILITY IMPROVEMENTS FOR TOP 3 RECOMMENDATIONS
+    # ═══════════════════════════════════════════════════════════════════
+
+    # Prepare top 3 win probability improvement recommendations
+    # These combine quantitative (simulations) and qualitative (win_drivers) insights
+    win_probability_improvements = []
+
+    # Add top 3 simulations (already sorted by uplift_percent)
+    for i in range(min(3, len(simulations))):
+        sim = simulations[i]
+
+        # Determine if this is quantitative or qualitative based
+        source_type = "Qualitative insight" if sim.get("from_qual", False) else "Quantitative simulation"
+
+        win_probability_improvements.append({
+            "rank": i + 1,
+            "recommendation": sim["description"],
+            "uplift_percent": sim["uplift_percent"],
+            "confidence": sim.get("confidence", "Medium"),
+            "source_type": source_type,
+            "explanation": f"This recommendation is based on {source_type.lower()} showing {sim['uplift_percent']:.2f}% improvement in win rate."
+        })
+
+    relevant["win_probability_improvements"] = win_probability_improvements
     relevant["simulations"] = simulations
     return relevant
 
@@ -717,16 +742,29 @@ def main():
 
                             "**TOTAL OUTPUT: EXACTLY 3 risk mitigations in the order they appear in the data**\n\n"
 
-                            "## 🎯 OVERALL STRATEGY\n\n"
+                            "## 📈 ESTIMATED WIN PROBABILITY IMPROVEMENT\n\n"
 
-                            "Summarize the overall plan by:\n"
-                            "1. Combining the top 2-3 highest-impact recommendations from ADDITIONS section\n"
-                            "2. Highlighting the most critical risk from REMOVALS section\n"
-                            "3. Calculating estimated win probability improvement using the combined win probability formula from Section 3\n"
-                            "4. Estimating revenue impact (if available from simulations)\n"
-                            "5. Outlining 2-3 concrete next steps\n\n"
+                            "**STRICT SELECTION RULES - FOLLOW EXACTLY:**\n\n"
 
-                            "Include citations showing which factors contributed what percentage to the win probability.\n\n"
+                            "⚠️ IMPORTANT: Win probability improvements are PRE-CALCULATED in Python.\n"
+                            "Use RELEVANT_STATS['win_probability_improvements'] which contains the top 3 recommendations.\n\n"
+
+                            "You MUST include EXACTLY these items in this EXACT order:\n\n"
+
+                            "**Display TOP 3 WIN PROBABILITY IMPROVEMENTS from RELEVANT_STATS['win_probability_improvements']**\n"
+                            "- Take win_probability_improvements[0], [1], [2] (already sorted by uplift_percent, highest first)\n"
+                            "- For each improvement, display:\n"
+                            "  * Rank number (1, 2, 3)\n"
+                            "  * Recommendation description\n"
+                            "  * Uplift percentage (how much it improves win probability)\n"
+                            "  * Source type (Quantitative simulation or Qualitative insight)\n"
+                            "  * Brief explanation (1-2 sentences on WHY this improves win probability)\n"
+                            "- Format:\n"
+                            "  [Rank]. **[Recommendation]** → +[uplift_percent]% win probability improvement\n"
+                            "     - Source: [source_type] ([confidence] confidence)\n"
+                            "     - Why: [Brief explanation of why this improves win probability]\n\n"
+
+                            "**TOTAL OUTPUT: EXACTLY 3 win probability improvements in the order they appear in the data**\n\n"
 
                             "## 🚀 CONSIDER\n\n"
 
@@ -785,7 +823,21 @@ def main():
                             "2. Ensure product features match customer requirements closely (Based on qualitative loss risk: 'feature_mismatch' - 32% of lost deals had feature gaps) ← loss_risks[1]\n"
                             "3. Address competitive positioning early in sales cycle (Based on qualitative loss risk: 'competitive_pressure' - 22% of lost deals lost to competitors) ← loss_risks[2]\n\n"
 
-                            "## 🚀 CONSIDER\n\n"
+                            "## � ESTIMATED WIN PROBABILITY IMPROVEMENT\n\n"
+
+                            "1. **Address pricing concerns through bundling strategy** → +8.5% win probability improvement\n"
+                            "   - Source: Qualitative insight (High confidence)\n"
+                            "   - Why: Addressing pricing concerns directly mitigates the top loss risk (45% of lost deals). Bundling creates perceived value and reduces price sensitivity.\n\n"
+
+                            "2. **Assign to Sarah Chen** → +4.1% win probability improvement\n"
+                            "   - Source: Quantitative simulation (High confidence)\n"
+                            "   - Why: Sarah Chen has demonstrated higher win rates with similar deals in this sector and region, based on historical performance data.\n\n"
+
+                            "3. **Switch to GTX Pro** → +3.2% win probability improvement\n"
+                            "   - Source: Quantitative simulation (High confidence)\n"
+                            "   - Why: GTX Pro has a stronger product-market fit for this sector, with higher historical win rates and better alignment with customer requirements.\n\n"
+
+                            "## �🚀 CONSIDER\n\n"
 
                             "1. Consider switching to GTX Plus for mid-tier positioning (Based on simulation: 'Switch to GTX Plus' - +2.8% uplift, Medium confidence) ← simulations[3]\n"
                             "2. Consider offering extended trial period (Based on simulation: 'Offer trial period' - +1.5% uplift, Medium confidence) ← simulations[4]\n\n"
@@ -1002,17 +1054,18 @@ def main():
                             "   - For region: Use RELEVANT_STATS['region'][region_name]['win_rate'] and ['lift']\n"
                             "   - For sales rep: Use RELEVANT_STATS['current_rep']['win_rate'] and ['lift']\n"
                             "4. Then provide the '💡 RECOMMENDATION SUMMARY' with estimated win probability\n"
-                            "5. Follow with detailed sections: Additions/Improvements, Removals/Risks, Overall Strategy, and Consider options\n"
+                            "5. Follow with detailed sections: Additions/Improvements, Removals/Risks, Estimated Win Probability Improvement, and Consider options\n"
                             "6. Use RELEVANT_STATS to extract exact win_rate and lift values - don't estimate or guess\n"
-                            "7. Calculate estimated win probability by combining lift factors from all attributes\n"
-                            "8. **CRITICAL: ALL DATA IS PRE-SORTED IN PYTHON** - You do NOT need to rank or sort anything:\n"
+                            "7. **CRITICAL: ALL DATA IS PRE-SORTED IN PYTHON** - You do NOT need to rank or sort anything:\n"
                             "   - RELEVANT_STATS['simulations'] is already sorted by uplift_percent (highest first)\n"
                             "   - RELEVANT_STATS['qualitative_insights']['win_drivers'] is already sorted by frequency (highest first)\n"
                             "   - RELEVANT_STATS['qualitative_insights']['loss_risks'] is already sorted by frequency (highest first)\n"
+                            "   - RELEVANT_STATS['win_probability_improvements'] is already prepared with top 3 recommendations\n"
                             "   - Just select the FIRST N items in the order they appear - DO NOT re-sort!\n\n"
-                            "9. **STRICT SELECTION REQUIREMENT:** You MUST follow these exact selection rules:\n"
+                            "8. **STRICT SELECTION REQUIREMENT:** You MUST follow these exact selection rules:\n"
                             "   - ✅ ADDITIONS: EXACTLY 5 items (simulations[0,1,2] + first 2 win_drivers)\n"
                             "   - ⚠️ REMOVALS: EXACTLY 3 items (first 3 loss_risks)\n"
+                            "   - 📈 WIN PROBABILITY IMPROVEMENT: EXACTLY 3 items (win_probability_improvements[0,1,2])\n"
                             "   - 🚀 CONSIDER: EXACTLY 2 items (simulations[3,4])\n"
                             "   - DO NOT add extra items, DO NOT skip items, DO NOT change the order\n"
                             "   - Use items in the EXACT order they appear in RELEVANT_STATS\n"
