@@ -1,3 +1,7 @@
+
+#ignore all files that start and ending with _
+_*_
+
 #env files
 *.env
 *.log

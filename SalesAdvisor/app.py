@@ -219,9 +219,50 @@ def main():
         st.subheader("Your Sales Opportunity")
         st.write(st.session_state.current_opportunity)
 
-        # Show extracted attributes
-        with st.expander("🔍 Extracted Attributes", expanded=False):
-            st.json(st.session_state.extracted_attrs)
+        # Show extracted attributes - as heading with text below (no expander)
+        st.subheader("Extracted Attributes")
+        attrs = st.session_state.extracted_attrs
+        attr_parts = []
+        if attrs.get('product'):
+            attr_parts.append(f"Product: {attrs['product']}")
+        if attrs.get('sector'):
+            attr_parts.append(f"Sector: {attrs['sector']}")
+        if attrs.get('region'):
+            attr_parts.append(f"Region: {attrs['region']}")
+        if attrs.get('current_rep'):
+            attr_parts.append(f"Sales Rep: {attrs['current_rep']}")
+        if attrs.get('sales_price'):
+            attr_parts.append(f"Price: ${attrs['sales_price']}")
+        if attrs.get('expected_revenue'):
+            attr_parts.append(f"Expected Revenue: ${attrs['expected_revenue']}")
+
+        # Simple join with comma separator - use st.text to avoid LaTeX rendering
+        attr_line = ", ".join(attr_parts)
+        st.text(attr_line)
+
+        # Display similar opportunities - as heading with 2 expanders (won and lost)
+        if st.session_state.won_docs or st.session_state.lost_docs:
+            st.subheader("Similar Sales Opportunities")
+
+            # Won cases expander
+            if st.session_state.won_docs:
+                with st.expander("✅ Top 10 Won Cases", expanded=False):
+                    for idx, doc in enumerate(st.session_state.won_docs, 1):
+                        st.text(f"{idx}. {doc.get('opportunity_id')} | Rep: {doc.get('sales_rep')} | Product: {doc.get('product')} | Sector: {doc.get('account_sector')} | Region: {doc.get('account_region')} | Price: ${doc.get('sales_price'):,.0f} | Revenue: ${doc.get('revenue_from_deal'):,.0f} | Cycle: {doc.get('sales_cycle_duration')} days")
+                        # Display Notes in normal font
+                        note_text = doc.get('Notes', '')
+                        st.text(f"Note: {note_text}")
+                        st.text("")  # Add spacing between entries
+
+            # Lost cases expander
+            if st.session_state.lost_docs:
+                with st.expander("❌ Top 10 Lost Cases", expanded=False):
+                    for idx, doc in enumerate(st.session_state.lost_docs, 1):
+                        st.text(f"{idx}. {doc.get('opportunity_id')} | Rep: {doc.get('sales_rep')} | Product: {doc.get('product')} | Sector: {doc.get('account_sector')} | Region: {doc.get('account_region')} | Price: ${doc.get('sales_price'):,.0f} | Revenue: ${doc.get('revenue_from_deal'):,.0f} | Cycle: {doc.get('sales_cycle_duration')} days")
+                        # Display Notes in normal font
+                        note_text = doc.get('Notes', '')
+                        st.text(f"Note: {note_text}")
+                        st.text("")  # Add spacing between entries
 
         # Display recommendation
         st.markdown("---")

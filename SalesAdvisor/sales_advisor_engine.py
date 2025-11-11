@@ -410,24 +410,17 @@ class SalesAdvisorEngine:
         relevant["qualitative_insights"] = {}
         qual_sector_key = self._case_insensitive_lookup(sector, self.qual_stats.get("segmented", {}))
         if qual_sector_key:
+            # Segmented data is now pre-normalized with correct frequencies
             seg_data = self.qual_stats["segmented"][qual_sector_key]
             normalized_seg = {}
             for cat_type in ["win_drivers", "loss_risks"]:
                 if cat_type in seg_data:
-                    denom_key = "total_" + cat_type.split("_")[0].lower()
-                    denom = self.qual_stats["overall"].get(denom_key, 1)
-                    normalized_cat = {}
-                    for category, count in seg_data[cat_type].items():
-                        freq = count / denom if denom > 0 else 0
-                        normalized_cat[category] = {
-                            "frequency": freq,
-                            "count": count,
-                            "examples": []
-                        }
-                    filtered = {k: v for k, v in normalized_cat.items() if v["frequency"] > 0.1}
+                    # Filter categories with frequency > 0.1 (10%)
+                    filtered = {k: v for k, v in seg_data[cat_type].items() if v["frequency"] > 0.1}
                     normalized_seg[cat_type] = filtered
             relevant["qualitative_insights"] = normalized_seg
         else:
+            # Fallback to overall stats if sector not found
             for cat_type in ["win_drivers", "loss_risks"]:
                 top_cats = Counter({
                     k: v["frequency"]

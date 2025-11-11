@@ -101,225 +101,709 @@
   "segmented": {
     "GTX Plus Basic": {
       "win_drivers": {
-        "demo_success": 864,
-        "bundling_support": 105,
-        "competitive_edge": 104
+        "demo_success": {
+          "frequency": 1.3231240428790199,
+          "count": 864,
+          "segment_total": 653
+        },
+        "bundling_support": {
+          "frequency": 0.16079632465543645,
+          "count": 105,
+          "segment_total": 653
+        },
+        "competitive_edge": {
+          "frequency": 0.15926493108728942,
+          "count": 104,
+          "segment_total": 653
+        }
       },
       "loss_risks": {
-        "delays_stalls": 292,
-        "feature_mismatch": 54,
-        "pricing_high": 124,
-        "competitor": 55
+        "delays_stalls": {
+          "frequency": 0.7336683417085427,
+          "count": 292,
+          "segment_total": 398
+        },
+        "feature_mismatch": {
+          "frequency": 0.135678391959799,
+          "count": 54,
+          "segment_total": 398
+        },
+        "pricing_high": {
+          "frequency": 0.31155778894472363,
+          "count": 124,
+          "segment_total": 398
+        },
+        "competitor": {
+          "frequency": 0.13819095477386933,
+          "count": 55,
+          "segment_total": 398
+        }
       }
     },
     "retail": {
       "win_drivers": {
-        "demo_success": 943,
-        "bundling_support": 114,
-        "roi_evidence": 48,
-        "competitive_edge": 108
+        "demo_success": {
+          "frequency": 1.1802252816020025,
+          "count": 943,
+          "segment_total": 799
+        },
+        "bundling_support": {
+          "frequency": 0.14267834793491865,
+          "count": 114,
+          "segment_total": 799
+        },
+        "roi_evidence": {
+          "frequency": 0.060075093867334166,
+          "count": 48,
+          "segment_total": 799
+        },
+        "competitive_edge": {
+          "frequency": 0.13516896120150187,
+          "count": 108,
+          "segment_total": 799
+        }
       },
       "loss_risks": {
-        "pricing_high": 131,
-        "delays_stalls": 182,
-        "competitor": 48,
-        "feature_mismatch": 59
+        "pricing_high": {
+          "frequency": 0.2799145299145299,
+          "count": 131,
+          "segment_total": 468
+        },
+        "delays_stalls": {
+          "frequency": 0.3888888888888889,
+          "count": 182,
+          "segment_total": 468
+        },
+        "competitor": {
+          "frequency": 0.10256410256410256,
+          "count": 48,
+          "segment_total": 468
+        },
+        "feature_mismatch": {
+          "frequency": 0.12606837606837606,
+          "count": 59,
+          "segment_total": 468
+        }
       }
     },
     "GTX Pro": {
       "win_drivers": {
-        "demo_success": 937,
-        "bundling_support": 114,
-        "competitive_edge": 105
+        "demo_success": {
+          "frequency": 1.2853223593964336,
+          "count": 937,
+          "segment_total": 729
+        },
+        "bundling_support": {
+          "frequency": 0.15637860082304528,
+          "count": 114,
+          "segment_total": 729
+        },
+        "competitive_edge": {
+          "frequency": 0.1440329218106996,
+          "count": 105,
+          "segment_total": 729
+        }
       },
       "loss_risks": {
-        "pricing_high": 145,
-        "delays_stalls": 289,
-        "feature_mismatch": 64,
-        "competitor": 52
+        "pricing_high": {
+          "frequency": 0.34688995215311,
+          "count": 145,
+          "segment_total": 418
+        },
+        "delays_stalls": {
+          "frequency": 0.6913875598086124,
+          "count": 289,
+          "segment_total": 418
+        },
+        "feature_mismatch": {
+          "frequency": 0.15311004784688995,
+          "count": 64,
+          "segment_total": 418
+        },
+        "competitor": {
+          "frequency": 0.12440191387559808,
+          "count": 52,
+          "segment_total": 418
+        }
       }
     },
     "medical": {
       "win_drivers": {
-        "demo_success": 816,
-        "bundling_support": 158,
-        "competitive_edge": 59,
-        "roi_evidence": 41
+        "demo_success": {
+          "frequency": 1.3783783783783783,
+          "count": 816,
+          "segment_total": 592
+        },
+        "bundling_support": {
+          "frequency": 0.2668918918918919,
+          "count": 158,
+          "segment_total": 592
+        },
+        "competitive_edge": {
+          "frequency": 0.09966216216216216,
+          "count": 59,
+          "segment_total": 592
+        },
+        "roi_evidence": {
+          "frequency": 0.06925675675675676,
+          "count": 41,
+          "segment_total": 592
+        }
       },
       "loss_risks": {
-        "delays_stalls": 318,
-        "feature_mismatch": 55,
-        "pricing_high": 72,
-        "competitor": 81
+        "delays_stalls": {
+          "frequency": 0.888268156424581,
+          "count": 318,
+          "segment_total": 358
+        },
+        "feature_mismatch": {
+          "frequency": 0.15363128491620112,
+          "count": 55,
+          "segment_total": 358
+        },
+        "pricing_high": {
+          "frequency": 0.2011173184357542,
+          "count": 72,
+          "segment_total": 358
+        },
+        "competitor": {
+          "frequency": 0.22625698324022347,
+          "count": 81,
+          "segment_total": 358
+        }
       }
     },
     "MG Special": {
       "win_drivers": {
-        "demo_success": 546,
-        "roi_evidence": 50,
-        "bundling_support": 145,
-        "competitive_edge": 81
+        "demo_success": {
+          "frequency": 0.6885245901639344,
+          "count": 546,
+          "segment_total": 793
+        },
+        "roi_evidence": {
+          "frequency": 0.06305170239596469,
+          "count": 50,
+          "segment_total": 793
+        },
+        "bundling_support": {
+          "frequency": 0.1828499369482976,
+          "count": 145,
+          "segment_total": 793
+        },
+        "competitive_edge": {
+          "frequency": 0.1021437578814628,
+          "count": 81,
+          "segment_total": 793
+        }
       },
       "loss_risks": {
-        "delays_stalls": 402,
-        "feature_mismatch": 66,
-        "competitor": 71
+        "delays_stalls": {
+          "frequency": 0.9348837209302325,
+          "count": 402,
+          "segment_total": 430
+        },
+        "feature_mismatch": {
+          "frequency": 0.15348837209302327,
+          "count": 66,
+          "segment_total": 430
+        },
+        "competitor": {
+          "frequency": 0.16511627906976745,
+          "count": 71,
+          "segment_total": 430
+        }
       }
     },
     "GTX Basic": {
       "win_drivers": {
-        "demo_success": 1187,
-        "bundling_support": 139,
-        "competitive_edge": 141
+        "demo_success": {
+          "frequency": 1.2972677595628415,
+          "count": 1187,
+          "segment_total": 915
+        },
+        "bundling_support": {
+          "frequency": 0.15191256830601094,
+          "count": 139,
+          "segment_total": 915
+        },
+        "competitive_edge": {
+          "frequency": 0.1540983606557377,
+          "count": 141,
+          "segment_total": 915
+        }
       },
       "loss_risks": {
-        "delays_stalls": 366,
-        "pricing_high": 175,
-        "feature_mismatch": 78,
-        "competitor": 81
+        "delays_stalls": {
+          "frequency": 0.7024952015355086,
+          "count": 366,
+          "segment_total": 521
+        },
+        "pricing_high": {
+          "frequency": 0.33589251439539347,
+          "count": 175,
+          "segment_total": 521
+        },
+        "feature_mismatch": {
+          "frequency": 0.14971209213051823,
+          "count": 78,
+          "segment_total": 521
+        },
+        "competitor": {
+          "frequency": 0.15547024952015356,
+          "count": 81,
+          "segment_total": 521
+        }
       }
     },
     "software": {
       "win_drivers": {
-        "demo_success": 420,
-        "bundling_support": 60,
-        "competitive_edge": 64
+        "demo_success": {
+          "frequency": 0.9333333333333333,
+          "count": 420,
+          "segment_total": 450
+        },
+        "bundling_support": {
+          "frequency": 0.13333333333333333,
+          "count": 60,
+          "segment_total": 450
+        },
+        "competitive_edge": {
+          "frequency": 0.14222222222222222,
+          "count": 64,
+          "segment_total": 450
+        }
       },
       "loss_risks": {
-        "delays_stalls": 241,
-        "pricing_high": 37,
-        "feature_mismatch": 38,
-        "competitor": 60
+        "delays_stalls": {
+          "frequency": 0.9488188976377953,
+          "count": 241,
+          "segment_total": 254
+        },
+        "pricing_high": {
+          "frequency": 0.14566929133858267,
+          "count": 37,
+          "segment_total": 254
+        },
+        "feature_mismatch": {
+          "frequency": 0.14960629921259844,
+          "count": 38,
+          "segment_total": 254
+        },
+        "competitor": {
+          "frequency": 0.23622047244094488,
+          "count": 60,
+          "segment_total": 254
+        }
       }
     },
     "services": {
       "win_drivers": {
-        "demo_success": 228,
-        "bundling_support": 41,
-        "competitive_edge": 36
+        "demo_success": {
+          "frequency": 1.0224215246636772,
+          "count": 228,
+          "segment_total": 223
+        },
+        "bundling_support": {
+          "frequency": 0.18385650224215247,
+          "count": 41,
+          "segment_total": 223
+        },
+        "competitive_edge": {
+          "frequency": 0.16143497757847533,
+          "count": 36,
+          "segment_total": 223
+        }
       },
       "loss_risks": {
-        "feature_mismatch": 20,
-        "delays_stalls": 105,
-        "competitor": 15,
-        "pricing_high": 26
+        "feature_mismatch": {
+          "frequency": 0.15503875968992248,
+          "count": 20,
+          "segment_total": 129
+        },
+        "delays_stalls": {
+          "frequency": 0.813953488372093,
+          "count": 105,
+          "segment_total": 129
+        },
+        "competitor": {
+          "frequency": 0.11627906976744186,
+          "count": 15,
+          "segment_total": 129
+        },
+        "pricing_high": {
+          "frequency": 0.20155038759689922,
+          "count": 26,
+          "segment_total": 129
+        }
       }
     },
     "entertainment": {
       "win_drivers": {
-        "bundling_support": 45,
-        "demo_success": 255,
-        "competitive_edge": 38
+        "bundling_support": {
+          "frequency": 0.17307692307692307,
+          "count": 45,
+          "segment_total": 260
+        },
+        "demo_success": {
+          "frequency": 0.9807692307692307,
+          "count": 255,
+          "segment_total": 260
+        },
+        "competitive_edge": {
+          "frequency": 0.14615384615384616,
+          "count": 38,
+          "segment_total": 260
+        }
       },
       "loss_risks": {
-        "delays_stalls": 148,
-        "feature_mismatch": 18,
-        "pricing_high": 28,
-        "competitor": 25
+        "delays_stalls": {
+          "frequency": 1.0422535211267605,
+          "count": 148,
+          "segment_total": 142
+        },
+        "feature_mismatch": {
+          "frequency": 0.1267605633802817,
+          "count": 18,
+          "segment_total": 142
+        },
+        "pricing_high": {
+          "frequency": 0.19718309859154928,
+          "count": 28,
+          "segment_total": 142
+        },
+        "competitor": {
+          "frequency": 0.176056338028169,
+          "count": 25,
+          "segment_total": 142
+        }
       }
     },
     "GTX Plus Pro": {
       "win_drivers": {
-        "demo_success": 617,
-        "competitive_edge": 51,
-        "bundling_support": 82
+        "demo_success": {
+          "frequency": 1.2881002087682671,
+          "count": 617,
+          "segment_total": 479
+        },
+        "competitive_edge": {
+          "frequency": 0.10647181628392484,
+          "count": 51,
+          "segment_total": 479
+        },
+        "bundling_support": {
+          "frequency": 0.17118997912317327,
+          "count": 82,
+          "segment_total": 479
+        }
       },
       "loss_risks": {
-        "pricing_high": 103,
-        "delays_stalls": 188,
-        "feature_mismatch": 27,
-        "competitor": 33
+        "pricing_high": {
+          "frequency": 0.38721804511278196,
+          "count": 103,
+          "segment_total": 266
+        },
+        "delays_stalls": {
+          "frequency": 0.706766917293233,
+          "count": 188,
+          "segment_total": 266
+        },
+        "feature_mismatch": {
+          "frequency": 0.10150375939849623,
+          "count": 27,
+          "segment_total": 266
+        },
+        "competitor": {
+          "frequency": 0.12406015037593984,
+          "count": 33,
+          "segment_total": 266
+        }
       }
     },
     "marketing": {
       "win_drivers": {
-        "demo_success": 520,
-        "bundling_support": 46,
-        "competitive_edge": 58
+        "demo_success": {
+          "frequency": 1.2871287128712872,
+          "count": 520,
+          "segment_total": 404
+        },
+        "bundling_support": {
+          "frequency": 0.11386138613861387,
+          "count": 46,
+          "segment_total": 404
+        },
+        "competitive_edge": {
+          "frequency": 0.14356435643564355,
+          "count": 58,
+          "segment_total": 404
+        }
       },
       "loss_risks": {
-        "feature_mismatch": 38,
-        "pricing_high": 59,
-        "delays_stalls": 98,
-        "competitor": 10
+        "feature_mismatch": {
+          "frequency": 0.1735159817351598,
+          "count": 38,
+          "segment_total": 219
+        },
+        "pricing_high": {
+          "frequency": 0.2694063926940639,
+          "count": 59,
+          "segment_total": 219
+        },
+        "delays_stalls": {
+          "frequency": 0.4474885844748858,
+          "count": 98,
+          "segment_total": 219
+        },
+        "competitor": {
+          "frequency": 0.045662100456621,
+          "count": 10,
+          "segment_total": 219
+        }
       }
     },
     "telecommunications": {
       "win_drivers": {
-        "demo_success": 311,
-        "competitive_edge": 35,
-        "bundling_support": 46
+        "demo_success": {
+          "frequency": 1.0912280701754387,
+          "count": 311,
+          "segment_total": 285
+        },
+        "competitive_edge": {
+          "frequency": 0.12280701754385964,
+          "count": 35,
+          "segment_total": 285
+        },
+        "bundling_support": {
+          "frequency": 0.16140350877192983,
+          "count": 46,
+          "segment_total": 285
+        }
       },
       "loss_risks": {
-        "delays_stalls": 153,
-        "pricing_high": 41,
-        "feature_mismatch": 19,
-        "competitor": 24
+        "delays_stalls": {
+          "frequency": 0.8947368421052632,
+          "count": 153,
+          "segment_total": 171
+        },
+        "pricing_high": {
+          "frequency": 0.23976608187134502,
+          "count": 41,
+          "segment_total": 171
+        },
+        "feature_mismatch": {
+          "frequency": 0.1111111111111111,
+          "count": 19,
+          "segment_total": 171
+        },
+        "competitor": {
+          "frequency": 0.14035087719298245,
+          "count": 24,
+          "segment_total": 171
+        }
       }
     },
     "MG Advanced": {
       "win_drivers": {
-        "demo_success": 527,
-        "competitive_edge": 75,
-        "roi_evidence": 39,
-        "bundling_support": 91
+        "demo_success": {
+          "frequency": 0.8058103975535168,
+          "count": 527,
+          "segment_total": 654
+        },
+        "competitive_edge": {
+          "frequency": 0.11467889908256881,
+          "count": 75,
+          "segment_total": 654
+        },
+        "roi_evidence": {
+          "frequency": 0.05963302752293578,
+          "count": 39,
+          "segment_total": 654
+        },
+        "bundling_support": {
+          "frequency": 0.13914373088685014,
+          "count": 91,
+          "segment_total": 654
+        }
       },
       "loss_risks": {
-        "delays_stalls": 348,
-        "feature_mismatch": 56,
-        "competitor": 74
+        "delays_stalls": {
+          "frequency": 0.8093023255813954,
+          "count": 348,
+          "segment_total": 430
+        },
+        "feature_mismatch": {
+          "frequency": 0.13023255813953488,
+          "count": 56,
+          "segment_total": 430
+        },
+        "competitor": {
+          "frequency": 0.17209302325581396,
+          "count": 74,
+          "segment_total": 430
+        }
       }
     },
     "finance": {
       "win_drivers": {
-        "demo_success": 370,
-        "competitive_edge": 48,
-        "bundling_support": 49
+        "demo_success": {
+          "frequency": 0.9866666666666667,
+          "count": 370,
+          "segment_total": 375
+        },
+        "competitive_edge": {
+          "frequency": 0.128,
+          "count": 48,
+          "segment_total": 375
+        },
+        "bundling_support": {
+          "frequency": 0.13066666666666665,
+          "count": 49,
+          "segment_total": 375
+        }
       },
       "loss_risks": {
-        "pricing_high": 55,
-        "delays_stalls": 204,
-        "competitor": 32,
-        "feature_mismatch": 31
+        "pricing_high": {
+          "frequency": 0.23109243697478993,
+          "count": 55,
+          "segment_total": 238
+        },
+        "delays_stalls": {
+          "frequency": 0.8571428571428571,
+          "count": 204,
+          "segment_total": 238
+        },
+        "competitor": {
+          "frequency": 0.13445378151260504,
+          "count": 32,
+          "segment_total": 238
+        },
+        "feature_mismatch": {
+          "frequency": 0.13025210084033614,
+          "count": 31,
+          "segment_total": 238
+        }
       }
     },
     "technolgy": {
       "win_drivers": {
-        "competitive_edge": 98,
-        "bundling_support": 93,
-        "demo_success": 661
+        "competitive_edge": {
+          "frequency": 0.14605067064083457,
+          "count": 98,
+          "segment_total": 671
+        },
+        "bundling_support": {
+          "frequency": 0.13859910581222057,
+          "count": 93,
+          "segment_total": 671
+        },
+        "demo_success": {
+          "frequency": 0.9850968703427719,
+          "count": 661,
+          "segment_total": 671
+        }
       },
       "loss_risks": {
-        "delays_stalls": 344,
-        "feature_mismatch": 51,
-        "competitor": 57,
-        "pricing_high": 90
+        "delays_stalls": {
+          "frequency": 0.8888888888888888,
+          "count": 344,
+          "segment_total": 387
+        },
+        "feature_mismatch": {
+          "frequency": 0.13178294573643412,
+          "count": 51,
+          "segment_total": 387
+        },
+        "competitor": {
+          "frequency": 0.14728682170542637,
+          "count": 57,
+          "segment_total": 387
+        },
+        "pricing_high": {
+          "frequency": 0.23255813953488372,
+          "count": 90,
+          "segment_total": 387
+        }
       }
     },
     "employment": {
       "win_drivers": {
-        "demo_success": 168,
-        "bundling_support": 27,
-        "competitive_edge": 16
+        "demo_success": {
+          "frequency": 0.9385474860335196,
+          "count": 168,
+          "segment_total": 179
+        },
+        "bundling_support": {
+          "frequency": 0.15083798882681565,
+          "count": 27,
+          "segment_total": 179
+        },
+        "competitive_edge": {
+          "frequency": 0.0893854748603352,
+          "count": 16,
+          "segment_total": 179
+        }
       },
       "loss_risks": {
-        "delays_stalls": 98,
-        "competitor": 15,
-        "pricing_high": 14,
-        "feature_mismatch": 18
+        "delays_stalls": {
+          "frequency": 0.9158878504672897,
+          "count": 98,
+          "segment_total": 107
+        },
+        "competitor": {
+          "frequency": 0.14018691588785046,
+          "count": 15,
+          "segment_total": 107
+        },
+        "pricing_high": {
+          "frequency": 0.1308411214953271,
+          "count": 14,
+          "segment_total": 107
+        },
+        "feature_mismatch": {
+          "frequency": 0.16822429906542055,
+          "count": 18,
+          "segment_total": 107
+        }
       }
     },
     "GTK 500": {
       "win_drivers": {
-        "bundling_support": 3,
-        "demo_success": 14,
-        "competitive_edge": 3
+        "bundling_support": {
+          "frequency": 0.2,
+          "count": 3,
+          "segment_total": 15
+        },
+        "demo_success": {
+          "frequency": 0.9333333333333333,
+          "count": 14,
+          "segment_total": 15
+        },
+        "competitive_edge": {
+          "frequency": 0.2,
+          "count": 3,
+          "segment_total": 15
+        }
       },
       "loss_risks": {
-        "delays_stalls": 6,
-        "pricing_high": 6,
-        "feature_mismatch": 2,
-        "competitor": 1
+        "delays_stalls": {
+          "frequency": 0.6,
+          "count": 6,
+          "segment_total": 10
+        },
+        "pricing_high": {
+          "frequency": 0.6,
+          "count": 6,
+          "segment_total": 10
+        },
+        "feature_mismatch": {
+          "frequency": 0.2,
+          "count": 2,
+          "segment_total": 10
+        },
+        "competitor": {
+          "frequency": 0.1,
+          "count": 1,
+          "segment_total": 10
+        }
       }
     }
   }
