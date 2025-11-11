@@ -5,7 +5,7 @@ Pure UI code - all business logic is in SalesAdvisorEngine
 
 import streamlit as st
 import json
-from sales_advisor_engine import SalesAdvisorEngine
+from sales_advisor_engine_rest import SalesAdvisorEngine
 from prompts import get_sales_strategy_system_prompt, get_sales_strategy_user_prompt
 
 # Page configuration
