@@ -595,84 +595,102 @@ def main():
 
     # Handle chat input submission (Enter key pressed)
     if opportunity_description and opportunity_description.strip():
-        with st.spinner("Analyzing your opportunity..."):
-            try:
-                st.session_state.current_opportunity = opportunity_description
+        try:
+            st.session_state.current_opportunity = opportunity_description
 
-                # Extract attributes
-                st.session_state.extracted_attrs = extract_attributes(
-                    opportunity_description,
-                    openai_client,
-                    config['CHAT_MODEL']
-                )
+            # Create progress bar
+            progress_bar = st.progress(0)
+            status_text = st.empty()
 
-                # Show what was extracted
-                with st.expander("🔍 Extracted Attributes", expanded=False):
-                    st.json(st.session_state.extracted_attrs)
+            # Step 1: Extract attributes (20%)
+            status_text.text("🔍 Step 1/5: Extracting attributes from your opportunity...")
+            progress_bar.progress(20)
+            st.session_state.extracted_attrs = extract_attributes(
+                opportunity_description,
+                openai_client,
+                config['CHAT_MODEL']
+            )
 
-                # Get relevant stats
-                st.session_state.relevant_stats = get_relevant_stats(
-                    st.session_state.extracted_attrs,
-                    stats,
-                    qual_stats,
-                    openai_client,
-                    config['CHAT_MODEL']
-                )
+            # Show what was extracted
+            with st.expander("🔍 Extracted Attributes", expanded=False):
+                st.json(st.session_state.extracted_attrs)
 
-                # Retrieve similar opportunities
-                st.session_state.won_docs = get_top_matches(
-                    opportunity_description,
-                    stage_filter="won",
-                    search_client=search_client,
-                    openai_client=openai_client,
-                    embedding_model=config['EMBEDDING_MODEL'],
-                    top_k=10
-                )
-                st.session_state.lost_docs = get_top_matches(
-                    opportunity_description,
-                    stage_filter="lost",
-                    search_client=search_client,
-                    openai_client=openai_client,
-                    embedding_model=config['EMBEDDING_MODEL'],
-                    top_k=10
-                )
+            # Step 2: Get relevant statistics (40%)
+            status_text.text("📊 Step 2/5: Analyzing historical data and calculating statistics...")
+            progress_bar.progress(40)
+            st.session_state.relevant_stats = get_relevant_stats(
+                st.session_state.extracted_attrs,
+                stats,
+                qual_stats,
+                openai_client,
+                config['CHAT_MODEL']
+            )
 
-                # Build context
-                context_msg = (
-                    f"User Opportunity:\n{opportunity_description}\n"
-                    f"Extracted Attributes: {json.dumps(st.session_state.extracted_attrs)}\n\n"
-                    f"=== Top 10 Successful Matches ===\n{format_docs(st.session_state.won_docs)}\n\n"
-                    f"=== Top 10 Failed Matches ===\n{format_docs(st.session_state.lost_docs)}\n"
-                )
+            # Step 3: Retrieve similar opportunities (60%)
+            status_text.text("🔎 Step 3/5: Finding similar won and lost opportunities...")
+            progress_bar.progress(60)
+            st.session_state.won_docs = get_top_matches(
+                opportunity_description,
+                stage_filter="won",
+                search_client=search_client,
+                openai_client=openai_client,
+                embedding_model=config['EMBEDDING_MODEL'],
+                top_k=10
+            )
+            st.session_state.lost_docs = get_top_matches(
+                opportunity_description,
+                stage_filter="lost",
+                search_client=search_client,
+                openai_client=openai_client,
+                embedding_model=config['EMBEDDING_MODEL'],
+                top_k=10
+            )
 
-                # Create conversation
-                conversation = [
-                    {
-                        "role": "system",
-                        "content": get_sales_strategy_system_prompt()
-                    },
-                    {
-                        "role": "user",
-                        "content": get_sales_strategy_user_prompt(context_msg, st.session_state.relevant_stats)
-                    }
-                ]
+            # Step 4: Build context (70%)
+            status_text.text("📝 Step 4/5: Building context from historical matches...")
+            progress_bar.progress(70)
+            context_msg = (
+                f"User Opportunity:\n{opportunity_description}\n"
+                f"Extracted Attributes: {json.dumps(st.session_state.extracted_attrs)}\n\n"
+                f"=== Top 10 Successful Matches ===\n{format_docs(st.session_state.won_docs)}\n\n"
+                f"=== Top 10 Failed Matches ===\n{format_docs(st.session_state.lost_docs)}\n"
+            )
 
-                # Get recommendation with low temperature for consistency
-                st.session_state.recommendation = llm_chat(
-                    conversation,
-                    openai_client,
-                    config['CHAT_MODEL'],
-                    temperature=0.1,  # Low temperature for high consistency while maintaining natural language
-                    seed=12345  # Fixed seed for reproducibility
-                )
-                st.session_state.conversation_history = conversation
-                st.session_state.follow_up_responses = []
-                st.session_state.show_analysis = True
-                st.rerun()
+            # Create conversation
+            conversation = [
+                {
+                    "role": "system",
+                    "content": get_sales_strategy_system_prompt()
+                },
+                {
+                    "role": "user",
+                    "content": get_sales_strategy_user_prompt(context_msg, st.session_state.relevant_stats)
+                }
+            ]
 
-            except Exception as e:
-                st.error(f"❌ Error during analysis: {str(e)}")
-                return
+            # Step 5: Generate recommendations (100%)
+            status_text.text("🤖 Step 5/5: Generating AI-powered recommendations...")
+            progress_bar.progress(90)
+            st.session_state.recommendation = llm_chat(
+                conversation,
+                openai_client,
+                config['CHAT_MODEL'],
+                temperature=0.1,  # Low temperature for high consistency while maintaining natural language
+                seed=12345  # Fixed seed for reproducibility
+            )
+
+            # Complete
+            progress_bar.progress(100)
+            status_text.text("✅ Analysis complete!")
+
+            st.session_state.conversation_history = conversation
+            st.session_state.follow_up_responses = []
+            st.session_state.show_analysis = True
+            st.rerun()
+
+        except Exception as e:
+            st.error(f"❌ Error during analysis: {str(e)}")
+            return
 
     # Display results
     if st.session_state.show_analysis and st.session_state.recommendation:
