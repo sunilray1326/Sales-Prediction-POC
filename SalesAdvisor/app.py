@@ -218,7 +218,7 @@ def main():
     if st.session_state.show_analysis and st.session_state.recommendation:
         # Display the prompt entered
         st.subheader("Your Sales Opportunity")
-        st.write(st.session_state.current_opportunity)
+        st.text(st.session_state.current_opportunity)
 
         # Show extracted attributes - as heading with text below (no expander)
         st.subheader("Extracted Attributes")

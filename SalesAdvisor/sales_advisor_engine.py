@@ -143,7 +143,7 @@ class SalesAdvisorEngine:
 
         self.logger.info("SalesAdvisorEngine initialization complete")
         self.logger.info("=" * 80)
-    
+
     def analyze_opportunity(self, user_prompt):
         """
         Main method: Analyze a sales opportunity and return recommendations.
@@ -548,9 +548,11 @@ class SalesAdvisorEngine:
         self.logger.debug(f"Looking up product: '{product}'")
         product_key = self._case_insensitive_lookup(product, self.stats["product"]["win_rate"])
 
+        # Get product stats reference (used in both if and else blocks)
+        prod_stats = self.stats["product"]
+
         if product_key:
             self.logger.debug(f"Product found: '{product_key}'")
-            prod_stats = self.stats["product"]
             relevant["products"] = {
                 product_key: {
                     "win_rate": prod_stats["win_rate"][product_key],
@@ -560,9 +562,10 @@ class SalesAdvisorEngine:
             self.logger.debug(f"Product '{product_key}' - Win rate: {prod_stats['win_rate'][product_key]:.4f}, "
                             f"Lift: {prod_stats['lift'][product_key]:.4f}")
         else:
-            self.logger.debug(f"Product '{product}' not found in stats")
+            self.logger.debug(f"Product '{product}' not found in stats, using top alternatives")
+            relevant["products"] = {}
             alts = sorted(
-                [(k, prod_stats["lift"][k]) for k in prod_stats["lift"] if k.lower() != product_key.lower()],
+                [(k, prod_stats["lift"][k]) for k in prod_stats["lift"]],
                 key=lambda x: x[1],
                 reverse=True
             )[:3]
@@ -571,6 +574,8 @@ class SalesAdvisorEngine:
                     "win_rate": prod_stats["win_rate"][alt_prod],
                     "lift": prod_stats["lift"][alt_prod]
                 }
+
+        if relevant.get("products"):
             relevant["avg_revenue_by_product"] = {k: self.stats["avg_revenue_by_product"][k] for k in relevant["products"]}
 
         # Sector-specific (case-insensitive lookup)
@@ -578,9 +583,11 @@ class SalesAdvisorEngine:
         self.logger.debug(f"Looking up sector: '{sector}'")
         sector_key = self._case_insensitive_lookup(sector, self.stats["account_sector"]["win_rate"])
 
+        # Get sector stats reference (used in both if and else blocks)
+        sec_stats = self.stats["account_sector"]
+
         if sector_key:
             self.logger.debug(f"Sector found: '{sector_key}'")
-            sec_stats = self.stats["account_sector"]
             relevant["sector"] = {
                 sector_key: {
                     "win_rate": sec_stats["win_rate"][sector_key],
@@ -590,9 +597,10 @@ class SalesAdvisorEngine:
             self.logger.debug(f"Sector '{sector_key}' - Win rate: {sec_stats['win_rate'][sector_key]:.4f}, "
                             f"Lift: {sec_stats['lift'][sector_key]:.4f}")
         else:
-            self.logger.debug(f"Sector '{sector}' not found in stats")
+            self.logger.debug(f"Sector '{sector}' not found in stats, using top alternatives")
+            relevant["sector"] = {}
             alts = sorted(
-                [(k, sec_stats["lift"][k]) for k in sec_stats["lift"] if k.lower() != sector_key.lower()],
+                [(k, sec_stats["lift"][k]) for k in sec_stats["lift"]],
                 key=lambda x: x[1],
                 reverse=True
             )[:3]
