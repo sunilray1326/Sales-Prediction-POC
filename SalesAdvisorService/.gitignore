@@ -1,6 +1,5 @@
-#Folders to ignore
+# Folders to ignore
 Logs/
-_*_
 
 #ignore all files that start and ending with _
 _*_
@@ -10,7 +9,6 @@ _*_
 *.log
 *.tmp
 *.xlsx
-*.md
 
 # Compiled class file
 *.class

@@ -1,0 +1,24 @@
+# FastAPI REST API Requirements
+# For deploying Sales Advisor Service to Azure App Service
+
+# Core FastAPI framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+# Updated pydantic to version with better Python 3.13 support
+pydantic==2.9.2
+
+# HTTP client for Azure REST APIs
+requests==2.31.0
+
+# Environment variables
+python-dotenv==1.1.1
+
+# Azure SDK libraries (for SalesAdvisorEngine)
+# Updated to newer versions with better Python 3.13 support and pre-built wheels
+openai==2.3.0
+azure-search-documents==11.6.0
+azure-core==1.35.1
+
+# Additional dependencies
+python-multipart==0.0.6  # For form data support
+
