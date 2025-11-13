@@ -5,6 +5,7 @@ Pure UI code - all business logic is in SalesAdvisorEngine
 
 import streamlit as st
 import json
+import logging
 from sales_advisor_engine import SalesAdvisorEngine
 from prompts import get_sales_strategy_system_prompt, get_sales_strategy_user_prompt
 
@@ -82,7 +83,7 @@ if 'follow_up_input_key' not in st.session_state:
 @st.cache_resource
 def init_engine():
     """Initialize the SalesAdvisorEngine (cached for performance)."""
-    return SalesAdvisorEngine()
+    return SalesAdvisorEngine(log_level=logging.INFO)
 
 # Main UI
 def main():
@@ -170,19 +171,19 @@ def main():
             # Call the engine to analyze the opportunity
             with st.spinner("🤖 Analyzing your opportunity..."):
                 result = engine.analyze_opportunity(opportunity_description)
-            
+
             # Check if analysis was successful
             if not result["success"]:
                 st.error(f"❌ {result['error_message']}")
                 return
-            
+
             # Store results in session state
             st.session_state.extracted_attrs = result["extracted_attributes"]
             st.session_state.relevant_stats = result["relevant_stats"]
             st.session_state.recommendation = result["recommendation"]
             st.session_state.won_docs = result["won_matches"]
             st.session_state.lost_docs = result["lost_matches"]
-            
+
             # Build conversation history for follow-up questions
             context_msg = (
                 f"User Opportunity:\n{opportunity_description}\n"
@@ -204,7 +205,7 @@ def main():
                     "content": result["recommendation"]
                 }
             ]
-            
+
             st.session_state.follow_up_responses = []
             st.session_state.show_analysis = True
             st.rerun()

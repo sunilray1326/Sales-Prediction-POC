@@ -105,6 +105,6 @@ az webapp config appsettings list --resource-group rg-sunil --name salesadv
 az webapp restart --resource-group rg-sunil --name salesadv
 
 After any code changes, just use below 2 commands to deploy the latest code to Azure Web App
-tar -a -c -f "streamlitapp.zip" app.py requirements.txt quantitative_stats.json qualitative_stats.json prompts.py sales_advisor_engine.py .streamlit
+tar -a -c -f "streamlitapp.zip" app.py prompts.py sales_advisor_engine.py requirements.txt quantitative_stats.json qualitative_stats.json .streamlit
 az webapp deployment source config-zip --resource-group rg-sunil --name salesadv --src streamlitapp.zip
 az webapp restart --resource-group rg-sunil --name salesadv

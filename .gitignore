@@ -8,6 +8,10 @@ Data Files/
 *.tmp
 *.xlsx
 
+# Log directories
+logs/
+SalesAdvisor/logs/
+
 # Compiled class file
 *.class
 
