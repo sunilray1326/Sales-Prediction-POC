@@ -1,0 +1,47 @@
+=============================================================================================================
+Using Power Shell to execute these commands since multiple line commands are used
+After initial deployment, we can use AZ CLI in any terminal window to execute these commands from vscode
+=============================================================================================================
+
+Create Azure App Service Plan and Web App
+az appservice plan create --name salesadvapiplan --resource-group rg-sunil --sku B1 --is-linux
+az webapp create --resource-group rg-sunil --plan salesadvapiplan --name salesadvapi --runtime "PYTHON:3.13"
+
+
+Set Environmrnt Variables
+az webapp config appsettings set --resource-group rg-sunil --name salesadvsapi --settings `
+OPEN_AI_KEY="Your OPEN API KEY" `
+OPEN_AI_ENDPOINT="YOUR OPEN AI ENDPOINT" `
+SEARCH_ENDPOINT="YOUR SEARCH ENDPOINT" `
+SEARCH_KEY="YOUR SEARCH KEY" `
+INDEX_NAME="YOUR SEARCH INDEX NAME" `
+EMBEDDING_MODEL="text-embedding-ada-002" `
+CHAT_MODEL="gpt-4o" `
+API_KEYS="test-key-1,test-key-2,production-key-xyz" `
+SCM_DO_BUILD_DURING_DEPLOYMENT="true"
+
+ACTUAL VALUE COMMAND 
+az webapp config appsettings set --resource-group rg-sunil --name salesadvsapi --settings `
+OPEN_AI_KEY="CB63lZlPRGU5j7oIZmDFdHBr8ZLRszoxgYEidMusdz8Tqi8ebfEnJQQJ99BJACYeBjFXJ3w3AAAAACOG969Q" `
+OPEN_AI_ENDPOINT="https://sunilaifoundry.cognitiveservices.azure.com/" `
+SEARCH_ENDPOINT="https://salesprediction.search.windows.net" `
+SEARCH_KEY="gL7v9FWHS8vCuSmQ3A1XqGpTTkbA0dvzqz1q8AKEsuAzSeB3OWta" `
+INDEX_NAME="salesopportunityindex" `
+EMBEDDING_MODEL="text-embedding-ada-002" `
+CHAT_MODEL="gpt-4o" `
+API_KEYS="sales-rest-api-key-1,har-har-mahadev-key-2,jai-ganesh-key-3" `
+SCM_DO_BUILD_DURING_DEPLOYMENT="true"
+
+==> Set Runtime Startup Command on Azure Portal UI
+==> Azure Portal => Web App => Settings => Configuration => General Settings => Startup Command
+# Set the startup command for FastAPI
+az webapp config set --resource-group rg-sunil --name salesadvapi --startup-file "gunicorn -w 4 -k uvicorn.workers.UvicornWorker api:app --bind 0.0.0.0:8000"
+
+==> To allow all CORS, use below command or Go to Azure Portal => Web App => API => CORS => Add *
+az webapp cors add --resource-group rg-sunil --name salesadvapi --allowed-origins '*'
+
+Create a TAR file that will be deployed to Azure Web App
+tar -a -c -f "salesadvapi.zip" api.py,models.py,sales_advisor_engine.py,prompts.py,*.json,requirements.txt
+
+Deploy the TAR file to Azure Web App        
+az webapp deployment source config-zip --resource-group rg-sunil --name salesadvapi --src salesadvapi.zip

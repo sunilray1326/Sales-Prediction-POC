@@ -84,19 +84,10 @@ WEB_APP_NAME="sales-advisor-api"  # Must be globally unique
 az group create --name $RESOURCE_GROUP --location $LOCATION
 
 # Create App Service Plan (B1 tier - $13/month, suitable for production)
-az appservice plan create \
-  --name $APP_SERVICE_PLAN \
-  --resource-group $RESOURCE_GROUP \
-  --sku B1 \
-  --is-linux
+az appservice plan create --name $APP_SERVICE_PLAN --resource-group $RESOURCE_GROUP --sku B1 --is-linux
 
 # Create Web App with Python 3.11 runtime
-az webapp create \
-  --resource-group $RESOURCE_GROUP \
-  --plan $APP_SERVICE_PLAN \
-  --name $WEB_APP_NAME \
-  --runtime "PYTHON:3.11"
-```
+az webapp create --resource-group $RESOURCE_GROUP --plan $APP_SERVICE_PLAN --name $WEB_APP_NAME --runtime "PYTHON:3.11"
 
 ---
 
@@ -136,14 +127,11 @@ cd "c:\Sunil Ray\Github\Sales Prediction POC\SalesAdvisorService"
 
 # Create ZIP file for deployment
 # PowerShell:
-Compress-Archive -Path api.py,models.py,sales_advisor_engine.py,prompts.py,quantitative_stats.json,qualitative_stats.json,requirements_api.txt -DestinationPath deploy.zip -Force
+Compress-Archive -Path api.py,models.py,sales_advisor_engine.py,prompts.py,quantitative_stats.json,qualitative_stats.json,requirements.txt -DestinationPath deploy.zip -Force
 
 # Deploy the ZIP file
-az webapp deployment source config-zip \
-  --resource-group $RESOURCE_GROUP \
-  --name $WEB_APP_NAME \
-  --src deploy.zip
-```
+az webapp deployment source config-zip --resource-group $RESOURCE_GROUP --name $WEB_APP_NAME --src deploy.zip
+
 
 #### Option B: Deploy from Git Repository
 
@@ -172,11 +160,7 @@ git push azure main
 
 ```bash
 # Set the startup command for FastAPI
-az webapp config set \
-  --resource-group $RESOURCE_GROUP \
-  --name $WEB_APP_NAME \
-  --startup-file "gunicorn -w 4 -k uvicorn.workers.UvicornWorker api:app --bind 0.0.0.0:8000"
-```
+az webapp config set --resource-group $RESOURCE_GROUP --name $WEB_APP_NAME --startup-file "gunicorn -w 4 -k uvicorn.workers.UvicornWorker api:app --bind 0.0.0.0:8000"
 
 ---
 
@@ -186,11 +170,7 @@ az webapp config set \
 
 ```bash
 # Get the app URL
-az webapp show \
-  --resource-group $RESOURCE_GROUP \
-  --name $WEB_APP_NAME \
-  --query "defaultHostName" -o tsv
-```
+az webapp show --resource-group $RESOURCE_GROUP --name $WEB_APP_NAME --query "defaultHostName" -o tsv
 
 Your API will be available at: `https://{WEB_APP_NAME}.azurewebsites.net`
 
@@ -232,23 +212,13 @@ az webapp log download \
 
 ```bash
 # Create Application Insights
-az monitor app-insights component create \
-  --app sales-advisor-insights \
-  --location $LOCATION \
-  --resource-group $RESOURCE_GROUP
+az monitor app-insights component create --app sales-advisor-insights --location $LOCATION --resource-group $RESOURCE_GROUP
 
 # Get instrumentation key
-INSTRUMENTATION_KEY=$(az monitor app-insights component show \
-  --app sales-advisor-insights \
-  --resource-group $RESOURCE_GROUP \
-  --query "instrumentationKey" -o tsv)
+INSTRUMENTATION_KEY=$(az monitor app-insights component show --app sales-advisor-insights --resource-group $RESOURCE_GROUP --query "instrumentationKey" -o tsv)
 
 # Configure Web App to use Application Insights
-az webapp config appsettings set \
-  --resource-group $RESOURCE_GROUP \
-  --name $WEB_APP_NAME \
-  --settings APPINSIGHTS_INSTRUMENTATIONKEY=$INSTRUMENTATION_KEY
-```
+az webapp config appsettings set --resource-group $RESOURCE_GROUP --name $WEB_APP_NAME --settings APPINSIGHTS_INSTRUMENTATIONKEY=$INSTRUMENTATION_KEY
 
 ---
 
