@@ -1,0 +1,25 @@
+
+#ignore all files that start and ending with _
+_*_
+
+#env files
+*.env
+*.log
+*.tmp
+*.xlsx
+*.md
+
+# Compiled class file
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rars
