@@ -294,6 +294,32 @@ async def analyze_opportunity(
         for line in summary_json.split('\n'):
             logging.info(line)
         logging.info("-" * 80)
+        logging.info("")
+
+        # Log similar won deals
+        similar_won_deals = response_body.get("similar_won_deals", [])
+        logging.info("SIMILAR WON DEALS (Complete List):")
+        logging.info("-" * 80)
+        if similar_won_deals:
+            won_deals_json = json_lib.dumps(similar_won_deals, indent=2, ensure_ascii=False)
+            for line in won_deals_json.split('\n'):
+                logging.info(line)
+        else:
+            logging.info("No similar won deals found")
+        logging.info("-" * 80)
+        logging.info("")
+
+        # Log similar lost deals
+        similar_lost_deals = response_body.get("similar_lost_deals", [])
+        logging.info("SIMILAR LOST DEALS (Complete List):")
+        logging.info("-" * 80)
+        if similar_lost_deals:
+            lost_deals_json = json_lib.dumps(similar_lost_deals, indent=2, ensure_ascii=False)
+            for line in lost_deals_json.split('\n'):
+                logging.info(line)
+        else:
+            logging.info("No similar lost deals found")
+        logging.info("-" * 80)
 
         logging.info("=" * 80)
         logging.info("*** END OF USER RESPONSE ***")
