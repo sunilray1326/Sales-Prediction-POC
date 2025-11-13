@@ -1,3 +1,8 @@
+"""
+Simple script to test the Sales Advisor API locally
+
+"""
+
 import requests
 from typing import Dict, Any, Optional
 
