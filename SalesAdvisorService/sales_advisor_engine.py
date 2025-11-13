@@ -384,6 +384,25 @@ class SalesAdvisorEngine:
             for doc in docs
         ])
     
+    def _strip_markdown_json(self, content):
+        """Strip markdown code block formatting from JSON response."""
+        content = content.strip()
+
+        # Remove markdown code blocks (```json ... ``` or ``` ... ```)
+        if content.startswith('```'):
+            # Find the first newline after opening ```
+            first_newline = content.find('\n')
+            if first_newline != -1:
+                content = content[first_newline + 1:]
+
+            # Remove closing ```
+            if content.endswith('```'):
+                content = content[:-3]
+
+            content = content.strip()
+
+        return content
+
     def _extract_attributes(self, prompt):
         """Use LLM to extract key attributes from the user prompt."""
         self.logger.debug("Calling Azure OpenAI for attribute extraction")
@@ -419,8 +438,14 @@ class SalesAdvisorEngine:
             self.logger.debug(f"OpenAI response received (length: {len(raw_content)} chars)")
             self.logger.debug(f"Raw response: {raw_content}")
 
+            # Strip markdown formatting if present
+            cleaned_content = self._strip_markdown_json(raw_content)
+            if cleaned_content != raw_content:
+                self.logger.debug(f"Stripped markdown formatting from response")
+                self.logger.debug(f"Cleaned content: {cleaned_content}")
+
             # Parse JSON
-            extracted = json.loads(raw_content)
+            extracted = json.loads(cleaned_content)
             self.logger.debug(f"Parsed attributes: {json.dumps(extracted, indent=2)}")
 
             # Validation: Remove hallucinated price if not mentioned in prompt
@@ -444,6 +469,10 @@ class SalesAdvisorEngine:
         except json.JSONDecodeError as e:
             self.logger.error(f"Failed to parse JSON from OpenAI response: {str(e)}")
             self.logger.error(f"Raw response was: {raw_content}")
+            try:
+                self.logger.error(f"Cleaned content was: {cleaned_content}")
+            except:
+                pass
             return {}
         except Exception as e:
             self.logger.error(f"Error during attribute extraction: {str(e)}", exc_info=True)

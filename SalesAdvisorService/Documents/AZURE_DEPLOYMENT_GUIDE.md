@@ -13,6 +13,28 @@ Complete step-by-step guide to deploy the Sales Advisor REST API to Azure App Se
 
 ---
 
+
+# 1. Create Azure resources
+az group create --name rg-sales-advisor --location eastus
+az appservice plan create --name plan-sales-advisor --resource-group rg-sales-advisor --sku B1 --is-linux
+az webapp create --resource-group rg-sales-advisor --plan plan-sales-advisor --name sales-advisor-api --runtime "PYTHON:3.11"
+
+# 2. Set environment variables
+az webapp config appsettings set --resource-group rg-sales-advisor --name sales-advisor-api --settings \
+  OPEN_AI_KEY="your-key" \
+  SEARCH_KEY="your-key" \
+  API_KEYS="production-key-1,production-key-2" \
+  # ... (see AZURE_DEPLOYMENT_GUIDE.md for all variables)
+
+# 3. Create deployment package
+Compress-Archive -Path api.py,models.py,sales_advisor_engine.py,prompts.py,*.json,requirements_api.txt -DestinationPath deploy.zip -Force
+
+# 4. Deploy
+az webapp deployment source config-zip --resource-group rg-sales-advisor --name sales-advisor-api --src deploy.zip
+
+# Done! Your API is live at https://sales-advisor-api.azurewebsites.net
+
+
 ## 🎯 Quick Deployment (5 Steps)
 
 ### Step 1: Prepare Your Files

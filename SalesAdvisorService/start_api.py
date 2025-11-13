@@ -44,30 +44,31 @@ def check_environment():
 
 def check_dependencies():
     """Check if required packages are installed"""
-    required_packages = [
-        'fastapi',
-        'uvicorn',
-        'pydantic',
-        'requests',
-        'python-dotenv',
-        'openai',
-        'azure-search-documents'
-    ]
-    
+    # Map of package names to their import names
+    required_packages = {
+        'fastapi': 'fastapi',
+        'uvicorn': 'uvicorn',
+        'pydantic': 'pydantic',
+        'requests': 'requests',
+        'python-dotenv': 'dotenv',
+        'openai': 'openai',
+        'azure-search-documents': 'azure.search.documents'
+    }
+
     missing = []
-    for package in required_packages:
+    for package_name, import_name in required_packages.items():
         try:
-            __import__(package.replace('-', '_'))
+            __import__(import_name)
         except ImportError:
-            missing.append(package)
-    
+            missing.append(package_name)
+
     if missing:
         print("\n❌ Missing required packages:")
         for package in missing:
             print(f"   - {package}")
-        print("\n💡 Install dependencies with: pip install -r requirements_api.txt")
+        print("\n💡 Install dependencies with: pip install -r requirements.txt")
         return False
-    
+
     print("✅ All required packages are installed")
     return True
 
