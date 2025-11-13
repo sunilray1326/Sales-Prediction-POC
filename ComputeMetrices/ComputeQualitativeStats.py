@@ -78,10 +78,18 @@ for _, row in df.iterrows():
             stage_counter[category][reason["snippet"]] += 1  # Count unique snippets for examples
 
             # Segment by product/sector
-            for seg in [product, sector]:
-                if seg not in qual_stats["segmented"]:
-                    qual_stats["segmented"][seg] = {"win_drivers": Counter(), "loss_risks": Counter()}
-                qual_stats["segmented"][seg][cat_type][category] += 1
+            # FIX: Only count win_drivers for Won deals, loss_risks for Lost deals
+            should_count_in_segment = False
+            if stage == "Won" and cat_type == "win_drivers":
+                should_count_in_segment = True
+            elif stage == "Lost" and cat_type == "loss_risks":
+                should_count_in_segment = True
+
+            if should_count_in_segment:
+                for seg in [product, sector]:
+                    if seg not in qual_stats["segmented"]:
+                        qual_stats["segmented"][seg] = {"win_drivers": Counter(), "loss_risks": Counter()}
+                    qual_stats["segmented"][seg][cat_type][category] += 1
 
 # Normalize to frequencies (e.g., % of deals mentioning category)
 # 1. Normalize overall stats
