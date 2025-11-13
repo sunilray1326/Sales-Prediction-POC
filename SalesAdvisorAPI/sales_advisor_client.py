@@ -1,10 +1,27 @@
 """
-Simple script to test the Sales Advisor API locally
+Sales Advisor API Client
 
+Supports testing both local and Azure-deployed APIs.
+
+Usage:
+    # Test local API
+    python sales_advisor_client.py --run local
+
+    # Test Azure API
+    python sales_advisor_client.py --run azure
+
+    # Default (local)
+    python sales_advisor_client.py
 """
 
 import requests
+import argparse
+import os
 from typing import Dict, Any, Optional
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 class SalesAdvisorClient:
     """Python client for Sales Advisor API"""
@@ -45,24 +62,132 @@ class SalesAdvisorClient:
         improvements = result.get("win_probability_improvements", [])
         return improvements[:top_n]
 
+def get_config(environment: str) -> Dict[str, str]:
+    """Get configuration based on environment"""
+    if environment.lower() == "azure":
+        # Azure configuration from environment variables
+        base_url = os.getenv("AZURE_API_URL")
+        api_key = os.getenv("AZURE_API_KEY")
+
+        if not base_url:
+            raise ValueError(
+                "AZURE_API_URL not found in environment variables. "
+                "Please set it in your .env file or environment.\n"
+                "Example: AZURE_API_URL=https://your-app-name.azurewebsites.net"
+            )
+        if not api_key:
+            raise ValueError(
+                "AZURE_API_KEY not found in environment variables. "
+                "Please set it in your .env file or environment.\n"
+                "Example: AZURE_API_KEY=your-azure-api-key"
+            )
+
+        return {
+            "base_url": base_url,
+            "api_key": api_key,
+            "environment": "Azure"
+        }
+    else:
+        # Local configuration
+        base_url = os.getenv("LOCAL_API_URL", "http://localhost:8000")
+        api_key = os.getenv("LOCAL_API_KEY", "your-secret-api-key-1")
+
+        return {
+            "base_url": base_url,
+            "api_key": api_key,
+            "environment": "Local"
+        }
+
+
 # Usage example
 if __name__ == "__main__":
-    client = SalesAdvisorClient(
-        base_url="http://localhost:8000",
-        api_key="your-secret-api-key-1"
+    # Parse command line arguments
+    parser = argparse.ArgumentParser(
+        description="Test Sales Advisor API (Local or Azure)",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  python sales_advisor_client.py --run local    # Test local API
+  python sales_advisor_client.py --run azure    # Test Azure API
+  python sales_advisor_client.py                # Test local API (default)
+        """
+    )
+    parser.add_argument(
+        "--run",
+        type=str,
+        choices=["local", "azure"],
+        default="local",
+        help="Environment to test: 'local' or 'azure' (default: local)"
     )
 
-    # Check health
-    health = client.health_check()
-    print(f"API Status: {health['status']}")
+    args = parser.parse_args()
 
-    # Analyze opportunity
-    description = "product GTX Pro, sector medical, region United States, sales price 4821, expected revenue 4514"
-    result = client.analyze_opportunity(description)
+    # Get configuration
+    try:
+        config = get_config(args.run)
+    except ValueError as e:
+        print(f"❌ Configuration Error: {e}")
+        exit(1)
 
-    print(f"\nRecommendation:\n{result['recommendation']}\n")
+    print("=" * 80)
+    print(f"🚀 Testing Sales Advisor API - {config['environment']} Environment")
+    print("=" * 80)
+    print(f"Base URL: {config['base_url']}")
+    print(f"API Key: {config['api_key'][:10]}..." if len(config['api_key']) > 10 else f"API Key: {config['api_key']}")
+    print("=" * 80)
+    print()
 
-    # Show what fields are in the response
-    print("Response fields:")
-    for key in result.keys():
-        print(f"  - {key}")
+    # Initialize client
+    client = SalesAdvisorClient(
+        base_url=config['base_url'],
+        api_key=config['api_key']
+    )
+
+    try:
+        # Check health
+        print("📊 Checking API health...")
+        health = client.health_check()
+        print(f"✅ API Status: {health['status']}")
+        print()
+
+        # Analyze opportunity
+        print("🔍 Analyzing opportunity...")
+        description = "product GTX Pro, sector medical, region United States, sales price 4821, expected revenue 4514"
+        result = client.analyze_opportunity(description)
+
+        print(f"✅ Analysis complete!")
+        print()
+        print("📝 Recommendation:")
+        print("-" * 80)
+        print(result['recommendation'])
+        print("-" * 80)
+        print()
+
+        # Show what fields are in the response
+        print("📦 Response fields:")
+        for key in result.keys():
+            if key == "similar_won_deals":
+                print(f"  - {key}: {len(result[key])} deals")
+            elif key == "similar_lost_deals":
+                print(f"  - {key}: {len(result[key])} deals")
+            elif key == "recommendation":
+                print(f"  - {key}: {len(result[key])} characters")
+            else:
+                print(f"  - {key}")
+
+        print()
+        print("=" * 80)
+        print(f"✅ {config['environment']} API test completed successfully!")
+        print("=" * 80)
+
+    except requests.exceptions.ConnectionError:
+        print(f"❌ Connection Error: Could not connect to {config['base_url']}")
+        print(f"   Make sure the {config['environment']} API is running.")
+        exit(1)
+    except requests.exceptions.HTTPError as e:
+        print(f"❌ HTTP Error: {e}")
+        print(f"   Response: {e.response.text if hasattr(e, 'response') else 'N/A'}")
+        exit(1)
+    except Exception as e:
+        print(f"❌ Error: {e}")
+        exit(1)

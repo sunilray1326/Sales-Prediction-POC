@@ -30,7 +30,9 @@ class SalesAdvisorEngine:
 
     # Class-level logging configuration
     _logging_configured = False
-    LOG_FILE = "logs/sales_advisor.log"
+    # Use Azure's writable log directory if running in Azure, otherwise use local logs directory
+    # WEBSITE_INSTANCE_ID is automatically set by Azure App Service (no manual configuration needed)
+    LOG_FILE = os.getenv("LOG_FILE_PATH", "/home/LogFiles/sales_advisor.log" if os.getenv("WEBSITE_INSTANCE_ID") else "logs/sales_advisor.log")
 
     @classmethod
     def _configure_logging(cls, log_level=logging.INFO):

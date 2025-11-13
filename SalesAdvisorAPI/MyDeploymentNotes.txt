@@ -7,9 +7,12 @@ Create Azure App Service Plan and Web App
 az appservice plan create --name salesadvapiplan --resource-group rg-sunil --sku B1 --is-linux
 az webapp create --resource-group rg-sunil --plan salesadvapiplan --name salesadvapi --runtime "PYTHON:3.13"
 
+=> After running above command, verify if Runtime is set to Python 3.13 or not. If not set, then set in UI.
+=> Azure Portal => Web App => Settings => Configuration => General Settings => Stack
+=> Select "Python" and choose and minor version there as 3 and 13 under Stack setting
 
 Set Environmrnt Variables
-az webapp config appsettings set --resource-group rg-sunil --name salesadvsapi --settings `
+az webapp config appsettings set --resource-group rg-sunil --name salesadsapi --settings `
 OPEN_AI_KEY="Your OPEN API KEY" `
 OPEN_AI_ENDPOINT="YOUR OPEN AI ENDPOINT" `
 SEARCH_ENDPOINT="YOUR SEARCH ENDPOINT" `
@@ -17,31 +20,34 @@ SEARCH_KEY="YOUR SEARCH KEY" `
 INDEX_NAME="YOUR SEARCH INDEX NAME" `
 EMBEDDING_MODEL="text-embedding-ada-002" `
 CHAT_MODEL="gpt-4o" `
-API_KEYS="test-key-1,test-key-2,production-key-xyz" `
+API_KEYS="comma separated list of API keys" `
 SCM_DO_BUILD_DURING_DEPLOYMENT="true"
 
-ACTUAL VALUE COMMAND 
-az webapp config appsettings set --resource-group rg-sunil --name salesadvsapi --settings `
-OPEN_AI_KEY="CB63lZlPRGU5j7oIZmDFdHBr8ZLRszoxgYEidMusdz8Tqi8ebfEnJQQJ99BJACYeBjFXJ3w3AAAAACOG969Q" `
-OPEN_AI_ENDPOINT="https://sunilaifoundry.cognitiveservices.azure.com/" `
-SEARCH_ENDPOINT="https://salesprediction.search.windows.net" `
-SEARCH_KEY="gL7v9FWHS8vCuSmQ3A1XqGpTTkbA0dvzqz1q8AKEsuAzSeB3OWta" `
-INDEX_NAME="salesopportunityindex" `
-EMBEDDING_MODEL="text-embedding-ada-002" `
-CHAT_MODEL="gpt-4o" `
-API_KEYS="sales-rest-api-key-1,har-har-mahadev-key-2,jai-ganesh-key-3" `
-SCM_DO_BUILD_DURING_DEPLOYMENT="true"
-
-==> Set Runtime Startup Command on Azure Portal UI
-==> Azure Portal => Web App => Settings => Configuration => General Settings => Startup Command
 # Set the startup command for FastAPI
 az webapp config set --resource-group rg-sunil --name salesadvapi --startup-file "gunicorn -w 4 -k uvicorn.workers.UvicornWorker api:app --bind 0.0.0.0:8000"
+
+=> After executing above command, verify if Startup Command is set correctly.  
+=> Verify Runtime Startup Command on Azure Portal UI
+=> Azure Portal => Web App => Settings => Configuration => General Settings => Startup Command
 
 ==> To allow all CORS, use below command or Go to Azure Portal => Web App => API => CORS => Add *
 az webapp cors add --resource-group rg-sunil --name salesadvapi --allowed-origins '*'
 
-Create a TAR file that will be deployed to Azure Web App
-tar -a -c -f "salesadvapi.zip" api.py,models.py,sales_advisor_engine.py,prompts.py,*.json,requirements.txt
+=> Verify if CORS is set correctly in Azure Portal UI
+=> Azure Portal => Web App => API => CORS and if not present then using "Add" button add *
+
+Create a ZIP file that will be deployed to Azure Web App
+Compress-Archive -Path api.py,models.py,sales_advisor_engine.py,prompts.py,quantitative_stats.json,qualitative_stats.json,requirements.txt -DestinationPath deploy.zip -Force
 
 Deploy the TAR file to Azure Web App        
-az webapp deployment source config-zip --resource-group rg-sunil --name salesadvapi --src salesadvapi.zip
+az webapp deployment source config-zip --resource-group rg-sunil --name salesadvapi --src deploy.zip
+
+To check if API is up and running, hit below URL
+https://salesadvapi.azurewebsites.net/health
+https://salesadvapi.azurewebsites.net/docs
+
+# Get the app URL
+az webapp show --resource-group rg-sunil --name salesadvapi --query "defaultHostName" -o tsv
+
+# Create Application Insights
+az monitor app-insights component create --app sales-advisor-insights --location $LOCATION --resource-group $RESOURCE_GROUP
