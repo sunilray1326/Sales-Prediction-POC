@@ -17,6 +17,7 @@ Usage:
 import requests
 import argparse
 import os
+import json
 from typing import Dict, Any, Optional
 from dotenv import load_dotenv
 
@@ -41,15 +42,41 @@ class SalesAdvisorClient:
         response.raise_for_status()
         return response.json()
 
-    def analyze_opportunity(self, description: str) -> Dict[str, Any]:
-        """Analyze a sales opportunity"""
+    def analyze_opportunity(self, description: str, save_json: bool = False, output_dir: str = ".") -> Dict[str, Any]:
+        """Analyze a sales opportunity
+
+        Args:
+            description: Opportunity description text
+            save_json: If True, saves request and response as JSON files
+            output_dir: Directory to save JSON files (default: current directory)
+
+        Returns:
+            API response as dictionary
+        """
         payload = {"opportunity_description": description}
+
+        # Save request JSON if requested
+        if save_json:
+            request_file = os.path.join(output_dir, "request.json")
+            with open(request_file, 'w', encoding='utf-8') as f:
+                json.dump(payload, f, indent=2, ensure_ascii=False)
+            print(f"💾 Request saved to: {request_file}")
+
         response = self.session.post(
             f"{self.base_url}/api/v1/analyze",
             json=payload
         )
         response.raise_for_status()
-        return response.json()
+        result = response.json()
+
+        # Save response JSON if requested
+        if save_json:
+            response_file = os.path.join(output_dir, "response.json")
+            with open(response_file, 'w', encoding='utf-8') as f:
+                json.dump(result, f, indent=2, ensure_ascii=False)
+            print(f"💾 Response saved to: {response_file}")
+
+        return result
 
     def get_recommendation(self, description: str) -> str:
         """Get just the recommendation text"""
@@ -119,6 +146,17 @@ Examples:
         default="local",
         help="Environment to test: 'local' or 'azure' (default: local)"
     )
+    parser.add_argument(
+        "--save-json",
+        action="store_true",
+        help="Save request and response as JSON files (request.json and response.json)"
+    )
+    parser.add_argument(
+        "--output-dir",
+        type=str,
+        default=".",
+        help="Directory to save JSON files (default: current directory)"
+    )
 
     args = parser.parse_args()
 
@@ -153,7 +191,7 @@ Examples:
         # Analyze opportunity
         print("🔍 Analyzing opportunity...")
         description = "product GTX Pro, sector medical, region United States, sales price 4821, expected revenue 4514"
-        result = client.analyze_opportunity(description)
+        result = client.analyze_opportunity(description, save_json=args.save_json, output_dir=args.output_dir)
 
         print(f"✅ Analysis complete!")
         print()
