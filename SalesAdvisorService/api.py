@@ -22,9 +22,7 @@ from models import (
     ErrorResponse,
     HealthResponse,
     ExtractedAttributes,
-    WinProbabilityImprovement,
-    SimilarDeal,
-    Statistics
+    SimilarDeal
 )
 
 # Load environment variables
@@ -227,6 +225,22 @@ async def analyze_opportunity(
     }
     ```
     """
+    # Log incoming request body (split into lines to avoid truncation)
+    import json as json_lib
+    request_body = request.model_dump()
+    logging.info("=" * 80)
+    logging.info("*** USER REQUEST RECEIVED ***")
+    logging.info("=" * 80)
+
+    # Convert to JSON and log line by line to avoid truncation
+    request_json = json_lib.dumps(request_body, indent=2, ensure_ascii=False)
+    for line in request_json.split('\n'):
+        logging.info(line)
+
+    logging.info("=" * 80)
+    logging.info("*** END OF USER REQUEST ***")
+    logging.info("=" * 80)
+
     # Check rate limit
     check_rate_limit(api_key)
 
@@ -247,14 +261,86 @@ async def analyze_opportunity(
         # Transform the result to match our response model
         response = transform_engine_result(result)
 
+        # Log outgoing response body (split into lines to avoid truncation)
+        response_body = response.model_dump()
+        logging.info("=" * 80)
+        logging.info("*** SENDING RESPONSE BACK TO CALLER ***")
+        logging.info("=" * 80)
+
+        # Log recommendation separately first (since it's large)
+        recommendation_text = response_body.get("recommendation", "")
+        logging.info("")
+        logging.info("RECOMMENDATION (Complete):")
+        logging.info("-" * 80)
+        # Log recommendation line by line
+        for line in recommendation_text.split('\n'):
+            logging.info(line)
+        logging.info("-" * 80)
+        logging.info("")
+
+        # Log the rest of the response (without recommendation to avoid duplication)
+        response_summary = {
+            "success": response_body.get("success"),
+            "extracted_attributes": response_body.get("extracted_attributes"),
+            "similar_won_deals_count": len(response_body.get("similar_won_deals", [])),
+            "similar_lost_deals_count": len(response_body.get("similar_lost_deals", [])),
+            "recommendation_length": len(recommendation_text)
+        }
+
+        logging.info("RESPONSE SUMMARY:")
+        logging.info("-" * 80)
+        # Convert to JSON and log line by line to avoid truncation
+        summary_json = json_lib.dumps(response_summary, indent=2, ensure_ascii=False)
+        for line in summary_json.split('\n'):
+            logging.info(line)
+        logging.info("-" * 80)
+
+        logging.info("=" * 80)
+        logging.info("*** END OF USER RESPONSE ***")
+        logging.info("=" * 80)
+
         return response
 
-    except HTTPException:
+    except HTTPException as http_exc:
+        # Log HTTP exception response (split into lines to avoid truncation)
+        error_response = {
+            "status_code": http_exc.status_code,
+            "detail": http_exc.detail
+        }
+        logging.info("=" * 80)
+        logging.info("📤 OUTGOING API ERROR RESPONSE (HTTP Exception)")
+        logging.info("=" * 80)
+        logging.info("ERROR RESPONSE BODY (Complete):")
+
+        # Convert to JSON and log line by line to avoid truncation
+        error_json = json_lib.dumps(error_response, indent=2, ensure_ascii=False)
+        for line in error_json.split('\n'):
+            logging.info(line)
+
+        logging.info("=" * 80)
         # Re-raise HTTP exceptions
         raise
     except Exception as e:
         # Log the error
         logging.error(f"Error analyzing opportunity: {str(e)}", exc_info=True)
+
+        # Log exception response (split into lines to avoid truncation)
+        exception_response = {
+            "status_code": 500,
+            "detail": f"An error occurred during analysis: {str(e)}",
+            "error_type": type(e).__name__
+        }
+        logging.info("=" * 80)
+        logging.info("📤 OUTGOING API ERROR RESPONSE (Exception)")
+        logging.info("=" * 80)
+        logging.info("ERROR RESPONSE BODY (Complete):")
+
+        # Convert to JSON and log line by line to avoid truncation
+        exception_json = json_lib.dumps(exception_response, indent=2, ensure_ascii=False)
+        for line in exception_json.split('\n'):
+            logging.info(line)
+
+        logging.info("=" * 80)
 
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
@@ -280,25 +366,6 @@ def transform_engine_result(result: dict) -> OpportunityResponse:
             sales_price=extracted_attrs_data.get("sales_price"),
             expected_revenue=extracted_attrs_data.get("expected_revenue")
         )
-
-        # Win probability improvements - handle missing stats gracefully
-        relevant_stats = result.get("relevant_stats", {})
-        win_prob_improvements = []
-        for improvement in relevant_stats.get("win_probability_improvements", []):
-            try:
-                win_prob_improvements.append(
-                    WinProbabilityImprovement(
-                        rank=improvement.get("rank", 0),
-                        recommendation=improvement.get("recommendation", ""),
-                        uplift_percent=improvement.get("uplift_percent", 0.0),
-                        confidence=improvement.get("confidence", "Unknown"),
-                        source_type=improvement.get("source_type", "Unknown"),
-                        explanation=improvement.get("explanation", "")
-                    )
-                )
-            except Exception as e:
-                logging.warning(f"Skipping invalid win probability improvement: {e}")
-                continue
 
         # Similar won deals - handle missing data gracefully
         similar_won = []
@@ -346,27 +413,12 @@ def transform_engine_result(result: dict) -> OpportunityResponse:
                 logging.warning(f"Skipping invalid lost deal: {e}")
                 continue
 
-        # Statistics - handle missing metrics gracefully
-        # If product/sector/region not found, engine returns top alternatives
-        statistics = Statistics(
-            overall_win_rate=relevant_stats.get("overall_win_rate", 0.0),
-            avg_cycle_days_won=relevant_stats.get("avg_cycle_days", {}).get("won") if relevant_stats.get("avg_cycle_days") else None,
-            avg_cycle_days_lost=relevant_stats.get("avg_cycle_days", {}).get("lost") if relevant_stats.get("avg_cycle_days") else None,
-            product_stats=relevant_stats.get("products"),
-            sector_stats=relevant_stats.get("sector"),
-            region_stats=relevant_stats.get("region"),
-            current_rep_stats=relevant_stats.get("current_rep"),
-            top_reps=relevant_stats.get("top_reps")
-        )
-
         return OpportunityResponse(
             success=True,
             recommendation=result.get("recommendation", "No recommendation available"),
             extracted_attributes=extracted_attrs,
-            win_probability_improvements=win_prob_improvements,
             similar_won_deals=similar_won,
-            similar_lost_deals=similar_lost,
-            statistics=statistics
+            similar_lost_deals=similar_lost
         )
 
     except Exception as e:

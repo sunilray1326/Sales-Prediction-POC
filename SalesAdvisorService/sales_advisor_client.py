@@ -57,8 +57,7 @@ if __name__ == "__main__":
 
     print(f"\nRecommendation:\n{result['recommendation']}\n")
 
-    # Get top improvements
-    improvements = client.get_top_improvements(description)
-    print("Top Recommendations:")
-    for imp in improvements:
-        print(f"  {imp['rank']}. {imp['recommendation']} (+{imp['uplift_percent']:.1f}%)")
+    # Show what fields are in the response
+    print("Response fields:")
+    for key in result.keys():
+        print(f"  - {key}")

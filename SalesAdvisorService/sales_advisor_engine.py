@@ -42,12 +42,13 @@ class SalesAdvisorEngine:
                 os.makedirs(log_dir)
 
             # Configure logging with file and console output
+            # Use UTF-8 encoding for file handler to support emojis and special characters
             logging.basicConfig(
                 level=log_level,
                 format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                 datefmt='%Y-%m-%d %H:%M:%S',
                 handlers=[
-                    logging.FileHandler(cls.LOG_FILE),
+                    logging.FileHandler(cls.LOG_FILE, encoding='utf-8'),
                     logging.StreamHandler()
                 ]
             )
@@ -162,9 +163,20 @@ class SalesAdvisorEngine:
                 - lost_matches (list): Similar lost opportunities
         """
         self.logger.info("=" * 80)
-        self.logger.info("Starting opportunity analysis")
-        self.logger.info(f"User prompt length: {len(user_prompt)} characters")
-        self.logger.debug(f"User prompt: {user_prompt[:200]}...")  # Log first 200 chars
+        self.logger.info("*** STARTING INTERNAL LOGS ***")
+        self.logger.info("=" * 80)
+
+        # Log complete request as JSON (split into lines to avoid truncation)
+        request_data = {
+            "user_prompt": user_prompt,
+            "prompt_length": len(user_prompt),
+            "prompt_type": type(user_prompt).__name__
+        }
+
+        # Convert to JSON and log line by line to avoid truncation
+        request_json = json.dumps(request_data, indent=2, ensure_ascii=False)
+        for line in request_json.split('\n'):
+            self.logger.info(line)
 
         try:
             # Step 1: Extract attributes
@@ -175,7 +187,8 @@ class SalesAdvisorEngine:
             # Check if extraction failed
             if not extracted_attrs or all(v is None for v in extracted_attrs.values()):
                 self.logger.warning("Attribute extraction failed - all values are None")
-                return {
+
+                error_response = {
                     "success": False,
                     "error_message": "Failed to extract attributes from the opportunity description. Please provide more details about the product, sector, region, or sales representative.",
                     "extracted_attributes": extracted_attrs,
@@ -184,6 +197,22 @@ class SalesAdvisorEngine:
                     "won_matches": None,
                     "lost_matches": None
                 }
+
+                # Log complete error response as JSON (split into lines to avoid truncation)
+                self.logger.info("")
+                self.logger.info("=" * 80)
+                self.logger.info("🔴 ENGINE - OUTGOING RESPONSE (Error - Attribute Extraction Failed)")
+                self.logger.info("=" * 80)
+                self.logger.info("ENGINE ERROR RESPONSE (Complete):")
+
+                # Convert to JSON and log line by line to avoid truncation
+                error_json = json.dumps(error_response, indent=2, ensure_ascii=False, default=str)
+                for line in error_json.split('\n'):
+                    self.logger.info(line)
+
+                self.logger.info("=" * 80)
+
+                return error_response
 
             # Step 2: Get relevant statistics
             self.logger.info("Step 2: Retrieving relevant statistics")
@@ -228,10 +257,18 @@ class SalesAdvisorEngine:
             )
             self.logger.info(f"Recommendation generated successfully (length: {len(recommendation)} characters)")
 
-            self.logger.info("Opportunity analysis completed successfully")
+            # Log the complete LLM-generated recommendation text
+            self.logger.info("")
+            self.logger.info("=" * 80)
+            self.logger.info("🤖 COMPLETE LLM-GENERATED RECOMMENDATION (Plain Text)")
+            self.logger.info("=" * 80)
+            # Log line by line to avoid truncation
+            for line in recommendation.split('\n'):
+                self.logger.info(line)
             self.logger.info("=" * 80)
 
-            return {
+            # Build response
+            response = {
                 "success": True,
                 "error_message": None,
                 "extracted_attributes": extracted_attrs,
@@ -241,18 +278,52 @@ class SalesAdvisorEngine:
                 "lost_matches": lost_docs
             }
 
+            # Log response summary
+            self.logger.info("")
+            self.logger.info("=" * 80)
+            self.logger.info("ENGINE - OUTGOING RESPONSE (Success)")
+            self.logger.info("=" * 80)
+            self.logger.info(f"  Extracted Attributes: {len(extracted_attrs)} fields")
+            self.logger.info(f"  Relevant Stats: {len(relevant_stats)} top-level keys")
+            self.logger.info(f"  Similar Won Deals: {len(won_docs)} records")
+            self.logger.info(f"  Similar Lost Deals: {len(lost_docs)} records")
+            self.logger.info(f"  Recommendation Length: {len(recommendation)} characters")
+            self.logger.info("=" * 80)
+            self.logger.info("*** END OF INTERNAL LOGS ***")
+            self.logger.info("=" * 80)
+
+            return response
+
         except Exception as e:
             self.logger.error(f"Error during opportunity analysis: {str(e)}", exc_info=True)
-            self.logger.info("=" * 80)
-            return {
+
+            exception_response = {
                 "success": False,
                 "error_message": f"Error during analysis: {str(e)}",
+                "error_type": type(e).__name__,
                 "extracted_attributes": None,
                 "relevant_stats": None,
                 "recommendation": None,
                 "won_matches": None,
                 "lost_matches": None
             }
+
+            # Log complete exception response as JSON (split into lines to avoid truncation)
+            self.logger.info("")
+            self.logger.info("=" * 80)
+            self.logger.info("ENGINE - OUTGOING RESPONSE (Error - Exception)")
+            self.logger.info("=" * 80)
+
+            # Convert to JSON and log line by line to avoid truncation
+            exception_json = json.dumps(exception_response, indent=2, ensure_ascii=False, default=str)
+            for line in exception_json.split('\n'):
+                self.logger.info(line)
+
+            self.logger.info("=" * 80)
+            self.logger.info("*** END OF INTERNAL LOGS ***")
+            self.logger.info("=" * 80)
+
+            return exception_response
     
     def _embed_text(self, text):
         """Generate embedding vector for text using Azure OpenAI."""
@@ -339,29 +410,11 @@ class SalesAdvisorEngine:
 
             docs = [doc for doc in results]
 
-            # Log response
+            # Log response summary only
             self.logger.info("-" * 80)
             self.logger.info("AZURE COGNITIVE SEARCH RESPONSE")
             self.logger.info("-" * 80)
             self.logger.info(f"  Results Returned: {len(docs)}")
-
-            # Log detailed results
-            if docs:
-                self.logger.info("  Top Results:")
-                for i, doc in enumerate(docs[:5], 1):  # Log top 5
-                    self.logger.info(f"    Result {i}:")
-                    self.logger.info(f"      Opportunity ID: {doc.get('opportunity_id')}")
-                    self.logger.info(f"      Product: {doc.get('product')}")
-                    self.logger.info(f"      Sector: {doc.get('account_sector')}")
-                    self.logger.info(f"      Region: {doc.get('account_region')}")
-                    self.logger.info(f"      Stage: {doc.get('deal_stage')}")
-                    self.logger.info(f"      Sales Rep: {doc.get('sales_rep')}")
-                    self.logger.info(f"      Price: ${doc.get('sales_price', 0):,.2f}")
-                    self.logger.info(f"      Revenue: ${doc.get('revenue_from_deal', 0):,.2f}")
-                if len(docs) > 5:
-                    self.logger.info(f"    ... and {len(docs) - 5} more results")
-            else:
-                self.logger.info("  No results found")
 
             self.logger.info("=" * 80)
 

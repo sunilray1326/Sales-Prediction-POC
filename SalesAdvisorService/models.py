@@ -34,16 +34,6 @@ class ExtractedAttributes(BaseModel):
     expected_revenue: Optional[float] = Field(None, description="Expected revenue if mentioned")
 
 
-class WinProbabilityImprovement(BaseModel):
-    """Win probability improvement recommendation"""
-    rank: int = Field(..., description="Ranking of this recommendation (1 is best)")
-    recommendation: str = Field(..., description="Description of the recommendation")
-    uplift_percent: float = Field(..., description="Expected improvement in win rate (%)")
-    confidence: str = Field(..., description="Confidence level: High, Medium, or Low")
-    source_type: str = Field(..., description="Source: Quantitative simulation or Qualitative insight")
-    explanation: str = Field(..., description="Detailed explanation of the recommendation")
-
-
 class SimilarDeal(BaseModel):
     """Similar deal from historical data"""
     opportunity_id: str = Field(..., description="Unique identifier for the opportunity")
@@ -59,30 +49,13 @@ class SimilarDeal(BaseModel):
     notes: Optional[str] = Field(None, description="Notes about the deal")
 
 
-class Statistics(BaseModel):
-    """Relevant statistics for the opportunity"""
-    overall_win_rate: float = Field(..., description="Overall historical win rate")
-    avg_cycle_days_won: Optional[float] = Field(None, description="Average sales cycle for won deals")
-    avg_cycle_days_lost: Optional[float] = Field(None, description="Average sales cycle for lost deals")
-    product_stats: Optional[Dict[str, Any]] = Field(None, description="Product-specific statistics")
-    sector_stats: Optional[Dict[str, Any]] = Field(None, description="Sector-specific statistics")
-    region_stats: Optional[Dict[str, Any]] = Field(None, description="Region-specific statistics")
-    current_rep_stats: Optional[Dict[str, Any]] = Field(None, description="Current sales rep statistics")
-    top_reps: Optional[List[Dict[str, Any]]] = Field(None, description="Top performing sales representatives")
-
-
 class OpportunityResponse(BaseModel):
     """Response model for successful opportunity analysis"""
     success: bool = Field(True, description="Indicates successful analysis")
     recommendation: str = Field(..., description="AI-generated sales recommendation")
     extracted_attributes: ExtractedAttributes = Field(..., description="Attributes extracted from the description")
-    win_probability_improvements: List[WinProbabilityImprovement] = Field(
-        ..., 
-        description="Top recommendations to improve win probability"
-    )
     similar_won_deals: List[SimilarDeal] = Field(..., description="Similar successful deals from history")
     similar_lost_deals: List[SimilarDeal] = Field(..., description="Similar failed deals from history")
-    statistics: Statistics = Field(..., description="Relevant statistical insights")
     
     class Config:
         json_schema_extra = {
@@ -97,23 +70,8 @@ class OpportunityResponse(BaseModel):
                     "sales_price": 50000.0,
                     "expected_revenue": None
                 },
-                "win_probability_improvements": [
-                    {
-                        "rank": 1,
-                        "recommendation": "Switch to GTX Plus Pro",
-                        "uplift_percent": 15.5,
-                        "confidence": "High",
-                        "source_type": "Quantitative simulation",
-                        "explanation": "This recommendation is based on quantitative simulation showing 15.50% improvement in win rate."
-                    }
-                ],
                 "similar_won_deals": [],
-                "similar_lost_deals": [],
-                "statistics": {
-                    "overall_win_rate": 0.63,
-                    "avg_cycle_days_won": 45.2,
-                    "avg_cycle_days_lost": 52.8
-                }
+                "similar_lost_deals": []
             }
         }
 

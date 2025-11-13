@@ -82,7 +82,7 @@ def get_sales_strategy_system_prompt():
 
         "**REQUIRED RESPONSE FORMAT:**\n\n"
 
-        "## 📊 LIFT ANALYSIS\n\n"
+        "** 📊 LIFT ANALYSIS\n\n"
         "For each extracted attribute (product, sector, region, sales_rep, sales_price, expected_revenue), display:\n"
         "- ✅ or ❌ indicator (✅ if lift > 1.0, ❌ if lift < 1.0)\n"
         "- Attribute name and value\n"
@@ -99,12 +99,12 @@ def get_sales_strategy_system_prompt():
 
         "After the LIFT ANALYSIS section, provide:\n\n"
 
-        "## 💡 RECOMMENDATION SUMMARY\n"
+        "** 💡 RECOMMENDATION SUMMARY\n"
         "- **Overall Assessment:** One sentence (e.g., 'Strong opportunity' or 'High risk opportunity')\n"
         "- **Estimated Win Probability:** X% (based on combined lift factors)\n"
         "- **Key Insight:** One-liner highlighting the most important factor\n\n"
 
-        "## ✅ ADDITIONS/IMPROVEMENTS FOR SUCCESS\n\n"
+        "** ✅ ADDITIONS/IMPROVEMENTS FOR SUCCESS\n\n"
 
         "**STRICT SELECTION RULES - FOLLOW EXACTLY:**\n\n"
 
@@ -127,7 +127,7 @@ def get_sales_strategy_system_prompt():
 
         "**TOTAL OUTPUT: EXACTLY 5 recommendations (3 simulations + 2 win drivers) in the order they appear in the data**\n\n"
 
-        "## ⚠️ REMOVALS/RISKS TO AVOID\n\n"
+        "** ⚠️ REMOVALS/RISKS TO AVOID\n\n"
 
         "**STRICT SELECTION RULES - FOLLOW EXACTLY:**\n\n"
 
@@ -140,7 +140,7 @@ def get_sales_strategy_system_prompt():
 
         "**TOTAL OUTPUT: EXACTLY 3 risk mitigations in the order they appear in the data**\n\n"
 
-        "## 📈 ESTIMATED WIN PROBABILITY IMPROVEMENT\n\n"
+        "** 📈 ESTIMATED WIN PROBABILITY IMPROVEMENT\n\n"
 
         "**STRICT SELECTION RULES - FOLLOW EXACTLY:**\n\n"
 
@@ -164,7 +164,7 @@ def get_sales_strategy_system_prompt():
 
         "**TOTAL OUTPUT: EXACTLY 3 win probability improvements in the order they appear in the data**\n\n"
 
-        "## 🚀 CONSIDER\n\n"
+        "** 🚀 CONSIDER\n\n"
 
         "**STRICT SELECTION RULES - FOLLOW EXACTLY:**\n\n"
 
@@ -207,7 +207,7 @@ def get_sales_strategy_system_prompt():
 
         "**Your output MUST be:**\n\n"
 
-        "## ✅ ADDITIONS/IMPROVEMENTS FOR SUCCESS\n\n"
+        "** ✅ ADDITIONS/IMPROVEMENTS FOR SUCCESS\n\n"
 
         "1. Address pricing concerns through bundling strategy (Based on simulation: 'Address top qual risk pricing_high' - +8.5% uplift, High confidence) ← simulations[0]\n"
         "2. Assign to Sarah Chen for better outcomes (Based on simulation: 'Assign to rep Sarah Chen' - +4.1% uplift, High confidence) ← simulations[1]\n"
@@ -215,13 +215,13 @@ def get_sales_strategy_system_prompt():
         "4. Conduct product demo workshop early in sales cycle (Based on qualitative win driver: 'demo_success' - 70% of won deals had successful demos) ← win_drivers[0]\n"
         "5. Offer bundled packages with support services (Based on qualitative win driver: 'bundling_support' - 16% of won deals included bundling) ← win_drivers[1]\n\n"
 
-        "## ⚠️ REMOVALS/RISKS TO AVOID\n\n"
+        "** ⚠️ REMOVALS/RISKS TO AVOID\n\n"
 
         "1. Avoid aggressive pricing; offer value-based packages instead (Based on qualitative loss risk: 'pricing_high' - 45% of lost deals had pricing issues) ← loss_risks[0]\n"
         "2. Ensure product features match customer requirements closely (Based on qualitative loss risk: 'feature_mismatch' - 32% of lost deals had feature gaps) ← loss_risks[1]\n"
         "3. Address competitive positioning early in sales cycle (Based on qualitative loss risk: 'competitive_pressure' - 22% of lost deals lost to competitors) ← loss_risks[2]\n\n"
 
-        "## 📈 ESTIMATED WIN PROBABILITY IMPROVEMENT\n\n"
+        "** 📈 ESTIMATED WIN PROBABILITY IMPROVEMENT\n\n"
 
         "1. **Address pricing concerns through bundling strategy** → +8.5% win probability improvement\n"
         "   - Source: Qualitative insight (High confidence)\n"
@@ -235,7 +235,7 @@ def get_sales_strategy_system_prompt():
         "   - Source: Quantitative simulation (High confidence)\n"
         "   - Why: GTX Pro has a stronger product-market fit for this sector, with higher historical win rates and better alignment with customer requirements.\n\n"
 
-        "## 🚀 CONSIDER\n\n"
+        "** 🚀 CONSIDER\n\n"
 
         "1. Consider switching to GTX Plus for mid-tier positioning (Based on simulation: 'Switch to GTX Plus' - +2.8% uplift, Medium confidence) ← simulations[3]\n"
         "2. Consider offering extended trial period (Based on simulation: 'Offer trial period' - +1.5% uplift, Medium confidence) ← simulations[4]\n\n"
